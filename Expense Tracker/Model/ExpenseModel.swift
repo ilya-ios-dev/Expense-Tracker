@@ -15,14 +15,10 @@ struct ExpenseModel: Hashable {
     let sum: Float
     
     static func getSampleData() -> [ExpenseModel]{
-        return [
-            ExpenseModel(categoryImageName: "airplane", title: "airplane1", description: "airplane", currency: "$", sum: 135),
-            ExpenseModel(categoryImageName: "airplane", title: "airplane2", description: "airplane", currency: "$", sum: 135),
-            ExpenseModel(categoryImageName: "airplane", title: "airplane3", description: "airplane", currency: "$", sum: 135),
-            ExpenseModel(categoryImageName: "airplane", title: "airplane4", description: "airplane", currency: "$", sum: 135),
-            ExpenseModel(categoryImageName: "airplane", title: "airplane5", description: "airplane", currency: "$", sum: 135),
-            ExpenseModel(categoryImageName: "airplane", title: "airplane6", description: "airplane", currency: "$", sum: 135),
-            ExpenseModel(categoryImageName: "airplane", title: "airplane7", description: "airplane", currency: "$", sum: 135)
-        ]
+        var arr = [ExpenseModel]()
+        (0...5).forEach { (i) in
+            arr.append(ExpenseModel(categoryImageName: "airplane", title: "airplane\(i)", description: "", currency: "", sum: 0))
+        }
+        return arr
     }
 }

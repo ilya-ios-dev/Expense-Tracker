@@ -10,6 +10,8 @@
 		FA59C76D25755B9300C80A5A /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C76B25755B9300C80A5A /* HomeCollectionViewCell.swift */; };
 		FA59C76E25755B9300C80A5A /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA59C76C25755B9300C80A5A /* HomeCollectionViewCell.xib */; };
 		FA59C7752575690800C80A5A /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C7742575690800C80A5A /* ExpenseModel.swift */; };
+		FA758854257666810016990D /* ScrollView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA758853257666810016990D /* ScrollView-Extensions.swift */; };
+		FA758857257668870016990D /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA758856257668870016990D /* CategoryViewController.swift */; };
 		FAC951F525754F4E00931346 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC951F425754F4E00931346 /* TopView.swift */; };
 		FAFB4E2F2575457E002B9E23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB4E2E2575457E002B9E23 /* AppDelegate.swift */; };
 		FAFB4E312575457E002B9E23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB4E302575457E002B9E23 /* SceneDelegate.swift */; };
@@ -27,6 +29,8 @@
 		FA59C76B25755B9300C80A5A /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA59C76C25755B9300C80A5A /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA59C7742575690800C80A5A /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
+		FA758853257666810016990D /* ScrollView-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView-Extensions.swift"; sourceTree = "<group>"; };
+		FA758856257668870016990D /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		FAC951F425754F4E00931346 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		FAFB4E2B2575457E002B9E23 /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFB4E2E2575457E002B9E23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 				FA59C773257568DA00C80A5A /* Model */,
 				FAFB4E49257545AD002B9E23 /* Resources */,
 				FAFB4E48257545A6002B9E23 /* View */,
+				FA758853257666810016990D /* ScrollView-Extensions.swift */,
 			);
 			path = "Expense Tracker";
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				FAFB4E322575457E002B9E23 /* HomeViewController.swift */,
+				FA758856257668870016990D /* CategoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -226,8 +232,10 @@
 				FA59C76D25755B9300C80A5A /* HomeCollectionViewCell.swift in Sources */,
 				FAFB4E332575457E002B9E23 /* HomeViewController.swift in Sources */,
 				FAFB4E2F2575457E002B9E23 /* AppDelegate.swift in Sources */,
+				FA758857257668870016990D /* CategoryViewController.swift in Sources */,
 				FAC951F525754F4E00931346 /* TopView.swift in Sources */,
 				FAFB4E312575457E002B9E23 /* SceneDelegate.swift in Sources */,
+				FA758854257666810016990D /* ScrollView-Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

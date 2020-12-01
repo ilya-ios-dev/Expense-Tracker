@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="350"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="joh-Nd-Byw">
-                                        <rect key="frame" x="50" y="102.33333333333333" width="290" height="202.66666666666669"/>
+                                        <rect key="frame" x="50" y="97.333333333333329" width="290" height="202.66666666666669"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="S4y-1Q-jdV">
                                                 <rect key="frame" x="0.0" y="0.0" width="290" height="139.33333333333334"/>
@@ -103,6 +103,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="Z7V-uO-e96"/>
                                     <constraint firstItem="joh-Nd-Byw" firstAttribute="leading" secondItem="ree-Pn-6ZG" secondAttribute="leading" constant="50" id="Zlm-Vb-TgV"/>
+                                    <constraint firstAttribute="bottom" secondItem="joh-Nd-Byw" secondAttribute="bottom" constant="50" id="fbO-cc-esi"/>
                                     <constraint firstAttribute="trailing" secondItem="joh-Nd-Byw" secondAttribute="trailing" constant="50" id="sTG-VC-6Vk"/>
                                 </constraints>
                             </view>
@@ -122,17 +123,16 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ree-Pn-6ZG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5xs-lo-aQG"/>
-                            <constraint firstItem="zRT-nV-w60" firstAttribute="top" secondItem="joh-Nd-Byw" secondAttribute="bottom" constant="5" id="Es2-6r-2da"/>
+                            <constraint firstItem="joh-Nd-Byw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" priority="250" id="Bul-4D-4mM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zRT-nV-w60" secondAttribute="trailing" id="Osj-X5-oC1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ree-Pn-6ZG" secondAttribute="trailing" id="cbO-VR-usY"/>
-                            <constraint firstItem="joh-Nd-Byw" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cj4-sN-dnI"/>
-                            <constraint firstItem="zRT-nV-w60" firstAttribute="top" secondItem="ree-Pn-6ZG" secondAttribute="bottom" constant="-40" id="sBt-5X-IGd"/>
+                            <constraint firstItem="ree-Pn-6ZG" firstAttribute="bottom" secondItem="zRT-nV-w60" secondAttribute="top" constant="40" id="sBt-5X-IGd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zRT-nV-w60" secondAttribute="bottom" id="tHu-I1-woe"/>
                             <constraint firstItem="ree-Pn-6ZG" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="u2h-dN-k2p"/>
                             <constraint firstItem="zRT-nV-w60" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zkw-F1-had"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="W0V-6h-Pyj"/>
+                    <navigationItem key="navigationItem" id="R2g-yS-nhU"/>
                     <connections>
                         <outlet property="amountLabel" destination="Swd-rm-sqF" id="Kfn-hj-GdI"/>
                         <outlet property="collectionView" destination="zRT-nV-w60" id="Ifz-qw-AS5"/>
@@ -140,11 +140,12 @@
                         <outlet property="dateLabel" destination="Xee-mk-a8l" id="yyT-wg-L6g"/>
                         <outlet property="expenseAmountLabel" destination="U2t-5M-1fc" id="Vms-L5-pws"/>
                         <outlet property="incomeAmountLabel" destination="VPC-Dx-HZ6" id="0qr-E7-DGY"/>
+                        <outlet property="topViewConstraint" destination="u2h-dN-k2p" id="rva-jj-uxj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="763.768115942029" y="75"/>
+            <point key="canvasLocation" x="1692.3076923076922" y="74.644549763033169"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rgX-ET-UPy">
@@ -158,7 +159,7 @@
                         <color key="selectedImageTintColor" name="TabBarColor"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Xnv-XN-rjZ"/>
+                        <segue destination="jgk-Me-RPh" kind="relationship" relationship="viewControllers" id="Xnv-XN-rjZ"/>
                         <segue destination="wDe-XT-Spf" kind="relationship" relationship="viewControllers" id="1Zi-Y3-Yo0"/>
                         <segue destination="gjS-Rb-wfL" kind="relationship" relationship="viewControllers" id="w5B-Zj-HuA"/>
                         <segue destination="oBL-oe-XuP" kind="relationship" relationship="viewControllers" id="MQn-M8-7cV"/>
@@ -208,6 +209,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Elf-dJ-EDj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="514" y="502"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="Qd9-nx-jxy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jgk-Me-RPh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="W0V-6h-Pyj"/>
+                    <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" hidden="YES" alpha="0.0" contentMode="scaleToFill" barStyle="black" id="aMv-2c-Rko">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UTO-1i-sSs">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="tdi-hQ-qZf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SUE-5w-q6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="763.07692307692309" y="74.644549763033169"/>
         </scene>
     </scenes>
     <resources>
