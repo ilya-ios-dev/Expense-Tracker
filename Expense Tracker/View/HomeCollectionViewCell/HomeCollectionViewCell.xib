@@ -101,7 +101,7 @@
     <resources>
         <image name="airplane" catalog="system" width="128" height="115"/>
         <namedColor name="DecreasingColor">
-            <color red="0.97647058823529409" green="0.12156862745098039" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.97600001096725464" green="0.12200000137090683" blue="0.32899999618530273" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -18,6 +18,8 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var incomeAmountLabel: UILabel!
     @IBOutlet private weak var expenseAmountLabel: UILabel!
     @IBOutlet private weak var topViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topViewControllerHeight: NSLayoutConstraint!
+    
     
     //MARK: - Properties
     private var dataSource: UICollectionViewDiffableDataSource<Int, ExpenseModel>!
@@ -42,7 +44,7 @@ final class HomeViewController: UIViewController {
 extension HomeViewController {
     
     private func configureNavigationBar(){
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.3176470588, green: 0.2, blue: 0.7176470588, alpha: 1)
+        navigationController?.navigationBar.setGradientBackground(colors: [#colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1), #colorLiteral(red: 0.3176470588, green: 0.2, blue: 0.7176470588, alpha: 1)], startPoint: .bottomLeft, endPoint: .topRight)
         let navLabel = UILabel()
         let navTitle = NSMutableAttributedString(string: "$ ", attributes:[
                                                     NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -79,6 +81,7 @@ extension HomeViewController {
 }
 
 
+
 //MARK: - DataSource
 
 extension HomeViewController {
@@ -103,11 +106,13 @@ extension HomeViewController {
 }
 
 
+
 //MARK: - UICollectionViewDelegate
 
 extension HomeViewController: UICollectionViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView){
+
         // if scrollView bounces off the bottom
         guard !scrollView.isBouncingBottom else { return }
         // if scrollView bounces off the top
@@ -116,7 +121,7 @@ extension HomeViewController: UICollectionViewDelegate {
             return
         }
         
-        let visibilityHeight: CGFloat = 300
+        let visibilityHeight: CGFloat = view.frame.height * 0.4
         
         if scrollView.contentOffset.y < visibilityHeight {
             topViewConstraint.constant = scrollView.contentOffset.y * -1

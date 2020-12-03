@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,22 +12,93 @@
         <!--Category-->
         <scene sceneID="5xh-Sb-sM9">
             <objects>
-                <viewController id="kc4-11-bD6" sceneMemberID="viewController">
+                <viewController id="kc4-11-bD6" customClass="CategoryViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R4E-p1-otE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="78w-qw-drq" customClass="TopView" customModule="Expense_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="224"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="8l4-zk-S2p">
+                                        <rect key="frame" x="20" y="54" width="374" height="124"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="DXH-ev-EQB">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5j-GU-nhQ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="331" height="43"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKh-jV-DvD">
+                                                        <rect key="frame" x="331" y="0.0" width="43" height="43"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="PKh-jV-DvD" secondAttribute="height" id="g4P-UQ-Ynh"/>
+                                                        </constraints>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal">
+                                                            <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large" renderingMode="template"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="addCategory:" destination="Ic2-hL-R0T" eventType="touchUpInside" id="M5B-lt-Way"/>
+                                                            <action selector="addCategory:" destination="kc4-11-bD6" eventType="touchUpInside" id="x6f-Xm-78C"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="PKh-jV-DvD" firstAttribute="height" secondItem="J5j-GU-nhQ" secondAttribute="height" id="o6S-oE-EWA"/>
+                                                </constraints>
+                                            </stackView>
+                                            <searchBar contentMode="redraw" placeholder="Search Categories" translatesAutoresizingMaskIntoConstraints="NO" id="Wnd-CN-I2B">
+                                                <rect key="frame" x="0.0" y="68" width="374" height="56"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </searchBar>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iot-P7-RmL">
+                                <rect key="frame" x="0.0" y="224" width="414" height="589"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <sections/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="47j-h3-8Ie"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="78w-qw-drq" firstAttribute="leading" secondItem="R4E-p1-otE" secondAttribute="leading" id="8CW-zc-VU7"/>
+                            <constraint firstItem="8l4-zk-S2p" firstAttribute="leading" secondItem="47j-h3-8Ie" secondAttribute="leading" constant="20" id="Awp-Y8-rUA"/>
+                            <constraint firstItem="47j-h3-8Ie" firstAttribute="trailing" secondItem="iot-P7-RmL" secondAttribute="trailing" id="Dgh-Ih-Lgs"/>
+                            <constraint firstItem="78w-qw-drq" firstAttribute="top" secondItem="R4E-p1-otE" secondAttribute="top" id="WzE-0V-vdV"/>
+                            <constraint firstAttribute="trailing" secondItem="78w-qw-drq" secondAttribute="trailing" id="bYl-DP-TqB"/>
+                            <constraint firstItem="iot-P7-RmL" firstAttribute="top" secondItem="78w-qw-drq" secondAttribute="bottom" id="c1R-La-1lo"/>
+                            <constraint firstItem="47j-h3-8Ie" firstAttribute="trailing" secondItem="8l4-zk-S2p" secondAttribute="trailing" constant="20" id="doF-QZ-r9p"/>
+                            <constraint firstItem="8l4-zk-S2p" firstAttribute="top" secondItem="47j-h3-8Ie" secondAttribute="top" constant="10" id="hzx-P8-GN0"/>
+                            <constraint firstItem="iot-P7-RmL" firstAttribute="leading" secondItem="47j-h3-8Ie" secondAttribute="leading" id="kZd-hG-PEl"/>
+                            <constraint firstItem="47j-h3-8Ie" firstAttribute="bottom" secondItem="iot-P7-RmL" secondAttribute="bottom" id="v1n-Ow-9Jm"/>
+                            <constraint firstItem="78w-qw-drq" firstAttribute="height" secondItem="R4E-p1-otE" secondAttribute="height" multiplier="0.25" id="yGm-NW-d1z">
+                                <variation key="heightClass=compact" constant="40"/>
+                            </constraint>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Category" image="square.grid.2x2" catalog="system" id="0zk-0d-cCJ"/>
+                    <tabBarItem key="tabBarItem" title="Category" image="square.grid.2x2" catalog="system" id="few-FX-W76"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="Wnd-CN-I2B" id="XQB-fA-Cu5"/>
+                        <outlet property="tableView" destination="iot-P7-RmL" id="ZJn-b7-Jjw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bDb-Td-XKk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Ic2-hL-R0T" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="259" y="108"/>
+            <point key="canvasLocation" x="922" y="76"/>
         </scene>
     </scenes>
     <resources>
+        <image name="plus.circle" catalog="system" width="128" height="121"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
