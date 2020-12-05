@@ -145,8 +145,8 @@
                         <outlet property="dateLabel" destination="Xee-mk-a8l" id="yyT-wg-L6g"/>
                         <outlet property="expenseAmountLabel" destination="U2t-5M-1fc" id="Vms-L5-pws"/>
                         <outlet property="incomeAmountLabel" destination="VPC-Dx-HZ6" id="0qr-E7-DGY"/>
+                        <outlet property="topView" destination="ree-Pn-6ZG" id="ZEZ-1o-JYY"/>
                         <outlet property="topViewConstraint" destination="u2h-dN-k2p" id="rva-jj-uxj"/>
-                        <outlet property="topViewControllerHeight" destination="nRZ-e4-NrE" id="shr-hg-5Ux"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

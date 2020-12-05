@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		FA2544FD2578CED600D065CB /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2544FB2578CED600D065CB /* CategoryCollectionViewCell.swift */; };
 		FA2544FE2578CED600D065CB /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2544FC2578CED600D065CB /* CategoryCollectionViewCell.xib */; };
+		FA30131C2579124D004D2421 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA30131B2579124D004D2421 /* ChartViewController.swift */; };
+		FA30131F257913D1004D2421 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA30131E257913D1004D2421 /* ChartView.swift */; };
+		FA301323257914D6004D2421 /* MonthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA301321257914D6004D2421 /* MonthCollectionViewCell.swift */; };
+		FA301324257914D6004D2421 /* MonthCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA301322257914D6004D2421 /* MonthCollectionViewCell.xib */; };
 		FA4BBF332578FDE100F2ABD7 /* NavigationBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BBF322578FDE100F2ABD7 /* NavigationBar+Extensions.swift */; };
 		FA4BBF372579029A00F2ABD7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BBF362579029A00F2ABD7 /* UIView+Extensions.swift */; };
 		FA59C76D25755B9300C80A5A /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C76B25755B9300C80A5A /* HomeCollectionViewCell.swift */; };
@@ -17,7 +21,10 @@
 		FA758854257666810016990D /* ScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA758853257666810016990D /* ScrollView+Extensions.swift */; };
 		FA758857257668870016990D /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA758856257668870016990D /* CategoryViewController.swift */; };
 		FA9B87F52577EC3C003E2E28 /* AddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B87F42577EC3C003E2E28 /* AddingViewController.swift */; };
+		FAAFCD82257A36E100EBA6FC /* PlateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFCD81257A36E100EBA6FC /* PlateView.swift */; };
+		FAB9D7AD25794288003320A6 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9D7AC25794288003320A6 /* GraphView.swift */; };
 		FAC951F525754F4E00931346 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC951F425754F4E00931346 /* TopView.swift */; };
+		FAF1D4D9257A5CE400DE10B4 /* ChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */; };
 		FAFB4E2F2575457E002B9E23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB4E2E2575457E002B9E23 /* AppDelegate.swift */; };
 		FAFB4E312575457E002B9E23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB4E302575457E002B9E23 /* SceneDelegate.swift */; };
 		FAFB4E332575457E002B9E23 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB4E322575457E002B9E23 /* HomeViewController.swift */; };
@@ -35,6 +42,10 @@
 /* Begin PBXFileReference section */
 		FA2544FB2578CED600D065CB /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA2544FC2578CED600D065CB /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		FA30131B2579124D004D2421 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		FA30131E257913D1004D2421 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		FA301321257914D6004D2421 /* MonthCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA301322257914D6004D2421 /* MonthCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA4BBF322578FDE100F2ABD7 /* NavigationBar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar+Extensions.swift"; sourceTree = "<group>"; };
 		FA4BBF362579029A00F2ABD7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		FA59C76B25755B9300C80A5A /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -43,7 +54,10 @@
 		FA758853257666810016990D /* ScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		FA758856257668870016990D /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		FA9B87F42577EC3C003E2E28 /* AddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingViewController.swift; sourceTree = "<group>"; };
+		FAAFCD81257A36E100EBA6FC /* PlateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateView.swift; sourceTree = "<group>"; };
+		FAB9D7AC25794288003320A6 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		FAC951F425754F4E00931346 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModel.swift; sourceTree = "<group>"; };
 		FAFB4E2B2575457E002B9E23 /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFB4E2E2575457E002B9E23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAFB4E302575457E002B9E23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +94,15 @@
 			path = CategoryCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		FA301326257914D9004D2421 /* MonthCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA301321257914D6004D2421 /* MonthCollectionViewCell.swift */,
+				FA301322257914D6004D2421 /* MonthCollectionViewCell.xib */,
+			);
+			path = MonthCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		FA4BBF302578FD6D00F2ABD7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				FA59C7742575690800C80A5A /* ExpenseModel.swift */,
+				FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -118,6 +142,16 @@
 				FAFB4E5325754796002B9E23 /* Profile.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FAF1D4D6257A55D000DE10B4 /* ChartView */ = {
+			isa = PBXGroup;
+			children = (
+				FA30131E257913D1004D2421 /* ChartView.swift */,
+				FAB9D7AC25794288003320A6 /* GraphView.swift */,
+				FAAFCD81257A36E100EBA6FC /* PlateView.swift */,
+			);
+			path = ChartView;
 			sourceTree = "<group>";
 		};
 		FAFB4E222575457E002B9E23 = {
@@ -141,10 +175,10 @@
 			children = (
 				FAFB4E4325754590002B9E23 /* AppDelegate */,
 				FAFB4E452575459A002B9E23 /* Controllers */,
+				FA4BBF302578FD6D00F2ABD7 /* Extensions */,
 				FA59C773257568DA00C80A5A /* Model */,
 				FAFB4E49257545AD002B9E23 /* Resources */,
 				FAFB4E48257545A6002B9E23 /* View */,
-				FA4BBF302578FD6D00F2ABD7 /* Extensions */,
 			);
 			path = "Expense Tracker";
 			sourceTree = "<group>";
@@ -164,6 +198,7 @@
 				FAFB4E322575457E002B9E23 /* HomeViewController.swift */,
 				FA758856257668870016990D /* CategoryViewController.swift */,
 				FA9B87F42577EC3C003E2E28 /* AddingViewController.swift */,
+				FA30131B2579124D004D2421 /* ChartViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -176,6 +211,8 @@
 				FA59C77025755B9A00C80A5A /* HomeCollectionViewCell */,
 				FAFF7F58257679C000581889 /* CategoryTableViewCell */,
 				FA2545002578CEDA00D065CB /* CategoryCollectionViewCell */,
+				FAF1D4D6257A55D000DE10B4 /* ChartView */,
+				FA301326257914D9004D2421 /* MonthCollectionViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -255,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA301324257914D6004D2421 /* MonthCollectionViewCell.xib in Resources */,
 				FAFB4E5425754796002B9E23 /* Profile.storyboard in Resources */,
 				FAFB4E4E25754768002B9E23 /* Category.storyboard in Resources */,
 				FAFB4E3B25754580002B9E23 /* LaunchScreen.storyboard in Resources */,
@@ -276,15 +314,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA59C7752575690800C80A5A /* ExpenseModel.swift in Sources */,
+				FA30131C2579124D004D2421 /* ChartViewController.swift in Sources */,
 				FA59C76D25755B9300C80A5A /* HomeCollectionViewCell.swift in Sources */,
 				FAFB4E332575457E002B9E23 /* HomeViewController.swift in Sources */,
 				FAFB4E2F2575457E002B9E23 /* AppDelegate.swift in Sources */,
+				FA301323257914D6004D2421 /* MonthCollectionViewCell.swift in Sources */,
 				FA758857257668870016990D /* CategoryViewController.swift in Sources */,
 				FA4BBF372579029A00F2ABD7 /* UIView+Extensions.swift in Sources */,
+				FAF1D4D9257A5CE400DE10B4 /* ChartModel.swift in Sources */,
 				FA4BBF332578FDE100F2ABD7 /* NavigationBar+Extensions.swift in Sources */,
+				FA30131F257913D1004D2421 /* ChartView.swift in Sources */,
 				FAC951F525754F4E00931346 /* TopView.swift in Sources */,
+				FAAFCD82257A36E100EBA6FC /* PlateView.swift in Sources */,
 				FAFB4E312575457E002B9E23 /* SceneDelegate.swift in Sources */,
 				FA9B87F52577EC3C003E2E28 /* AddingViewController.swift in Sources */,
+				FAB9D7AD25794288003320A6 /* GraphView.swift in Sources */,
 				FA2544FD2578CED600D065CB /* CategoryCollectionViewCell.swift in Sources */,
 				FA758854257666810016990D /* ScrollView+Extensions.swift in Sources */,
 				FAFF7F55257679BB00581889 /* CategoryTableViewCell.swift in Sources */,

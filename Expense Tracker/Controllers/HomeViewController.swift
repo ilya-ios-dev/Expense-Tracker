@@ -18,7 +18,7 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var incomeAmountLabel: UILabel!
     @IBOutlet private weak var expenseAmountLabel: UILabel!
     @IBOutlet private weak var topViewConstraint: NSLayoutConstraint!
-    @IBOutlet weak var topViewControllerHeight: NSLayoutConstraint!
+    @IBOutlet private weak var topView: TopView!
     
     
     //MARK: - Properties
@@ -102,7 +102,6 @@ extension HomeViewController {
         snapshot.appendItems(ExpenseModel.getSampleData(), toSection: 0)
         dataSource.apply(snapshot)
     }
-    
 }
 
 
@@ -123,6 +122,7 @@ extension HomeViewController: UICollectionViewDelegate {
         
         let visibilityHeight: CGFloat = view.frame.height * 0.4
         
+        // if topView is visible hide navigation bar
         if scrollView.contentOffset.y < visibilityHeight {
             topViewConstraint.constant = scrollView.contentOffset.y * -1
             UIView.animate(withDuration: 0.3) {
