@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,8 +21,8 @@
                         <rect key="frame" x="16" y="10" width="40" height="40"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gamecontroller" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Mtd-WS-kvw">
-                                <rect key="frame" x="4" y="5" width="32" height="29.5"/>
-                                <color key="tintColor" name="TopGradientStart"/>
+                                <rect key="frame" x="8" y="9" width="24" height="21.5"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Mtd-WS-kvw" secondAttribute="height" id="30x-YX-9LR"/>
                                 </constraints>
@@ -33,7 +32,7 @@
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ekk-xA-6sh" secondAttribute="height" id="5Vf-rb-F03"/>
                             <constraint firstItem="Mtd-WS-kvw" firstAttribute="centerX" secondItem="ekk-xA-6sh" secondAttribute="centerX" id="Fae-Dg-HdL"/>
-                            <constraint firstItem="Mtd-WS-kvw" firstAttribute="height" secondItem="ekk-xA-6sh" secondAttribute="height" multiplier="0.8" id="PIW-w6-ap3"/>
+                            <constraint firstItem="Mtd-WS-kvw" firstAttribute="height" secondItem="ekk-xA-6sh" secondAttribute="height" multiplier="0.6" id="PIW-w6-ap3"/>
                             <constraint firstItem="Mtd-WS-kvw" firstAttribute="centerY" secondItem="ekk-xA-6sh" secondAttribute="centerY" id="rOn-RA-PYI"/>
                         </constraints>
                     </view>
@@ -63,9 +62,6 @@
     </objects>
     <resources>
         <image name="gamecontroller" catalog="system" width="128" height="80"/>
-        <namedColor name="TopGradientStart">
-            <color red="0.56099998950958252" green="0.3059999942779541" blue="0.83899998664855957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemIndigoColor">
             <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

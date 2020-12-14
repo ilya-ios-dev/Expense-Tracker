@@ -10,18 +10,19 @@ import UIKit
 final class CategoryTableViewCell: UITableViewCell {
 
     
-    @IBOutlet private weak var imageBackgroundView: UIView!{
-        didSet{
-            imageBackgroundView.layer.cornerRadius = imageBackgroundView.frame.height / 2
-            imageBackgroundView.backgroundColor = categoryImage.tintColor.withAlphaComponent(0.3)
+    @IBOutlet weak var imageBackgroundView: UIView!
+    @IBOutlet weak var categoryImage: UIImageView!{
+        didSet {
+            categoryImage.image = categoryImage.image?.withRenderingMode(.alwaysTemplate)
+            categoryImage.tintColor = .white
         }
     }
-    @IBOutlet weak var categoryImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    var gradientLayer: CAGradientLayer?
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        imageBackgroundView.layer.cornerRadius = imageBackgroundView.frame.height / 2
     }
 
     

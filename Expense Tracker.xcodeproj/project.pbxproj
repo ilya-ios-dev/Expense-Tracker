@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA168DA32583740100393814 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA168DA22583740100393814 /* UIColor+Extensions.swift */; };
 		FA2544FD2578CED600D065CB /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2544FB2578CED600D065CB /* CategoryCollectionViewCell.swift */; };
 		FA2544FE2578CED600D065CB /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2544FC2578CED600D065CB /* CategoryCollectionViewCell.xib */; };
 		FA30131C2579124D004D2421 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA30131B2579124D004D2421 /* ChartViewController.swift */; };
@@ -18,13 +19,21 @@
 		FA59C76D25755B9300C80A5A /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C76B25755B9300C80A5A /* HomeCollectionViewCell.swift */; };
 		FA59C76E25755B9300C80A5A /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA59C76C25755B9300C80A5A /* HomeCollectionViewCell.xib */; };
 		FA59C7752575690800C80A5A /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C7742575690800C80A5A /* ExpenseModel.swift */; };
+		FA698AEE25876306008D2168 /* images.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA698AED25876306008D2168 /* images.csv */; };
 		FA758854257666810016990D /* ScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA758853257666810016990D /* ScrollView+Extensions.swift */; };
 		FA758857257668870016990D /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA758856257668870016990D /* CategoryViewController.swift */; };
 		FA8D899125826DB900ED1770 /* ExpenseTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA8D898F25826DB900ED1770 /* ExpenseTracker.xcdatamodeld */; };
 		FA9B87F52577EC3C003E2E28 /* AddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B87F42577EC3C003E2E28 /* AddingViewController.swift */; };
+		FAA270B125876AAE001B9AD4 /* CreateCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA270B025876AAE001B9AD4 /* CreateCategory.storyboard */; };
 		FAAFCD82257A36E100EBA6FC /* PlateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFCD81257A36E100EBA6FC /* PlateView.swift */; };
 		FAB9D7AD25794288003320A6 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9D7AC25794288003320A6 /* GraphView.swift */; };
+		FAC08EFF258353C400C3FD05 /* CreateCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08EFE258353C400C3FD05 /* CreateCategoryViewController.swift */; };
+		FAC08F032583561900C3FD05 /* CircleColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08F012583561900C3FD05 /* CircleColorCollectionViewCell.swift */; };
+		FAC08F042583561900C3FD05 /* CircleColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC08F022583561900C3FD05 /* CircleColorCollectionViewCell.xib */; };
+		FAC08F0A25835F8C00C3FD05 /* CircleImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08F0825835F8C00C3FD05 /* CircleImageCollectionViewCell.swift */; };
+		FAC08F0B25835F8C00C3FD05 /* CircleImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC08F0925835F8C00C3FD05 /* CircleImageCollectionViewCell.xib */; };
 		FAC951F525754F4E00931346 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC951F425754F4E00931346 /* TopView.swift */; };
+		FAF1799725874D4E00113DF5 /* gradients.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAF1799625874D4E00113DF5 /* gradients.csv */; };
 		FAF1D4D9257A5CE400DE10B4 /* ChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */; };
 		FAFB4E2F2575457E002B9E23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB4E2E2575457E002B9E23 /* AppDelegate.swift */; };
 		FAFB4E312575457E002B9E23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB4E302575457E002B9E23 /* SceneDelegate.swift */; };
@@ -41,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA168DA22583740100393814 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		FA2544FB2578CED600D065CB /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA2544FC2578CED600D065CB /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA30131B2579124D004D2421 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
@@ -52,13 +62,21 @@
 		FA59C76B25755B9300C80A5A /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA59C76C25755B9300C80A5A /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA59C7742575690800C80A5A /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
+		FA698AED25876306008D2168 /* images.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = images.csv; sourceTree = "<group>"; };
 		FA758853257666810016990D /* ScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		FA758856257668870016990D /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		FA8D899025826DB900ED1770 /* ExpenseTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpenseTracker.xcdatamodel; sourceTree = "<group>"; };
 		FA9B87F42577EC3C003E2E28 /* AddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingViewController.swift; sourceTree = "<group>"; };
+		FAA270B025876AAE001B9AD4 /* CreateCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateCategory.storyboard; sourceTree = "<group>"; };
 		FAAFCD81257A36E100EBA6FC /* PlateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateView.swift; sourceTree = "<group>"; };
 		FAB9D7AC25794288003320A6 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		FAC08EFE258353C400C3FD05 /* CreateCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryViewController.swift; sourceTree = "<group>"; };
+		FAC08F012583561900C3FD05 /* CircleColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAC08F022583561900C3FD05 /* CircleColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircleColorCollectionViewCell.xib; sourceTree = "<group>"; };
+		FAC08F0825835F8C00C3FD05 /* CircleImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		FAC08F0925835F8C00C3FD05 /* CircleImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircleImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		FAC951F425754F4E00931346 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		FAF1799625874D4E00113DF5 /* gradients.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gradients.csv; sourceTree = "<group>"; };
 		FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModel.swift; sourceTree = "<group>"; };
 		FAFB4E2B2575457E002B9E23 /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFB4E2E2575457E002B9E23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +129,7 @@
 				FA758853257666810016990D /* ScrollView+Extensions.swift */,
 				FA4BBF322578FDE100F2ABD7 /* NavigationBar+Extensions.swift */,
 				FA4BBF362579029A00F2ABD7 /* UIView+Extensions.swift */,
+				FA168DA22583740100393814 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -130,8 +149,37 @@
 				FA59C7742575690800C80A5A /* ExpenseModel.swift */,
 				FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */,
 				FA8D898F25826DB900ED1770 /* ExpenseTracker.xcdatamodeld */,
+				FA698AED25876306008D2168 /* images.csv */,
+				FAF1799625874D4E00113DF5 /* gradients.csv */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FAA270B325876BC7001B9AD4 /* CreateCategory */ = {
+			isa = PBXGroup;
+			children = (
+				FAC08F062583561D00C3FD05 /* CircleColorCollectionViewCell */,
+				FAC08F0D25835F9200C3FD05 /* CircleImageCollectionViewCell */,
+			);
+			path = CreateCategory;
+			sourceTree = "<group>";
+		};
+		FAC08F062583561D00C3FD05 /* CircleColorCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FAC08F012583561900C3FD05 /* CircleColorCollectionViewCell.swift */,
+				FAC08F022583561900C3FD05 /* CircleColorCollectionViewCell.xib */,
+			);
+			path = CircleColorCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		FAC08F0D25835F9200C3FD05 /* CircleImageCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FAC08F0825835F8C00C3FD05 /* CircleImageCollectionViewCell.swift */,
+				FAC08F0925835F8C00C3FD05 /* CircleImageCollectionViewCell.xib */,
+			);
+			path = CircleImageCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		FAC951F72575507A00931346 /* Storyboards */ = {
@@ -143,6 +191,7 @@
 				FAFB4E3925754580002B9E23 /* LaunchScreen.storyboard */,
 				FAFB4E342575457E002B9E23 /* Main.storyboard */,
 				FAFB4E5325754796002B9E23 /* Profile.storyboard */,
+				FAA270B025876AAE001B9AD4 /* CreateCategory.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -198,10 +247,11 @@
 		FAFB4E452575459A002B9E23 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FAFB4E322575457E002B9E23 /* HomeViewController.swift */,
-				FA758856257668870016990D /* CategoryViewController.swift */,
 				FA9B87F42577EC3C003E2E28 /* AddingViewController.swift */,
+				FA758856257668870016990D /* CategoryViewController.swift */,
 				FA30131B2579124D004D2421 /* ChartViewController.swift */,
+				FAC08EFE258353C400C3FD05 /* CreateCategoryViewController.swift */,
+				FAFB4E322575457E002B9E23 /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -209,13 +259,14 @@
 		FAFB4E48257545A6002B9E23 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA2545002578CEDA00D065CB /* CategoryCollectionViewCell */,
+				FAFF7F58257679C000581889 /* CategoryTableViewCell */,
+				FAF1D4D6257A55D000DE10B4 /* ChartView */,
+				FAA270B325876BC7001B9AD4 /* CreateCategory */,
+				FA59C77025755B9A00C80A5A /* HomeCollectionViewCell */,
+				FA301326257914D9004D2421 /* MonthCollectionViewCell */,
 				FAC951F72575507A00931346 /* Storyboards */,
 				FAC951F425754F4E00931346 /* TopView.swift */,
-				FA59C77025755B9A00C80A5A /* HomeCollectionViewCell */,
-				FAFF7F58257679C000581889 /* CategoryTableViewCell */,
-				FA2545002578CEDA00D065CB /* CategoryCollectionViewCell */,
-				FAF1D4D6257A55D000DE10B4 /* ChartView */,
-				FA301326257914D9004D2421 /* MonthCollectionViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -296,13 +347,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA301324257914D6004D2421 /* MonthCollectionViewCell.xib in Resources */,
+				FAC08F0B25835F8C00C3FD05 /* CircleImageCollectionViewCell.xib in Resources */,
+				FAA270B125876AAE001B9AD4 /* CreateCategory.storyboard in Resources */,
 				FAFB4E5425754796002B9E23 /* Profile.storyboard in Resources */,
 				FAFB4E4E25754768002B9E23 /* Category.storyboard in Resources */,
 				FAFB4E3B25754580002B9E23 /* LaunchScreen.storyboard in Resources */,
 				FAFF7F56257679BB00581889 /* CategoryTableViewCell.xib in Resources */,
+				FA698AEE25876306008D2168 /* images.csv in Resources */,
 				FA59C76E25755B9300C80A5A /* HomeCollectionViewCell.xib in Resources */,
+				FAC08F042583561900C3FD05 /* CircleColorCollectionViewCell.xib in Resources */,
 				FAFB4E572575482C002B9E23 /* Adding.storyboard in Resources */,
 				FA2544FE2578CED600D065CB /* CategoryCollectionViewCell.xib in Resources */,
+				FAF1799725874D4E00113DF5 /* gradients.csv in Resources */,
 				FAFB4E5125754783002B9E23 /* Chart.storyboard in Resources */,
 				FAFB4E3825754580002B9E23 /* Assets.xcassets in Resources */,
 				FAFB4E362575457E002B9E23 /* Main.storyboard in Resources */,
@@ -323,15 +379,19 @@
 				FAFB4E332575457E002B9E23 /* HomeViewController.swift in Sources */,
 				FAFB4E2F2575457E002B9E23 /* AppDelegate.swift in Sources */,
 				FA301323257914D6004D2421 /* MonthCollectionViewCell.swift in Sources */,
+				FAC08F0A25835F8C00C3FD05 /* CircleImageCollectionViewCell.swift in Sources */,
 				FA758857257668870016990D /* CategoryViewController.swift in Sources */,
 				FA4BBF372579029A00F2ABD7 /* UIView+Extensions.swift in Sources */,
 				FAF1D4D9257A5CE400DE10B4 /* ChartModel.swift in Sources */,
 				FA4BBF332578FDE100F2ABD7 /* NavigationBar+Extensions.swift in Sources */,
 				FA30131F257913D1004D2421 /* ChartView.swift in Sources */,
+				FAC08EFF258353C400C3FD05 /* CreateCategoryViewController.swift in Sources */,
 				FAC951F525754F4E00931346 /* TopView.swift in Sources */,
+				FAC08F032583561900C3FD05 /* CircleColorCollectionViewCell.swift in Sources */,
 				FAAFCD82257A36E100EBA6FC /* PlateView.swift in Sources */,
 				FAFB4E312575457E002B9E23 /* SceneDelegate.swift in Sources */,
 				FA9B87F52577EC3C003E2E28 /* AddingViewController.swift in Sources */,
+				FA168DA32583740100393814 /* UIColor+Extensions.swift in Sources */,
 				FAB9D7AD25794288003320A6 /* GraphView.swift in Sources */,
 				FA2544FD2578CED600D065CB /* CategoryCollectionViewCell.swift in Sources */,
 				FA758854257666810016990D /* ScrollView+Extensions.swift in Sources */,

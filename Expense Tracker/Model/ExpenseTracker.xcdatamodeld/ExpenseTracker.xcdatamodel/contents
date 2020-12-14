@@ -5,10 +5,19 @@
         <relationship name="transactions" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Transaction" inverseName="balance" inverseEntity="Transaction"/>
     </entity>
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
-        <attribute name="color" attributeType="String"/>
-        <attribute name="imageName" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
+        <relationship name="categoryImage" maxCount="1" deletionRule="Nullify" destinationEntity="CategoryImage" inverseName="category" inverseEntity="CategoryImage"/>
+        <relationship name="gradient" maxCount="1" deletionRule="Nullify" destinationEntity="Gradient" inverseName="category" inverseEntity="Gradient"/>
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="category" inverseEntity="Transaction"/>
+    </entity>
+    <entity name="CategoryImage" representedClassName="CategoryImage" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="categoryImage" inverseEntity="Category"/>
+    </entity>
+    <entity name="Gradient" representedClassName="Gradient" syncable="YES" codeGenerationType="class">
+        <attribute name="endColor" attributeType="String"/>
+        <attribute name="startColor" attributeType="String"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="gradient" inverseEntity="Category"/>
     </entity>
     <entity name="Transaction" representedClassName="Transaction" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -19,8 +28,10 @@
         <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="transactions" inverseEntity="Category"/>
     </entity>
     <elements>
-        <element name="Balance" positionX="-63" positionY="-18" width="128" height="59"/>
-        <element name="Transaction" positionX="-54" positionY="-9" width="128" height="119"/>
-        <element name="Category" positionX="-45" positionY="45" width="128" height="89"/>
+        <element name="Balance" positionX="-250.7821044921875" positionY="-102.2092437744141" width="128" height="58"/>
+        <element name="Category" positionX="174.6060791015625" positionY="143.397216796875" width="128" height="89"/>
+        <element name="Gradient" positionX="-128.771240234375" positionY="142.9687194824219" width="128" height="74"/>
+        <element name="Transaction" positionX="16.35406494140625" positionY="-147.3658752441406" width="128" height="103"/>
+        <element name="CategoryImage" positionX="-45" positionY="9" width="128" height="59"/>
     </elements>
 </model>
