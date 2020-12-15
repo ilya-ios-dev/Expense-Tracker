@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Balance" representedClassName="Balance" syncable="YES" codeGenerationType="class">
         <attribute name="totalBalance" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="transactions" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Transaction" inverseName="balance" inverseEntity="Transaction"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Transaction" inverseName="balance" inverseEntity="Transaction"/>
     </entity>
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String"/>
@@ -19,19 +19,19 @@
         <attribute name="startColor" attributeType="String"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="gradient" inverseEntity="Category"/>
     </entity>
-    <entity name="Transaction" representedClassName="Transaction" syncable="YES" codeGenerationType="class">
+    <entity name="Transaction" representedClassName="Transaction" syncable="YES">
         <attribute name="amount" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="isExpense" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <relationship name="balance" maxCount="1" deletionRule="Nullify" destinationEntity="Balance" inverseName="transactions" inverseEntity="Balance"/>
         <relationship name="category" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="transactions" inverseEntity="Category"/>
     </entity>
     <elements>
-        <element name="Balance" positionX="-250.7821044921875" positionY="-102.2092437744141" width="128" height="58"/>
+        <element name="Balance" positionX="-250.7821044921875" positionY="-102.2092437744141" width="128" height="59"/>
         <element name="Category" positionX="174.6060791015625" positionY="143.397216796875" width="128" height="89"/>
-        <element name="Gradient" positionX="-128.771240234375" positionY="142.9687194824219" width="128" height="74"/>
-        <element name="Transaction" positionX="16.35406494140625" positionY="-147.3658752441406" width="128" height="103"/>
         <element name="CategoryImage" positionX="-45" positionY="9" width="128" height="59"/>
+        <element name="Gradient" positionX="-128.771240234375" positionY="142.9687194824219" width="128" height="74"/>
+        <element name="Transaction" positionX="16.35406494140625" positionY="-147.3658752441406" width="128" height="119"/>
     </elements>
 </model>
