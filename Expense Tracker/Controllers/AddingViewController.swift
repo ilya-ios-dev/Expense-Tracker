@@ -64,8 +64,7 @@ final class AddingViewController: UIViewController {
         let isExpense = stateSegmentedControl.selectedSegmentIndex == 0 ? false : true
         guard let selectedItem = collectionView.indexPathsForSelectedItems?.first else { return }
         let category = fetchedResultsController.object(at: selectedItem)
-        
-        balance.totalBalance = balance.totalBalance - amount
+        balance.totalBalance = isExpense ? balance.totalBalance - amount : balance.totalBalance + amount
         Transaction.create(in: context, amount: amount, date: datePicker.date, isExpense: isExpense, name: name, balance: balance, category: category)
         do {
             try context.save()
@@ -112,12 +111,11 @@ extension AddingViewController {
             guard let category = try? self.context.existingObject(with: objectId) as? Category else { return nil }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
             
-            guard let gradient = category.gradient else { return cell }
-            guard let startColor = UIColor(hex: gradient.startColor!) else { return cell }
-            guard let endColor = UIColor(hex: gradient.endColor!) else { return cell }
+            guard let startColor = UIColor(hex: category.gradient.startColor!) else { return cell }
+            guard let endColor = UIColor(hex: category.gradient.endColor!) else { return cell }
             cell.gradientLayer = cell.backgroundCategory.applyGradient(colours: [startColor, endColor])
             
-            let imageName = category.categoryImage?.name
+            let imageName = category.categoryImage.name
             cell.categoryImageView.image = UIImage(systemName: imageName!)
             
             cell.textLabel.text = category.name

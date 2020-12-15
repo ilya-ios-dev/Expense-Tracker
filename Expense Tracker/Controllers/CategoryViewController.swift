@@ -14,33 +14,40 @@ final class CategoryViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     //MARK: - Properties
-    private lazy var context: NSManagedObjectContext = {
-        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.container.viewContext
-    }()
     private var fetchedResultsController: NSFetchedResultsController<Category>!
     private var diffableDataSource: UITableViewDiffableDataSource<Int, Category>!
     private var diffableDataSourceSnapshot = NSDiffableDataSourceSnapshot<Int, Category>()
     private var currentSearchText = ""
     
+    //MARK: - Computed Properties
+    private lazy var context: NSManagedObjectContext = {
+        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.container.viewContext
+    }()
+    private lazy var alert: UIAlertController = {
+        let alert = UIAlertController(title: "", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        return alert
+    }()
+
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //Configure UI
         navigationController?.navigationBar.setGradientBackground(colors: [#colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1), #colorLiteral(red: 0.3176470588, green: 0.2, blue: 0.7176470588, alpha: 1)], startPoint: .bottomLeft, endPoint: .topRight)
         configureTableView()
-        setupFetchedResultsController()
         createSearchController()
+
+        //Setup Data
+        setupFetchedResultsController()
         setupDiffableDataSource()
     }
 }
 
-
-//MARK: - Layouts
-
+//MARK: - Supptorting Methods
 extension CategoryViewController {
     
-    /// Setup the `NSFetchedResultsController`, which manages the data shown in our table view
+    /// Setup the `NSFetchedResultsController` which gets the data from `Category`
     private func setupFetchedResultsController() {
         let request: NSFetchRequest = Category.fetchRequest()
         
@@ -57,10 +64,12 @@ extension CategoryViewController {
         do {
             try fetchedResultsController.performFetch()
         } catch {
-            print("Fetch failed")
+            alert.title = "Fetch failed"
+            present(alert, animated: true, completion: nil)
         }
     }
     
+    /// Setup the `NSDiffableDataSourceSnapshot` which displays the current state of the UI.
     private func setupSnapshot() {
         diffableDataSourceSnapshot = NSDiffableDataSourceSnapshot<Int, Category>()
         diffableDataSourceSnapshot.appendSections([0])
@@ -71,18 +80,18 @@ extension CategoryViewController {
         }
     }
     
-    
     /// Setup the `UITableViewDiffableDataSource` with a cell provider that sets up the default table view cell
     private func setupDiffableDataSource() {
         diffableDataSource = DataSource(tableView: tableView) { (tableView, indexPath, category) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CategoryTableViewCell
             cell.gradientLayer?.removeFromSuperlayer()
             cell.categoryImage?.image = nil
-            cell.titleLabel.text = category.name
-            cell.categoryImage?.image = UIImage(systemName: (category.categoryImage?.name!)!)
             
-            guard let startColor = UIColor(hex: (category.gradient?.startColor)!),
-                  let endColor = UIColor(hex: (category.gradient?.endColor)!) else { return cell }
+            cell.titleLabel.text = category.name
+            cell.categoryImage?.image = UIImage(systemName: category.categoryImage.name!)
+            
+            guard let startColor = UIColor(hex: category.gradient.startColor!),
+                  let endColor = UIColor(hex: category.gradient.endColor!) else { return cell }
             cell.gradientLayer = cell.imageBackgroundView.applyGradient(colours: [startColor, endColor])
             return cell
         }
@@ -96,6 +105,7 @@ extension CategoryViewController {
         }
     }
     
+    /// Create `UISearchController` searches for a corresponding row in tablevev.
     private func createSearchController() {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -117,6 +127,7 @@ extension CategoryViewController {
         searchController.searchBar.searchTextField.backgroundColor = .white
     }
     
+    // Register reusable cell for `tableView`. Assigning a delegate.
     private func configureTableView() {
         let nib = UINib(nibName: "CategoryTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "categoryCell")
@@ -126,23 +137,21 @@ extension CategoryViewController {
 
 //MARK: - NSFetchedResultsControllerDelegate
 extension CategoryViewController: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
-    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        guard let transaction = anObject as? Category else { return }
-        if type == .insert {
-            diffableDataSourceSnapshot.appendItems([transaction])
+        switch type {
+        case .insert:
+            guard let category = anObject as? Category else { return }
+            diffableDataSourceSnapshot.appendItems([category])
             setupSnapshot()
+        case .update:
+            setupSnapshot()
+            tableView.reloadData()
+        case .move:
+            setupSnapshot()
+        default: break
         }
     }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
 }
-
 
 //MARK: - UITableViewDelegate
 extension CategoryViewController: UITableViewDelegate {
@@ -153,6 +162,14 @@ extension CategoryViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editAction = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
+            
+            guard let category = self.diffableDataSource?.itemIdentifier(for: indexPath) else { return }
+            let storyboard = UIStoryboard(name: "CreateCategory", bundle: nil)
+            guard let navController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
+            guard let editCategoryViewController = navController.topViewController as? CreateCategoryViewController else { return }
+            editCategoryViewController.category = category
+            self.navigationController?.present(navController, animated: true, completion: nil)
+
             completionHandler(true)
         }
         editAction.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
@@ -178,7 +195,6 @@ extension CategoryViewController: UITableViewDelegate {
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
-
 
 //MARK: - UISearchResultsUpdating
 extension CategoryViewController: UISearchResultsUpdating {

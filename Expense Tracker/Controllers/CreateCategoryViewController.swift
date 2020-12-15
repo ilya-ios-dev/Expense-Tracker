@@ -14,25 +14,41 @@ final class CreateCategoryViewController: UIViewController {
     @IBOutlet private weak var titleTextField: UITextField!
     @IBOutlet private weak var gradientCollectionView: UICollectionView!
     @IBOutlet private weak var imagesCollectionView: UICollectionView!
-    
+    @IBOutlet private weak var saveBarButtonItem: UIBarButtonItem!
     
     //MARK: - Properties
+    public var category: Category?
+    private var gradients = [Gradient]()
+    private var images = [CategoryImage]()
+    
+    //MARK: - Computed Properties
     private lazy var context: NSManagedObjectContext = {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         return (appDelegate?.container.viewContext)!
     }()
-    
-    private var gradients = [Gradient]()
-    private var images = [CategoryImage]()
-    
+    private lazy var alert: UIAlertController = {
+        let alert = UIAlertController(title: "", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        return alert
+    }()
+
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Setup Data
         preloadDBData()
         loadGradientsAndImages()
+        //Configure Layouts
         configureColorCollectionView()
         configureImageCollectionView()
+        titleTextField.addTarget(self, action: #selector(textFieldValidate(_:)), for: .editingChanged)
+        //if editing category
+        if category != nil {
+            titleTextField.text = category?.name
+        } else {
+            saveBarButtonItem.isEnabled = false
+        }
     }
     
     
@@ -40,43 +56,81 @@ final class CreateCategoryViewController: UIViewController {
     @IBAction private func cancelTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-    @IBAction private func saveTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Error", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         
+    @IBAction private func saveTapped(_ sender: Any) {
         guard let name = titleTextField.text else { return }
         guard let selectedImageIndexPath = imagesCollectionView.indexPathsForSelectedItems?.first else { return }
         guard let selectedColorIndexPath = gradientCollectionView.indexPathsForSelectedItems?.first else { return }
-        let category = Category(context: context)
-        category.name = name
-        category.categoryImage = images[selectedImageIndexPath.item]
-        category.gradient = gradients[selectedColorIndexPath.item]
-        try? context.save()
-        dismiss(animated: true, completion: nil)
+        let image = images[selectedImageIndexPath.item]
+        let gradient = gradients[selectedColorIndexPath.item]
         
+        //if editing category
+        if let category = category {
+            category.name = name
+            category.categoryImage = image
+            category.gradient = gradient
+        } else {
+            Category.create(in: context, name: name, categoryImage: image, gradient: gradient)
+        }
+        
+        do {
+            try context.save()
+            dismiss(animated: true, completion: nil)
+        } catch {
+            alert.title = "\(error.localizedDescription)"
+            present(alert, animated: true)
+        }
     }
 }
 
 //MARK: - Supporting Methods
 extension CreateCategoryViewController {
     
+    ///Activates the save button if  `UITextField` are not empty.
+    @objc private func textFieldValidate(_ textField: UITextField) {
+        guard let text = textField.text else { return }
+        if text.isEmpty {
+            saveBarButtonItem.isEnabled = false
+        } else {
+            saveBarButtonItem.isEnabled = true
+        }
+    }
+    
+    /// Register cell for `gradientCollectionView`.
+    /// Setting DataSource and Delegate.
+    /// Select First Item if not selected.
     private func configureColorCollectionView() {
         let nib = UINib(nibName: "CircleColorCollectionViewCell", bundle: nil)
         gradientCollectionView.register(nib, forCellWithReuseIdentifier: "colorCell")
         gradientCollectionView.delegate = self
         gradientCollectionView.dataSource = self
-        let indexPath = IndexPath(item: 0, section: 0)
-        gradientCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+        if let category = category {
+            guard let gradientIndex = gradients.firstIndex(of: category.gradient) else { return }
+            let gradientIndexPath = IndexPath(item: gradientIndex, section: 0)
+            gradientCollectionView.selectItem(at: gradientIndexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+        } else {
+            let indexPath = IndexPath(item: 0, section: 0)
+            gradientCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+        }
     }
     
+    /// Register cell for `imagesCollectionView`.
+    /// Setting DataSource and Delegate.
+    /// Select First Item if not selected.
     private func configureImageCollectionView() {
         let nib = UINib(nibName: "CircleImageCollectionViewCell", bundle: nil)
         imagesCollectionView.register(nib, forCellWithReuseIdentifier: "imageCell")
         imagesCollectionView.delegate = self
         imagesCollectionView.dataSource = self
-        let indexPath = IndexPath(item: 0, section: 0)
-        imagesCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+        
+        if let category = category {
+            guard let imageIndex = images.firstIndex(of: category.categoryImage) else { return }
+            let imageIndexPath = IndexPath(item: imageIndex, section: 0)
+            imagesCollectionView.selectItem(at: imageIndexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+        } else {
+            let indexPath = IndexPath(item: 0, section: 0)
+            imagesCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+        }
     }
     
     /// Loads data for `gradients` and `images`
