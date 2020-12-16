@@ -6,43 +6,70 @@
 //
 
 import UIKit
+import CoreData
 
 final class HomeViewController: UIViewController {
     
     //MARK: - Outlets
-    @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var currencyLabel: UILabel!
-    @IBOutlet private weak var amountLabel: UILabel!
-    @IBOutlet private weak var dateLabel: UILabel!
-    
     @IBOutlet private weak var incomeAmountLabel: UILabel!
     @IBOutlet private weak var expenseAmountLabel: UILabel!
     @IBOutlet private weak var topViewConstraint: NSLayoutConstraint!
     @IBOutlet private weak var topView: TopView!
+    @IBOutlet private weak var currencyLabel: UILabel!
+    @IBOutlet private weak var amountLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     
     //MARK: - Properties
-    private var dataSource: UICollectionViewDiffableDataSource<Int, ExpenseModel>!
-    private var snapshot = NSDiffableDataSourceSnapshot<Int, ExpenseModel>()
+    private var balance: Balance!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, Transaction>!
+    private var snapshot = NSDiffableDataSourceSnapshot<Int, Transaction>()
+    private var fetchedResultsController: NSFetchedResultsController<Transaction>!
+    private lazy var context: NSManagedObjectContext = {
+        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.container.viewContext
+    }()
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Setup Data
+        fetchBalance()
+        setupFetchedResultsController()
+        setupDataSource()
+        //Configure UI
+        configureCollectionView()
         configureNavigationBar()
-        collectionView.collectionViewLayout = createLayout()
-        configureDataSource()
-        createSampleData()
-        collectionView.delegate = self
+        configureTopView()
     }
 }
 
-
-
-//MARK: - Layouts
-
+//MARK: - Configure Layouts
 extension HomeViewController {
     
+    /// Configure the `topView` display.
+    /// Fills all field from `CoreData`.
+    private func configureTopView() {
+        currencyLabel.text = "$"
+        amountLabel.text = "\(balance.totalBalance)"
+        incomeAmountLabel.text = "\(balance.income ?? 0)"
+        expenseAmountLabel.text = "\(balance.expense ?? 0)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM yyyy"
+        dateLabel.text = "\(dateFormatter.string(from: Date()))"
+    }
+    
+    /// Register `collectionView` cell. Assigning a delegate.
+    private func configureCollectionView() {
+        let nib = UINib(nibName: "HomeCollectionViewCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: "homeCell")
+        collectionView.collectionViewLayout = createCollectionViewLayout()
+        collectionView.delegate = self
+    }
+    
+    /// Configure the display of `UINavigationController`.
     private func configureNavigationBar(){
         navigationController?.navigationBar.setGradientBackground(colors: [#colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1), #colorLiteral(red: 0.3176470588, green: 0.2, blue: 0.7176470588, alpha: 1)], startPoint: .bottomLeft, endPoint: .topRight)
         let navLabel = UILabel()
@@ -50,14 +77,16 @@ extension HomeViewController {
                                                     NSAttributedString.Key.foregroundColor: UIColor.white,
                                                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0),
                                                     NSAttributedString.Key.baselineOffset: 2])
-        navTitle.append(NSMutableAttributedString(string: "32,465", attributes:[
+        
+        navTitle.append(NSMutableAttributedString(string: "\(balance.totalBalance)", attributes:[
                                                     NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 22.0),
                                                     NSAttributedString.Key.foregroundColor: UIColor.white]))
         navLabel.attributedText = navTitle
         navigationItem.titleView = navLabel
     }
     
-    private func createLayout() -> UICollectionViewLayout {
+    /// Create `UICollectionViewCompositionalLayout` for `collectionView`.
+    private func createCollectionViewLayout() -> UICollectionViewLayout {
         let sectionProvider = {
             (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             
@@ -80,38 +109,138 @@ extension HomeViewController {
     }
 }
 
-
-
-//MARK: - DataSource
-
+//MARK: - Setup Data
 extension HomeViewController {
+    ///Gets `balance` from CoreData. If not already created, creates.
+    private func fetchBalance() {
+        let request: NSFetchRequest = Balance.fetchRequest()
+        balance = try? context.fetch(request).first ?? Balance(context: context)
+    }
     
-    private func configureDataSource(){
-        dataSource = UICollectionViewDiffableDataSource<Int, ExpenseModel>(collectionView: collectionView) {
-            (collectionView, indexPath, item) -> UICollectionViewCell? in
-            let recentNib = UINib(nibName: "HomeCollectionViewCell", bundle: nil)
-            let cellRegistration =  UICollectionView.CellRegistration<HomeCollectionViewCell, ExpenseModel>(cellNib: recentNib) { (cell, indexPath, identifier) in
-                cell.titleLabel.text = item.title
-            }
-            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
+    ///Setup `NSFetchedResultsController` which displays list of `Transactions`.
+    private func setupFetchedResultsController() {
+        let request: NSFetchRequest = Transaction.fetchRequest()
+        
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [sort]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Fetch failed")
         }
     }
     
-    private func createSampleData(){
+    /// Setup the `NSDiffableDataSourceSnapshot` which displays the current state of the UI.
+    private func setupSnapshot() {
+        snapshot = NSDiffableDataSourceSnapshot<Int, Transaction>()
         snapshot.appendSections([0])
-        snapshot.appendItems(ExpenseModel.getSampleData(), toSection: 0)
-        dataSource.apply(snapshot)
+        snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
+        
+        DispatchQueue.main.async {
+            self.dataSource?.apply(self.snapshot, animatingDifferences: true)
+        }
+    }
+    
+    /// Setup the `UITableViewDiffableDataSource` with a cell provider that sets up the default `collectionView` cells.
+    private func setupDataSource(){
+        dataSource = UICollectionViewDiffableDataSource<Int, Transaction>(collectionView: collectionView) {
+            (collectionView, indexPath, transaction) -> UICollectionViewCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! HomeCollectionViewCell
+            
+            //Gradient
+            cell.gradientLayer?.removeFromSuperlayer()
+            guard let startColor = UIColor(hex: transaction.category.gradient.startColor!) else { return cell }
+            guard let endColor = UIColor(hex: transaction.category.gradient.endColor!) else { return cell }
+            cell.gradientLayer = cell.imageBackground.applyGradient(colours: [startColor, endColor])
+            
+            //Image
+            let imageName = transaction.category.categoryImage.name
+            cell.categoryImageView.image = UIImage(systemName: imageName!)
+            
+            //Title
+            cell.titleLabel.text = transaction.name
+            
+            //Date
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM dd, HH:MM"
+            cell.dateLabel.text = "\(dateFormatter.string(from: transaction.date))"
+            
+            //Sum
+            cell.sumLabel.text = String(transaction.amount)
+            
+            cell.isExpense = transaction.isExpense
+            return cell
+        }
+        setupSnapshot()
     }
 }
 
-
+//MARK: - NSFetchedResultsControllerDelegate
+extension HomeViewController: NSFetchedResultsControllerDelegate {
+    ///Responsible for reacting to changes in `Transaction` in the CoreData
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        if type == .insert {
+            guard let transaction = anObject as? Transaction else { return }
+            snapshot.appendItems([transaction])
+        } else if type == .update || type == .move {
+            collectionView.reloadData()
+        }
+        setupSnapshot()
+        configureTopView()
+        configureNavigationBar()
+    }
+}
 
 //MARK: - UICollectionViewDelegate
-
 extension HomeViewController: UICollectionViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView){
+    ///Creates a context menu for `collectionView`.
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        if let cellItemIdentifier = dataSource.itemIdentifier(for: indexPath) {
+            let identifier = NSString(string: "\(cellItemIdentifier.name)") // Use the image name for the identifier.
+            return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { suggestedActions in
+                let editAction = self.editAction(indexPath)
+                let deleteAction = self.deleteAction(indexPath)
+                return UIMenu(title: "", children: [editAction, deleteAction])
+            })
+            
+        } else {
+            return nil
+        }
 
+    }
+    ///Adds the ability to edit `transactions`.
+    func editAction(_ indexPath: IndexPath) -> UIAction {
+        return UIAction(title: "Edit",
+                        image: UIImage(systemName: "square.and.pencil")) { action in
+            let storyboard = UIStoryboard(name: "Adding", bundle: nil)
+            guard let navController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
+            guard let addingViewController = navController.topViewController as? AddingViewController else { return }
+            addingViewController.transaction = self.dataSource.itemIdentifier(for: indexPath)
+            self.navigationController?.present(navController, animated: true, completion: nil)
+        }
+    }
+    ///Adds the ability to delete `transactions`.
+    func deleteAction(_ indexPath: IndexPath) -> UIAction {
+        return UIAction(title: "Delete",
+                        image: UIImage(systemName: "trash"),
+                        attributes: .destructive) { action in
+            guard let transaction = self.dataSource.itemIdentifier(for: indexPath) else { return }
+            self.balance.totalBalance = transaction.isExpense ? self.balance.totalBalance + transaction.amount : self.balance.totalBalance - transaction.amount
+            self.context.delete(transaction)
+            try? self.context.save()
+        }
+    }
+    
+    ///Raises the `TopView` depending on the scroll.
+    ///When the `TopView` is not fully visible, shows the `UINavigationController`.
+    func scrollViewDidScroll(_ scrollView: UIScrollView){
+        
         // if scrollView bounces off the bottom
         guard !scrollView.isBouncingBottom else { return }
         // if scrollView bounces off the top
@@ -125,6 +254,7 @@ extension HomeViewController: UICollectionViewDelegate {
         // if topView is visible hide navigation bar
         if scrollView.contentOffset.y < visibilityHeight {
             topViewConstraint.constant = scrollView.contentOffset.y * -1
+            self.navigationController?.navigationBar.isHidden = true
             UIView.animate(withDuration: 0.3) {
                 self.navigationController?.navigationBar.alpha = 0
             }

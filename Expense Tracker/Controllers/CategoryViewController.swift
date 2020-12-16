@@ -127,7 +127,7 @@ extension CategoryViewController {
         searchController.searchBar.searchTextField.backgroundColor = .white
     }
     
-    // Register reusable cell for `tableView`. Assigning a delegate.
+    /// Register reusable cell for `tableView`. Assigning a delegate.
     private func configureTableView() {
         let nib = UINib(nibName: "CategoryTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "categoryCell")
@@ -137,6 +137,7 @@ extension CategoryViewController {
 
 //MARK: - NSFetchedResultsControllerDelegate
 extension CategoryViewController: NSFetchedResultsControllerDelegate {
+    ///Responsible for reacting to changes in `Category` in the CoreData
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
@@ -148,6 +149,7 @@ extension CategoryViewController: NSFetchedResultsControllerDelegate {
             tableView.reloadData()
         case .move:
             setupSnapshot()
+        case .delete:break
         default: break
         }
     }

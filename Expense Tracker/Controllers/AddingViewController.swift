@@ -19,6 +19,7 @@ final class AddingViewController: UIViewController {
     @IBOutlet private weak var saveButton: CustomButton!
     
     //MARK: - Properties
+    public var transaction: Transaction!
     private var balance: Balance!
     private var fetchedResultsController: NSFetchedResultsController<Category>!
     private var dataSource: UICollectionViewDiffableDataSource<String, NSManagedObjectID>!
@@ -54,6 +55,17 @@ final class AddingViewController: UIViewController {
         //select first item on CollectionView
         let selectedIndexPath = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .centeredHorizontally)
+        
+        if transaction != nil {
+            stateSegmentedControl.selectedSegmentIndex = transaction.isExpense ? 1 : 0
+            sumTextField.text = "\(transaction.amount)"
+            descriptionTextField.text = transaction.name
+            datePicker.date = transaction.date
+            let category = transaction.category
+            let categoryIndexPath = dataSource.indexPath(for: category.objectID)
+            collectionView.selectItem(at: categoryIndexPath, animated: true, scrollPosition: .centeredHorizontally)
+            saveButton.isEnabled = true
+        }
     }
     
     
@@ -65,7 +77,16 @@ final class AddingViewController: UIViewController {
         guard let selectedItem = collectionView.indexPathsForSelectedItems?.first else { return }
         let category = fetchedResultsController.object(at: selectedItem)
         balance.totalBalance = isExpense ? balance.totalBalance - amount : balance.totalBalance + amount
-        Transaction.create(in: context, amount: amount, date: datePicker.date, isExpense: isExpense, name: name, balance: balance, category: category)
+        if transaction == nil {
+            Transaction.create(in: context, amount: amount, date: datePicker.date, isExpense: isExpense, name: name, balance: balance, category: category)
+        } else {
+            transaction.amount = amount
+            transaction.date = datePicker.date
+            transaction.isExpense = isExpense
+            transaction.name = name
+            transaction.balance = balance
+            transaction.category = category
+        }
         do {
             try context.save()
             alert.title = "Успешно сохранено!"
@@ -80,7 +101,7 @@ final class AddingViewController: UIViewController {
 
 //MARK: - Configure Layouts
 extension AddingViewController {
-            
+                
     ///Register Cell for `collectionView`
     private func configureCollectionView() {
         let nib = UINib(nibName: "CategoryCollectionViewCell", bundle: nil)

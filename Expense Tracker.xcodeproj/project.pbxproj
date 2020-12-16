@@ -18,6 +18,8 @@
 		FA33752E2588D67C00139495 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33752C2588D67C00139495 /* Category+CoreDataProperties.swift */; };
 		FA4BBF332578FDE100F2ABD7 /* NavigationBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BBF322578FDE100F2ABD7 /* NavigationBar+Extensions.swift */; };
 		FA4BBF372579029A00F2ABD7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BBF362579029A00F2ABD7 /* UIView+Extensions.swift */; };
+		FA5295C2258A199D001B4D9D /* Balance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5295C0258A199D001B4D9D /* Balance+CoreDataClass.swift */; };
+		FA5295C3258A199D001B4D9D /* Balance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5295C1258A199D001B4D9D /* Balance+CoreDataProperties.swift */; };
 		FA59C76D25755B9300C80A5A /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C76B25755B9300C80A5A /* HomeCollectionViewCell.swift */; };
 		FA59C76E25755B9300C80A5A /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA59C76C25755B9300C80A5A /* HomeCollectionViewCell.xib */; };
 		FA59C7752575690800C80A5A /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C7742575690800C80A5A /* ExpenseModel.swift */; };
@@ -66,6 +68,8 @@
 		FA33752C2588D67C00139495 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA4BBF322578FDE100F2ABD7 /* NavigationBar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar+Extensions.swift"; sourceTree = "<group>"; };
 		FA4BBF362579029A00F2ABD7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		FA5295C0258A199D001B4D9D /* Balance+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Balance+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FA5295C1258A199D001B4D9D /* Balance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Balance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA59C76B25755B9300C80A5A /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA59C76C25755B9300C80A5A /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA59C7742575690800C80A5A /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
@@ -162,6 +166,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		FA54CF7C258A1C530057E3FC /* Balance */ = {
+			isa = PBXGroup;
+			children = (
+				FA5295C0258A199D001B4D9D /* Balance+CoreDataClass.swift */,
+				FA5295C1258A199D001B4D9D /* Balance+CoreDataProperties.swift */,
+			);
+			path = Balance;
+			sourceTree = "<group>";
+		};
 		FA59C77025755B9A00C80A5A /* HomeCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +187,7 @@
 		FA59C773257568DA00C80A5A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA54CF7C258A1C530057E3FC /* Balance */,
 				FA3375302588D68100139495 /* Category */,
 				FA3375292588D64600139495 /* Transaction */,
 				FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */,
@@ -405,6 +419,7 @@
 			files = (
 				FA59C7752575690800C80A5A /* ExpenseModel.swift in Sources */,
 				FA30131C2579124D004D2421 /* ChartViewController.swift in Sources */,
+				FA5295C2258A199D001B4D9D /* Balance+CoreDataClass.swift in Sources */,
 				FA59C76D25755B9300C80A5A /* HomeCollectionViewCell.swift in Sources */,
 				FA8D899125826DB900ED1770 /* ExpenseTracker.xcdatamodeld in Sources */,
 				FA718DA02588C41500A9FF12 /* CustomButton.swift in Sources */,
@@ -418,6 +433,7 @@
 				FA4BBF372579029A00F2ABD7 /* UIView+Extensions.swift in Sources */,
 				FAF1D4D9257A5CE400DE10B4 /* ChartModel.swift in Sources */,
 				FA4BBF332578FDE100F2ABD7 /* NavigationBar+Extensions.swift in Sources */,
+				FA5295C3258A199D001B4D9D /* Balance+CoreDataProperties.swift in Sources */,
 				FA30131F257913D1004D2421 /* ChartView.swift in Sources */,
 				FAC08EFF258353C400C3FD05 /* CreateCategoryViewController.swift in Sources */,
 				FAC951F525754F4E00931346 /* TopView.swift in Sources */,
