@@ -10,29 +10,61 @@ import UIKit
 final class GraphView: UIView {
     
     //MARK: - Properties
-    public var graphPoints: [Int] = []
-    private var graphWidth: CGFloat!
-    private var graphHeight: CGFloat!
-    private var rectWidth : CGFloat!
-    private var rectHeight : CGFloat!
-    private var context: CGContext!
-    
-    private var plate = PlateView()
-    
+    public var graphPoints: [Double] = []
+    private var plate: PlateView!
+    private lazy var graphHeight: CGFloat = {
+        return frame.height  - GraphConstants.topBorder - GraphConstants.bottomBorder
+    }()
+
     override func draw(_ rect: CGRect) {
-        context = UIGraphicsGetCurrentContext()
+        guard !graphPoints.isEmpty else { return }
+
+        if graphPoints.count == 1 {
+            drawSingleLine()
+        } else {
+            drawGraph()
+        }
+    }
         
-        rectWidth = rect.width
-        rectHeight = rect.height
-        graphWidth = rect.width  - GraphConstants.margin * 2 - 5
-        graphHeight = rect.height  - GraphConstants.topBorder - GraphConstants.bottomBorder
-                
-        guard !graphPoints.isEmpty else {
+    //MARK: - Initializators
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        isOpaque = false
+        setupGestureRecognizer()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        isOpaque = false
+        setupGestureRecognizer()
+    }
+}
+
+//MARK: - Configure Layouts
+extension GraphView {
+    
+    /// Draws a horizontal line in the center of the graph.
+    private func drawSingleLine() {
+        let graphPath = UIBezierPath()
+        let yPoint = graphHeight / 2 + GraphConstants.topBorder
+        let firstPoint = CGPoint(x: frame.minX + GraphConstants.margin, y: yPoint)
+        let lastPoint = CGPoint(x: frame.maxX - GraphConstants.margin, y: yPoint)
+        graphPath.move(to: firstPoint)
+        graphPath.addLine(to: lastPoint)
+        graphPath.lineWidth = 5
+        #colorLiteral(red: 0.5568627451, green: 0.3215686275, blue: 0.8352941176, alpha: 1).setStroke()
+        graphPath.stroke()
+        
+        configureLineShadow(graphPath)
+        guard let clippingPath = graphPath.copy() as? UIBezierPath else {
             return
         }
-        
+        configureShadowPath(clippingPath)
+    }
+    
+    /// Draws a graph.
+    private func drawGraph() {
         let graphPath = UIBezierPath()
-        
         let firstPoint = calculatePoint(0)
         graphPath.move(to: firstPoint)
         
@@ -46,114 +78,112 @@ final class GraphView: UIView {
             
             graphPath.addCurve(to: nextPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
         }
-        
         graphPath.lineWidth = 5
         #colorLiteral(red: 0.5568627451, green: 0.3215686275, blue: 0.8352941176, alpha: 1).setStroke()
         graphPath.stroke()
         
-        addLineShadow(graphPath)
-        
+        configureLineShadow(graphPath)
         guard let clippingPath = graphPath.copy() as? UIBezierPath else {
             return
         }
-
-        addshadowPath(clippingPath)
-        
-
+        configureShadowPath(clippingPath)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        isOpaque = false
-        configureGesture()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        isOpaque = false
-        configureGesture()
-    }
-}
-
-
-
-//MARK: - Layouts
-
-extension GraphView {
-    
-    //Creates blur-shadow on the graph
-    private func addLineShadow(_ graphPath: UIBezierPath) {
+    /// Configure blur-shadow on the graph
+    private func configureLineShadow(_ graphPath: UIBezierPath) {
         let shadowLayer = CALayer()
-        
         shadowLayer.shadowPath = graphPath.cgPath.copy(strokingWithWidth: 5, lineCap: .round, lineJoin: .round, miterLimit: 0)
         shadowLayer.shadowColor = #colorLiteral(red: 0.4549019608, green: 0.2666666667, blue: 0.7725490196, alpha: 0.6625299813).cgColor
         shadowLayer.shadowOpacity = 1
         shadowLayer.shadowOffset = .zero
         shadowLayer.shadowRadius = 6
-        
         layer.insertSublayer(shadowLayer, at: 0)
     }
-
-    //Creates shadow under the graph
-    private func addshadowPath(_ clippingPath: UIBezierPath){
-        guard let maxValue = graphPoints.max() else { fatalError() }
         
-        clippingPath.addLine(to: CGPoint(x: columnXPoint(graphPoints.count - 1), y: rectHeight))
-        clippingPath.addLine(to: CGPoint(x: columnXPoint(0), y: rectHeight))
-        clippingPath.close()
-        clippingPath.addClip()
+    /// Creates shadow under the graph
+    private func configureShadowPath(_ clippingPath: UIBezierPath){
+        guard let maxValue = graphPoints.max(),
+              let indexOfMaxValue = graphPoints.firstIndex(of: maxValue) else {fatalError()}
         
-        let highestYPoint =  columnYPoint(maxValue) - graphHeight
-        let graphStartPoint = CGPoint(x: GraphConstants.margin, y: highestYPoint)
-        let graphEndPoint = CGPoint(x: GraphConstants.margin, y: rectHeight)
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let colorLocations: [CGFloat] = [0, 1]
+        let yPoint = graphPoints.count == 1 ?
+            (graphHeight / 2 + GraphConstants.topBorder) : (columnYPoint(indexOfMaxValue) - graphHeight)
+        closeShadowPath(clippingPath)
         
         let colors = [#colorLiteral(red: 0.3725490196, green: 0.2274509804, blue: 0.7450980392, alpha: 0.15).cgColor, #colorLiteral(red: 0.5607843137, green: 0.3019607843, blue: 0.8352941176, alpha: 0).cgColor]
-        guard let newGradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: colorLocations) else { return }
+        guard let newGradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors as CFArray, locations: [0, 1]) else {
+            return
+        }
         
-        context.drawLinearGradient(
+        let graphStartPoint = CGPoint(x: GraphConstants.margin, y: yPoint)
+        let graphEndPoint = CGPoint(x: GraphConstants.margin, y: frame.height)
+        UIGraphicsGetCurrentContext()?.drawLinearGradient(
             newGradient,
             start: graphStartPoint,
             end: graphEndPoint,
             options: [])
     }
-}
-
-
-
-//MARK: - Supporting Methods
-
-extension GraphView {
     
-    private func addPlate(_ index: Int, on point: CGPoint) {
-        plate.removeFromSuperview()
+    /// Closes `UIBezierPath`.
+    private func closeShadowPath(_ clippingPath: UIBezierPath) {
+        if graphPoints.count == 1 {
+            clippingPath.addLine(to: CGPoint(x: frame.maxX - GraphConstants.margin, y: frame.height))
+            clippingPath.addLine(to: CGPoint(x: frame.minX + GraphConstants.margin, y: frame.height))
+        } else {
+            clippingPath.addLine(to: CGPoint(x: columnXPoint(graphPoints.count - 1), y: frame.height))
+            clippingPath.addLine(to: CGPoint(x: columnXPoint(0), y: frame.height))
+        }
         
-        let text = "\(graphPoints[index])"
+        clippingPath.close()
+        clippingPath.addClip()
+    }
         
-        plate.plateText = "$\(text)"
-        let plateSize = CGSize(width: 49, height: 45)
+    /// Creates a plate with information about an item by index.
+    private func configurePlate(_ index: Int, on point: CGPoint) {
+        plate?.removeFromSuperview()
+        plate = PlateView()
+        plate.plateText = "\(graphPoints[index])"
         
-        let xPosition = point.x - plateSize.width / 2
-        let yPosition = point.y - plateSize.height + GraphConstants.circleDiameter
-        let origin = CGPoint(x: xPosition, y: yPosition)
-        
-        plate.frame = CGRect(origin: origin, size: plateSize)
+        calculatePlateFrame(point)
+        plate.setNeedsDisplay()
         addSubview(plate)
     }
     
-    //Calculates the position of each item on the graph
+    /// Calculates the size and location of the plate.
+    /// Chooses whether the plaque should be reversed.
+    private func calculatePlateFrame(_ point: CGPoint) {
+        let plateWidth = plate.plateText.count * 10
+        let plateSize = CGSize(width: plateWidth, height: 45)
+        
+        let xPosition = point.x - plateSize.width / 2
+        var yPosition: CGFloat
+        plate.reverse = point.y - plateSize.height < GraphConstants.topBorder
+        
+        if plate.reverse {
+            yPosition = point.y - GraphConstants.circleDiameter
+        } else {
+            yPosition = point.y - plateSize.height + GraphConstants.circleDiameter
+        }
+        
+        plate.frame = CGRect(origin: CGPoint(x: xPosition, y: yPosition), size: plateSize)
+    }
+}
+
+//MARK: - Supporting Methods
+extension GraphView {
+        
+    /// Calculates the position of each item on the graph
     private func calculatePoint(_ index: Int) -> CGPoint {
         return CGPoint(x: columnXPoint(index), y: columnYPoint(index))
     }
-        
-    //Calculate X Point on the chart
+    
+    /// Calculates the `X position` based on the column number.
     private func columnXPoint(_ column: Int) -> CGFloat {
+        let graphWidth = frame.width - GraphConstants.margin * 2 - 5
         let spacing = graphWidth / CGFloat(graphPoints.count - 1)
         return CGFloat(column) * spacing + GraphConstants.margin + 2
     }
     
-    //Calculate Y Point on the chart
+    /// Calculates the `Y position` based on the row number.
     private func columnYPoint(_ row: Int) -> CGFloat {
         guard let maxValue = graphPoints.max() else { fatalError() }
         let graphPoint = graphPoints[row]
@@ -161,27 +191,36 @@ extension GraphView {
         return graphHeight + GraphConstants.topBorder - yPoint
     }
     
-    
-    private func configureGesture() {
+    ///Adds a tap gesture.
+    private func setupGestureRecognizer() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tapGesture)
     }
     
+    /// Creates a `plate` when you click on a `GraphView` area.
+    /// If the graph has one value, the `plate` will be in the center.
     @objc private func handleTap(_ sender: UITapGestureRecognizer) {
-        let location = sender.location(in: self).x
-        let pointStep = Int(rectWidth) / graphPoints.count
-        let numberOfPoint: Int = Int(location) / pointStep
-        
-        let nextPoint = calculatePoint(numberOfPoint)
-        addPlate(numberOfPoint, on: nextPoint)
-    }
-    
-    private struct GraphConstants {
-        static let delta:CGFloat = 0.4
-        static let margin: CGFloat = 25.0
-        static let topBorder: CGFloat = 85
-        static let bottomBorder: CGFloat = 10
-        static let circleDiameter: CGFloat = 6
+        if graphPoints.count == 1 {
+            let graphWidth = frame.width - GraphConstants.margin * 2 - 5
+            let centerX = graphWidth / 2 + GraphConstants.margin
+            let centerY = graphHeight / 2 + GraphConstants.topBorder
+            configurePlate(0, on: CGPoint(x: centerX, y: centerY))
+        } else {
+            let location = sender.location(in: self).x
+            let pointStep = Int(frame.width) / graphPoints.count
+            let numberOfPoint: Int = Int(location) / pointStep
+            
+            let nextPoint = calculatePoint(numberOfPoint)
+            configurePlate(numberOfPoint, on: nextPoint)
+        }
     }
 }
 
+//MARK: - GraphConstants
+internal struct GraphConstants {
+    static let delta:CGFloat = 0.4
+    static let margin: CGFloat = 25.0
+    static let topBorder: CGFloat = 85
+    static let bottomBorder: CGFloat = 10
+    static let circleDiameter: CGFloat = 6
+}

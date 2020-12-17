@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0E5880258B4B84002F5D88 /* GraphPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E587F258B4B84002F5D88 /* GraphPoint.swift */; };
+		FA0E5884258BA4B3002F5D88 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E5883258BA4B3002F5D88 /* Date+Extensions.swift */; };
+		FA0E5887258BA545002F5D88 /* Sequense+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0E5886258BA545002F5D88 /* Sequense+Extensions.swift */; };
 		FA168DA32583740100393814 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA168DA22583740100393814 /* UIColor+Extensions.swift */; };
 		FA2544FD2578CED600D065CB /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2544FB2578CED600D065CB /* CategoryCollectionViewCell.swift */; };
 		FA2544FE2578CED600D065CB /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2544FC2578CED600D065CB /* CategoryCollectionViewCell.xib */; };
@@ -22,7 +25,6 @@
 		FA5295C3258A199D001B4D9D /* Balance+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5295C1258A199D001B4D9D /* Balance+CoreDataProperties.swift */; };
 		FA59C76D25755B9300C80A5A /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C76B25755B9300C80A5A /* HomeCollectionViewCell.swift */; };
 		FA59C76E25755B9300C80A5A /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA59C76C25755B9300C80A5A /* HomeCollectionViewCell.xib */; };
-		FA59C7752575690800C80A5A /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C7742575690800C80A5A /* ExpenseModel.swift */; };
 		FA698AEE25876306008D2168 /* images.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA698AED25876306008D2168 /* images.csv */; };
 		FA718DA02588C41500A9FF12 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718D9F2588C41500A9FF12 /* CustomButton.swift */; };
 		FA718DA42588CC6800A9FF12 /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718DA22588CC6800A9FF12 /* Transaction+CoreDataClass.swift */; };
@@ -57,6 +59,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA0E587F258B4B84002F5D88 /* GraphPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphPoint.swift; sourceTree = "<group>"; };
+		FA0E5883258BA4B3002F5D88 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		FA0E5886258BA545002F5D88 /* Sequense+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequense+Extensions.swift"; sourceTree = "<group>"; };
 		FA168DA22583740100393814 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		FA2544FB2578CED600D065CB /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA2544FC2578CED600D065CB /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -72,7 +77,6 @@
 		FA5295C1258A199D001B4D9D /* Balance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Balance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA59C76B25755B9300C80A5A /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA59C76C25755B9300C80A5A /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
-		FA59C7742575690800C80A5A /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
 		FA698AED25876306008D2168 /* images.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = images.csv; sourceTree = "<group>"; };
 		FA718D9F2588C41500A9FF12 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FA718DA22588CC6800A9FF12 /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 				FA758853257666810016990D /* ScrollView+Extensions.swift */,
 				FA168DA22583740100393814 /* UIColor+Extensions.swift */,
 				FA4BBF362579029A00F2ABD7 /* UIView+Extensions.swift */,
+				FA0E5883258BA4B3002F5D88 /* Date+Extensions.swift */,
+				FA0E5886258BA545002F5D88 /* Sequense+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -191,10 +197,10 @@
 				FA3375302588D68100139495 /* Category */,
 				FA3375292588D64600139495 /* Transaction */,
 				FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */,
-				FA59C7742575690800C80A5A /* ExpenseModel.swift */,
 				FA8D898F25826DB900ED1770 /* ExpenseTracker.xcdatamodeld */,
 				FAF1799625874D4E00113DF5 /* gradients.csv */,
 				FA698AED25876306008D2168 /* images.csv */,
+				FA0E587F258B4B84002F5D88 /* GraphPoint.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -417,7 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA59C7752575690800C80A5A /* ExpenseModel.swift in Sources */,
+				FA0E5887258BA545002F5D88 /* Sequense+Extensions.swift in Sources */,
 				FA30131C2579124D004D2421 /* ChartViewController.swift in Sources */,
 				FA5295C2258A199D001B4D9D /* Balance+CoreDataClass.swift in Sources */,
 				FA59C76D25755B9300C80A5A /* HomeCollectionViewCell.swift in Sources */,
@@ -427,6 +433,7 @@
 				FAFB4E332575457E002B9E23 /* HomeViewController.swift in Sources */,
 				FAFB4E2F2575457E002B9E23 /* AppDelegate.swift in Sources */,
 				FA301323257914D6004D2421 /* MonthCollectionViewCell.swift in Sources */,
+				FA0E5884258BA4B3002F5D88 /* Date+Extensions.swift in Sources */,
 				FA33752D2588D67C00139495 /* Category+CoreDataClass.swift in Sources */,
 				FAC08F0A25835F8C00C3FD05 /* CircleImageCollectionViewCell.swift in Sources */,
 				FA758857257668870016990D /* CategoryViewController.swift in Sources */,
@@ -435,6 +442,7 @@
 				FA4BBF332578FDE100F2ABD7 /* NavigationBar+Extensions.swift in Sources */,
 				FA5295C3258A199D001B4D9D /* Balance+CoreDataProperties.swift in Sources */,
 				FA30131F257913D1004D2421 /* ChartView.swift in Sources */,
+				FA0E5880258B4B84002F5D88 /* GraphPoint.swift in Sources */,
 				FAC08EFF258353C400C3FD05 /* CreateCategoryViewController.swift in Sources */,
 				FAC951F525754F4E00931346 /* TopView.swift in Sources */,
 				FAC08F032583561900C3FD05 /* CircleColorCollectionViewCell.swift in Sources */,
