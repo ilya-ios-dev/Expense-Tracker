@@ -26,11 +26,19 @@
 		FA59C76D25755B9300C80A5A /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59C76B25755B9300C80A5A /* HomeCollectionViewCell.swift */; };
 		FA59C76E25755B9300C80A5A /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA59C76C25755B9300C80A5A /* HomeCollectionViewCell.xib */; };
 		FA698AEE25876306008D2168 /* images.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA698AED25876306008D2168 /* images.csv */; };
+		FA6E673E258CF2F9000CBA2D /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E673D258CF2F9000CBA2D /* TabBar.swift */; };
+		FA6E6745258CF395000CBA2D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E6744258CF395000CBA2D /* Home.storyboard */; };
 		FA718DA02588C41500A9FF12 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718D9F2588C41500A9FF12 /* CustomButton.swift */; };
 		FA718DA42588CC6800A9FF12 /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718DA22588CC6800A9FF12 /* Transaction+CoreDataClass.swift */; };
 		FA718DA52588CC6800A9FF12 /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718DA32588CC6800A9FF12 /* Transaction+CoreDataProperties.swift */; };
 		FA758854257666810016990D /* ScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA758853257666810016990D /* ScrollView+Extensions.swift */; };
 		FA758857257668870016990D /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA758856257668870016990D /* CategoryViewController.swift */; };
+		FA762D67258C95EE00702EEF /* MeetingPictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA762D66258C95EE00702EEF /* MeetingPictureView.swift */; };
+		FA762D6B258C9C1200702EEF /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA762D6A258C9C1200702EEF /* TransactionView.swift */; };
+		FA762D6E258CAC0400702EEF /* ExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA762D6D258CAC0400702EEF /* ExpenseView.swift */; };
+		FA856FCA258CAD5F0020A6AA /* IncomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA856FC9258CAD5F0020A6AA /* IncomeView.swift */; };
+		FA856FD1258CB2820020A6AA /* TransactionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA856FD0258CB2820020A6AA /* TransactionButton.swift */; };
+		FA856FD5258CE01B0020A6AA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA856FD4258CE01B0020A6AA /* TabBarViewController.swift */; };
 		FA8D899125826DB900ED1770 /* ExpenseTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA8D898F25826DB900ED1770 /* ExpenseTracker.xcdatamodeld */; };
 		FA9B87F52577EC3C003E2E28 /* AddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B87F42577EC3C003E2E28 /* AddingViewController.swift */; };
 		FAA270B125876AAE001B9AD4 /* CreateCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA270B025876AAE001B9AD4 /* CreateCategory.storyboard */; };
@@ -78,11 +86,19 @@
 		FA59C76B25755B9300C80A5A /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA59C76C25755B9300C80A5A /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA698AED25876306008D2168 /* images.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = images.csv; sourceTree = "<group>"; };
+		FA6E673D258CF2F9000CBA2D /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		FA6E6744258CF395000CBA2D /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		FA718D9F2588C41500A9FF12 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FA718DA22588CC6800A9FF12 /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FA718DA32588CC6800A9FF12 /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA758853257666810016990D /* ScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		FA758856257668870016990D /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		FA762D66258C95EE00702EEF /* MeetingPictureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingPictureView.swift; sourceTree = "<group>"; };
+		FA762D6A258C9C1200702EEF /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		FA762D6D258CAC0400702EEF /* ExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseView.swift; sourceTree = "<group>"; };
+		FA856FC9258CAD5F0020A6AA /* IncomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeView.swift; sourceTree = "<group>"; };
+		FA856FD0258CB2820020A6AA /* TransactionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionButton.swift; sourceTree = "<group>"; };
+		FA856FD4258CE01B0020A6AA /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FA8D899025826DB900ED1770 /* ExpenseTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpenseTracker.xcdatamodel; sourceTree = "<group>"; };
 		FA9B87F42577EC3C003E2E28 /* AddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingViewController.swift; sourceTree = "<group>"; };
 		FAA270B025876AAE001B9AD4 /* CreateCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateCategory.storyboard; sourceTree = "<group>"; };
@@ -205,6 +221,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FA856FCC258CAEAA0020A6AA /* TransactionsView */ = {
+			isa = PBXGroup;
+			children = (
+				FA762D6D258CAC0400702EEF /* ExpenseView.swift */,
+				FA856FC9258CAD5F0020A6AA /* IncomeView.swift */,
+				FA856FD0258CB2820020A6AA /* TransactionButton.swift */,
+				FA762D6A258C9C1200702EEF /* TransactionView.swift */,
+			);
+			path = TransactionsView;
+			sourceTree = "<group>";
+		};
 		FAA270B325876BC7001B9AD4 /* CreateCategory */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +269,7 @@
 				FAFB4E342575457E002B9E23 /* Main.storyboard */,
 				FAFB4E5325754796002B9E23 /* Profile.storyboard */,
 				FAA270B025876AAE001B9AD4 /* CreateCategory.storyboard */,
+				FA6E6744258CF395000CBA2D /* Home.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -302,6 +330,7 @@
 				FA30131B2579124D004D2421 /* ChartViewController.swift */,
 				FAC08EFE258353C400C3FD05 /* CreateCategoryViewController.swift */,
 				FAFB4E322575457E002B9E23 /* HomeViewController.swift */,
+				FA856FD4258CE01B0020A6AA /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -313,11 +342,14 @@
 				FAFF7F58257679C000581889 /* CategoryTableViewCell */,
 				FAF1D4D6257A55D000DE10B4 /* ChartView */,
 				FAA270B325876BC7001B9AD4 /* CreateCategory */,
+				FA718D9F2588C41500A9FF12 /* CustomButton.swift */,
 				FA59C77025755B9A00C80A5A /* HomeCollectionViewCell */,
+				FA762D66258C95EE00702EEF /* MeetingPictureView.swift */,
 				FA301326257914D9004D2421 /* MonthCollectionViewCell */,
 				FAC951F72575507A00931346 /* Storyboards */,
+				FA6E673D258CF2F9000CBA2D /* TabBar.swift */,
 				FAC951F425754F4E00931346 /* TopView.swift */,
-				FA718D9F2588C41500A9FF12 /* CustomButton.swift */,
+				FA856FCC258CAEAA0020A6AA /* TransactionsView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -401,6 +433,7 @@
 				FAC08F0B25835F8C00C3FD05 /* CircleImageCollectionViewCell.xib in Resources */,
 				FAA270B125876AAE001B9AD4 /* CreateCategory.storyboard in Resources */,
 				FAFB4E5425754796002B9E23 /* Profile.storyboard in Resources */,
+				FA6E6745258CF395000CBA2D /* Home.storyboard in Resources */,
 				FAFB4E4E25754768002B9E23 /* Category.storyboard in Resources */,
 				FAFB4E3B25754580002B9E23 /* LaunchScreen.storyboard in Resources */,
 				FAFF7F56257679BB00581889 /* CategoryTableViewCell.xib in Resources */,
@@ -433,12 +466,19 @@
 				FAFB4E332575457E002B9E23 /* HomeViewController.swift in Sources */,
 				FAFB4E2F2575457E002B9E23 /* AppDelegate.swift in Sources */,
 				FA301323257914D6004D2421 /* MonthCollectionViewCell.swift in Sources */,
+				FA856FD5258CE01B0020A6AA /* TabBarViewController.swift in Sources */,
+				FA762D6B258C9C1200702EEF /* TransactionView.swift in Sources */,
+				FA856FCA258CAD5F0020A6AA /* IncomeView.swift in Sources */,
+				FA762D6E258CAC0400702EEF /* ExpenseView.swift in Sources */,
 				FA0E5884258BA4B3002F5D88 /* Date+Extensions.swift in Sources */,
+				FA856FD1258CB2820020A6AA /* TransactionButton.swift in Sources */,
 				FA33752D2588D67C00139495 /* Category+CoreDataClass.swift in Sources */,
 				FAC08F0A25835F8C00C3FD05 /* CircleImageCollectionViewCell.swift in Sources */,
 				FA758857257668870016990D /* CategoryViewController.swift in Sources */,
+				FA6E673E258CF2F9000CBA2D /* TabBar.swift in Sources */,
 				FA4BBF372579029A00F2ABD7 /* UIView+Extensions.swift in Sources */,
 				FAF1D4D9257A5CE400DE10B4 /* ChartModel.swift in Sources */,
+				FA762D67258C95EE00702EEF /* MeetingPictureView.swift in Sources */,
 				FA4BBF332578FDE100F2ABD7 /* NavigationBar+Extensions.swift in Sources */,
 				FA5295C3258A199D001B4D9D /* Balance+CoreDataProperties.swift in Sources */,
 				FA30131F257913D1004D2421 /* ChartView.swift in Sources */,
