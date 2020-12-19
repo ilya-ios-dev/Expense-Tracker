@@ -153,8 +153,10 @@ extension HomeViewController {
             
             //Gradient
             cell.gradientLayer?.removeFromSuperlayer()
-            guard let startColor = UIColor(hex: transaction.category.gradient.startColor!) else { return cell }
-            guard let endColor = UIColor(hex: transaction.category.gradient.endColor!) else { return cell }
+            guard let transactionStartColor = transaction.category.gradient.startColor else { return nil }
+            guard let transactionEndColor = transaction.category.gradient.endColor else { return nil }
+            guard let startColor = UIColor(hex: transactionStartColor) else { return cell }
+            guard let endColor = UIColor(hex: transactionEndColor) else { return cell }
             cell.gradientLayer = cell.imageBackground.applyGradient(colours: [startColor, endColor])
             
             //Image
@@ -218,9 +220,9 @@ extension HomeViewController: UICollectionViewDelegate {
     func editAction(_ indexPath: IndexPath) -> UIAction {
         return UIAction(title: "Edit",
                         image: UIImage(systemName: "square.and.pencil")) { action in
-            let storyboard = UIStoryboard(name: "Adding", bundle: nil)
+            let storyboard = UIStoryboard(name: "SelectingTypeOfTransactionViewController", bundle: nil)
             guard let navController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
-            guard let addingViewController = navController.topViewController as? AddingViewController else { return }
+            guard let addingViewController = navController.topViewController as? SelectingTypeOfTransactionViewController else { return }
             addingViewController.transaction = self.dataSource.itemIdentifier(for: indexPath)
             self.navigationController?.present(navController, animated: true, completion: nil)
         }
