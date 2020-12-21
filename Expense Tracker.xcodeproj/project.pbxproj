@@ -50,7 +50,6 @@
 		FA856FD1258CB2820020A6AA /* TransactionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA856FD0258CB2820020A6AA /* TransactionButton.swift */; };
 		FA856FD5258CE01B0020A6AA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA856FD4258CE01B0020A6AA /* TabBarViewController.swift */; };
 		FA8D899125826DB900ED1770 /* ExpenseTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA8D898F25826DB900ED1770 /* ExpenseTracker.xcdatamodeld */; };
-		FA9B87F52577EC3C003E2E28 /* AddingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9B87F42577EC3C003E2E28 /* AddingViewController.swift */; };
 		FAA270B125876AAE001B9AD4 /* CreateCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA270B025876AAE001B9AD4 /* CreateCategory.storyboard */; };
 		FAAFCD82257A36E100EBA6FC /* PlateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFCD81257A36E100EBA6FC /* PlateView.swift */; };
 		FAB9D7AD25794288003320A6 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9D7AC25794288003320A6 /* GraphView.swift */; };
@@ -71,7 +70,6 @@
 		FAFB4E4E25754768002B9E23 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFB4E4D25754768002B9E23 /* Category.storyboard */; };
 		FAFB4E5125754783002B9E23 /* Chart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFB4E5025754783002B9E23 /* Chart.storyboard */; };
 		FAFB4E5425754796002B9E23 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFB4E5325754796002B9E23 /* Profile.storyboard */; };
-		FAFB4E572575482C002B9E23 /* Adding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFB4E562575482C002B9E23 /* Adding.storyboard */; };
 		FAFF7F55257679BB00581889 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF7F53257679BB00581889 /* CategoryTableViewCell.swift */; };
 		FAFF7F56257679BB00581889 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFF7F54257679BB00581889 /* CategoryTableViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -120,7 +118,6 @@
 		FA856FD0258CB2820020A6AA /* TransactionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionButton.swift; sourceTree = "<group>"; };
 		FA856FD4258CE01B0020A6AA /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FA8D899025826DB900ED1770 /* ExpenseTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpenseTracker.xcdatamodel; sourceTree = "<group>"; };
-		FA9B87F42577EC3C003E2E28 /* AddingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddingViewController.swift; sourceTree = "<group>"; };
 		FAA270B025876AAE001B9AD4 /* CreateCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateCategory.storyboard; sourceTree = "<group>"; };
 		FAAFCD81257A36E100EBA6FC /* PlateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateView.swift; sourceTree = "<group>"; };
 		FAB9D7AC25794288003320A6 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
@@ -143,7 +140,6 @@
 		FAFB4E4D25754768002B9E23 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
 		FAFB4E5025754783002B9E23 /* Chart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chart.storyboard; sourceTree = "<group>"; };
 		FAFB4E5325754796002B9E23 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		FAFB4E562575482C002B9E23 /* Adding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Adding.storyboard; sourceTree = "<group>"; };
 		FAFF7F53257679BB00581889 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		FAFF7F54257679BB00581889 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -324,7 +320,6 @@
 		FAC951F72575507A00931346 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				FAFB4E562575482C002B9E23 /* Adding.storyboard */,
 				FAFB4E5025754783002B9E23 /* Chart.storyboard */,
 				FA6E6744258CF395000CBA2D /* Home.storyboard */,
 				FAFB4E5325754796002B9E23 /* Profile.storyboard */,
@@ -387,7 +382,6 @@
 		FAFB4E452575459A002B9E23 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA9B87F42577EC3C003E2E28 /* AddingViewController.swift */,
 				FA30131B2579124D004D2421 /* ChartViewController.swift */,
 				FAFB4E322575457E002B9E23 /* HomeViewController.swift */,
 				FA856FD4258CE01B0020A6AA /* TabBarViewController.swift */,
@@ -504,7 +498,6 @@
 				FA698AEE25876306008D2168 /* images.csv in Resources */,
 				FA59C76E25755B9300C80A5A /* HomeCollectionViewCell.xib in Resources */,
 				FAC08F042583561900C3FD05 /* CircleColorCollectionViewCell.xib in Resources */,
-				FAFB4E572575482C002B9E23 /* Adding.storyboard in Resources */,
 				FA2544FE2578CED600D065CB /* CategoryCollectionViewCell.xib in Resources */,
 				FAF1799725874D4E00113DF5 /* gradients.csv in Resources */,
 				FA6E675C258D1CBB000CBA2D /* ChooseCategoryViewController.storyboard in Resources */,
@@ -560,7 +553,6 @@
 				FAAFCD82257A36E100EBA6FC /* PlateView.swift in Sources */,
 				FA6E6749258D1BC6000CBA2D /* SelectingTypeOfTransactionViewController.swift in Sources */,
 				FAFB4E312575457E002B9E23 /* SceneDelegate.swift in Sources */,
-				FA9B87F52577EC3C003E2E28 /* AddingViewController.swift in Sources */,
 				FA168DA32583740100393814 /* UIColor+Extensions.swift in Sources */,
 				FAB9D7AD25794288003320A6 /* GraphView.swift in Sources */,
 				FA33752E2588D67C00139495 /* Category+CoreDataProperties.swift in Sources */,

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WT3-8I-bQS">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="qPX-xt-AWE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WT3-8I-bQS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8fr-61-glZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Sf3-Rj-Rcv" kind="relationship" relationship="rootViewController" id="qQL-pg-r8p"/>
+                        <segue destination="GZG-5p-ArM" kind="show" identifier="fillingAmountSegue" id="p3O-EP-vkJ"/>
+                        <segue destination="tjj-2G-6jd" kind="show" identifier="chooseCategory" id="nEb-Bl-VzZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1q8-62-eMX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="217.39130434782609" y="64.955357142857139"/>
+        </scene>
+        <!--Add Transaction-->
+        <scene sceneID="3e3-qm-5Yb">
+            <objects>
+                <viewController id="Sf3-Rj-Rcv" customClass="SelectingTypeOfTransactionViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZKD-JK-cWZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Py-xk-ev9" customClass="MeetingPictureView" customModule="Expense_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="50" y="66" width="314" height="300"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="750" constant="300" id="NaJ-vu-OBK"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TdH-u2-cnD">
+                                <rect key="frame" x="20" y="473.5" width="374" height="284.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What kind of transaction it is?" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nP-cD-PzV">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="69.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="29"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="olk-BQ-TLS">
+                                        <rect key="frame" x="0.0" y="89.5" width="374" height="195"/>
+                                        <subviews>
+                                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ieu-Fd-csb" customClass="ExpenseButton" customModule="Expense_Tracker" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="179.5" height="195"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <connections>
+                                                    <action selector="categorySelected:" destination="Sf3-Rj-Rcv" eventType="touchUpInside" id="QjU-yc-oxu"/>
+                                                </connections>
+                                            </button>
+                                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pq4-gT-giM" customClass="IncomeButton" customModule="Expense_Tracker" customModuleProvider="target">
+                                                <rect key="frame" x="194.5" y="0.0" width="179.5" height="195"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="195" id="gyV-gv-nKb"/>
+                                                </constraints>
+                                                <connections>
+                                                    <action selector="categorySelected:" destination="Sf3-Rj-Rcv" eventType="touchUpInside" id="i4A-QV-KBd"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Q0E-ui-olV"/>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="TdH-u2-cnD" firstAttribute="leading" secondItem="Q0E-ui-olV" secondAttribute="leading" constant="20" id="LgA-7h-Him"/>
+                            <constraint firstItem="TdH-u2-cnD" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7Py-xk-ev9" secondAttribute="bottom" constant="20" id="Xt2-H2-zIO"/>
+                            <constraint firstAttribute="trailing" secondItem="TdH-u2-cnD" secondAttribute="trailing" constant="20" id="ix6-HN-SBZ"/>
+                            <constraint firstItem="Q0E-ui-olV" firstAttribute="trailing" secondItem="7Py-xk-ev9" secondAttribute="trailing" constant="50" id="j0z-4P-9pn"/>
+                            <constraint firstItem="7Py-xk-ev9" firstAttribute="leading" secondItem="Q0E-ui-olV" secondAttribute="leading" constant="50" id="oJr-9E-6WT"/>
+                            <constraint firstItem="Q0E-ui-olV" firstAttribute="bottom" secondItem="TdH-u2-cnD" secondAttribute="bottom" constant="50" id="sSv-ER-bpl"/>
+                            <constraint firstItem="7Py-xk-ev9" firstAttribute="top" secondItem="Q0E-ui-olV" secondAttribute="top" constant="10" id="wkc-Wa-XBb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Transaction" id="U1W-xh-vdB">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="a9V-sZ-GBm">
+                            <imageReference key="image" image="xmark" catalog="system" symbolScale="default" renderingMode="template"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="closeAction:" destination="Sf3-Rj-Rcv" id="En5-en-yVm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="expenseButton" destination="Ieu-Fd-csb" id="Ke1-b2-A8P"/>
+                        <outlet property="incomeButton" destination="Pq4-gT-giM" id="7aG-dM-9Az"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sc9-Ej-r0k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1162" y="65"/>
+        </scene>
+        <!--ChooseCategoryViewController-->
+        <scene sceneID="6Ji-aQ-24q">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ChooseCategoryViewController" id="tjj-2G-6jd" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="F4u-Nr-rFd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D0x-V6-FGa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="217" y="548"/>
+        </scene>
+        <!--FillingAmountAndDescriptionViewController-->
+        <scene sceneID="N6r-X4-LUZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FillingAmountAndDescriptionViewController" id="GZG-5p-ArM" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="64h-Cd-sak"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c2i-Yy-wxT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-319" y="548"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+    <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+    </resources>
+</document>
