@@ -100,7 +100,7 @@ extension CreateCategoryViewController {
     /// Setting DataSource and Delegate.
     /// Select First Item if not selected.
     private func configureColorCollectionView() {
-        let nib = UINib(nibName: "CircleColorCollectionViewCell", bundle: nil)
+        let nib = UINib(nibName: "GradientCategoryCollectionViewCell", bundle: nil)
         gradientCollectionView.register(nib, forCellWithReuseIdentifier: "colorCell")
         gradientCollectionView.delegate = self
         gradientCollectionView.dataSource = self
@@ -118,11 +118,11 @@ extension CreateCategoryViewController {
     /// Setting DataSource and Delegate.
     /// Select First Item if not selected.
     private func configureImageCollectionView() {
-        let nib = UINib(nibName: "CircleImageCollectionViewCell", bundle: nil)
+        let nib = UINib(nibName: "CategoryImageCollectionViewCell", bundle: nil)
         imagesCollectionView.register(nib, forCellWithReuseIdentifier: "imageCell")
+        imagesCollectionView.collectionViewLayout = configureLayout()
         imagesCollectionView.delegate = self
         imagesCollectionView.dataSource = self
-        
         if let category = category {
             guard let imageIndex = images.firstIndex(of: category.categoryImage) else { return }
             let imageIndexPath = IndexPath(item: imageIndex, section: 0)
@@ -131,6 +131,23 @@ extension CreateCategoryViewController {
             let indexPath = IndexPath(item: 0, section: 0)
             imagesCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
         }
+    }
+    
+    /// creates a UICollectionViewCompositionalLayout, which is responsible for placing cells.
+    private func configureLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                              heightDimension: .absolute(96))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(96),
+                                               heightDimension: .fractionalHeight(1))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize,
+                                                     subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+
+        section.orthogonalScrollingBehavior = .continuous
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
     
     /// Loads data for `gradients` and `images`
@@ -216,24 +233,28 @@ extension CreateCategoryViewController: UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == gradientCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as! CircleColorCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as! GradientCategoryCollectionViewCell
             cell.gradientLayer?.removeFromSuperlayer()
             cell.gradientLayer = cell.circleGradient?.applyGradient(colours: getGradientColors(for: indexPath))
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! CircleImageCollectionViewCell
-            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! CategoryImageCollectionViewCell
+
             let imageName = images[indexPath.item].name!
             cell.imageView.image = nil
             cell.imageView.image = UIImage(systemName: imageName)
             
             guard let selectedIndexPath = gradientCollectionView.indexPathsForSelectedItems?.first else { return cell }
+
             cell.gradientLayer?.removeFromSuperlayer()
             cell.gradientLayer = cell.circleBackground?.applyGradient(colours: getGradientColors(for: selectedIndexPath))
             return cell
         }
     }
     
+    /// Gets the gradient colors for the cell.
+    /// - Parameter indexPath: The index of the call whose gradient is needed.
+    /// - Returns: The colors used in the call.
     private func getGradientColors(for indexPath: IndexPath) -> [UIColor] {
         let gradient = gradients[indexPath.item]
         guard let startColor = UIColor(hex: gradient.startColor!) else { return [] }
@@ -241,11 +262,14 @@ extension CreateCategoryViewController: UICollectionViewDataSource, UICollection
         return [startColor, endColor]
     }
     
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == gradientCollectionView {
             guard let selectedIndexPath = imagesCollectionView.indexPathsForSelectedItems?.first else { return }
-            imagesCollectionView.reloadData()
-            imagesCollectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+            let indexpaths = imagesCollectionView.visibleCells.map { imagesCollectionView.indexPath(for: $0)! }
+            imagesCollectionView.deselectItem(at: selectedIndexPath, animated: false)
+            imagesCollectionView.reloadItems(at: indexpaths)
+            imagesCollectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .centeredVertically)
+            
         }
     }
 }
