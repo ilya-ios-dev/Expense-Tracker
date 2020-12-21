@@ -19,6 +19,8 @@
 		FA301324257914D6004D2421 /* MonthCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA301322257914D6004D2421 /* MonthCollectionViewCell.xib */; };
 		FA33752D2588D67C00139495 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33752B2588D67C00139495 /* Category+CoreDataClass.swift */; };
 		FA33752E2588D67C00139495 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33752C2588D67C00139495 /* Category+CoreDataProperties.swift */; };
+		FA49FFDA258DE029006BB779 /* ExpenseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA49FFD9258DE029006BB779 /* ExpenseButton.swift */; };
+		FA49FFDD258DE041006BB779 /* IncomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA49FFDC258DE041006BB779 /* IncomeButton.swift */; };
 		FA4BBF332578FDE100F2ABD7 /* NavigationBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BBF322578FDE100F2ABD7 /* NavigationBar+Extensions.swift */; };
 		FA4BBF372579029A00F2ABD7 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BBF362579029A00F2ABD7 /* UIView+Extensions.swift */; };
 		FA5295C2258A199D001B4D9D /* Balance+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5295C0258A199D001B4D9D /* Balance+CoreDataClass.swift */; };
@@ -28,6 +30,14 @@
 		FA698AEE25876306008D2168 /* images.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA698AED25876306008D2168 /* images.csv */; };
 		FA6E673E258CF2F9000CBA2D /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E673D258CF2F9000CBA2D /* TabBar.swift */; };
 		FA6E6745258CF395000CBA2D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E6744258CF395000CBA2D /* Home.storyboard */; };
+		FA6E6749258D1BC6000CBA2D /* SelectingTypeOfTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E6748258D1BC6000CBA2D /* SelectingTypeOfTransactionViewController.swift */; };
+		FA6E674C258D1C10000CBA2D /* FillingAmountAndDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E674B258D1C10000CBA2D /* FillingAmountAndDescriptionViewController.swift */; };
+		FA6E674F258D1C29000CBA2D /* ChooseCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E674E258D1C29000CBA2D /* ChooseCategoryViewController.swift */; };
+		FA6E6752258D1C4A000CBA2D /* ChooseDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E6751258D1C4A000CBA2D /* ChooseDateViewController.swift */; };
+		FA6E6756258D1C78000CBA2D /* SelectingTypeOfTransactionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E6755258D1C78000CBA2D /* SelectingTypeOfTransactionViewController.storyboard */; };
+		FA6E6759258D1C99000CBA2D /* FillingAmountAndDescriptionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E6758258D1C99000CBA2D /* FillingAmountAndDescriptionViewController.storyboard */; };
+		FA6E675C258D1CBB000CBA2D /* ChooseCategoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E675B258D1CBB000CBA2D /* ChooseCategoryViewController.storyboard */; };
+		FA6E675F258D1CE1000CBA2D /* ChooseDateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E675E258D1CE1000CBA2D /* ChooseDateViewController.storyboard */; };
 		FA718DA02588C41500A9FF12 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718D9F2588C41500A9FF12 /* CustomButton.swift */; };
 		FA718DA42588CC6800A9FF12 /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718DA22588CC6800A9FF12 /* Transaction+CoreDataClass.swift */; };
 		FA718DA52588CC6800A9FF12 /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718DA32588CC6800A9FF12 /* Transaction+CoreDataProperties.swift */; };
@@ -79,6 +89,8 @@
 		FA301322257914D6004D2421 /* MonthCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA33752B2588D67C00139495 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FA33752C2588D67C00139495 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FA49FFD9258DE029006BB779 /* ExpenseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseButton.swift; sourceTree = "<group>"; };
+		FA49FFDC258DE041006BB779 /* IncomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeButton.swift; sourceTree = "<group>"; };
 		FA4BBF322578FDE100F2ABD7 /* NavigationBar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar+Extensions.swift"; sourceTree = "<group>"; };
 		FA4BBF362579029A00F2ABD7 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		FA5295C0258A199D001B4D9D /* Balance+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Balance+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -88,6 +100,14 @@
 		FA698AED25876306008D2168 /* images.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = images.csv; sourceTree = "<group>"; };
 		FA6E673D258CF2F9000CBA2D /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		FA6E6744258CF395000CBA2D /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		FA6E6748258D1BC6000CBA2D /* SelectingTypeOfTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectingTypeOfTransactionViewController.swift; sourceTree = "<group>"; };
+		FA6E674B258D1C10000CBA2D /* FillingAmountAndDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillingAmountAndDescriptionViewController.swift; sourceTree = "<group>"; };
+		FA6E674E258D1C29000CBA2D /* ChooseCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCategoryViewController.swift; sourceTree = "<group>"; };
+		FA6E6751258D1C4A000CBA2D /* ChooseDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDateViewController.swift; sourceTree = "<group>"; };
+		FA6E6755258D1C78000CBA2D /* SelectingTypeOfTransactionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectingTypeOfTransactionViewController.storyboard; sourceTree = "<group>"; };
+		FA6E6758258D1C99000CBA2D /* FillingAmountAndDescriptionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FillingAmountAndDescriptionViewController.storyboard; sourceTree = "<group>"; };
+		FA6E675B258D1CBB000CBA2D /* ChooseCategoryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChooseCategoryViewController.storyboard; sourceTree = "<group>"; };
+		FA6E675E258D1CE1000CBA2D /* ChooseDateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChooseDateViewController.storyboard; sourceTree = "<group>"; };
 		FA718D9F2588C41500A9FF12 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FA718DA22588CC6800A9FF12 /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FA718DA32588CC6800A9FF12 /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -221,10 +241,52 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FA6E6754258D1C4F000CBA2D /* Adding Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E6748258D1BC6000CBA2D /* SelectingTypeOfTransactionViewController.swift */,
+				FA6E674B258D1C10000CBA2D /* FillingAmountAndDescriptionViewController.swift */,
+				FA6E674E258D1C29000CBA2D /* ChooseCategoryViewController.swift */,
+				FA6E6751258D1C4A000CBA2D /* ChooseDateViewController.swift */,
+			);
+			path = "Adding Transaction";
+			sourceTree = "<group>";
+		};
+		FA6E6761258D1D1E000CBA2D /* Adding Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E6755258D1C78000CBA2D /* SelectingTypeOfTransactionViewController.storyboard */,
+				FA6E6758258D1C99000CBA2D /* FillingAmountAndDescriptionViewController.storyboard */,
+				FA6E675B258D1CBB000CBA2D /* ChooseCategoryViewController.storyboard */,
+				FA6E675E258D1CE1000CBA2D /* ChooseDateViewController.storyboard */,
+			);
+			path = "Adding Transaction";
+			sourceTree = "<group>";
+		};
+		FA6E6762258D1D36000CBA2D /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				FA758856257668870016990D /* CategoryViewController.swift */,
+				FAC08EFE258353C400C3FD05 /* CreateCategoryViewController.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		FA6E6763258D1D45000CBA2D /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				FAFB4E4D25754768002B9E23 /* Category.storyboard */,
+				FAA270B025876AAE001B9AD4 /* CreateCategory.storyboard */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		FA856FCC258CAEAA0020A6AA /* TransactionsView */ = {
 			isa = PBXGroup;
 			children = (
+				FA49FFD9258DE029006BB779 /* ExpenseButton.swift */,
 				FA762D6D258CAC0400702EEF /* ExpenseView.swift */,
+				FA49FFDC258DE041006BB779 /* IncomeButton.swift */,
 				FA856FC9258CAD5F0020A6AA /* IncomeView.swift */,
 				FA856FD0258CB2820020A6AA /* TransactionButton.swift */,
 				FA762D6A258C9C1200702EEF /* TransactionView.swift */,
@@ -263,13 +325,13 @@
 			isa = PBXGroup;
 			children = (
 				FAFB4E562575482C002B9E23 /* Adding.storyboard */,
-				FAFB4E4D25754768002B9E23 /* Category.storyboard */,
 				FAFB4E5025754783002B9E23 /* Chart.storyboard */,
+				FA6E6744258CF395000CBA2D /* Home.storyboard */,
+				FAFB4E5325754796002B9E23 /* Profile.storyboard */,
+				FA6E6761258D1D1E000CBA2D /* Adding Transaction */,
+				FA6E6763258D1D45000CBA2D /* Category */,
 				FAFB4E3925754580002B9E23 /* LaunchScreen.storyboard */,
 				FAFB4E342575457E002B9E23 /* Main.storyboard */,
-				FAFB4E5325754796002B9E23 /* Profile.storyboard */,
-				FAA270B025876AAE001B9AD4 /* CreateCategory.storyboard */,
-				FA6E6744258CF395000CBA2D /* Home.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -326,11 +388,11 @@
 			isa = PBXGroup;
 			children = (
 				FA9B87F42577EC3C003E2E28 /* AddingViewController.swift */,
-				FA758856257668870016990D /* CategoryViewController.swift */,
 				FA30131B2579124D004D2421 /* ChartViewController.swift */,
-				FAC08EFE258353C400C3FD05 /* CreateCategoryViewController.swift */,
 				FAFB4E322575457E002B9E23 /* HomeViewController.swift */,
 				FA856FD4258CE01B0020A6AA /* TabBarViewController.swift */,
+				FA6E6754258D1C4F000CBA2D /* Adding Transaction */,
+				FA6E6762258D1D36000CBA2D /* Category */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -338,17 +400,17 @@
 		FAFB4E48257545A6002B9E23 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA718D9F2588C41500A9FF12 /* CustomButton.swift */,
+				FA762D66258C95EE00702EEF /* MeetingPictureView.swift */,
+				FA6E673D258CF2F9000CBA2D /* TabBar.swift */,
+				FAC951F425754F4E00931346 /* TopView.swift */,
 				FA2545002578CEDA00D065CB /* CategoryCollectionViewCell */,
 				FAFF7F58257679C000581889 /* CategoryTableViewCell */,
 				FAF1D4D6257A55D000DE10B4 /* ChartView */,
 				FAA270B325876BC7001B9AD4 /* CreateCategory */,
-				FA718D9F2588C41500A9FF12 /* CustomButton.swift */,
 				FA59C77025755B9A00C80A5A /* HomeCollectionViewCell */,
-				FA762D66258C95EE00702EEF /* MeetingPictureView.swift */,
 				FA301326257914D9004D2421 /* MonthCollectionViewCell */,
 				FAC951F72575507A00931346 /* Storyboards */,
-				FA6E673D258CF2F9000CBA2D /* TabBar.swift */,
-				FAC951F425754F4E00931346 /* TopView.swift */,
 				FA856FCC258CAEAA0020A6AA /* TransactionsView */,
 			);
 			path = View;
@@ -429,7 +491,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6E6756258D1C78000CBA2D /* SelectingTypeOfTransactionViewController.storyboard in Resources */,
 				FA301324257914D6004D2421 /* MonthCollectionViewCell.xib in Resources */,
+				FA6E6759258D1C99000CBA2D /* FillingAmountAndDescriptionViewController.storyboard in Resources */,
 				FAC08F0B25835F8C00C3FD05 /* CircleImageCollectionViewCell.xib in Resources */,
 				FAA270B125876AAE001B9AD4 /* CreateCategory.storyboard in Resources */,
 				FAFB4E5425754796002B9E23 /* Profile.storyboard in Resources */,
@@ -443,7 +507,9 @@
 				FAFB4E572575482C002B9E23 /* Adding.storyboard in Resources */,
 				FA2544FE2578CED600D065CB /* CategoryCollectionViewCell.xib in Resources */,
 				FAF1799725874D4E00113DF5 /* gradients.csv in Resources */,
+				FA6E675C258D1CBB000CBA2D /* ChooseCategoryViewController.storyboard in Resources */,
 				FAFB4E5125754783002B9E23 /* Chart.storyboard in Resources */,
+				FA6E675F258D1CE1000CBA2D /* ChooseDateViewController.storyboard in Resources */,
 				FAFB4E3825754580002B9E23 /* Assets.xcassets in Resources */,
 				FAFB4E362575457E002B9E23 /* Main.storyboard in Resources */,
 			);
@@ -458,8 +524,11 @@
 			files = (
 				FA0E5887258BA545002F5D88 /* Sequense+Extensions.swift in Sources */,
 				FA30131C2579124D004D2421 /* ChartViewController.swift in Sources */,
+				FA49FFDD258DE041006BB779 /* IncomeButton.swift in Sources */,
 				FA5295C2258A199D001B4D9D /* Balance+CoreDataClass.swift in Sources */,
+				FA6E674C258D1C10000CBA2D /* FillingAmountAndDescriptionViewController.swift in Sources */,
 				FA59C76D25755B9300C80A5A /* HomeCollectionViewCell.swift in Sources */,
+				FA49FFDA258DE029006BB779 /* ExpenseButton.swift in Sources */,
 				FA8D899125826DB900ED1770 /* ExpenseTracker.xcdatamodeld in Sources */,
 				FA718DA02588C41500A9FF12 /* CustomButton.swift in Sources */,
 				FA718DA52588CC6800A9FF12 /* Transaction+CoreDataProperties.swift in Sources */,
@@ -480,13 +549,16 @@
 				FAF1D4D9257A5CE400DE10B4 /* ChartModel.swift in Sources */,
 				FA762D67258C95EE00702EEF /* MeetingPictureView.swift in Sources */,
 				FA4BBF332578FDE100F2ABD7 /* NavigationBar+Extensions.swift in Sources */,
+				FA6E674F258D1C29000CBA2D /* ChooseCategoryViewController.swift in Sources */,
 				FA5295C3258A199D001B4D9D /* Balance+CoreDataProperties.swift in Sources */,
 				FA30131F257913D1004D2421 /* ChartView.swift in Sources */,
 				FA0E5880258B4B84002F5D88 /* GraphPoint.swift in Sources */,
 				FAC08EFF258353C400C3FD05 /* CreateCategoryViewController.swift in Sources */,
 				FAC951F525754F4E00931346 /* TopView.swift in Sources */,
+				FA6E6752258D1C4A000CBA2D /* ChooseDateViewController.swift in Sources */,
 				FAC08F032583561900C3FD05 /* CircleColorCollectionViewCell.swift in Sources */,
 				FAAFCD82257A36E100EBA6FC /* PlateView.swift in Sources */,
+				FA6E6749258D1BC6000CBA2D /* SelectingTypeOfTransactionViewController.swift in Sources */,
 				FAFB4E312575457E002B9E23 /* SceneDelegate.swift in Sources */,
 				FA9B87F52577EC3C003E2E28 /* AddingViewController.swift in Sources */,
 				FA168DA32583740100393814 /* UIColor+Extensions.swift in Sources */,

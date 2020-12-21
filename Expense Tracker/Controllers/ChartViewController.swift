@@ -13,10 +13,9 @@ final class ChartViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var chartView: ChartView!
-    @IBOutlet private weak var expenseLabel: UILabel!
-    @IBOutlet private weak var incomeLabel: UILabel!
-    @IBOutlet private var statisticsViews: [UIView]!
-    @IBOutlet private var roundedBackgrounds: [UIView]!
+    @IBOutlet private weak var expenseView: ExpenseView!
+    @IBOutlet private weak var incomeView: IncomeView!
+    
     
     //MARK: - Properties
     private var dataSource: UICollectionViewDiffableDataSource<Int, Date>!
@@ -41,7 +40,6 @@ final class ChartViewController: UIViewController {
         setupDataSource()
         setupTransactionsObserver()
         //Configure UI
-        configureViews()
         configureCollectionView()
     }
 }
@@ -100,20 +98,11 @@ extension ChartViewController {
 
 //MARK: - Configure Layouts
 extension ChartViewController {
-    /// Configure displays of views.
-    private func configureViews() {
-        statisticsViews.forEach {
-            $0.layer.cornerRadius = 9
-        }
-        roundedBackgrounds.forEach {
-            $0.layer.cornerRadius = $0.frame.height / 2
-        }
-    }
     
     /// Refresh the data in the expense and income labels.
     private func configureLabels() {
-        expenseLabel.text = "$\(balance.getExpenseForMonth(searchDate) ?? 0)"
-        incomeLabel.text = "$\(balance.getIncomeForMonth(searchDate) ?? 0)"
+        expenseView.transactionAmountLabel.text = "$\(balance.getExpenseForMonth(searchDate) ?? 0)"
+        incomeView.transactionAmountLabel.text = "$\(balance.getIncomeForMonth(searchDate) ?? 0)"
     }
     
     /// Register `collectionView` cell. Assigning a delegate. Select current month.
