@@ -88,10 +88,10 @@ extension CategoryViewController {
             cell.categoryImage?.image = nil
             
             cell.titleLabel.text = category.name
-            cell.categoryImage?.image = UIImage(systemName: category.categoryImage.name!)
+            cell.categoryImage?.image = UIImage(systemName: category.categoryImage.name)
             
-            guard let startColor = UIColor(hex: category.gradient.startColor!),
-                  let endColor = UIColor(hex: category.gradient.endColor!) else { return cell }
+            guard let startColor = UIColor(hex: category.gradient.startColor),
+                  let endColor = UIColor(hex: category.gradient.endColor) else { return cell }
             cell.gradientLayer = cell.imageBackgroundView.applyGradient(colours: [startColor, endColor])
             return cell
         }

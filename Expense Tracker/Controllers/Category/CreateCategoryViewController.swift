@@ -77,6 +77,8 @@ final class CreateCategoryViewController: UIViewController {
             try context.save()
             dismiss(animated: true, completion: nil)
         } catch {
+            print("\(error.localizedDescription)\n\(error)")
+            print("name: \(name),\ncategoryImage: \(image.name), gradient: \(gradient.startColor) : \(gradient.endColor)")
             alert.title = "\(error.localizedDescription)"
             present(alert, animated: true)
         }
@@ -240,7 +242,7 @@ extension CreateCategoryViewController: UICollectionViewDataSource, UICollection
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! CategoryImageCollectionViewCell
 
-            let imageName = images[indexPath.item].name!
+            let imageName = images[indexPath.item].name
             cell.imageView.image = nil
             cell.imageView.image = UIImage(systemName: imageName)
             
@@ -257,8 +259,8 @@ extension CreateCategoryViewController: UICollectionViewDataSource, UICollection
     /// - Returns: The colors used in the call.
     private func getGradientColors(for indexPath: IndexPath) -> [UIColor] {
         let gradient = gradients[indexPath.item]
-        guard let startColor = UIColor(hex: gradient.startColor!) else { return [] }
-        guard let endColor = UIColor(hex: gradient.endColor!) else { return [] }
+        guard let startColor = UIColor(hex: gradient.startColor) else { return [] }
+        guard let endColor = UIColor(hex: gradient.endColor) else { return [] }
         return [startColor, endColor]
     }
     

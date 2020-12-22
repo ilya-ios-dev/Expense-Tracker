@@ -15,10 +15,11 @@ final class SelectingTypeOfTransactionViewController: UIViewController {
     @IBOutlet private weak var expenseButton: ExpenseButton!
     
     //MARK: - Properties
-    public var transaction: Transaction?
+    public var transaction: Transaction!
+    private var balance: Balance!
     private lazy var context: NSManagedObjectContext = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-        return appDelegate.container.viewContext
+        return appDelegate.privateContext
     }()
     
     //MARK: - View Life Cycle
@@ -26,6 +27,10 @@ final class SelectingTypeOfTransactionViewController: UIViewController {
         super.viewDidLoad()
         if transaction == nil {
             transaction = Transaction(context: context)
+        } else {
+            fetchBalance()
+            balance.totalBalance += transaction.isExpense ? transaction.amount : -transaction.amount
+            print(balance.totalBalance)
         }
     }
     
@@ -51,4 +56,15 @@ final class SelectingTypeOfTransactionViewController: UIViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
     
+}
+//MARK: - Supporting Methods
+extension SelectingTypeOfTransactionViewController {
+    private func fetchBalance() {
+        let fetchRequest: NSFetchRequest = Balance.fetchRequest()
+        do {
+            balance = try context.fetch(fetchRequest).first ?? Balance(context: context)
+        } catch {
+            print(error)
+        }
+    }
 }

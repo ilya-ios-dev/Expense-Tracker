@@ -153,15 +153,13 @@ extension HomeViewController {
             
             //Gradient
             cell.gradientLayer?.removeFromSuperlayer()
-            guard let transactionStartColor = transaction.category.gradient.startColor else { return nil }
-            guard let transactionEndColor = transaction.category.gradient.endColor else { return nil }
-            guard let startColor = UIColor(hex: transactionStartColor) else { return cell }
-            guard let endColor = UIColor(hex: transactionEndColor) else { return cell }
+            guard let startColor = UIColor(hex: transaction.category.gradient.startColor) else { return cell }
+            guard let endColor = UIColor(hex: transaction.category.gradient.endColor) else { return cell }
             cell.gradientLayer = cell.imageBackground.applyGradient(colours: [startColor, endColor])
             
             //Image
             let imageName = transaction.category.categoryImage.name
-            cell.categoryImageView.image = UIImage(systemName: imageName!)
+            cell.categoryImageView.image = UIImage(systemName: imageName)
             
             //Title
             cell.titleLabel.text = transaction.name

@@ -19,7 +19,12 @@ final class ChartView: UIView {
     private var netLabel: UILabel!
     public var currentBalance = "" {
         didSet {
-            balanceLabel.text = currentBalance
+            if balanceLabel != nil{
+                balanceLabel.text = currentBalance
+            } else {
+                configureLabels()
+                balanceLabel.text = currentBalance
+            }
         }
     }
     public var chartModel: [GraphPoint]?{
@@ -142,7 +147,6 @@ extension ChartView {
         subviews.forEach { $0.removeFromSuperview() }
         configureScrollView()
         configureStackView()
-        configureLabels()
         configureGraphView()
         configureSeparator()
         configureBottomStackView()

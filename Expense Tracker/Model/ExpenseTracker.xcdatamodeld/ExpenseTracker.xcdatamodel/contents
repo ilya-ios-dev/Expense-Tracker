@@ -10,11 +10,11 @@
         <relationship name="gradient" maxCount="1" deletionRule="Nullify" destinationEntity="Gradient" inverseName="category" inverseEntity="Gradient"/>
         <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="category" inverseEntity="Transaction"/>
     </entity>
-    <entity name="CategoryImage" representedClassName="CategoryImage" syncable="YES" codeGenerationType="class">
+    <entity name="CategoryImage" representedClassName="CategoryImage" syncable="YES">
         <attribute name="name" attributeType="String"/>
         <relationship name="category" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="categoryImage" inverseEntity="Category"/>
     </entity>
-    <entity name="Gradient" representedClassName="Gradient" syncable="YES" codeGenerationType="class">
+    <entity name="Gradient" representedClassName="Gradient" syncable="YES">
         <attribute name="endColor" attributeType="String"/>
         <attribute name="startColor" attributeType="String"/>
         <relationship name="category" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="gradient" inverseEntity="Category"/>

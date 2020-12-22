@@ -27,9 +27,8 @@ final class ChooseCategoryViewController: UIViewController {
     //MARK: - Computed Properties
     private lazy var context: NSManagedObjectContext = {
         let appDelegate  = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.container.viewContext
+        return appDelegate.privateContext
     }()
-    
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -55,12 +54,12 @@ extension ChooseCategoryViewController {
             guard let category = try? self.context.existingObject(with: objectId) as? Category else { return nil }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
             cell.gradientLayer?.removeFromSuperlayer()
-            guard let startColor = UIColor(hex: category.gradient.startColor!) else { return cell }
-            guard let endColor = UIColor(hex: category.gradient.endColor!) else { return cell }
+            guard let startColor = UIColor(hex: category.gradient.startColor) else { return cell }
+            guard let endColor = UIColor(hex: category.gradient.endColor) else { return cell }
             cell.gradientLayer = cell.backgroundCategory.applyGradient(colours: [startColor, endColor])
             
             let imageName = category.categoryImage.name
-            cell.categoryImageView.image = UIImage(systemName: imageName!)
+            cell.categoryImageView.image = UIImage(systemName: imageName)
             
             cell.textLabel.text = category.name
             

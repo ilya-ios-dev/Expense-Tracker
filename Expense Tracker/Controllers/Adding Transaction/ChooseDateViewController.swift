@@ -28,6 +28,10 @@ final class ChooseDateViewController: UIViewController {
     
     //MARK: - Computed Properties
     private lazy var context: NSManagedObjectContext = {
+        return transaction.managedObjectContext!
+    }()
+    
+    private lazy var mainContext: NSManagedObjectContext = {
         let appDelegate  = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.container.viewContext
     }()
@@ -51,11 +55,12 @@ final class ChooseDateViewController: UIViewController {
     /// Saves data to `context`. If everything is successful, dismiss.
     @IBAction func finishTapped(_ sender: Any) {
         transaction.date = datePicker.date
-        balance.totalBalance = transaction.isExpense ?
-            balance.totalBalance + transaction.amount : balance.totalBalance - transaction.amount
+        balance.totalBalance -= transaction.isExpense ?
+            transaction.amount : -transaction.amount
         transaction.balance = balance
         do {
             try context.save()
+            saveOnMainContext()
             dismiss(animated: true, completion: nil)
         } catch {
             print(error)
@@ -65,6 +70,18 @@ final class ChooseDateViewController: UIViewController {
 
 //MARK: - Supporting Methods
 extension ChooseDateViewController {
+    /// Saving all changes on main context
+    private func saveOnMainContext() {
+        context.performAndWait {
+            do {
+                try mainContext.save()
+            } catch {
+                print(error)
+                fatalError(error.localizedDescription)
+            }
+        }
+    }
+    
     /// Sets datePickerBottomConstraint to Keyboard Heigh.
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -113,10 +130,10 @@ extension ChooseDateViewController {
     /// Fills the category view with data.
     private func configureTransactionCategory() {
         categoryBackground.layer.cornerRadius = categoryBackground.frame.height / 2
-        guard let startColor = UIColor(hex: transaction.category.gradient.startColor!) else { return }
-        guard let endColorColor = UIColor(hex: transaction.category.gradient.endColor!) else { return }
+        guard let startColor = UIColor(hex: transaction.category.gradient.startColor) else { return }
+        guard let endColorColor = UIColor(hex: transaction.category.gradient.endColor) else { return }
         categoryBackground.applyGradient(colours: [startColor, endColorColor])
-        categoryImage.image = UIImage(systemName: transaction.category.categoryImage.name!)
+        categoryImage.image = UIImage(systemName: transaction.category.categoryImage.name)
     }
     
     /// Fills `transactionNameLabel` and `transactionAmountLabel` fields.
