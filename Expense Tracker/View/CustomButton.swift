@@ -7,36 +7,21 @@
 
 import UIKit
 
+@IBDesignable
 final class CustomButton: UIButton {
-    
-    private var gradientLayer: CAGradientLayer?
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureButton()
-    }
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        configureButton()
+        
+    override func draw(_ rect: CGRect) {
+        configureButton(rect)
     }
     
-    private func configureButton() {
+    private func configureButton(_ frame: CGRect) {
         layer.cornerRadius = frame.height / 2
-        layer.shadowColor = backgroundColor?.cgColor
-        layer.shadowOpacity = 0.5
+        layer.shadowColor = UIColor(hex: "#894BD3")?.cgColor
+        layer.shadowOpacity = 0.7
         layer.shadowOffset = CGSize(width: 0, height: 2)
-        layer.shadowRadius = 3
+        layer.shadowRadius = 6
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
-    }
-    
-    override var isEnabled: Bool {
-        didSet {
-            gradientLayer?.removeFromSuperlayer()
-            if isEnabled {
-                let startGradient = CGPoint(x: -0.5, y: 1.5)
-                let endGradient = CGPoint(x: 1.5, y: -0.5)
-                gradientLayer = self.applyGradient(colours: [#colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1), #colorLiteral(red: 0.3176470588, green: 0.2, blue: 0.7176470588, alpha: 1)], startPoint: .custom(point: startGradient), endPoint: .custom(point: endGradient))
-            }
-        }
+        applyGradient(colours: [#colorLiteral(red: 0.537254902, green: 0.2941176471, blue: 0.8274509804, alpha: 1), #colorLiteral(red: 0.4, green: 0.2352941176, blue: 0.7568627451, alpha: 1)], startPoint: .topRight, endPoint: .bottomLeft)
+
     }
 }

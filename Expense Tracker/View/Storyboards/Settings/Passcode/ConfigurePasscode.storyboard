@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AW3-nh-i0X">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Configure Passcode View Controller-->
+        <scene sceneID="Hj0-nX-koE">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="AW3-nh-i0X" customClass="ConfigurePasscodeViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vx4-0A-GR0">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cZf-Fg-W8x">
+                                <rect key="frame" x="20" y="64" width="350" height="726"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="ePh-Cs-zaQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="566"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Gb-VB-kxJ" customClass="PasscodeWelcomeView" customModule="Expense_Tracker" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="446.33333333333331"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Passcode Lock" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fq-jR-Opo">
+                                                <rect key="frame" x="0.0" y="455.33333333333337" width="350" height="37"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="31"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="When you enable the passcode, a passcode screen will appear when launching the application." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxT-pU-ugI">
+                                                <rect key="frame" x="0.0" y="501.33333333333343" width="350" height="64.666666666666686"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="aIt-CT-FDG">
+                                        <rect key="frame" x="0.0" y="586" width="350" height="140"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="q9c-v9-Nr0">
+                                                <rect key="frame" x="0.0" y="0.0" width="350" height="140"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgP-9e-KOT" customClass="CustomButton" customModule="Expense_Tracker" customModuleProvider="target">
+                                                        <rect key="frame" x="35" y="0.0" width="280" height="60"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="c6K-Lr-GZ4"/>
+                                                            <constraint firstAttribute="width" constant="280" id="jZz-kd-rhA"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <state key="normal" title="Turn passcode on">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="trurnOnTapped:" destination="AW3-nh-i0X" eventType="touchUpInside" id="LcT-TQ-XeR"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEz-pR-Gsf" customClass="CustomButton" customModule="Expense_Tracker" customModuleProvider="target">
+                                                        <rect key="frame" x="35" y="80" width="280" height="60"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="mQD-fh-eBQ"/>
+                                                            <constraint firstAttribute="width" constant="280" id="y3k-2D-Lcd"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <state key="normal" title="Turn passcode off">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="turnOffTapped:" destination="AW3-nh-i0X" eventType="touchUpInside" id="v3G-7f-7tN"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="q9c-v9-Nr0" firstAttribute="leading" secondItem="aIt-CT-FDG" secondAttribute="leading" id="F03-ft-Rf4"/>
+                                            <constraint firstItem="q9c-v9-Nr0" firstAttribute="height" secondItem="aIt-CT-FDG" secondAttribute="height" id="QyJ-63-O7c"/>
+                                            <constraint firstItem="q9c-v9-Nr0" firstAttribute="centerY" secondItem="aIt-CT-FDG" secondAttribute="centerY" id="WDe-j9-iZN"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" secondItem="q9c-v9-Nr0" secondAttribute="height" id="nRZ-Ug-x5z"/>
+                                            <constraint firstAttribute="trailing" secondItem="q9c-v9-Nr0" secondAttribute="trailing" id="xej-1g-YYm"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="nRZ-Ug-x5z"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact">
+                                            <mask key="constraints">
+                                                <exclude reference="QyJ-63-O7c"/>
+                                                <include reference="nRZ-Ug-x5z"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8Gb-VB-kxJ" firstAttribute="height" secondItem="cZf-Fg-W8x" secondAttribute="height" multiplier="0.699088" priority="750" id="ibJ-UC-vd6"/>
+                                </constraints>
+                                <variation key="heightClass=compact" axis="horizontal"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CQi-Pe-ZLH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cZf-Fg-W8x" firstAttribute="top" secondItem="CQi-Pe-ZLH" secondAttribute="top" constant="20" id="Efy-KV-ZfM"/>
+                            <constraint firstItem="CQi-Pe-ZLH" firstAttribute="bottom" secondItem="cZf-Fg-W8x" secondAttribute="bottom" constant="20" id="T9k-Pv-TgY"/>
+                            <constraint firstItem="cZf-Fg-W8x" firstAttribute="leading" secondItem="CQi-Pe-ZLH" secondAttribute="leading" constant="20" id="YDF-uq-oi9"/>
+                            <constraint firstItem="CQi-Pe-ZLH" firstAttribute="trailing" secondItem="cZf-Fg-W8x" secondAttribute="trailing" constant="20" id="cju-zF-ONB"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="passcodePictureView" destination="8Gb-VB-kxJ" id="BJ7-gM-eYW"/>
+                        <outlet property="turnOffButton" destination="JEz-pR-Gsf" id="dJ3-WZ-Tt7"/>
+                        <outlet property="turnOnButton" destination="zgP-9e-KOT" id="sVl-p4-YbB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L1T-9s-Je1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6844.6153846153848" y="74.644549763033169"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="JEz-pR-Gsf">
+            <size key="intrinsicContentSize" width="166" height="36"/>
+        </designable>
+        <designable name="zgP-9e-KOT">
+            <size key="intrinsicContentSize" width="163" height="36"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

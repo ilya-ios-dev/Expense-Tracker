@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="13Q-a5-Kil">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Passcode View Controller-->
+        <scene sceneID="Mmm-RM-AiY">
+            <objects>
+                <viewController id="13Q-a5-Kil" customClass="PasscodeViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xZw-Cy-8cf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Oux-7T-74o">
+                                <rect key="frame" x="20" y="64" width="374" height="114"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your PIN code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ooy-uj-ZHY">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="38.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A password is required to enter the application." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvm-yz-FVN">
+                                        <rect key="frame" x="0.0" y="68.5" width="374" height="45.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4di-IL-W5L" customClass="PasscodeTextField" customModule="Expense_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="20" y="278" width="374" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="K10-RZ-ltr"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="pinEndEditing:" destination="13Q-a5-Kil" eventType="editingDidEnd" id="Ewd-wu-PzW"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tOH-Wf-esv"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Oux-7T-74o" secondAttribute="trailing" constant="20" id="GZb-pd-L1O"/>
+                            <constraint firstItem="Oux-7T-74o" firstAttribute="leading" secondItem="tOH-Wf-esv" secondAttribute="leading" constant="20" id="Mmh-Xl-Dmi"/>
+                            <constraint firstItem="Oux-7T-74o" firstAttribute="top" secondItem="tOH-Wf-esv" secondAttribute="top" priority="750" constant="20" id="N70-Kv-vB6"/>
+                            <constraint firstItem="4di-IL-W5L" firstAttribute="leading" secondItem="tOH-Wf-esv" secondAttribute="leading" constant="20" id="XZI-Ah-pha"/>
+                            <constraint firstItem="4di-IL-W5L" firstAttribute="top" secondItem="Oux-7T-74o" secondAttribute="bottom" constant="20" id="b0g-6x-eSq"/>
+                            <constraint firstItem="tOH-Wf-esv" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4di-IL-W5L" secondAttribute="bottom" constant="10" id="hcR-dP-VIc"/>
+                            <constraint firstAttribute="trailing" secondItem="4di-IL-W5L" secondAttribute="trailing" constant="20" id="mod-7G-MaJ"/>
+                            <constraint firstItem="4di-IL-W5L" firstAttribute="top" secondItem="Oux-7T-74o" secondAttribute="bottom" constant="100" id="tQT-yA-sdd"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="b0g-6x-eSq"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="b0g-6x-eSq"/>
+                                <exclude reference="tQT-yA-sdd"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="bottomPasscodeConstraint" destination="hcR-dP-VIc" id="LKA-RW-q62"/>
+                        <outlet property="descriptionLabel" destination="gvm-yz-FVN" id="NNO-Rw-g8p"/>
+                        <outlet property="passcodeTextField" destination="4di-IL-W5L" id="6fl-3v-yib"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nna-BL-KPb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="198.55072463768118" y="31.473214285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

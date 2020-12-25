@@ -59,11 +59,11 @@
             </objects>
             <point key="canvasLocation" x="-545" y="510"/>
         </scene>
-        <!--Profile-->
+        <!--Settings-->
         <scene sceneID="ffe-Ts-yvM">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="1ID-pv-gCp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" id="Aim-d1-4Sr"/>
+                <viewControllerPlaceholder storyboardName="Settings" id="1ID-pv-gCp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="person" catalog="system" id="Aim-d1-4Sr"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Elf-dJ-EDj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
