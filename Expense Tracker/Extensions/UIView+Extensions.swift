@@ -60,12 +60,12 @@ extension UIView {
     ///   - fillColor: Color inside the circle.
     ///   - lineWidth: Width of dotted line.
     ///   - lineDashPattern: The dash pattern applied to the shape’s path when stroked.
-    public func addDashedCircle(strokeColor: UIColor = .black, fillColor : UIColor = .clear, lineWidth: CGFloat = 2, lineDashPattern: [NSNumber]? = [6,3]) {
+    public func addDashedCircle(strokeColor: UIColor? = .black, fillColor : UIColor? = .clear, lineWidth: CGFloat = 2, lineDashPattern: [NSNumber]? = [6,3]) {
         let circleLayer = CAShapeLayer()
         circleLayer.path = UIBezierPath(ovalIn: bounds).cgPath
         circleLayer.lineWidth = lineWidth
-        circleLayer.strokeColor =  strokeColor.cgColor//border of circle
-        circleLayer.fillColor = fillColor.cgColor//inside the circle
+        circleLayer.strokeColor =  strokeColor?.cgColor//border of circle
+        circleLayer.fillColor = fillColor?.cgColor//inside the circle
         circleLayer.lineJoin = .round
         circleLayer.lineDashPattern = lineDashPattern
         layer.addSublayer(circleLayer)

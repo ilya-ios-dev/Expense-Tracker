@@ -35,7 +35,7 @@ final class ChartView: UIView {
         
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath(roundedRect: rect, cornerRadius: 25)
-        UIColor.white.setFill()
+        UIColor(named: "tabBarColor-1")?.setFill()
         path.fill()
     }
 }
@@ -71,7 +71,7 @@ extension ChartView {
             label.text = formatter.string(from: model.date)
             label.font = UIFont.systemFont(ofSize: 16, weight: .light)
             label.textAlignment = .center
-            label.textColor = #colorLiteral(red: 0.7254901961, green: 0.7411764706, blue: 0.7647058824, alpha: 1)
+            label.textColor = UIColor(named: "dectiptionColor")
             bottomStackView.addArrangedSubview(label)
         }
         stackView.addArrangedSubview(bottomStackView)
@@ -81,7 +81,7 @@ extension ChartView {
     /// Configure a separator between graph and labels.
     private func configureSeparator() {
         let separator = UIView()
-        separator.backgroundColor = #colorLiteral(red: 0.7254901961, green: 0.7411764706, blue: 0.7647058824, alpha: 1)
+        separator.backgroundColor = UIColor(named: "dectiptionColor")
         stackView.addArrangedSubview(separator)
         separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
@@ -91,7 +91,7 @@ extension ChartView {
         netLabel = UILabel()
         netLabel.text = "Net balance"
         netLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        netLabel.textColor = #colorLiteral(red: 0.7254901961, green: 0.7411764706, blue: 0.7647058824, alpha: 1)
+        netLabel.textColor = UIColor(named: "dectiptionColor")
         netLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(netLabel)
         NSLayoutConstraint.activate([
@@ -101,7 +101,7 @@ extension ChartView {
         
         balanceLabel = UILabel()
         balanceLabel.font = UIFont.systemFont(ofSize: 44, weight: .bold)
-        balanceLabel.textColor = #colorLiteral(red: 0.1960784314, green: 0.2117647059, blue: 0.2588235294, alpha: 1)
+        balanceLabel.textColor = UIColor.label
         balanceLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(balanceLabel)
         NSLayoutConstraint.activate([

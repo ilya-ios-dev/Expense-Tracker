@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,7 +38,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="ktQ-YT-ZXK" firstAttribute="leading" secondItem="dxV-34-Tcm" secondAttribute="leading" constant="65" id="8V1-0Y-RTb"/>
                                     <constraint firstItem="M5V-25-Hq6" firstAttribute="top" secondItem="dxV-34-Tcm" secondAttribute="top" id="FAn-LO-wUk"/>
@@ -81,7 +80,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYN-cx-LVf">
                                                         <rect key="frame" x="0.0" y="0.0" width="129" height="19.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="dectiptionColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jF9-Ma-lt6">
@@ -95,7 +94,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="tabBarColor-1"/>
                                 <constraints>
                                     <constraint firstItem="ymY-Es-nSo" firstAttribute="leading" secondItem="iZV-YD-ad1" secondAttribute="leading" constant="20" id="HKX-Me-D6M"/>
                                     <constraint firstAttribute="height" secondItem="ymY-Es-nSo" secondAttribute="height" constant="20" id="heE-lg-E2m"/>
@@ -136,7 +135,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffb-N4-ZKH">
                                                         <rect key="frame" x="0.0" y="0.0" width="121" height="19.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="dectiptionColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expense" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pP5-Ow-inZ">
@@ -150,7 +149,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="tabBarColor-1"/>
                                 <constraints>
                                     <constraint firstItem="IuW-zb-0Ea" firstAttribute="centerY" secondItem="1O0-aa-H76" secondAttribute="centerY" id="6Zi-x1-2nn"/>
                                     <constraint firstAttribute="height" secondItem="IuW-zb-0Ea" secondAttribute="height" constant="20" id="QsG-sV-0lH"/>
@@ -159,7 +158,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bnk-5C-Pan"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
                             <constraint firstItem="dxV-34-Tcm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iZV-YD-ad1" secondAttribute="bottom" id="1dA-qp-8TB"/>
                             <constraint firstItem="iZV-YD-ad1" firstAttribute="trailing" secondItem="Bnk-5C-Pan" secondAttribute="trailing" id="6fl-zO-3md"/>
@@ -198,8 +197,14 @@
         <namedColor name="TopGradientStart">
             <color red="0.56099998950958252" green="0.3059999942779541" blue="0.83899998664855957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="backgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="dectiptionColor">
+            <color red="0.54900002479553223" green="0.54900002479553223" blue="0.54900002479553223" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tabBarColor-1">
+            <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

@@ -19,11 +19,11 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     var isExpense: Bool = false {
         didSet {
             if isExpense {
-                sumLabel.textColor = #colorLiteral(red: 0.9778844714, green: 0.120779939, blue: 0.3286553323, alpha: 1)
+                sumLabel.textColor = UIColor(named: "DecreasingColor")
                 guard let text = sumLabel.text else { return }
                 sumLabel.text =  "-" + text
             } else {
-                sumLabel.textColor = #colorLiteral(red: 0.1960784314, green: 0.8431372549, blue: 0.2941176471, alpha: 1)
+                sumLabel.textColor = UIColor(named: "IncreasingColor")
             }
         }
     }
@@ -34,7 +34,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         
         backgroundCellView.layer.cornerRadius = 10
         backgroundCellView.layer.borderWidth = 1
-        backgroundCellView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.08)
+        backgroundCellView.layer.borderColor = UIColor(named: "shadowColor")?.cgColor
 
     }
 

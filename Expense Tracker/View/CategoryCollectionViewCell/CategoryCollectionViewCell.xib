@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -62,7 +63,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="tabBarColor-1"/>
                         <constraints>
                             <constraint firstItem="kPG-Ve-4Li" firstAttribute="top" secondItem="HBs-dw-php" secondAttribute="top" id="8k2-i0-vBg"/>
                             <constraint firstItem="kPG-Ve-4Li" firstAttribute="leading" secondItem="HBs-dw-php" secondAttribute="leading" id="h0M-oH-S4c"/>
@@ -91,6 +92,9 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <namedColor name="tabBarColor-1">
+            <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

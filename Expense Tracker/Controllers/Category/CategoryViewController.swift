@@ -31,10 +31,17 @@ final class CategoryViewController: UIViewController {
     }()
 
     //MARK: - View Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+        let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+        navigationController?.navigationBar.setGradientBackground(colors: [startColor, endColor], startPoint: .bottomLeft, endPoint: .topRight)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Configure UI
-        navigationController?.navigationBar.setGradientBackground(colors: [#colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1), #colorLiteral(red: 0.3176470588, green: 0.2, blue: 0.7176470588, alpha: 1)], startPoint: .bottomLeft, endPoint: .topRight)
         configureTableView()
         createSearchController()
 

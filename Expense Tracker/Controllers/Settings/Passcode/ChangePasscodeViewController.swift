@@ -46,7 +46,9 @@ final class ChangePasscodeViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        gradientLayer = view.applyGradient(colours: [#colorLiteral(red: 0.4509803922, green: 0.2588235294, blue: 0.7843137255, alpha: 1), #colorLiteral(red: 0.537254902, green: 0.2941176471, blue: 0.8274509804, alpha: 1)], startPoint: .bottomLeft, endPoint: .topRight)
+        let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+        let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+        gradientLayer = view.applyGradient(colours: [endColor, startColor], startPoint: .bottomLeft, endPoint: .topRight)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
 
         if editingMode == .disable {
@@ -66,7 +68,9 @@ final class ChangePasscodeViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         gradientLayer?.removeFromSuperlayer()
         DispatchQueue.main.async {
-            self.gradientLayer = self.view.applyGradient(colours: [#colorLiteral(red: 0.4509803922, green: 0.2588235294, blue: 0.7843137255, alpha: 1), #colorLiteral(red: 0.537254902, green: 0.2941176471, blue: 0.8274509804, alpha: 1)], startPoint: .topRight, endPoint: .bottomLeft)
+            let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+            let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+            self.gradientLayer = self.view.applyGradient(colours: [endColor, startColor], startPoint: .topRight, endPoint: .bottomLeft)
         }
     }
     

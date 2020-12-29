@@ -14,7 +14,8 @@ final class TopRightView: UIView {
         let context = UIGraphicsGetCurrentContext()!
 
         //// Color Declarations
-        let fillColor = UIColor(red: 0.537, green: 0.294, blue: 0.827, alpha: 1.000)
+        let fillColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+
 
         context.saveGState()
         context.setAlpha(0.2)

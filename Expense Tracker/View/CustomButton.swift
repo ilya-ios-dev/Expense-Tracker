@@ -16,12 +16,14 @@ final class CustomButton: UIButton {
     
     private func configureButton(_ frame: CGRect) {
         layer.cornerRadius = frame.height / 2
-        layer.shadowColor = UIColor(hex: "#894BD3")?.cgColor
+        let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+        layer.shadowColor = endColor.cgColor
         layer.shadowOpacity = 0.7
         layer.shadowOffset = CGSize(width: 0, height: 2)
         layer.shadowRadius = 6
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
-        applyGradient(colours: [#colorLiteral(red: 0.537254902, green: 0.2941176471, blue: 0.8274509804, alpha: 1), #colorLiteral(red: 0.4, green: 0.2352941176, blue: 0.7568627451, alpha: 1)], startPoint: .topRight, endPoint: .bottomLeft)
+        let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+        applyGradient(colours: [startColor, endColor], startPoint: .topRight, endPoint: .bottomLeft)
 
     }
 }

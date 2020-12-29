@@ -10,6 +10,14 @@ import UIKit
 final class TabBarViewController: UITabBarController {
     
     //MARK: - View Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "")!
+        let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "")!
+        tabBar.tintColor = [startColor, endColor].averageColor()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self

@@ -8,7 +8,6 @@
 import UIKit
 
 final class GraphView: UIView {
-    
     //MARK: - Properties
     public var graphPoints: [Double] = []
     private var plate: PlateView!
@@ -52,7 +51,7 @@ extension GraphView {
         graphPath.move(to: firstPoint)
         graphPath.addLine(to: lastPoint)
         graphPath.lineWidth = 5
-        #colorLiteral(red: 0.5568627451, green: 0.3215686275, blue: 0.8352941176, alpha: 1).setStroke()
+        (UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1)).setStroke()
         graphPath.stroke()
         
         configureLineShadow(graphPath)
@@ -79,7 +78,7 @@ extension GraphView {
             graphPath.addCurve(to: nextPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
         }
         graphPath.lineWidth = 5
-        #colorLiteral(red: 0.5568627451, green: 0.3215686275, blue: 0.8352941176, alpha: 1).setStroke()
+        (UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1)).setStroke()
         graphPath.stroke()
         
         configureLineShadow(graphPath)
@@ -93,7 +92,7 @@ extension GraphView {
     private func configureLineShadow(_ graphPath: UIBezierPath) {
         let shadowLayer = CALayer()
         shadowLayer.shadowPath = graphPath.cgPath.copy(strokingWithWidth: 5, lineCap: .round, lineJoin: .round, miterLimit: 0)
-        shadowLayer.shadowColor = #colorLiteral(red: 0.4549019608, green: 0.2666666667, blue: 0.7725490196, alpha: 0.6625299813).cgColor
+        shadowLayer.shadowColor = (UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1)).withAlphaComponent(0.66).cgColor
         shadowLayer.shadowOpacity = 1
         shadowLayer.shadowOffset = .zero
         shadowLayer.shadowRadius = 6
@@ -108,8 +107,8 @@ extension GraphView {
         let yPoint = graphPoints.count == 1 ?
             (graphHeight / 2 + GraphConstants.topBorder) : (columnYPoint(indexOfMaxValue) - graphHeight)
         closeShadowPath(clippingPath)
-        
-        let colors = [#colorLiteral(red: 0.3725490196, green: 0.2274509804, blue: 0.7450980392, alpha: 0.15).cgColor, #colorLiteral(red: 0.5607843137, green: 0.3019607843, blue: 0.8352941176, alpha: 0).cgColor]
+        let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+        let colors = [endColor.withAlphaComponent(0.15).cgColor, endColor.withAlphaComponent(0).cgColor]
         guard let newGradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors as CFArray, locations: [0, 1]) else {
             return
         }

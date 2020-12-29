@@ -26,11 +26,11 @@ open class TransactionButton: UIButton {
         let borderLayer = CAShapeLayer()
         borderLayer.path = maskLayer.path // Reuse the Bezier path
         borderLayer.fillColor = UIColor.clear.cgColor
-        borderLayer.strokeColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.08).cgColor
+
+        borderLayer.strokeColor = UIColor(named: "shadowColor")?.cgColor
         borderLayer.lineWidth = 1
         borderLayer.frame = rect
         layer.addSublayer(borderLayer)
-
     }
     
     override public init(frame: CGRect) {
@@ -116,7 +116,7 @@ extension TransactionButton {
     private func configureTransactionAmountLabel() {
         transactionAmountLabel = UILabel()
         transactionAmountLabel.isUserInteractionEnabled = false
-        transactionAmountLabel.textColor = UIColor(hex: "#414654r")
+        transactionAmountLabel.textColor = UIColor.label
         transactionAmountLabel.font = UIFont.systemFont(ofSize: 26, weight: .bold)
         transactionAmountLabel.adjustsFontSizeToFitWidth = true
         transactionAmountLabel.minimumScaleFactor = 0.5

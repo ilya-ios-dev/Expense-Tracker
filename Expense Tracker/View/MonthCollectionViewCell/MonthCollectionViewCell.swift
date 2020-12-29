@@ -18,7 +18,9 @@ final class MonthCollectionViewCell: UICollectionViewCell {
         didSet{
             gradientLayer?.removeFromSuperlayer()
             if isSelected {
-                gradientLayer = monthBackground.applyGradient(colours: [#colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1), #colorLiteral(red: 0.3176470588, green: 0.2, blue: 0.7176470588, alpha: 1)], startPoint: .bottomLeft, endPoint: .topRight)
+                let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1)
+                let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+                gradientLayer = monthBackground.applyGradient(colours: [startColor, endColor], startPoint: .bottomLeft, endPoint: .topRight)
                 monthLabel.textColor = .white
             } else {
                 monthLabel.textColor = #colorLiteral(red: 0.337254902, green: 0.3568627451, blue: 0.4, alpha: 1)

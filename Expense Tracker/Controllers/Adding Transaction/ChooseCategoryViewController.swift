@@ -39,7 +39,8 @@ final class ChooseCategoryViewController: UIViewController {
         configureTransactionNameAndAmount()
         transactionCategoryEmpty.backgroundColor = .clear
         navigationController?.navigationItem.backBarButtonItem?.tintColor = .black
-        transactionCategoryEmpty.addDashedCircle(strokeColor: .darkGray, fillColor: #colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.9411764706, alpha: 1), lineWidth: 1)
+        let fillColor = UIColor(named: "dectiptionColor")
+        transactionCategoryEmpty.addDashedCircle(strokeColor: fillColor, fillColor: fillColor?.withAlphaComponent(0.5), lineWidth: 1)
         //Setup Data
         setupDataSource()
         setupFetchedResultsController()
@@ -98,16 +99,18 @@ extension ChooseCategoryViewController {
     private func configureTransactionType() {
         if transaction.isExpense {
             transactionIconLabel.text = "|<"
-            transactionIconBackground.backgroundColor = UIColor(named: "TopGradientStart")
+            let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+            transactionIconBackground.backgroundColor = startColor
             transactionTypeLabel.text = "Expense"
         } else {
             transactionIconLabel.text = ">|"
-            transactionIconBackground.backgroundColor = UIColor(named: "TopGradientEnd")
+            let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+            transactionIconBackground.backgroundColor = endColor
             transactionTypeLabel.text = "Income"
         }
         transactionIconBackground.layer.cornerRadius = transactionIconBackground.frame.height / 2
     }
-    
+
     /// Fills `transactionNameLabel` and `transactionAmountLabel` fields.
     private func configureTransactionNameAndAmount(){
         transactionNameLabel.text = transaction.name

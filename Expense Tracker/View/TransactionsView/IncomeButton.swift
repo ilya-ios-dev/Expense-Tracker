@@ -21,6 +21,6 @@ class IncomeButton: TransactionButton {
     private func configureViews(){
         transactionAmountLabel.text = "Income"
         transactionIconLabel.text = ">|"
-        transactionKindView.backgroundColor = UIColor(named: "TopGradientEnd")
+        transactionKindView.backgroundColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.3176470588, green: 0.2, blue: 0.7176470588, alpha: 1)
     }
 }

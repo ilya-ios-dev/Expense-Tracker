@@ -28,9 +28,10 @@ public class PasscodeSuccessfullyDrawing : NSObject {
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
         context.scaleBy(x: resizedFrame.width / 361, y: resizedFrame.height / 296)
         
-        
+        let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+        let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
         //// Color Declarations
-        let fillColor = #colorLiteral(red: 0.4831935167, green: 0.2116402686, blue: 0.8548830152, alpha: 1)
+        let fillColor = startColor
         let fillColor3 = #colorLiteral(red: 0.522, green: 0.584, blue: 0.675, alpha: 1.000)
         let fillColor4 = fillColor.darker(by: 15)!
         let fillColor5 = fillColor.lighter(by: 15)!

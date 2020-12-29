@@ -28,25 +28,27 @@ public class PasscodeWelcomeDraw : NSObject {
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
         context.scaleBy(x: resizedFrame.width / 356, y: resizedFrame.height / 264)
 
+        let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+        let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
 
         //// Color Declarations
-        let gradientColor = UIColor(red: 0.537, green: 0.294, blue: 0.827, alpha: 1.000)
-        let gradientColor2 = UIColor(red: 0.400, green: 0.235, blue: 0.757, alpha: 1.000)
-        let gradientColor3 = UIColor(red: 0.537, green: 0.294, blue: 0.827, alpha: 0.110)
-        let gradientColor4 = UIColor(red: 0.400, green: 0.235, blue: 0.757, alpha: 0.110)
-        let gradientColor5 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
-        let gradientColor6 = UIColor(red: 0.702, green: 0.702, blue: 0.702, alpha: 0.970)
-        let fillColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.501)
-        let fillColor2 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
-        let fillColor3 = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
-        let strokeColor = UIColor(red: 0.514, green: 0.365, blue: 0.698, alpha: 1.000)
-        let fillColor4 = UIColor(red: 1.000, green: 0.514, blue: 0.525, alpha: 1.000)
-        let fillColor5 = UIColor(red: 0.169, green: 0.255, blue: 0.365, alpha: 1.000)
-        let fillColor6 = UIColor(red: 1.000, green: 0.675, blue: 0.451, alpha: 1.000)
-        let fillColor7 = UIColor(red: 0.898, green: 0.537, blue: 0.290, alpha: 1.000)
-        let fillColor8 = UIColor(red: 0.294, green: 0.106, blue: 0.075, alpha: 1.000)
-        let fillColor9 = UIColor(red: 0.737, green: 0.259, blue: 0.294, alpha: 1.000)
-        let fillColor10 = UIColor(red: 0.910, green: 0.863, blue: 0.918, alpha: 1.000)
+        let gradientColor =  startColor
+        let gradientColor2 = endColor
+        let gradientColor3 = startColor.withAlphaComponent(0.11)
+        let gradientColor4 = endColor.withAlphaComponent(0.11)
+        let gradientColor5 = #colorLiteral(red: 1.000, green: 1.000, blue: 1.000, alpha: 0.000)
+        let gradientColor6 = #colorLiteral(red: 0.702, green: 0.702, blue: 0.702, alpha: 0.970)
+        let fillColor =      #colorLiteral(red: 0.000, green: 0.000, blue: 0.000, alpha: 0.501)
+        let fillColor2 =     #colorLiteral(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
+        let fillColor3 =     #colorLiteral(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000)
+        let strokeColor =    startColor.withAlphaComponent(0.5)
+        let fillColor4 =     #colorLiteral(red: 1.000, green: 0.514, blue: 0.525, alpha: 1.000)
+        let fillColor5 =     #colorLiteral(red: 0.169, green: 0.255, blue: 0.365, alpha: 1.000)
+        let fillColor6 =     #colorLiteral(red: 1.000, green: 0.675, blue: 0.451, alpha: 1.000)
+        let fillColor7 =     #colorLiteral(red: 0.898, green: 0.537, blue: 0.290, alpha: 1.000)
+        let fillColor8 =     #colorLiteral(red: 0.294, green: 0.106, blue: 0.075, alpha: 1.000)
+        let fillColor9 =     #colorLiteral(red: 0.737, green: 0.259, blue: 0.294, alpha: 1.000)
+        let fillColor10 =    #colorLiteral(red: 0.910, green: 0.863, blue: 0.918, alpha: 1.000)
 
         //// Gradient Declarations
         let linearGradient2 = CGGradient(colorsSpace: nil, colors: [gradientColor.cgColor, gradientColor2.cgColor] as CFArray, locations: [0, 1])!

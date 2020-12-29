@@ -19,19 +19,31 @@ final class SettingsViewController: UITableViewController {
 // MARK: - Table view data source
 extension SettingsViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "settingsTableViewCell", for: indexPath) as! SettingsTableViewCell
-        cell.settingsImageView.image = UIImage(systemName: "lock")
-        cell.settingsTitle.text = "Settings"
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        cell.backgroundColor = UIColor(named: "backgroundColor")
+        cell.accessoryType = .disclosureIndicator
+        if indexPath.row == 0 {
+            cell.textLabel?.text = "Passcode"
+        } else {
+            cell.textLabel?.text = "Appearance"
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "ConfigurePasscode", bundle: nil)
-        guard let controller = storyboard.instantiateInitialViewController() else { return }
-        navigationController?.pushViewController(controller, animated: true)
+        if indexPath.row == 0 {
+            let storyboard = UIStoryboard(name: "ConfigurePasscode", bundle: nil)
+            guard let controller = storyboard.instantiateInitialViewController() else { return }
+            navigationController?.pushViewController(controller, animated: true)
+        } else {
+            let storyboard = UIStoryboard(name: "Appearance", bundle: nil)
+            guard let controller = storyboard.instantiateInitialViewController() else { return }
+            navigationController?.pushViewController(controller, animated: true)
+        }
+        
     }
 }

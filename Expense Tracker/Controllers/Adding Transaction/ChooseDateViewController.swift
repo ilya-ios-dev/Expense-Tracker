@@ -117,16 +117,18 @@ extension ChooseDateViewController {
     private func configureTransactionType() {
         if transaction.isExpense {
             transactionIconLabel.text = "|<"
-            transactionIconBackground.backgroundColor = UIColor(named: "TopGradientStart")
+            let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+            transactionIconBackground.backgroundColor = startColor
             transactionTypeLabel.text = "Expense"
         } else {
             transactionIconLabel.text = ">|"
-            transactionIconBackground.backgroundColor = UIColor(named: "TopGradientEnd")
+            let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+            transactionIconBackground.backgroundColor = endColor
             transactionTypeLabel.text = "Income"
         }
         transactionIconBackground.layer.cornerRadius = transactionIconBackground.frame.height / 2
     }
-    
+
     /// Fills the category view with data.
     private func configureTransactionCategory() {
         categoryBackground.layer.cornerRadius = categoryBackground.frame.height / 2

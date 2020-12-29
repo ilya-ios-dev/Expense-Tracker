@@ -19,7 +19,7 @@ open class TransactionView: UIView {
     open override func draw(_ rect: CGRect) {
         transactionKindView.layer.cornerRadius = transactionKindView.frame.height / 2
         let path = UIBezierPath(roundedRect: rect, cornerRadius: 9)
-        UIColor.white.setFill()
+        UIColor(named: "tabBarColor-1")?.setFill()
         path.fill()
     }
     
@@ -87,14 +87,14 @@ extension TransactionView {
     
     private func configureTransactionKindLabel() {
         transactionKindLabel = UILabel()
-        transactionKindLabel.textColor = UIColor(hex: "#9FA1A8")
+        transactionKindLabel.textColor = UIColor(named: "descriptionLabel")
         transactionKindLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
         transactionAmountStackView.addArrangedSubview(transactionKindLabel)
     }
     
     private func configureTransactionAmountLabel() {
         transactionAmountLabel = UILabel()
-        transactionAmountLabel.textColor = UIColor(hex: "#414654r")
+        transactionAmountLabel.textColor = UIColor.label
         transactionAmountLabel.font = UIFont.systemFont(ofSize: 26, weight: .bold)
         transactionAmountLabel.adjustsFontSizeToFitWidth = true
         transactionAmountLabel.minimumScaleFactor = 0.5

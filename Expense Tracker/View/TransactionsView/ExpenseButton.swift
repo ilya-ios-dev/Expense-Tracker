@@ -21,6 +21,7 @@ class ExpenseButton: TransactionButton {
     private func configureViews(){
         transactionAmountLabel.text = "Expense"
         transactionIconLabel.text = "|<"
-        transactionKindView.backgroundColor = UIColor(named: "TopGradientStart")
+        
+        transactionKindView.backgroundColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.5490196078, green: 0.298, blue: 0.831, alpha: 1)
     }
 }

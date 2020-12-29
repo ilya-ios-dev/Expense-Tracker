@@ -30,7 +30,7 @@ final class CategoryImageCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         categoryBackgroundView.layer.cornerRadius = 17
         categoryBackgroundView.layer.borderWidth = 1
-        categoryBackgroundView.layer.borderColor = #colorLiteral(red: 0.9568627451, green: 0.9568627451, blue: 0.9568627451, alpha: 1)
+        categoryBackgroundView.layer.borderColor = UIColor(named: "shadowColor")?.cgColor
         circleBackground.layer.cornerRadius = circleBackground.frame.height / 2
     }
 

@@ -6,7 +6,6 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,7 +39,7 @@
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rm4-ZX-CC5">
                                         <rect key="frame" x="0.0" y="99" width="394" height="75"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="75" id="aWh-UK-6Jf"/>
                                         </constraints>
@@ -60,7 +59,7 @@
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="751" verticalHuggingPriority="751" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="99W-SL-bWd">
                                         <rect key="frame" x="0.0" y="210.5" width="394" height="545.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="sF7-Jh-n2C">
                                             <size key="itemSize" width="96" height="96"/>
                                             <size key="estimatedItemSize" width="96" height="96"/>
@@ -74,7 +73,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="udp-IX-UfK"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
                         <constraints>
                             <constraint firstItem="udp-IX-UfK" firstAttribute="trailing" secondItem="NoB-O6-MgZ" secondAttribute="trailing" id="3Sz-Ro-dL9"/>
                             <constraint firstItem="NoB-O6-MgZ" firstAttribute="leading" secondItem="udp-IX-UfK" secondAttribute="leading" constant="20" id="GFB-jq-hv8"/>
@@ -130,8 +129,8 @@
         <namedColor name="TabBarColor">
             <color red="0.28200000524520874" green="0.37299999594688416" blue="0.86299997568130493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="backgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

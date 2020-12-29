@@ -15,29 +15,33 @@ public class MeetingPictureView: UIView {
 }
 
 public class MeetingPictureDraw : NSObject {
-
     //// Drawing Methods
-
-    @objc dynamic public class func drawMeetingPicture(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 350, height: 310), resizing: ResizingBehavior = .aspectFit) {
+    
+    public class func drawMeetingPicture(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 350, height: 310), resizing: ResizingBehavior = .aspectFit) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
-        
         //// Resize to Target Frame
         context.saveGState()
-        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 350, height: 310), target: targetFrame)
+        let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 389, height: 355), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
-        context.scaleBy(x: resizedFrame.width / 350, y: resizedFrame.height / 310)
-
-
+        context.scaleBy(x: resizedFrame.width / 389, y: resizedFrame.height / 355)
+        
         //// Color Declarations
-        let fillColor = UIColor(red: 0.247, green: 0.239, blue: 0.337, alpha: 1.000)
-        let fillColor2 = UIColor(red: 0.824, green: 0.831, blue: 0.851, alpha: 1.000)
-        let fillColor3 = UIColor(red: 0.561, green: 0.306, blue: 0.839, alpha: 1.000)
-        let fillColor4 = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
-        let fillColor5 = UIColor(red: 0.184, green: 0.180, blue: 0.255, alpha: 1.000)
-        let fillColor6 = UIColor(red: 0.624, green: 0.380, blue: 0.416, alpha: 1.000)
-        let fillColor7 = UIColor(red: 0.816, green: 0.804, blue: 0.882, alpha: 1.000)
+        let accentColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+        drawBackPath(context, accentColor)
+        drawDottedLine()
+        drawTable(tableBackgroundColor: #colorLiteral(red: 0.7960784314, green: 0.7960784314, blue: 0.7960784314, alpha: 1), bottomElementColor: #colorLiteral(red: 0.1490196078, green: 0.1450980392, blue: 0.2039215686, alpha: 1), accentColor: accentColor, listElementsColor: UIColor.white)
+        drawFlower(#colorLiteral(red: 0.1490196078, green: 0.1450980392, blue: 0.2039215686, alpha: 1))
+        drawGirl(shoesColor: #colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.1764705882, alpha: 1), hairColor: #colorLiteral(red: 0.1490196078, green: 0.1450980392, blue: 0.2039215686, alpha: 1), pantsColor: #colorLiteral(red: 0.08235294118, green: 0.07843137255, blue: 0.1333333333, alpha: 1), skinColor: #colorLiteral(red: 0.6235294118, green: 0.3803921569, blue: 0.4156862745, alpha: 1), blouseColor: #colorLiteral(red: 0.8156862745, green: 0.8039215686, blue: 0.8823529412, alpha: 1))
 
+        //// Oval 16 Drawing
+        
+        context.restoreGState()
+    }
+}
+
+extension MeetingPictureDraw {
+    private static func drawDottedLine() {
         //// Meeting picture
         //// undraw_updates_et2k
         //// Dotted line Drawing
@@ -535,368 +539,372 @@ public class MeetingPictureDraw : NSObject {
         dottedLinePath.addLine(to: CGPoint(x: 236.48, y: 0.76))
         dottedLinePath.addCurve(to: CGPoint(x: 231.94, y: 0.85), controlPoint1: CGPoint(x: 234.97, y: 0.76), controlPoint2: CGPoint(x: 233.44, y: 0.79))
         dottedLinePath.close()
-        fillColor.setFill()
+        UIColor.black.setFill()
         dottedLinePath.fill()
-
-
-        //// Table
-        //// Table background Drawing
-        let tableBackgroundPath = UIBezierPath(rect: CGRect(x: 24.32, y: 65.99, width: 193.67, height: 237.91))
-        fillColor2.setFill()
-        tableBackgroundPath.fill()
-
-
-        //// Bottom Item
-        //// Rectangle 6 Drawing
-        let rectangle6Path = UIBezierPath(rect: CGRect(x: 6.95, y: 241.38, width: 238.83, height: 61.65))
-        fillColor.setFill()
-        rectangle6Path.fill()
-
-
-        //// Oval 2 Drawing
-        let oval2Path = UIBezierPath(ovalIn: CGRect(x: 19.11, y: 255.28, width: 33, height: 33.86))
-        fillColor3.setFill()
-        oval2Path.fill()
-
-
-        //// Rectangle 8 Drawing
-        let rectangle8Path = UIBezierPath(rect: CGRect(x: 70.35, y: 257.88, width: 69.48, height: 5.21))
-        fillColor4.setFill()
-        rectangle8Path.fill()
-
-
-        //// Rectangle 10 Drawing
-        let rectangle10Path = UIBezierPath(rect: CGRect(x: 70.35, y: 269.17, width: 151.99, height: 5.21))
-        fillColor4.setFill()
-        rectangle10Path.fill()
-
-
-        //// Rectangle 12 Drawing
-        let rectangle12Path = UIBezierPath(rect: CGRect(x: 70.35, y: 281.32, width: 151.99, height: 5.21))
-        fillColor4.setFill()
-        rectangle12Path.fill()
-
-
-
-
-        //// Top Item
-        //// Oval 4 Drawing
-        let oval4Path = UIBezierPath(ovalIn: CGRect(x: 35.61, y: 101.59, width: 33, height: 33.86))
-        fillColor3.setFill()
-        oval4Path.fill()
-
-
-        //// Rectangle 14 Drawing
-        let rectangle14Path = UIBezierPath(rect: CGRect(x: 81.64, y: 105.93, width: 57.32, height: 5.21))
-        fillColor4.setFill()
-        rectangle14Path.fill()
-
-
-        //// Rectangle 16 Drawing
-        let rectangle16Path = UIBezierPath(rect: CGRect(x: 81.64, y: 118.09, width: 125.93, height: 5.21))
-        fillColor4.setFill()
-        rectangle16Path.fill()
-
-
-        //// Rectangle 18 Drawing
-        let rectangle18Path = UIBezierPath(rect: CGRect(x: 81.64, y: 130.24, width: 125.93, height: 5.21))
-        fillColor4.setFill()
-        rectangle18Path.fill()
-
-
-
-
-        //// Center Item
-        //// Oval 6 Drawing
-        let oval6Path = UIBezierPath(ovalIn: CGRect(x: 35.61, y: 178, width: 33, height: 33.86))
-        fillColor3.setFill()
-        oval6Path.fill()
-
-
-        //// Rectangle 20 Drawing
-        let rectangle20Path = UIBezierPath(rect: CGRect(x: 81.64, y: 183.21, width: 57.32, height: 5.21))
-        fillColor4.setFill()
-        rectangle20Path.fill()
-
-
-        //// Rectangle 22 Drawing
-        let rectangle22Path = UIBezierPath(rect: CGRect(x: 81.64, y: 195.36, width: 125.93, height: 5.21))
-        fillColor4.setFill()
-        rectangle22Path.fill()
-
-
-        //// Rectangle 24 Drawing
-        let rectangle24Path = UIBezierPath(rect: CGRect(x: 81.64, y: 206.65, width: 125.93, height: 5.21))
-        fillColor4.setFill()
-        rectangle24Path.fill()
-
-
-
-
-        //// Top view
-        //// Rectangle 4 Drawing
-        let rectangle4Path = UIBezierPath(rect: CGRect(x: 24.32, y: 52.97, width: 193.67, height: 26.92))
-        fillColor3.setFill()
-        rectangle4Path.fill()
-
-
-        //// Rectangle 26 Drawing
-        let rectangle26Path = UIBezierPath(rect: CGRect(x: 29.53, y: 58.18, width: 25.19, height: 3.47))
-        fillColor4.setFill()
-        rectangle26Path.fill()
-
-
-        //// Rectangle 28 Drawing
-        let rectangle28Path = UIBezierPath(rect: CGRect(x: 29.53, y: 64.25, width: 25.19, height: 3.47))
-        fillColor4.setFill()
-        rectangle28Path.fill()
-
-
-        //// Rectangle 30 Drawing
-        let rectangle30Path = UIBezierPath(rect: CGRect(x: 29.53, y: 71.2, width: 25.19, height: 3.47))
-        fillColor4.setFill()
-        rectangle30Path.fill()
-
-
-
-
-
-
+    }
+    
+    private static func drawFlower(_ fillColor: UIColor) {
         //// Flower
         //// Rectangle 32 Drawing
         let rectangle32Path = UIBezierPath(rect: CGRect(x: 21.71, y: 191.89, width: 1, height: 51.23))
         fillColor.setFill()
         rectangle32Path.fill()
-
-
+        
+        
         //// Oval 8 Drawing
         let oval8Path = UIBezierPath(ovalIn: CGRect(x: 14.76, y: 184.95, width: 14.76, height: 14.76))
         fillColor.setFill()
         oval8Path.fill()
-
-
+        
+        
         //// Path Drawing
         let pathPath = UIBezierPath()
         pathPath.move(to: CGPoint(x: 22.58, y: 224.02))
         pathPath.addCurve(to: CGPoint(x: 0, y: 204.26), controlPoint1: CGPoint(x: 22.58, y: 224.02), controlPoint2: CGPoint(x: 21.53, y: 201.66))
         fillColor.setFill()
         pathPath.fill()
-
-
-
-
-        //// Girl
-        //// Path 2 Drawing
-        let path2Path = UIBezierPath()
-        path2Path.move(to: CGPoint(x: 254.55, y: 144.14))
-        path2Path.addLine(to: CGPoint(x: 245.96, y: 160.35))
-        path2Path.addCurve(to: CGPoint(x: 191.77, y: 190.8), controlPoint1: CGPoint(x: 245.96, y: 160.35), controlPoint2: CGPoint(x: 183.84, y: 172.27))
-        path2Path.addCurve(to: CGPoint(x: 213.25, y: 235.82), controlPoint1: CGPoint(x: 199.7, y: 209.34), controlPoint2: CGPoint(x: 208.62, y: 236.48))
-        path2Path.addCurve(to: CGPoint(x: 244.31, y: 216.29), controlPoint1: CGPoint(x: 217.87, y: 235.16), controlPoint2: CGPoint(x: 243.32, y: 220.59))
-        path2Path.addCurve(to: CGPoint(x: 221.51, y: 191.8), controlPoint1: CGPoint(x: 245.3, y: 211.99), controlPoint2: CGPoint(x: 221.51, y: 191.8))
-        path2Path.addLine(to: CGPoint(x: 260.83, y: 184.18))
-        path2Path.addCurve(to: CGPoint(x: 259.18, y: 228.87), controlPoint1: CGPoint(x: 260.83, y: 184.18), controlPoint2: CGPoint(x: 266.45, y: 210.66))
-        path2Path.addCurve(to: CGPoint(x: 252.57, y: 297.05), controlPoint1: CGPoint(x: 251.91, y: 247.07), controlPoint2: CGPoint(x: 247.61, y: 296.39))
-        path2Path.addCurve(to: CGPoint(x: 275.7, y: 298.04), controlPoint1: CGPoint(x: 257.53, y: 297.71), controlPoint2: CGPoint(x: 270.08, y: 301.68))
-        path2Path.addCurve(to: CGPoint(x: 283.96, y: 214.63), controlPoint1: CGPoint(x: 281.32, y: 294.4), controlPoint2: CGPoint(x: 283.96, y: 214.63))
-        path2Path.addCurve(to: CGPoint(x: 288.59, y: 156.38), controlPoint1: CGPoint(x: 283.96, y: 214.63), controlPoint2: CGPoint(x: 295.86, y: 162.34))
-        path2Path.addCurve(to: CGPoint(x: 254.55, y: 144.14), controlPoint1: CGPoint(x: 281.32, y: 150.42), controlPoint2: CGPoint(x: 254.55, y: 144.14))
-        path2Path.close()
-        fillColor5.setFill()
-        path2Path.fill()
-
-
-        //// Path 3 Drawing
-        let path3Path = UIBezierPath()
-        path3Path.move(to: CGPoint(x: 268.23, y: 289.44))
-        path3Path.addCurve(to: CGPoint(x: 259, y: 288.64), controlPoint1: CGPoint(x: 268.23, y: 289.44), controlPoint2: CGPoint(x: 260.6, y: 285.45))
-        path3Path.addCurve(to: CGPoint(x: 255.39, y: 299.43), controlPoint1: CGPoint(x: 259, y: 288.64), controlPoint2: CGPoint(x: 260.2, y: 298.23))
-        path3Path.addCurve(to: CGPoint(x: 255.39, y: 309.82), controlPoint1: CGPoint(x: 250.57, y: 300.63), controlPoint2: CGPoint(x: 248.57, y: 309.02))
-        path3Path.addCurve(to: CGPoint(x: 269.03, y: 308.22), controlPoint1: CGPoint(x: 262.21, y: 310.61), controlPoint2: CGPoint(x: 266.62, y: 308.22))
-        path3Path.addCurve(to: CGPoint(x: 269.03, y: 299.83), controlPoint1: CGPoint(x: 271.44, y: 308.22), controlPoint2: CGPoint(x: 269.03, y: 299.83))
-        path3Path.addLine(to: CGPoint(x: 268.23, y: 289.44))
-        path3Path.close()
-        fillColor5.setFill()
-        path3Path.fill()
-
-
-        //// Path 4 Drawing
-        let path4Path = UIBezierPath()
-        path4Path.move(to: CGPoint(x: 232.47, y: 222.17))
-        path4Path.addCurve(to: CGPoint(x: 223.28, y: 223.33), controlPoint1: CGPoint(x: 232.47, y: 222.17), controlPoint2: CGPoint(x: 224.17, y: 219.86))
-        path4Path.addCurve(to: CGPoint(x: 222.03, y: 234.65), controlPoint1: CGPoint(x: 223.28, y: 223.33), controlPoint2: CGPoint(x: 226.49, y: 232.46))
-        path4Path.addCurve(to: CGPoint(x: 224.23, y: 244.82), controlPoint1: CGPoint(x: 217.57, y: 236.84), controlPoint2: CGPoint(x: 217.39, y: 245.47))
-        path4Path.addCurve(to: CGPoint(x: 237.24, y: 240.39), controlPoint1: CGPoint(x: 231.07, y: 244.17), controlPoint2: CGPoint(x: 234.88, y: 240.89))
-        path4Path.addCurve(to: CGPoint(x: 235.46, y: 232.17), controlPoint1: CGPoint(x: 239.6, y: 239.88), controlPoint2: CGPoint(x: 235.46, y: 232.17))
-        path4Path.addLine(to: CGPoint(x: 232.47, y: 222.17))
-        path4Path.close()
-        fillColor5.setFill()
-        path4Path.fill()
-
-
-        //// Path 5 Drawing
-        let path5Path = UIBezierPath()
-        path5Path.move(to: CGPoint(x: 273.17, y: 86.81))
-        path5Path.addCurve(to: CGPoint(x: 271.21, y: 99.92), controlPoint1: CGPoint(x: 273.17, y: 86.81), controlPoint2: CGPoint(x: 273.5, y: 98.93))
-        path5Path.addCurve(to: CGPoint(x: 283.98, y: 106.8), controlPoint1: CGPoint(x: 268.91, y: 100.9), controlPoint2: CGPoint(x: 283.98, y: 106.8))
-        path5Path.addLine(to: CGPoint(x: 286.6, y: 102.21))
-        path5Path.addCurve(to: CGPoint(x: 284.31, y: 84.51), controlPoint1: CGPoint(x: 286.6, y: 102.21), controlPoint2: CGPoint(x: 283.65, y: 85.82))
-        path5Path.addCurve(to: CGPoint(x: 273.17, y: 86.81), controlPoint1: CGPoint(x: 284.96, y: 83.2), controlPoint2: CGPoint(x: 273.17, y: 86.81))
-        path5Path.close()
-        fillColor6.setFill()
-        path5Path.fill()
-
-
-        //// Oval 10 Drawing
-        let oval10Path = UIBezierPath(ovalIn: CGRect(x: 258.81, y: 48.62, width: 40.82, height: 40.81))
-        fillColor5.setFill()
-        oval10Path.fill()
-
-
-        //// Oval 12 Drawing
-        let oval12Path = UIBezierPath(ovalIn: CGRect(x: 271.84, y: 41.68, width: 16.5, height: 16.5))
-        fillColor5.setFill()
-        oval12Path.fill()
-
-
-        //// Path 6 Drawing
-        let path6Path = UIBezierPath()
-        path6Path.move(to: CGPoint(x: 269.3, y: 45.59))
-        path6Path.addCurve(to: CGPoint(x: 277.05, y: 37.38), controlPoint1: CGPoint(x: 269.3, y: 41.36), controlPoint2: CGPoint(x: 272.64, y: 37.82))
-        path6Path.addCurve(to: CGPoint(x: 276.15, y: 37.34), controlPoint1: CGPoint(x: 276.75, y: 37.35), controlPoint2: CGPoint(x: 276.45, y: 37.34))
-        path6Path.addCurve(to: CGPoint(x: 267.49, y: 45.59), controlPoint1: CGPoint(x: 271.37, y: 37.34), controlPoint2: CGPoint(x: 267.49, y: 41.03))
-        path6Path.addCurve(to: CGPoint(x: 276.15, y: 53.83), controlPoint1: CGPoint(x: 267.49, y: 50.14), controlPoint2: CGPoint(x: 271.37, y: 53.83))
-        path6Path.addCurve(to: CGPoint(x: 277.05, y: 53.79), controlPoint1: CGPoint(x: 276.45, y: 53.83), controlPoint2: CGPoint(x: 276.75, y: 53.82))
-        path6Path.addCurve(to: CGPoint(x: 269.3, y: 45.59), controlPoint1: CGPoint(x: 272.64, y: 53.35), controlPoint2: CGPoint(x: 269.3, y: 49.81))
-        path6Path.close()
-        fillColor5.setFill()
-        path6Path.fill()
-
-
-        //// Oval 14 Drawing
-        let oval14Path = UIBezierPath(ovalIn: CGRect(x: 264.02, y: 65.12, width: 27.79, height: 27.79))
-        fillColor6.setFill()
-        oval14Path.fill()
-
-
-        //// Path 7 Drawing
-        let path7Path = UIBezierPath()
-        path7Path.move(to: CGPoint(x: 288.21, y: 97.12))
-        path7Path.addCurve(to: CGPoint(x: 270.34, y: 97.12), controlPoint1: CGPoint(x: 288.21, y: 97.12), controlPoint2: CGPoint(x: 276.3, y: 100.75))
-        path7Path.addCurve(to: CGPoint(x: 247.84, y: 108.66), controlPoint1: CGPoint(x: 264.39, y: 93.5), controlPoint2: CGPoint(x: 250.16, y: 104.05))
-        path7Path.addCurve(to: CGPoint(x: 256.44, y: 117.89), controlPoint1: CGPoint(x: 245.52, y: 113.27), controlPoint2: CGPoint(x: 256.44, y: 117.89))
-        path7Path.addCurve(to: CGPoint(x: 253.96, y: 131.24), controlPoint1: CGPoint(x: 256.44, y: 117.89), controlPoint2: CGPoint(x: 253.33, y: 126.8))
-        path7Path.addCurve(to: CGPoint(x: 253.47, y: 145.25), controlPoint1: CGPoint(x: 254.62, y: 135.85), controlPoint2: CGPoint(x: 253.47, y: 145.25))
-        path7Path.addCurve(to: CGPoint(x: 289.2, y: 155.79), controlPoint1: CGPoint(x: 253.47, y: 145.25), controlPoint2: CGPoint(x: 282.7, y: 164.43))
-        path7Path.addCurve(to: CGPoint(x: 298.47, y: 123.49), controlPoint1: CGPoint(x: 290.2, y: 154.48), controlPoint2: CGPoint(x: 298.47, y: 123.49))
-        path7Path.addLine(to: CGPoint(x: 310.05, y: 111.96))
-        path7Path.addCurve(to: CGPoint(x: 298.47, y: 100.42), controlPoint1: CGPoint(x: 310.05, y: 111.96), controlPoint2: CGPoint(x: 302.77, y: 101.41))
-        path7Path.addCurve(to: CGPoint(x: 288.21, y: 97.12), controlPoint1: CGPoint(x: 294.17, y: 99.43), controlPoint2: CGPoint(x: 288.21, y: 97.12))
-        path7Path.close()
-        fillColor7.setFill()
-        path7Path.fill()
-
-
-        //// Path 8 Drawing
-        let path8Path = UIBezierPath()
-        path8Path.move(to: CGPoint(x: 207.98, y: 164.97))
-        path8Path.addCurve(to: CGPoint(x: 189.96, y: 180.15), controlPoint1: CGPoint(x: 207.98, y: 164.97), controlPoint2: CGPoint(x: 185.29, y: 176.78))
-        path8Path.addCurve(to: CGPoint(x: 213.65, y: 167), controlPoint1: CGPoint(x: 194.63, y: 183.52), controlPoint2: CGPoint(x: 213.65, y: 167))
-        path8Path.addLine(to: CGPoint(x: 207.98, y: 164.97))
-        path8Path.close()
-        fillColor6.setFill()
-        path8Path.fill()
-
-
-        //// Path 9 Drawing
-        let path9Path = UIBezierPath()
-        path9Path.move(to: CGPoint(x: 296.79, y: 157.11))
-        path9Path.addCurve(to: CGPoint(x: 285.01, y: 153.76), controlPoint1: CGPoint(x: 296.79, y: 157.11), controlPoint2: CGPoint(x: 286.64, y: 150.41))
-        path9Path.addCurve(to: CGPoint(x: 298.8, y: 161.7), controlPoint1: CGPoint(x: 283.37, y: 157.11), controlPoint2: CGPoint(x: 296.12, y: 164.65))
-        path9Path.addCurve(to: CGPoint(x: 296.79, y: 157.11), controlPoint1: CGPoint(x: 301.48, y: 158.75), controlPoint2: CGPoint(x: 296.79, y: 157.11))
-        path9Path.close()
-        fillColor6.setFill()
-        path9Path.fill()
-
-
-        //// Path 10 Drawing
-        let path10Path = UIBezierPath()
-        path10Path.move(to: CGPoint(x: 304.34, y: 108.54))
-        path10Path.addLine(to: CGPoint(x: 310.24, y: 112.17))
-        path10Path.addCurve(to: CGPoint(x: 323.37, y: 146.16), controlPoint1: CGPoint(x: 310.24, y: 112.17), controlPoint2: CGPoint(x: 330.26, y: 139.89))
-        path10Path.addCurve(to: CGPoint(x: 298.76, y: 164.97), controlPoint1: CGPoint(x: 316.48, y: 152.43), controlPoint2: CGPoint(x: 298.76, y: 164.97))
-        path10Path.addCurve(to: CGPoint(x: 294.82, y: 156.06), controlPoint1: CGPoint(x: 298.76, y: 164.97), controlPoint2: CGPoint(x: 292.85, y: 156.39))
-        path10Path.addCurve(to: CGPoint(x: 312.54, y: 142.53), controlPoint1: CGPoint(x: 296.79, y: 155.73), controlPoint2: CGPoint(x: 312.54, y: 142.53))
-        path10Path.addLine(to: CGPoint(x: 298.76, y: 116.79))
-        path10Path.addLine(to: CGPoint(x: 304.34, y: 108.54))
-        path10Path.close()
-        fillColor7.setFill()
-        path10Path.fill()
-
-
-        //// Path 11 Drawing
-        let path11Path = UIBezierPath()
-        path11Path.move(to: CGPoint(x: 251.59, y: 106.8))
-        path11Path.addLine(to: CGPoint(x: 247.25, y: 108.46))
-        path11Path.addLine(to: CGPoint(x: 235.89, y: 128.75))
-        path11Path.addLine(to: CGPoint(x: 205.83, y: 165.01))
-        path11Path.addCurve(to: CGPoint(x: 213.18, y: 170), controlPoint1: CGPoint(x: 205.83, y: 165.01), controlPoint2: CGPoint(x: 209.84, y: 171.33))
-        path11Path.addCurve(to: CGPoint(x: 241.57, y: 140.73), controlPoint1: CGPoint(x: 216.52, y: 168.67), controlPoint2: CGPoint(x: 241.57, y: 140.73))
-        path11Path.addLine(to: CGPoint(x: 257.94, y: 115.45))
-        path11Path.addLine(to: CGPoint(x: 251.59, y: 106.8))
-        path11Path.close()
-        fillColor7.setFill()
-        path11Path.fill()
-
-
-        //// Oval 16 Drawing
-        let oval16Path = UIBezierPath(ovalIn: CGRect(x: 264.89, y: 54.7, width: 27.79, height: 16.5))
-        fillColor5.setFill()
-        oval16Path.fill()
-        
-        context.restoreGState()
-
     }
+    
+    private static func drawTable(tableBackgroundColor: UIColor, bottomElementColor: UIColor, accentColor: UIColor, listElementsColor: UIColor) {
+        //// Table
+        //// Table background Drawing
+        let tableBackgroundPath = UIBezierPath(rect: CGRect(x: 24.32, y: 65.99, width: 193.67, height: 237.91))
+        tableBackgroundColor.setFill()
+        tableBackgroundPath.fill()
+        
+        
+        //// Bottom Item
+        //// Rectangle 6 Drawing
+        let rectangle6Path = UIBezierPath(rect: CGRect(x: 6.95, y: 241.38, width: 238.83, height: 61.65))
+        bottomElementColor.setFill()
+        rectangle6Path.fill()
+        
+        
+        //// Oval 2 Drawing
+        let oval2Path = UIBezierPath(ovalIn: CGRect(x: 19.11, y: 255.28, width: 33, height: 33.86))
+        accentColor.setFill()
+        oval2Path.fill()
+        
+        
+        //// Rectangle 8 Drawing
+        let rectangle8Path = UIBezierPath(rect: CGRect(x: 70.35, y: 257.88, width: 69.48, height: 5.21))
+        listElementsColor.setFill()
+        rectangle8Path.fill()
+        
+        
+        //// Rectangle 10 Drawing
+        let rectangle10Path = UIBezierPath(rect: CGRect(x: 70.35, y: 269.17, width: 151.99, height: 5.21))
+        listElementsColor.setFill()
+        rectangle10Path.fill()
+        
+        
+        //// Rectangle 12 Drawing
+        let rectangle12Path = UIBezierPath(rect: CGRect(x: 70.35, y: 281.32, width: 151.99, height: 5.21))
+        listElementsColor.setFill()
+        rectangle12Path.fill()
+        
+        
+        //// Top Item
+        //// Oval 4 Drawing
+        let oval4Path = UIBezierPath(ovalIn: CGRect(x: 35.61, y: 101.59, width: 33, height: 33.86))
+        accentColor.setFill()
+        oval4Path.fill()
+        
+        
+        //// Rectangle 14 Drawing
+        let rectangle14Path = UIBezierPath(rect: CGRect(x: 81.64, y: 105.93, width: 57.32, height: 5.21))
+        listElementsColor.setFill()
+        rectangle14Path.fill()
+        
+        
+        //// Rectangle 16 Drawing
+        let rectangle16Path = UIBezierPath(rect: CGRect(x: 81.64, y: 118.09, width: 125.93, height: 5.21))
+        listElementsColor.setFill()
+        rectangle16Path.fill()
+        
+        
+        //// Rectangle 18 Drawing
+        let rectangle18Path = UIBezierPath(rect: CGRect(x: 81.64, y: 130.24, width: 125.93, height: 5.21))
+        listElementsColor.setFill()
+        rectangle18Path.fill()
+        
+        
+        
+        
+        //// Center Item
+        //// Oval 6 Drawing
+        let oval6Path = UIBezierPath(ovalIn: CGRect(x: 35.61, y: 178, width: 33, height: 33.86))
+        accentColor.setFill()
+        oval6Path.fill()
+        
+        
+        //// Rectangle 20 Drawing
+        let rectangle20Path = UIBezierPath(rect: CGRect(x: 81.64, y: 183.21, width: 57.32, height: 5.21))
+        listElementsColor.setFill()
+        rectangle20Path.fill()
+        
+        
+        //// Rectangle 22 Drawing
+        let rectangle22Path = UIBezierPath(rect: CGRect(x: 81.64, y: 195.36, width: 125.93, height: 5.21))
+        listElementsColor.setFill()
+        rectangle22Path.fill()
+        
+        
+        //// Rectangle 24 Drawing
+        let rectangle24Path = UIBezierPath(rect: CGRect(x: 81.64, y: 206.65, width: 125.93, height: 5.21))
+        listElementsColor.setFill()
+        rectangle24Path.fill()
+        
+        
+        
+        
+        //// Top view
+        //// Rectangle 4 Drawing
+        let rectangle4Path = UIBezierPath(rect: CGRect(x: 24.32, y: 52.97, width: 193.67, height: 26.92))
+        accentColor.setFill()
+        rectangle4Path.fill()
+        
+        
+        //// Rectangle 26 Drawing
+        let rectangle26Path = UIBezierPath(rect: CGRect(x: 29.53, y: 58.18, width: 25.19, height: 3.47))
+        listElementsColor.setFill()
+        rectangle26Path.fill()
+        
+        
+        //// Rectangle 28 Drawing
+        let rectangle28Path = UIBezierPath(rect: CGRect(x: 29.53, y: 64.25, width: 25.19, height: 3.47))
+        listElementsColor.setFill()
+        rectangle28Path.fill()
+        
+        
+        //// Rectangle 30 Drawing
+        let rectangle30Path = UIBezierPath(rect: CGRect(x: 29.53, y: 71.2, width: 25.19, height: 3.47))
+        listElementsColor.setFill()
+        rectangle30Path.fill()
+    }
+    
+    private static func drawGirl(shoesColor: UIColor, hairColor: UIColor, pantsColor: UIColor, skinColor: UIColor, blouseColor: UIColor) {
+        
+        let pantsPath = UIBezierPath()
+        pantsPath.move(to: CGPoint(x: 254.55, y: 144.14))
+        pantsPath.addLine(to: CGPoint(x: 245.96, y: 160.35))
+        pantsPath.addCurve(to: CGPoint(x: 191.77, y: 190.8), controlPoint1: CGPoint(x: 245.96, y: 160.35), controlPoint2: CGPoint(x: 183.84, y: 172.27))
+        pantsPath.addCurve(to: CGPoint(x: 213.25, y: 235.82), controlPoint1: CGPoint(x: 199.7, y: 209.34), controlPoint2: CGPoint(x: 208.62, y: 236.48))
+        pantsPath.addCurve(to: CGPoint(x: 244.31, y: 216.29), controlPoint1: CGPoint(x: 217.87, y: 235.16), controlPoint2: CGPoint(x: 243.32, y: 220.59))
+        pantsPath.addCurve(to: CGPoint(x: 221.51, y: 191.8), controlPoint1: CGPoint(x: 245.3, y: 211.99), controlPoint2: CGPoint(x: 221.51, y: 191.8))
+        pantsPath.addLine(to: CGPoint(x: 260.83, y: 184.18))
+        pantsPath.addCurve(to: CGPoint(x: 259.18, y: 228.87), controlPoint1: CGPoint(x: 260.83, y: 184.18), controlPoint2: CGPoint(x: 266.45, y: 210.66))
+        pantsPath.addCurve(to: CGPoint(x: 252.57, y: 297.05), controlPoint1: CGPoint(x: 251.91, y: 247.07), controlPoint2: CGPoint(x: 247.61, y: 296.39))
+        pantsPath.addCurve(to: CGPoint(x: 275.7, y: 298.04), controlPoint1: CGPoint(x: 257.53, y: 297.71), controlPoint2: CGPoint(x: 270.08, y: 301.68))
+        pantsPath.addCurve(to: CGPoint(x: 283.96, y: 214.63), controlPoint1: CGPoint(x: 281.32, y: 294.4), controlPoint2: CGPoint(x: 283.96, y: 214.63))
+        pantsPath.addCurve(to: CGPoint(x: 288.59, y: 156.38), controlPoint1: CGPoint(x: 283.96, y: 214.63), controlPoint2: CGPoint(x: 295.86, y: 162.34))
+        pantsPath.addCurve(to: CGPoint(x: 254.55, y: 144.14), controlPoint1: CGPoint(x: 281.32, y: 150.42), controlPoint2: CGPoint(x: 254.55, y: 144.14))
+        pantsPath.close()
+        pantsColor.setFill()
+        pantsPath.fill()
+        
+        
+        //// Path 3 Drawing
+        let rightShoesPath = UIBezierPath()
+        rightShoesPath.move(to: CGPoint(x: 268.23, y: 289.44))
+        rightShoesPath.addCurve(to: CGPoint(x: 259, y: 288.64), controlPoint1: CGPoint(x: 268.23, y: 289.44), controlPoint2: CGPoint(x: 260.6, y: 285.45))
+        rightShoesPath.addCurve(to: CGPoint(x: 255.39, y: 299.43), controlPoint1: CGPoint(x: 259, y: 288.64), controlPoint2: CGPoint(x: 260.2, y: 298.23))
+        rightShoesPath.addCurve(to: CGPoint(x: 255.39, y: 309.82), controlPoint1: CGPoint(x: 250.57, y: 300.63), controlPoint2: CGPoint(x: 248.57, y: 309.02))
+        rightShoesPath.addCurve(to: CGPoint(x: 269.03, y: 308.22), controlPoint1: CGPoint(x: 262.21, y: 310.61), controlPoint2: CGPoint(x: 266.62, y: 308.22))
+        rightShoesPath.addCurve(to: CGPoint(x: 269.03, y: 299.83), controlPoint1: CGPoint(x: 271.44, y: 308.22), controlPoint2: CGPoint(x: 269.03, y: 299.83))
+        rightShoesPath.addLine(to: CGPoint(x: 268.23, y: 289.44))
+        rightShoesPath.close()
+        shoesColor.setFill()
+        rightShoesPath.fill()
+        
+        
+        //// Path 4 Drawing
+        let leftShoesPath = UIBezierPath()
+        leftShoesPath.move(to: CGPoint(x: 232.47, y: 222.17))
+        leftShoesPath.addCurve(to: CGPoint(x: 223.28, y: 223.33), controlPoint1: CGPoint(x: 232.47, y: 222.17), controlPoint2: CGPoint(x: 224.17, y: 219.86))
+        leftShoesPath.addCurve(to: CGPoint(x: 222.03, y: 234.65), controlPoint1: CGPoint(x: 223.28, y: 223.33), controlPoint2: CGPoint(x: 226.49, y: 232.46))
+        leftShoesPath.addCurve(to: CGPoint(x: 224.23, y: 244.82), controlPoint1: CGPoint(x: 217.57, y: 236.84), controlPoint2: CGPoint(x: 217.39, y: 245.47))
+        leftShoesPath.addCurve(to: CGPoint(x: 237.24, y: 240.39), controlPoint1: CGPoint(x: 231.07, y: 244.17), controlPoint2: CGPoint(x: 234.88, y: 240.89))
+        leftShoesPath.addCurve(to: CGPoint(x: 235.46, y: 232.17), controlPoint1: CGPoint(x: 239.6, y: 239.88), controlPoint2: CGPoint(x: 235.46, y: 232.17))
+        leftShoesPath.addLine(to: CGPoint(x: 232.47, y: 222.17))
+        leftShoesPath.close()
+        shoesColor.setFill()
+        leftShoesPath.fill()
+        
+        
+        //// Path 5 Drawing
+        let neckPath = UIBezierPath()
+        neckPath.move(to: CGPoint(x: 273.17, y: 86.81))
+        neckPath.addCurve(to: CGPoint(x: 271.21, y: 99.92), controlPoint1: CGPoint(x: 273.17, y: 86.81), controlPoint2: CGPoint(x: 273.5, y: 98.93))
+        neckPath.addCurve(to: CGPoint(x: 283.98, y: 106.8), controlPoint1: CGPoint(x: 268.91, y: 100.9), controlPoint2: CGPoint(x: 283.98, y: 106.8))
+        neckPath.addLine(to: CGPoint(x: 286.6, y: 102.21))
+        neckPath.addCurve(to: CGPoint(x: 284.31, y: 84.51), controlPoint1: CGPoint(x: 286.6, y: 102.21), controlPoint2: CGPoint(x: 283.65, y: 85.82))
+        neckPath.addCurve(to: CGPoint(x: 273.17, y: 86.81), controlPoint1: CGPoint(x: 284.96, y: 83.2), controlPoint2: CGPoint(x: 273.17, y: 86.81))
+        neckPath.close()
+        skinColor.setFill()
+        neckPath.fill()
+        
+        
+        //// Oval 10 Drawing
+        let hairPath1 = UIBezierPath(ovalIn: CGRect(x: 258.81, y: 48.62, width: 40.82, height: 40.81))
+        hairColor.setFill()
+        hairPath1.fill()
+        
+        
+        //// Oval 12 Drawing
+        let hairPath2 = UIBezierPath(ovalIn: CGRect(x: 271.84, y: 41.68, width: 16.5, height: 16.5))
+        hairColor.setFill()
+        hairPath2.fill()
+        
+        
+        //// Path 6 Drawing
+        let hairPath3 = UIBezierPath()
+        hairPath3.move(to: CGPoint(x: 269.3, y: 45.59))
+        hairPath3.addCurve(to: CGPoint(x: 277.05, y: 37.38), controlPoint1: CGPoint(x: 269.3, y: 41.36), controlPoint2: CGPoint(x: 272.64, y: 37.82))
+        hairPath3.addCurve(to: CGPoint(x: 276.15, y: 37.34), controlPoint1: CGPoint(x: 276.75, y: 37.35), controlPoint2: CGPoint(x: 276.45, y: 37.34))
+        hairPath3.addCurve(to: CGPoint(x: 267.49, y: 45.59), controlPoint1: CGPoint(x: 271.37, y: 37.34), controlPoint2: CGPoint(x: 267.49, y: 41.03))
+        hairPath3.addCurve(to: CGPoint(x: 276.15, y: 53.83), controlPoint1: CGPoint(x: 267.49, y: 50.14), controlPoint2: CGPoint(x: 271.37, y: 53.83))
+        hairPath3.addCurve(to: CGPoint(x: 277.05, y: 53.79), controlPoint1: CGPoint(x: 276.45, y: 53.83), controlPoint2: CGPoint(x: 276.75, y: 53.82))
+        hairPath3.addCurve(to: CGPoint(x: 269.3, y: 45.59), controlPoint1: CGPoint(x: 272.64, y: 53.35), controlPoint2: CGPoint(x: 269.3, y: 49.81))
+        hairPath3.close()
+        hairColor.setFill()
+        hairPath3.fill()
+        
+        let hairPath4 = UIBezierPath(ovalIn: CGRect(x: 264.89, y: 54.7, width: 27.79, height: 16.5))
+        hairColor.setFill()
+        hairPath4.fill()
 
+        
+        //// Oval 14 Drawing
+        let facePath = UIBezierPath(ovalIn: CGRect(x: 264.02, y: 65.12, width: 27.79, height: 27.79))
+        skinColor.setFill()
+        facePath.fill()
+        
+        
+        //// Path 7 Drawing
+        let blousePath = UIBezierPath()
+        blousePath.move(to: CGPoint(x: 288.21, y: 97.12))
+        blousePath.addCurve(to: CGPoint(x: 270.34, y: 97.12), controlPoint1: CGPoint(x: 288.21, y: 97.12), controlPoint2: CGPoint(x: 276.3, y: 100.75))
+        blousePath.addCurve(to: CGPoint(x: 247.84, y: 108.66), controlPoint1: CGPoint(x: 264.39, y: 93.5), controlPoint2: CGPoint(x: 250.16, y: 104.05))
+        blousePath.addCurve(to: CGPoint(x: 256.44, y: 117.89), controlPoint1: CGPoint(x: 245.52, y: 113.27), controlPoint2: CGPoint(x: 256.44, y: 117.89))
+        blousePath.addCurve(to: CGPoint(x: 253.96, y: 131.24), controlPoint1: CGPoint(x: 256.44, y: 117.89), controlPoint2: CGPoint(x: 253.33, y: 126.8))
+        blousePath.addCurve(to: CGPoint(x: 253.47, y: 145.25), controlPoint1: CGPoint(x: 254.62, y: 135.85), controlPoint2: CGPoint(x: 253.47, y: 145.25))
+        blousePath.addCurve(to: CGPoint(x: 289.2, y: 155.79), controlPoint1: CGPoint(x: 253.47, y: 145.25), controlPoint2: CGPoint(x: 282.7, y: 164.43))
+        blousePath.addCurve(to: CGPoint(x: 298.47, y: 123.49), controlPoint1: CGPoint(x: 290.2, y: 154.48), controlPoint2: CGPoint(x: 298.47, y: 123.49))
+        blousePath.addLine(to: CGPoint(x: 310.05, y: 111.96))
+        blousePath.addCurve(to: CGPoint(x: 298.47, y: 100.42), controlPoint1: CGPoint(x: 310.05, y: 111.96), controlPoint2: CGPoint(x: 302.77, y: 101.41))
+        blousePath.addCurve(to: CGPoint(x: 288.21, y: 97.12), controlPoint1: CGPoint(x: 294.17, y: 99.43), controlPoint2: CGPoint(x: 288.21, y: 97.12))
+        blousePath.close()
+        blouseColor.setFill()
+        blousePath.fill()
+        
+        
+        //// Path 8 Drawing
+        let leftHandPath = UIBezierPath()
+        leftHandPath.move(to: CGPoint(x: 207.98, y: 164.97))
+        leftHandPath.addCurve(to: CGPoint(x: 189.96, y: 180.15), controlPoint1: CGPoint(x: 207.98, y: 164.97), controlPoint2: CGPoint(x: 185.29, y: 176.78))
+        leftHandPath.addCurve(to: CGPoint(x: 213.65, y: 167), controlPoint1: CGPoint(x: 194.63, y: 183.52), controlPoint2: CGPoint(x: 213.65, y: 167))
+        leftHandPath.addLine(to: CGPoint(x: 207.98, y: 164.97))
+        leftHandPath.close()
+        UIColor.red.setFill()
+        skinColor.setFill()
+        leftHandPath.fill()
+        
+        
+        //// Path 9 Drawing
+        let rightHandPath = UIBezierPath()
+        rightHandPath.move(to: CGPoint(x: 296.79, y: 157.11))
+        rightHandPath.addCurve(to: CGPoint(x: 285.01, y: 153.76), controlPoint1: CGPoint(x: 296.79, y: 157.11), controlPoint2: CGPoint(x: 286.64, y: 150.41))
+        rightHandPath.addCurve(to: CGPoint(x: 298.8, y: 161.7), controlPoint1: CGPoint(x: 283.37, y: 157.11), controlPoint2: CGPoint(x: 296.12, y: 164.65))
+        rightHandPath.addCurve(to: CGPoint(x: 296.79, y: 157.11), controlPoint1: CGPoint(x: 301.48, y: 158.75), controlPoint2: CGPoint(x: 296.79, y: 157.11))
+        rightHandPath.close()
+        skinColor.setFill()
+        rightHandPath.fill()
+        
+        
+        //// Path 10 Drawing
+        let blousePath1 = UIBezierPath()
+        blousePath1.move(to: CGPoint(x: 304.34, y: 108.54))
+        blousePath1.addLine(to: CGPoint(x: 310.24, y: 112.17))
+        blousePath1.addCurve(to: CGPoint(x: 323.37, y: 146.16), controlPoint1: CGPoint(x: 310.24, y: 112.17), controlPoint2: CGPoint(x: 330.26, y: 139.89))
+        blousePath1.addCurve(to: CGPoint(x: 298.76, y: 164.97), controlPoint1: CGPoint(x: 316.48, y: 152.43), controlPoint2: CGPoint(x: 298.76, y: 164.97))
+        blousePath1.addCurve(to: CGPoint(x: 294.82, y: 156.06), controlPoint1: CGPoint(x: 298.76, y: 164.97), controlPoint2: CGPoint(x: 292.85, y: 156.39))
+        blousePath1.addCurve(to: CGPoint(x: 312.54, y: 142.53), controlPoint1: CGPoint(x: 296.79, y: 155.73), controlPoint2: CGPoint(x: 312.54, y: 142.53))
+        blousePath1.addLine(to: CGPoint(x: 298.76, y: 116.79))
+        blousePath1.addLine(to: CGPoint(x: 304.34, y: 108.54))
+        blousePath1.close()
+        blouseColor.setFill()
+        blousePath1.fill()
+        
+        
+        //// Path 11 Drawing
+        let blousePath2 = UIBezierPath()
+        blousePath2.move(to: CGPoint(x: 251.59, y: 106.8))
+        blousePath2.addLine(to: CGPoint(x: 247.25, y: 108.46))
+        blousePath2.addLine(to: CGPoint(x: 235.89, y: 128.75))
+        blousePath2.addLine(to: CGPoint(x: 205.83, y: 165.01))
+        blousePath2.addCurve(to: CGPoint(x: 213.18, y: 170), controlPoint1: CGPoint(x: 205.83, y: 165.01), controlPoint2: CGPoint(x: 209.84, y: 171.33))
+        blousePath2.addCurve(to: CGPoint(x: 241.57, y: 140.73), controlPoint1: CGPoint(x: 216.52, y: 168.67), controlPoint2: CGPoint(x: 241.57, y: 140.73))
+        blousePath2.addLine(to: CGPoint(x: 257.94, y: 115.45))
+        blousePath2.addLine(to: CGPoint(x: 251.59, y: 106.8))
+        blousePath2.close()
+        blouseColor.setFill()
+        blousePath2.fill()
+    }
+    
+    private static func drawBackPath(_ context: CGContext, _ accentColor: UIColor) {
+        let backPath = UIBezierPath()
+        
+        backPath.move(to: CGPoint(x: 98.10000000000001, y: 9.9))
+        backPath.addCurve(to: CGPoint(x: 9, y: 148.5 ), controlPoint1: CGPoint(x: 50.4, y: 55.800000000000004 ), controlPoint2: CGPoint(x: -1.8, y: 36.0))
+        backPath.addCurve(to: CGPoint(x: 18.900000000000002, y: 325.8 ), controlPoint1: CGPoint(x: 20.7, y: 261.0 ), controlPoint2: CGPoint(x: -22.5, y: 265.5 ))
+        backPath.addCurve(to: CGPoint(x: 204.3, y: 340.2), controlPoint1: CGPoint(x: 61.2, y: 386.1 ), controlPoint2: CGPoint(x: 115.2, y: 340.2))
+        backPath.addCurve(to: CGPoint(x: 347.40000000000003, y: 224.1), controlPoint1: CGPoint(x: 294.3, y: 340.2), controlPoint2: CGPoint(x: 306.90000000000003, y: 316.8))
+        backPath.addCurve(to: CGPoint(x: 310.5, y: 58.5), controlPoint1: CGPoint(x: 387.90000000000003, y: 131.4), controlPoint2: CGPoint(x: 433.8, y: 27.900000000000002))
+        backPath.addCurve(to: CGPoint(x: 98.10000000000001, y: 9.9), controlPoint1: CGPoint(x: 187.20000000000002, y: 90), controlPoint2: CGPoint(x: 145.8, y: -35.1))
+        context.setAlpha(0.2)
+        accentColor.setFill()
+        backPath.close()
+        backPath.fill()
+        context.setAlpha(1)
+    }
+    
+}
 
-
-
-    @objc(MeetingPictureDrawResizingBehavior)
-    public enum ResizingBehavior: Int {
-        case aspectFit /// The content is proportionally resized to fit into the target rectangle.
-        case aspectFill /// The content is proportionally resized to completely fill the target rectangle.
-        case stretch /// The content is stretched to match the entire target rectangle.
-        case center /// The content is centered in the target rectangle, but it is NOT resized.
-
-        public func apply(rect: CGRect, target: CGRect) -> CGRect {
-            if rect == target || target == CGRect.zero {
-                return rect
-            }
-
-            var scales = CGSize.zero
-            scales.width = abs(target.width / rect.width)
-            scales.height = abs(target.height / rect.height)
-
-            switch self {
-                case .aspectFit:
-                    scales.width = min(scales.width, scales.height)
-                    scales.height = scales.width
-                case .aspectFill:
-                    scales.width = max(scales.width, scales.height)
-                    scales.height = scales.width
-                case .stretch:
-                    break
-                case .center:
-                    scales.width = 1
-                    scales.height = 1
-            }
-
-            var result = rect.standardized
-            result.size.width *= scales.width
-            result.size.height *= scales.height
-            result.origin.x = target.minX + (target.width - result.width) / 2
-            result.origin.y = target.minY + (target.height - result.height) / 2
-            return result
+public enum ResizingBehavior: Int {
+    case aspectFit /// The content is proportionally resized to fit into the target rectangle.
+    case aspectFill /// The content is proportionally resized to completely fill the target rectangle.
+    case stretch /// The content is stretched to match the entire target rectangle.
+    case center /// The content is centered in the target rectangle, but it is NOT resized.
+    
+    public func apply(rect: CGRect, target: CGRect) -> CGRect {
+        if rect == target || target == CGRect.zero {
+            return rect
         }
+        
+        var scales = CGSize.zero
+        scales.width = abs(target.width / rect.width)
+        scales.height = abs(target.height / rect.height)
+        
+        switch self {
+        case .aspectFit:
+            scales.width = min(scales.width, scales.height)
+            scales.height = scales.width
+        case .aspectFill:
+            scales.width = max(scales.width, scales.height)
+            scales.height = scales.width
+        case .stretch:
+            break
+        case .center:
+            scales.width = 1
+            scales.height = 1
+        }
+        
+        var result = rect.standardized
+        result.size.width *= scales.width
+        result.size.height *= scales.height
+        result.origin.x = target.minX + (target.width - result.width) / 2
+        result.origin.y = target.minY + (target.height - result.height) / 2
+        return result
     }
 }
