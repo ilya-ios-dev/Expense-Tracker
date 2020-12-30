@@ -24,11 +24,6 @@ final class CategoryViewController: UIViewController {
         let appDelegate  = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.container.viewContext
     }()
-    private lazy var alert: UIAlertController = {
-        let alert = UIAlertController(title: "", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        return alert
-    }()
 
     //MARK: - View Life Cycle
     
@@ -71,8 +66,7 @@ extension CategoryViewController {
         do {
             try fetchedResultsController.performFetch()
         } catch {
-            alert.title = "Fetch failed"
-            present(alert, animated: true, completion: nil)
+            showAlert(alertText: error.localizedDescription)
         }
     }
     
@@ -117,7 +111,6 @@ extension CategoryViewController {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Transiction"
         navigationItem.searchController = searchController
         
         searchController.searchBar.backgroundImage = UIImage()
@@ -126,7 +119,7 @@ extension CategoryViewController {
         searchTextField.textColor = .black
         
         let attributeDict = [NSAttributedString.Key.foregroundColor: UIColor.gray]
-        searchTextField.attributedPlaceholder = NSAttributedString(string: "Search", attributes: attributeDict)
+        searchTextField.attributedPlaceholder = NSAttributedString(string: "Search".localized, attributes: attributeDict)
         
         imageView.tintColor = UIColor.gray
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
@@ -170,7 +163,7 @@ extension CategoryViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let editAction = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
+        let editAction = UIContextualAction(style: .normal, title: "Edit".localized) { (_, _, completionHandler) in
             
             guard let category = self.diffableDataSource?.itemIdentifier(for: indexPath) else { return }
             let storyboard = UIStoryboard(name: "CreateCategory", bundle: nil)
@@ -192,7 +185,7 @@ extension CategoryViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completionHandler) in
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete".localized) { (_, _, completionHandler) in
             guard let category = self.diffableDataSource?.itemIdentifier(for: indexPath) else { return }
             self.context.delete(category)
             try? self.context.save()

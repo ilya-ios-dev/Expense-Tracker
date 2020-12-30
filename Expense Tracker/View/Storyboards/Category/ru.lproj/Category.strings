@@ -1,0 +1,9 @@
+
+/* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "HmW-Z3-j5j"; */
+"HmW-Z3-j5j.title" = "Добавить";
+
+/* Class = "UITabBarItem"; title = "Category"; ObjectID = "few-FX-W76"; */
+"few-FX-W76.title" = "Категории";
+
+/* Class = "UINavigationItem"; title = "Categories"; ObjectID = "lw7-ps-LDN"; */
+"lw7-ps-LDN.title" = "Категории";

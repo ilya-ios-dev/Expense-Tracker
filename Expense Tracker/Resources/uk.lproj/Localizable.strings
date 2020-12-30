@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  Expense Tracker
+
+  Created by isEmpty on 30.12.2020.
+  
+*/
+
+"Income" = "Прибуток";
+"Expense" = "Витрати";
+"Net balance" = "Поточний баланс";
+"Automatic" = "Автоматично";
+"Dark" = "Темне";
+"Light" = "Світле";
+"Edit" = "Редагувати";
+"Delete" = "Видалити";
+"You entered an incorrect password. Please try to fill in again." = "Ви ввели невірний пароль. Будь ласка, спробуйте ще раз.";
+"Search" = "Пошук";
+"Appearance" = "Оформлення";
+"Passcode" = "Код-пароль";
+"Enter your previous password" = "Введіть ваш минулий пароль";
+"Enter your PIN code" = "Введіть ваш пін код";
+"You will now be required to enter a password to enter the application." = "Тепер вам потрібно буде вводити пароль для входу в додаток";
+"Confirm pin code" = "Підтвердіть пін код";
+"Change passcode" = "Змінити пін код";
+"Passcode successfully created" = "Пін код успішно створений";
+"Passcode successfully disabled" = "Пін код успішно відключений";
+"Passcode successfully edited" = "Пін код успішно змінений";

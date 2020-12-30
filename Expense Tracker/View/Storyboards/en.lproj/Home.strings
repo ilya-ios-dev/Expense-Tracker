@@ -1,0 +1,27 @@
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "0lY-6o-GSJ"; */
+"0lY-6o-GSJ.title" = "Home";
+
+/* Class = "UILabel"; text = "32,465"; ObjectID = "4hI-Gf-Uuv"; */
+"4hI-Gf-Uuv.text" = "32,465";
+
+/* Class = "UILabel"; text = "EXPENSE"; ObjectID = "g1D-bk-Vyi"; */
+"g1D-bk-Vyi.text" = "EXPENSE";
+
+/* Class = "UILabel"; text = "$42,500"; ObjectID = "gLZ-zw-mui"; */
+"gLZ-zw-mui.text" = "$42,500";
+
+/* Class = "UILabel"; text = "$12,421"; ObjectID = "jeO-kQ-x8N"; */
+"jeO-kQ-x8N.text" = "$12,421";
+
+/* Class = "UILabel"; text = "INCOME"; ObjectID = "ni3-c1-3So"; */
+"ni3-c1-3So.text" = "INCOME";
+
+/* Class = "UILabel"; text = "CURRENT BALANCE"; ObjectID = "q3t-tI-agv"; */
+"q3t-tI-agv.text" = "CURRENT BALANCE";
+
+/* Class = "UILabel"; text = "$"; ObjectID = "y60-Yv-WfV"; */
+"y60-Yv-WfV.text" = "$";
+
+/* Class = "UILabel"; text = "November 2020"; ObjectID = "zNY-0b-KH0"; */
+"zNY-0b-KH0.text" = "November 2020";

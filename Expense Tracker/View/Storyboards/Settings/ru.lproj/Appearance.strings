@@ -1,0 +1,33 @@
+
+/* Class = "UILabel"; text = "$12,421"; ObjectID = "FQX-av-qzc"; */
+"FQX-av-qzc.text" = "$12,421";
+
+/* Class = "UINavigationItem"; title = "Appearance"; ObjectID = "K3U-Ws-XOZ"; */
+"K3U-Ws-XOZ.title" = "Оформление";
+
+/* Class = "UILabel"; text = "CURRENT BALANCE"; ObjectID = "KKi-a8-cM0"; */
+"KKi-a8-cM0.text" = "Текущий баланс";
+
+/* Class = "UILabel"; text = "EXPENSE"; ObjectID = "Yvq-VE-lhL"; */
+"Yvq-VE-lhL.text" = "Рассходы";
+
+/* Class = "UILabel"; text = "Color Accent"; ObjectID = "bEP-8u-Ewf"; */
+"bEP-8u-Ewf.text" = "Цветовой акцент";
+
+/* Class = "UILabel"; text = "$42,500"; ObjectID = "c58-hK-eom"; */
+"c58-hK-eom.text" = "$42,500";
+
+/* Class = "UILabel"; text = "32,465"; ObjectID = "hRv-Q2-u3g"; */
+"hRv-Q2-u3g.text" = "32,465";
+
+/* Class = "UILabel"; text = "INCOME"; ObjectID = "hbB-e4-imz"; */
+"hbB-e4-imz.text" = "Прибыль";
+
+/* Class = "UILabel"; text = "Appearance"; ObjectID = "mlS-hf-pNk"; */
+"mlS-hf-pNk.text" = "Оформление";
+
+/* Class = "UILabel"; text = "$"; ObjectID = "sX3-7d-xHH"; */
+"sX3-7d-xHH.text" = "$";
+
+/* Class = "UILabel"; text = "November 2020"; ObjectID = "wXH-sG-clI"; */
+"wXH-sG-clI.text" = "November 2020";

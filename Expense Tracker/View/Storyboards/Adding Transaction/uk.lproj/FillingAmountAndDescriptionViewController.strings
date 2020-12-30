@@ -1,0 +1,24 @@
+
+/* Class = "UITextField"; placeholder = "Enter the amount"; ObjectID = "4gi-DQ-tOe"; */
+"4gi-DQ-tOe.placeholder" = "Введіть суму";
+
+/* Class = "UILabel"; text = "Amount"; ObjectID = "6aQ-EP-gyD"; */
+"6aQ-EP-gyD.text" = "Сума";
+
+/* Class = "UILabel"; text = "Transaction type"; ObjectID = "M6o-Cb-XTB"; */
+"M6o-Cb-XTB.text" = "Вид транзакції";
+
+/* Class = "UILabel"; text = ">|"; ObjectID = "UfV-tf-2Wl"; */
+"UfV-tf-2Wl.text" = ">|";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "Zcw-Oz-f1T"; */
+"Zcw-Oz-f1T.text" = "Опис";
+
+/* Class = "UIButton"; normalTitle = ">"; ObjectID = "lab-Iz-aT0"; */
+"lab-Iz-aT0.normalTitle" = ">";
+
+/* Class = "UILabel"; text = "Expense"; ObjectID = "u8L-GW-hqb"; */
+"u8L-GW-hqb.text" = "Витрати";
+
+/* Class = "UITextField"; placeholder = "Enter the description"; ObjectID = "ycy-cf-QbQ"; */
+"ycy-cf-QbQ.placeholder" = "Введіть опис";

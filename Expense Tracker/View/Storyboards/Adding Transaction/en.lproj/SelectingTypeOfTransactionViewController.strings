@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "What kind of transaction it is?"; ObjectID = "1nP-cD-PzV"; */
+"1nP-cD-PzV.text" = "What kind of transaction it is?";
+
+/* Class = "UINavigationItem"; title = "Add Transaction"; ObjectID = "U1W-xh-vdB"; */
+"U1W-xh-vdB.title" = "Add Transaction";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "a9V-sZ-GBm"; */
+"a9V-sZ-GBm.title" = "Item";

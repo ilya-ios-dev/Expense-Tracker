@@ -53,7 +53,7 @@ extension ConfigurePasscodeViewController {
     /// If the passcode is enabled, it will be possible to edit and disable it.
     private func configureButtons(){
         if UserDefaults.standard.bool(forKey: "isPasscodeEnabled") {
-            turnOnButton.setTitle("Change passcode", for: .normal)
+            turnOnButton.setTitle("Change passcode".localized, for: .normal)
         } else {
             turnOffButton.isHidden = true
         }

@@ -67,7 +67,7 @@ extension SelectingTypeOfTransactionViewController {
         do {
             balance = try context.fetch(fetchRequest).first ?? Balance(context: context)
         } catch {
-            print(error)
+            showAlert(alertText: error.localizedDescription)
         }
     }
 }

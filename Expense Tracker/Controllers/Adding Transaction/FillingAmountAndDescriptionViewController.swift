@@ -118,12 +118,12 @@ extension FillingAmountAndDescriptionViewController {
             transactionIconLabel.text = "|<"
             let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
             transactionIconBackground.backgroundColor = startColor
-            transactionTypeLabel.text = "Expense"
+            transactionTypeLabel.text = "Expense".localized
         } else {
             transactionIconLabel.text = ">|"
             let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
             transactionIconBackground.backgroundColor = endColor
-            transactionTypeLabel.text = "Income"
+            transactionTypeLabel.text = "Income".localized
         }
         transactionIconBackground.layer.cornerRadius = transactionIconBackground.frame.height / 2
     }

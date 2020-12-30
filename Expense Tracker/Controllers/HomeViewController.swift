@@ -45,7 +45,7 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        UserDefaults.standard.synchronize()
         //Setup Data
         fetchBalance()
         setupFetchedResultsController()
@@ -54,6 +54,15 @@ final class HomeViewController: UIViewController {
         configureCollectionView()
         configureNavigationBar()
         configureTopView()
+    }
+    
+    func restartApplication () {
+        UserDefaults.standard.set(["ru"], forKey: "AppleLanguages")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let tabBarController = storyboard.instantiateInitialViewController() as? TabBarViewController {
+            guard let window = UIApplication.shared.windows.first else { fatalError() }
+            window.rootViewController = tabBarController
+        }
     }
 }
 
@@ -67,9 +76,9 @@ extension HomeViewController {
         amountLabel.text = "\(balance.totalBalance)"
         incomeAmountLabel.text = "\(balance.income ?? 0)"
         expenseAmountLabel.text = "\(balance.expense ?? 0)"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM yyyy"
-        dateLabel.text = "\(dateFormatter.string(from: Date()))"
+        let monthInt = Calendar.current.dateComponents([.month, .year], from: Date())
+        let monthStr = Calendar.current.standaloneMonthSymbols[monthInt.month! - 1]
+        dateLabel.text = "\(monthStr) \(monthInt.year!)"
     }
     
     /// Register `collectionView` cell. Assigning a delegate.
@@ -140,7 +149,7 @@ extension HomeViewController {
         do {
             try fetchedResultsController.performFetch()
         } catch {
-            print("Fetch failed")
+            showAlert(alertText: error.localizedDescription)
         }
     }
     
@@ -176,7 +185,8 @@ extension HomeViewController {
             
             //Date
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMMM dd, HH:MM"
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .short
             cell.dateLabel.text = "\(dateFormatter.string(from: transaction.date))"
             
             //Sum
@@ -226,7 +236,7 @@ extension HomeViewController: UICollectionViewDelegate {
     }
     ///Adds the ability to edit `transactions`.
     func editAction(_ indexPath: IndexPath) -> UIAction {
-        return UIAction(title: "Edit",
+        return UIAction(title: "Edit".localized,
                         image: UIImage(systemName: "square.and.pencil")) { action in
             let storyboard = UIStoryboard(name: "SelectingTypeOfTransactionViewController", bundle: nil)
             guard let navController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
@@ -237,7 +247,7 @@ extension HomeViewController: UICollectionViewDelegate {
     }
     ///Adds the ability to delete `transactions`.
     func deleteAction(_ indexPath: IndexPath) -> UIAction {
-        return UIAction(title: "Delete",
+        return UIAction(title: "Delete".localized,
                         image: UIImage(systemName: "trash"),
                         attributes: .destructive) { action in
             guard let transaction = self.dataSource.itemIdentifier(for: indexPath) else { return }

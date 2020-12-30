@@ -94,7 +94,7 @@ extension ChartView {
     /// Configure a labels with the current balance.
     private func configureLabels() {
         netLabel = UILabel()
-        netLabel.text = "Net balance"
+        netLabel.text = "Net balance".localized
         netLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
         netLabel.textColor = Colors.descriptionColor
         netLabel.translatesAutoresizingMaskIntoConstraints = false

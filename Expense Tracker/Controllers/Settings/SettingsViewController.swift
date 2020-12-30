@@ -27,9 +27,9 @@ extension SettingsViewController {
         cell.backgroundColor = UIColor(named: "backgroundColor")
         cell.accessoryType = .disclosureIndicator
         if indexPath.row == 0 {
-            cell.textLabel?.text = "Passcode"
+            cell.textLabel?.text = "Passcode".localized
         } else {
-            cell.textLabel?.text = "Appearance"
+            cell.textLabel?.text = "Appearance".localized
         }
         return cell
     }

@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Passcode Lock"; ObjectID = "0Fq-jR-Opo"; */
+"0Fq-jR-Opo.text" = "Passcode Lock";
+
+/* Class = "UIButton"; normalTitle = "Turn passcode off"; ObjectID = "JEz-pR-Gsf"; */
+"JEz-pR-Gsf.normalTitle" = "Turn passcode off";
+
+/* Class = "UILabel"; text = "When you enable the passcode, a passcode screen will appear when launching the application."; ObjectID = "ZxT-pU-ugI"; */
+"ZxT-pU-ugI.text" = "When you enable the passcode, a passcode screen will appear when launching the application.";
+
+/* Class = "UIButton"; normalTitle = "Turn passcode on"; ObjectID = "zgP-9e-KOT"; */
+"zgP-9e-KOT.normalTitle" = "Turn passcode on";

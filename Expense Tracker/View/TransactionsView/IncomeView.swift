@@ -16,10 +16,15 @@ final class IncomeView: TransactionView {
 
 
     private func configureViews(){
-        transactionKindLabel.text = "Income"
+        transactionKindLabel.text = "Income".localized
         transactionIconLabel.text = ">|"
         let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
         transactionKindView.backgroundColor = endColor
     }
+}
 
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
 }

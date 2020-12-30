@@ -54,7 +54,7 @@ final class ChangePasscodeViewController: UIViewController {
         if editingMode == .disable {
             descriptionLabel.isHidden = true
         } else if editingMode == .edit {
-            titleLabel.text = "Enter your previous password"
+            titleLabel.text = "Enter your previous password".localized
             descriptionLabel.isHidden = true
         }
     }
@@ -105,9 +105,9 @@ extension ChangePasscodeViewController {
     
     /// Shows incorrect animation.
     private func incorrectPasscode() {
-        self.descriptionLabel.text = "You entered an incorrect password. Please try to fill in again."
+        self.descriptionLabel.text = "You entered an incorrect password. Please try to fill in again.".localized
         UIView.transition(with: titleLabel, duration: 0.5, options: .transitionCrossDissolve) {
-            self.titleLabel.text = "Enter your PIN code"
+            self.titleLabel.text = "Enter your PIN code".localized
         }
         
         UIView.animate(withDuration: 0.5) {
@@ -122,8 +122,8 @@ extension ChangePasscodeViewController {
     /// Prepares view for creating new passcode.
     private func prepareForCreatingMode() {
         UIView.transition(with: titleLabel, duration: 0.5, options: .transitionCrossDissolve) {
-            self.titleLabel.text = "Enter new PIN code"
-            self.descriptionLabel.text = "You will now be required to enter a password to enter the application."
+            self.titleLabel.text = "Enter new PIN code".localized
+            self.descriptionLabel.text = "You will now be required to enter a password to enter the application.".localized
         }
         
         UIView.animate(withDuration: 0.5) {
@@ -150,7 +150,7 @@ extension ChangePasscodeViewController {
     private func firstTypePasscode() {
         passcode = passcodeTextField.text
         UIView.transition(with: titleLabel, duration: 0.5, options: .transitionCrossDissolve) {
-            self.titleLabel.text = "Confirm pin code"
+            self.titleLabel.text = "Confirm pin code".localized
         }
         
         UIView.animate(withDuration: 0.5) {

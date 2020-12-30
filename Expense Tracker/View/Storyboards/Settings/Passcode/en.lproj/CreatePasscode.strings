@@ -1,0 +1,9 @@
+
+/* Class = "UIViewController"; title = "Add Pin Code"; ObjectID = "o7D-UJ-a1Z"; */
+"o7D-UJ-a1Z.title" = "Add Pin Code";
+
+/* Class = "UILabel"; text = "Enter your PIN code"; ObjectID = "svO-Zx-ocT"; */
+"svO-Zx-ocT.text" = "Enter your PIN code";
+
+/* Class = "UILabel"; text = "You will now be required to enter a password to enter the application."; ObjectID = "xR6-fJ-0RN"; */
+"xR6-fJ-0RN.text" = "You will now be required to enter a password to enter the application.";

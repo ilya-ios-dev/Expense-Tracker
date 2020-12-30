@@ -171,9 +171,7 @@ extension CreateCategoryViewController {
     /// Loads data for `gradients` and `images`
     private func loadGradientsAndImages() {
         let gradientRequest: NSFetchRequest = Gradient.fetchRequest()
-//        let kondCompare = NSSortDescriptor(key: "startColor", ascending: false)
-//        gradientRequest.sortDescriptors = [kondCompare]
-        gradients = try! mainContext.fetch(gradientRequest)
+        gradients = try! context.fetch(gradientRequest)
         gradients.sort { (gradient1, gradient2) -> Bool in
             guard let number1Start = UInt8(gradient1.startColor, radix: 16)  else { return false }
             guard let number1End = UInt8(gradient1.endColor, radix: 16)  else { return false }
@@ -182,7 +180,7 @@ extension CreateCategoryViewController {
             return (number1Start + number1End) < (number2Start + number2End)
         }
         let imageRequest: NSFetchRequest = CategoryImage.fetchRequest()
-        images = try! mainContext.fetch(imageRequest)
+        images = try! context.fetch(imageRequest)
     }
     
     /// Checks if data is loaded into CoreData.

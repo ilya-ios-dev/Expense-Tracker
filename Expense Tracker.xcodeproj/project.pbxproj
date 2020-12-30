@@ -21,6 +21,8 @@
 		FA301324257914D6004D2421 /* MonthCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA301322257914D6004D2421 /* MonthCollectionViewCell.xib */; };
 		FA33752D2588D67C00139495 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33752B2588D67C00139495 /* Category+CoreDataClass.swift */; };
 		FA33752E2588D67C00139495 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33752C2588D67C00139495 /* Category+CoreDataProperties.swift */; };
+		FA38CE5B259C7A64006EC8C2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA38CE5D259C7A64006EC8C2 /* Home.storyboard */; };
+		FA38CE64259C9C00006EC8C2 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA38CE66259C9C00006EC8C2 /* Category.storyboard */; };
 		FA49FFDA258DE029006BB779 /* ExpenseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA49FFD9258DE029006BB779 /* ExpenseButton.swift */; };
 		FA49FFDD258DE041006BB779 /* IncomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA49FFDC258DE041006BB779 /* IncomeButton.swift */; };
 		FA4BBF332578FDE100F2ABD7 /* NavigationBar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4BBF322578FDE100F2ABD7 /* NavigationBar+Extensions.swift */; };
@@ -40,15 +42,10 @@
 		FA698AEE25876306008D2168 /* images.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA698AED25876306008D2168 /* images.csv */; };
 		FA6CDCB32599D4CB00DDECB3 /* Array+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CDCB22599D4CB00DDECB3 /* Array+UIColor.swift */; };
 		FA6E673E258CF2F9000CBA2D /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E673D258CF2F9000CBA2D /* TabBar.swift */; };
-		FA6E6745258CF395000CBA2D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E6744258CF395000CBA2D /* Home.storyboard */; };
 		FA6E6749258D1BC6000CBA2D /* SelectingTypeOfTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E6748258D1BC6000CBA2D /* SelectingTypeOfTransactionViewController.swift */; };
 		FA6E674C258D1C10000CBA2D /* FillingAmountAndDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E674B258D1C10000CBA2D /* FillingAmountAndDescriptionViewController.swift */; };
 		FA6E674F258D1C29000CBA2D /* ChooseCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E674E258D1C29000CBA2D /* ChooseCategoryViewController.swift */; };
 		FA6E6752258D1C4A000CBA2D /* ChooseDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E6751258D1C4A000CBA2D /* ChooseDateViewController.swift */; };
-		FA6E6756258D1C78000CBA2D /* SelectingTypeOfTransactionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E6755258D1C78000CBA2D /* SelectingTypeOfTransactionViewController.storyboard */; };
-		FA6E6759258D1C99000CBA2D /* FillingAmountAndDescriptionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E6758258D1C99000CBA2D /* FillingAmountAndDescriptionViewController.storyboard */; };
-		FA6E675C258D1CBB000CBA2D /* ChooseCategoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E675B258D1CBB000CBA2D /* ChooseCategoryViewController.storyboard */; };
-		FA6E675F258D1CE1000CBA2D /* ChooseDateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E675E258D1CE1000CBA2D /* ChooseDateViewController.storyboard */; };
 		FA718DA02588C41500A9FF12 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718D9F2588C41500A9FF12 /* CustomButton.swift */; };
 		FA718DA42588CC6800A9FF12 /* Transaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718DA22588CC6800A9FF12 /* Transaction+CoreDataClass.swift */; };
 		FA718DA52588CC6800A9FF12 /* Transaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA718DA32588CC6800A9FF12 /* Transaction+CoreDataProperties.swift */; };
@@ -65,31 +62,38 @@
 		FA96EAEC25936E02007DE177 /* PasscodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA96EAEB25936E02007DE177 /* PasscodeTextField.swift */; };
 		FA96EAEF25936E2B007DE177 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA96EAEE25936E2B007DE177 /* PinView.swift */; };
 		FA96F7D02594F9FC00080051 /* PasscodeSuccessfullyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA96F7CF2594F9FC00080051 /* PasscodeSuccessfullyView.swift */; };
-		FA96F7D52594FA8000080051 /* PasscodeSuccessfully.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA96F7D42594FA8000080051 /* PasscodeSuccessfully.storyboard */; };
 		FA96F7D8259501A100080051 /* BottomLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA96F7D7259501A100080051 /* BottomLeftView.swift */; };
 		FA96F7DB259501AA00080051 /* TopRightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA96F7DA259501AA00080051 /* TopRightView.swift */; };
 		FA96F7DE259501B200080051 /* TopLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA96F7DD259501B200080051 /* TopLeftView.swift */; };
-		FAA126D125936F3E00131A4F /* Passcode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA126D025936F3E00131A4F /* Passcode.storyboard */; };
 		FAA126D5259371B900131A4F /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA126D4259371B900131A4F /* PasscodeViewController.swift */; };
-		FAA270B125876AAE001B9AD4 /* CreateCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAA270B025876AAE001B9AD4 /* CreateCategory.storyboard */; };
 		FAA83D152593866C00F3B0A7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA83D142593866C00F3B0A7 /* SettingsViewController.swift */; };
 		FAA83D192593898300F3B0A7 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA83D172593898300F3B0A7 /* SettingsTableViewCell.swift */; };
 		FAA83D1A2593898300F3B0A7 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA83D182593898300F3B0A7 /* SettingsTableViewCell.xib */; };
 		FAAC9A5125938D0100BDF53E /* ChangePasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAC9A5025938D0100BDF53E /* ChangePasscodeViewController.swift */; };
-		FAAC9A5425938D1500BDF53E /* CreatePasscode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAAC9A5325938D1500BDF53E /* CreatePasscode.storyboard */; };
 		FAAFCD82257A36E100EBA6FC /* PlateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFCD81257A36E100EBA6FC /* PlateView.swift */; };
 		FAB9D7AD25794288003320A6 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9D7AC25794288003320A6 /* GraphView.swift */; };
+		FABA274B259C9E8800D1E72C /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABA274D259C9E8800D1E72C /* Settings.storyboard */; };
+		FABA2754259C9F0700D1E72C /* Appearance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABA2756259C9F0700D1E72C /* Appearance.storyboard */; };
+		FABA275D259C9FB300D1E72C /* CreatePasscode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABA275F259C9FB300D1E72C /* CreatePasscode.storyboard */; };
+		FABA2765259CA06E00D1E72C /* ConfigurePasscode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABA2767259CA06E00D1E72C /* ConfigurePasscode.storyboard */; };
+		FABA276E259CA14F00D1E72C /* PasscodeSuccessfully.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABA2770259CA14F00D1E72C /* PasscodeSuccessfully.storyboard */; };
+		FABA2777259CA1C400D1E72C /* SelectingTypeOfTransactionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABA2779259CA1C400D1E72C /* SelectingTypeOfTransactionViewController.storyboard */; };
+		FABA277F259CA21800D1E72C /* FillingAmountAndDescriptionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABA2781259CA21800D1E72C /* FillingAmountAndDescriptionViewController.storyboard */; };
+		FABA2787259CA2A600D1E72C /* ChooseCategoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABA2789259CA2A600D1E72C /* ChooseCategoryViewController.storyboard */; };
+		FABA278F259CA31900D1E72C /* ChooseDateViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABA2791259CA31900D1E72C /* ChooseDateViewController.storyboard */; };
+		FABA2798259CA39900D1E72C /* Passcode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABA279A259CA39900D1E72C /* Passcode.storyboard */; };
 		FAC08EFF258353C400C3FD05 /* CreateCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08EFE258353C400C3FD05 /* CreateCategoryViewController.swift */; };
 		FAC08F032583561900C3FD05 /* GradientCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08F012583561900C3FD05 /* GradientCategoryCollectionViewCell.swift */; };
 		FAC08F042583561900C3FD05 /* GradientCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC08F022583561900C3FD05 /* GradientCategoryCollectionViewCell.xib */; };
 		FAC08F0A25835F8C00C3FD05 /* CategoryImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC08F0825835F8C00C3FD05 /* CategoryImageCollectionViewCell.swift */; };
 		FAC08F0B25835F8C00C3FD05 /* CategoryImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC08F0925835F8C00C3FD05 /* CategoryImageCollectionViewCell.xib */; };
 		FAC951F525754F4E00931346 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC951F425754F4E00931346 /* TopView.swift */; };
+		FACEEB30259C9D23009F3844 /* CreateCategory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACEEB32259C9D23009F3844 /* CreateCategory.storyboard */; };
+		FAD1311E259C726600C38141 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAD13120259C726600C38141 /* Localizable.strings */; };
 		FAE5427F2593B76E008C7DF8 /* PasscodeWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE5427E2593B76E008C7DF8 /* PasscodeWelcomeView.swift */; };
 		FAE542842593BCA0008C7DF8 /* ConfigurePasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE542832593BCA0008C7DF8 /* ConfigurePasscodeViewController.swift */; };
-		FAE542872593C8C4008C7DF8 /* ConfigurePasscode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE542862593C8C3008C7DF8 /* ConfigurePasscode.storyboard */; };
-		FAE9855E25974F200065546A /* Appearance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE9855D25974F200065546A /* Appearance.storyboard */; };
 		FAE98562259753B00065546A /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE98561259753B00065546A /* AppearanceViewController.swift */; };
+		FAEC3AC5259C9DF600236F74 /* Chart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEC3AC7259C9DF600236F74 /* Chart.storyboard */; };
 		FAEE03EB259B53040072B79F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE03EA259B53040072B79F /* Constants.swift */; };
 		FAF1799725874D4E00113DF5 /* gradients.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAF1799625874D4E00113DF5 /* gradients.csv */; };
 		FAF1D4D9257A5CE400DE10B4 /* ChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */; };
@@ -99,9 +103,6 @@
 		FAFB4E362575457E002B9E23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFB4E342575457E002B9E23 /* Main.storyboard */; };
 		FAFB4E3825754580002B9E23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAFB4E3725754580002B9E23 /* Assets.xcassets */; };
 		FAFB4E3B25754580002B9E23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFB4E3925754580002B9E23 /* LaunchScreen.storyboard */; };
-		FAFB4E4E25754768002B9E23 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFB4E4D25754768002B9E23 /* Category.storyboard */; };
-		FAFB4E5125754783002B9E23 /* Chart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFB4E5025754783002B9E23 /* Chart.storyboard */; };
-		FAFB4E5425754796002B9E23 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFB4E5325754796002B9E23 /* Settings.storyboard */; };
 		FAFED4712598BFE500584A8A /* GradientAccents.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAFED4702598BFE500584A8A /* GradientAccents.csv */; };
 		FAFED4762598C21E00584A8A /* GradientAccent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFED4742598C21E00584A8A /* GradientAccent+CoreDataClass.swift */; };
 		FAFED4772598C21E00584A8A /* GradientAccent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFED4752598C21E00584A8A /* GradientAccent+CoreDataProperties.swift */; };
@@ -124,6 +125,12 @@
 		FA301322257914D6004D2421 /* MonthCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA33752B2588D67C00139495 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FA33752C2588D67C00139495 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FA38CE59259C78A0006EC8C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		FA38CE5C259C7A64006EC8C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		FA38CE60259C7A69006EC8C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
+		FA38CE62259C7A6A006EC8C2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Home.strings; sourceTree = "<group>"; };
+		FA38CE65259C9C00006EC8C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Category.storyboard; sourceTree = "<group>"; };
+		FA38CE68259C9C02006EC8C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Category.strings; sourceTree = "<group>"; };
 		FA49FFD9258DE029006BB779 /* ExpenseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseButton.swift; sourceTree = "<group>"; };
 		FA49FFDC258DE041006BB779 /* IncomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeButton.swift; sourceTree = "<group>"; };
 		FA4BBF322578FDE100F2ABD7 /* NavigationBar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationBar+Extensions.swift"; sourceTree = "<group>"; };
@@ -136,6 +143,7 @@
 		FA5295C1258A199D001B4D9D /* Balance+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Balance+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA59C76B25755B9300C80A5A /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA59C76C25755B9300C80A5A /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		FA59D97C259C9C7500893DE3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Category.strings; sourceTree = "<group>"; };
 		FA67CEB42590B53F00DC9A61 /* CategoryImage+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryImage+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FA67CEB52590B53F00DC9A61 /* CategoryImage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA67CEB62590B53F00DC9A61 /* Gradient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -143,15 +151,10 @@
 		FA698AED25876306008D2168 /* images.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = images.csv; sourceTree = "<group>"; };
 		FA6CDCB22599D4CB00DDECB3 /* Array+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+UIColor.swift"; sourceTree = "<group>"; };
 		FA6E673D258CF2F9000CBA2D /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
-		FA6E6744258CF395000CBA2D /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		FA6E6748258D1BC6000CBA2D /* SelectingTypeOfTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectingTypeOfTransactionViewController.swift; sourceTree = "<group>"; };
 		FA6E674B258D1C10000CBA2D /* FillingAmountAndDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillingAmountAndDescriptionViewController.swift; sourceTree = "<group>"; };
 		FA6E674E258D1C29000CBA2D /* ChooseCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCategoryViewController.swift; sourceTree = "<group>"; };
 		FA6E6751258D1C4A000CBA2D /* ChooseDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDateViewController.swift; sourceTree = "<group>"; };
-		FA6E6755258D1C78000CBA2D /* SelectingTypeOfTransactionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectingTypeOfTransactionViewController.storyboard; sourceTree = "<group>"; };
-		FA6E6758258D1C99000CBA2D /* FillingAmountAndDescriptionViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FillingAmountAndDescriptionViewController.storyboard; sourceTree = "<group>"; };
-		FA6E675B258D1CBB000CBA2D /* ChooseCategoryViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChooseCategoryViewController.storyboard; sourceTree = "<group>"; };
-		FA6E675E258D1CE1000CBA2D /* ChooseDateViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChooseDateViewController.storyboard; sourceTree = "<group>"; };
 		FA718D9F2588C41500A9FF12 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		FA718DA22588CC6800A9FF12 /* Transaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FA718DA32588CC6800A9FF12 /* Transaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Transaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -168,31 +171,82 @@
 		FA96EAEB25936E02007DE177 /* PasscodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeTextField.swift; sourceTree = "<group>"; };
 		FA96EAEE25936E2B007DE177 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		FA96F7CF2594F9FC00080051 /* PasscodeSuccessfullyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeSuccessfullyView.swift; sourceTree = "<group>"; };
-		FA96F7D42594FA8000080051 /* PasscodeSuccessfully.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PasscodeSuccessfully.storyboard; sourceTree = "<group>"; };
 		FA96F7D7259501A100080051 /* BottomLeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomLeftView.swift; sourceTree = "<group>"; };
 		FA96F7DA259501AA00080051 /* TopRightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRightView.swift; sourceTree = "<group>"; };
 		FA96F7DD259501B200080051 /* TopLeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLeftView.swift; sourceTree = "<group>"; };
-		FAA126D025936F3E00131A4F /* Passcode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Passcode.storyboard; sourceTree = "<group>"; };
 		FAA126D4259371B900131A4F /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
-		FAA270B025876AAE001B9AD4 /* CreateCategory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateCategory.storyboard; sourceTree = "<group>"; };
 		FAA83D142593866C00F3B0A7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		FAA83D172593898300F3B0A7 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		FAA83D182593898300F3B0A7 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		FAAC9A5025938D0100BDF53E /* ChangePasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasscodeViewController.swift; sourceTree = "<group>"; };
-		FAAC9A5325938D1500BDF53E /* CreatePasscode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreatePasscode.storyboard; sourceTree = "<group>"; };
 		FAAFCD81257A36E100EBA6FC /* PlateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateView.swift; sourceTree = "<group>"; };
 		FAB9D7AC25794288003320A6 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		FABA2749259C9E3C00D1E72C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Chart.strings; sourceTree = "<group>"; };
+		FABA274C259C9E8800D1E72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		FABA274F259C9E8E00D1E72C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Settings.strings; sourceTree = "<group>"; };
+		FABA2752259C9EC100D1E72C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Settings.strings; sourceTree = "<group>"; };
+		FABA2755259C9F0700D1E72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Appearance.storyboard; sourceTree = "<group>"; };
+		FABA2759259C9F0F00D1E72C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Appearance.strings; sourceTree = "<group>"; };
+		FABA275B259C9F4100D1E72C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Appearance.strings; sourceTree = "<group>"; };
+		FABA275E259C9FB300D1E72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreatePasscode.storyboard; sourceTree = "<group>"; };
+		FABA2761259C9FB800D1E72C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CreatePasscode.strings; sourceTree = "<group>"; };
+		FABA2763259C9FEC00D1E72C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CreatePasscode.strings; sourceTree = "<group>"; };
+		FABA2766259CA06E00D1E72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ConfigurePasscode.storyboard; sourceTree = "<group>"; };
+		FABA276A259CA07200D1E72C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ConfigurePasscode.strings; sourceTree = "<group>"; };
+		FABA276C259CA0A200D1E72C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ConfigurePasscode.strings; sourceTree = "<group>"; };
+		FABA276F259CA14F00D1E72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PasscodeSuccessfully.storyboard; sourceTree = "<group>"; };
+		FABA2773259CA15400D1E72C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PasscodeSuccessfully.strings; sourceTree = "<group>"; };
+		FABA2775259CA18600D1E72C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/PasscodeSuccessfully.strings; sourceTree = "<group>"; };
+		FABA2778259CA1C400D1E72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SelectingTypeOfTransactionViewController.storyboard; sourceTree = "<group>"; };
+		FABA277B259CA1C700D1E72C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SelectingTypeOfTransactionViewController.strings; sourceTree = "<group>"; };
+		FABA277D259CA1CA00D1E72C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/SelectingTypeOfTransactionViewController.strings; sourceTree = "<group>"; };
+		FABA2780259CA21800D1E72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FillingAmountAndDescriptionViewController.storyboard; sourceTree = "<group>"; };
+		FABA2784259CA21D00D1E72C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/FillingAmountAndDescriptionViewController.strings; sourceTree = "<group>"; };
+		FABA2786259CA24C00D1E72C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/FillingAmountAndDescriptionViewController.strings; sourceTree = "<group>"; };
+		FABA2788259CA2A600D1E72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChooseCategoryViewController.storyboard; sourceTree = "<group>"; };
+		FABA278C259CA2B400D1E72C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ChooseCategoryViewController.strings; sourceTree = "<group>"; };
+		FABA278E259CA2E500D1E72C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ChooseCategoryViewController.strings; sourceTree = "<group>"; };
+		FABA2790259CA31900D1E72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChooseDateViewController.storyboard; sourceTree = "<group>"; };
+		FABA2794259CA31C00D1E72C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ChooseDateViewController.strings; sourceTree = "<group>"; };
+		FABA2796259CA34C00D1E72C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/ChooseDateViewController.strings; sourceTree = "<group>"; };
+		FABA2799259CA39900D1E72C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Passcode.storyboard; sourceTree = "<group>"; };
+		FABA279C259CA39E00D1E72C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Passcode.strings; sourceTree = "<group>"; };
+		FABA279E259CA3CC00D1E72C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Passcode.strings; sourceTree = "<group>"; };
+		FABA27A0259CB93200D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Chart.strings; sourceTree = "<group>"; };
+		FABA27A1259CB93200D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Home.strings; sourceTree = "<group>"; };
+		FABA27A2259CB93200D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Passcode.strings; sourceTree = "<group>"; };
+		FABA27A3259CB93200D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/SelectingTypeOfTransactionViewController.strings; sourceTree = "<group>"; };
+		FABA27A4259CB93200D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/FillingAmountAndDescriptionViewController.strings; sourceTree = "<group>"; };
+		FABA27A5259CB93200D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/ChooseCategoryViewController.strings; sourceTree = "<group>"; };
+		FABA27A6259CB93200D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/ChooseDateViewController.strings; sourceTree = "<group>"; };
+		FABA27A7259CB93200D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Category.strings; sourceTree = "<group>"; };
+		FABA27A8259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/CreateCategory.strings; sourceTree = "<group>"; };
+		FABA27A9259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		FABA27AA259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Main.strings; sourceTree = "<group>"; };
+		FABA27AB259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Appearance.strings; sourceTree = "<group>"; };
+		FABA27AC259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Settings.strings; sourceTree = "<group>"; };
+		FABA27AD259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/CreatePasscode.strings; sourceTree = "<group>"; };
+		FABA27AE259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/ConfigurePasscode.strings; sourceTree = "<group>"; };
+		FABA27AF259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/PasscodeSuccessfully.strings; sourceTree = "<group>"; };
+		FABA27B0259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FAC08EFE258353C400C3FD05 /* CreateCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryViewController.swift; sourceTree = "<group>"; };
 		FAC08F012583561900C3FD05 /* GradientCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAC08F022583561900C3FD05 /* GradientCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GradientCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		FAC08F0825835F8C00C3FD05 /* CategoryImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAC08F0925835F8C00C3FD05 /* CategoryImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		FAC951F425754F4E00931346 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		FACEEB31259C9D23009F3844 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreateCategory.storyboard; sourceTree = "<group>"; };
+		FACEEB35259C9D2E009F3844 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CreateCategory.strings; sourceTree = "<group>"; };
+		FAD13119259C719B00C38141 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		FAD1311A259C719B00C38141 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		FAD1311F259C726600C38141 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FAD13121259C727C00C38141 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FAE5427E2593B76E008C7DF8 /* PasscodeWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeWelcomeView.swift; sourceTree = "<group>"; };
 		FAE542832593BCA0008C7DF8 /* ConfigurePasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurePasscodeViewController.swift; sourceTree = "<group>"; };
-		FAE542862593C8C3008C7DF8 /* ConfigurePasscode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigurePasscode.storyboard; sourceTree = "<group>"; };
-		FAE9855D25974F200065546A /* Appearance.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Appearance.storyboard; sourceTree = "<group>"; };
 		FAE98561259753B00065546A /* AppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceViewController.swift; sourceTree = "<group>"; };
+		FAEC3AC3259C9D7500236F74 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CreateCategory.strings; sourceTree = "<group>"; };
+		FAEC3AC6259C9DF600236F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chart.storyboard; sourceTree = "<group>"; };
+		FAEC3ACA259C9E1600236F74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Chart.strings; sourceTree = "<group>"; };
 		FAEE03EA259B53040072B79F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FAF1799625874D4E00113DF5 /* gradients.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gradients.csv; sourceTree = "<group>"; };
 		FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModel.swift; sourceTree = "<group>"; };
@@ -204,9 +258,6 @@
 		FAFB4E3725754580002B9E23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAFB4E3A25754580002B9E23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAFB4E3C25754580002B9E23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAFB4E4D25754768002B9E23 /* Category.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Category.storyboard; sourceTree = "<group>"; };
-		FAFB4E5025754783002B9E23 /* Chart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chart.storyboard; sourceTree = "<group>"; };
-		FAFB4E5325754796002B9E23 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		FAFED4702598BFE500584A8A /* GradientAccents.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GradientAccents.csv; sourceTree = "<group>"; };
 		FAFED4742598C21E00584A8A /* GradientAccent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GradientAccent+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FAFED4752598C21E00584A8A /* GradientAccent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GradientAccent+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -290,9 +341,9 @@
 		FA517B392595F14600074D73 /* Passcode */ = {
 			isa = PBXGroup;
 			children = (
-				FAAC9A5325938D1500BDF53E /* CreatePasscode.storyboard */,
-				FAE542862593C8C3008C7DF8 /* ConfigurePasscode.storyboard */,
-				FA96F7D42594FA8000080051 /* PasscodeSuccessfully.storyboard */,
+				FABA275F259C9FB300D1E72C /* CreatePasscode.storyboard */,
+				FABA2767259CA06E00D1E72C /* ConfigurePasscode.storyboard */,
+				FABA2770259CA14F00D1E72C /* PasscodeSuccessfully.storyboard */,
 			);
 			path = Passcode;
 			sourceTree = "<group>";
@@ -364,10 +415,10 @@
 		FA6E6761258D1D1E000CBA2D /* Adding Transaction */ = {
 			isa = PBXGroup;
 			children = (
-				FA6E6755258D1C78000CBA2D /* SelectingTypeOfTransactionViewController.storyboard */,
-				FA6E6758258D1C99000CBA2D /* FillingAmountAndDescriptionViewController.storyboard */,
-				FA6E675B258D1CBB000CBA2D /* ChooseCategoryViewController.storyboard */,
-				FA6E675E258D1CE1000CBA2D /* ChooseDateViewController.storyboard */,
+				FABA2779259CA1C400D1E72C /* SelectingTypeOfTransactionViewController.storyboard */,
+				FABA2781259CA21800D1E72C /* FillingAmountAndDescriptionViewController.storyboard */,
+				FABA2789259CA2A600D1E72C /* ChooseCategoryViewController.storyboard */,
+				FABA2791259CA31900D1E72C /* ChooseDateViewController.storyboard */,
 			);
 			path = "Adding Transaction";
 			sourceTree = "<group>";
@@ -384,8 +435,8 @@
 		FA6E6763258D1D45000CBA2D /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				FAFB4E4D25754768002B9E23 /* Category.storyboard */,
-				FAA270B025876AAE001B9AD4 /* CreateCategory.storyboard */,
+				FA38CE66259C9C00006EC8C2 /* Category.storyboard */,
+				FACEEB32259C9D23009F3844 /* CreateCategory.storyboard */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -455,8 +506,8 @@
 		FAAC9A5625938D2900BDF53E /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				FAE9855D25974F200065546A /* Appearance.storyboard */,
-				FAFB4E5325754796002B9E23 /* Settings.storyboard */,
+				FABA2756259C9F0700D1E72C /* Appearance.storyboard */,
+				FABA274D259C9E8800D1E72C /* Settings.storyboard */,
 				FA517B392595F14600074D73 /* Passcode */,
 			);
 			path = Settings;
@@ -493,9 +544,9 @@
 		FAC951F72575507A00931346 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				FAFB4E5025754783002B9E23 /* Chart.storyboard */,
-				FA6E6744258CF395000CBA2D /* Home.storyboard */,
-				FAA126D025936F3E00131A4F /* Passcode.storyboard */,
+				FAEC3AC7259C9DF600236F74 /* Chart.storyboard */,
+				FA38CE5D259C7A64006EC8C2 /* Home.storyboard */,
+				FABA279A259CA39900D1E72C /* Passcode.storyboard */,
 				FA6E6761258D1D1E000CBA2D /* Adding Transaction */,
 				FA6E6763258D1D45000CBA2D /* Category */,
 				FAFB4E3925754580002B9E23 /* LaunchScreen.storyboard */,
@@ -607,6 +658,7 @@
 				FAFB4E3C25754580002B9E23 /* Info.plist */,
 				FAEE03EA259B53040072B79F /* Constants.swift */,
 				FAFB4E3725754580002B9E23 /* Assets.xcassets */,
+				FAD13120259C726600C38141 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -670,6 +722,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				uk,
 			);
 			mainGroup = FAFB4E222575457E002B9E23;
 			productRefGroup = FAFB4E2C2575457E002B9E23 /* Products */;
@@ -686,32 +740,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA6E6756258D1C78000CBA2D /* SelectingTypeOfTransactionViewController.storyboard in Resources */,
+				FABA2777259CA1C400D1E72C /* SelectingTypeOfTransactionViewController.storyboard in Resources */,
 				FA301324257914D6004D2421 /* MonthCollectionViewCell.xib in Resources */,
-				FAE9855E25974F200065546A /* Appearance.storyboard in Resources */,
-				FA6E6759258D1C99000CBA2D /* FillingAmountAndDescriptionViewController.storyboard in Resources */,
+				FABA2754259C9F0700D1E72C /* Appearance.storyboard in Resources */,
+				FABA277F259CA21800D1E72C /* FillingAmountAndDescriptionViewController.storyboard in Resources */,
 				FAC08F0B25835F8C00C3FD05 /* CategoryImageCollectionViewCell.xib in Resources */,
-				FAA270B125876AAE001B9AD4 /* CreateCategory.storyboard in Resources */,
-				FAFB4E5425754796002B9E23 /* Settings.storyboard in Resources */,
+				FACEEB30259C9D23009F3844 /* CreateCategory.storyboard in Resources */,
+				FABA274B259C9E8800D1E72C /* Settings.storyboard in Resources */,
 				FAA83D1A2593898300F3B0A7 /* SettingsTableViewCell.xib in Resources */,
-				FAE542872593C8C4008C7DF8 /* ConfigurePasscode.storyboard in Resources */,
-				FA6E6745258CF395000CBA2D /* Home.storyboard in Resources */,
-				FAFB4E4E25754768002B9E23 /* Category.storyboard in Resources */,
+				FABA2765259CA06E00D1E72C /* ConfigurePasscode.storyboard in Resources */,
+				FA38CE5B259C7A64006EC8C2 /* Home.storyboard in Resources */,
+				FA38CE64259C9C00006EC8C2 /* Category.storyboard in Resources */,
 				FAFB4E3B25754580002B9E23 /* LaunchScreen.storyboard in Resources */,
 				FAFF7F56257679BB00581889 /* CategoryTableViewCell.xib in Resources */,
 				FAFED4712598BFE500584A8A /* GradientAccents.csv in Resources */,
 				FA698AEE25876306008D2168 /* images.csv in Resources */,
 				FA59C76E25755B9300C80A5A /* HomeCollectionViewCell.xib in Resources */,
 				FAC08F042583561900C3FD05 /* GradientCategoryCollectionViewCell.xib in Resources */,
+				FAD1311E259C726600C38141 /* Localizable.strings in Resources */,
 				FA2544FE2578CED600D065CB /* CategoryCollectionViewCell.xib in Resources */,
 				FAF1799725874D4E00113DF5 /* gradients.csv in Resources */,
-				FA6E675C258D1CBB000CBA2D /* ChooseCategoryViewController.storyboard in Resources */,
-				FAA126D125936F3E00131A4F /* Passcode.storyboard in Resources */,
-				FAFB4E5125754783002B9E23 /* Chart.storyboard in Resources */,
-				FA96F7D52594FA8000080051 /* PasscodeSuccessfully.storyboard in Resources */,
-				FA6E675F258D1CE1000CBA2D /* ChooseDateViewController.storyboard in Resources */,
+				FABA2787259CA2A600D1E72C /* ChooseCategoryViewController.storyboard in Resources */,
+				FABA2798259CA39900D1E72C /* Passcode.storyboard in Resources */,
+				FAEC3AC5259C9DF600236F74 /* Chart.storyboard in Resources */,
+				FABA276E259CA14F00D1E72C /* PasscodeSuccessfully.storyboard in Resources */,
+				FABA278F259CA31900D1E72C /* ChooseDateViewController.storyboard in Resources */,
 				FAFB4E3825754580002B9E23 /* Assets.xcassets in Resources */,
-				FAAC9A5425938D1500BDF53E /* CreatePasscode.storyboard in Resources */,
+				FABA275D259C9FB300D1E72C /* CreatePasscode.storyboard in Resources */,
 				FAFB4E362575457E002B9E23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -802,10 +857,177 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		FA38CE5D259C7A64006EC8C2 /* Home.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA38CE5C259C7A64006EC8C2 /* Base */,
+				FA38CE60259C7A69006EC8C2 /* en */,
+				FA38CE62259C7A6A006EC8C2 /* ru */,
+				FABA27A1259CB93200D1E72C /* uk */,
+			);
+			name = Home.storyboard;
+			sourceTree = "<group>";
+		};
+		FA38CE66259C9C00006EC8C2 /* Category.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA38CE65259C9C00006EC8C2 /* Base */,
+				FA38CE68259C9C02006EC8C2 /* en */,
+				FA59D97C259C9C7500893DE3 /* ru */,
+				FABA27A7259CB93200D1E72C /* uk */,
+			);
+			name = Category.storyboard;
+			sourceTree = "<group>";
+		};
+		FABA274D259C9E8800D1E72C /* Settings.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FABA274C259C9E8800D1E72C /* Base */,
+				FABA274F259C9E8E00D1E72C /* en */,
+				FABA2752259C9EC100D1E72C /* ru */,
+				FABA27AC259CB93300D1E72C /* uk */,
+			);
+			name = Settings.storyboard;
+			sourceTree = "<group>";
+		};
+		FABA2756259C9F0700D1E72C /* Appearance.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FABA2755259C9F0700D1E72C /* Base */,
+				FABA2759259C9F0F00D1E72C /* en */,
+				FABA275B259C9F4100D1E72C /* ru */,
+				FABA27AB259CB93300D1E72C /* uk */,
+			);
+			name = Appearance.storyboard;
+			sourceTree = "<group>";
+		};
+		FABA275F259C9FB300D1E72C /* CreatePasscode.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FABA275E259C9FB300D1E72C /* Base */,
+				FABA2761259C9FB800D1E72C /* en */,
+				FABA2763259C9FEC00D1E72C /* ru */,
+				FABA27AD259CB93300D1E72C /* uk */,
+			);
+			name = CreatePasscode.storyboard;
+			sourceTree = "<group>";
+		};
+		FABA2767259CA06E00D1E72C /* ConfigurePasscode.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FABA2766259CA06E00D1E72C /* Base */,
+				FABA276A259CA07200D1E72C /* en */,
+				FABA276C259CA0A200D1E72C /* ru */,
+				FABA27AE259CB93300D1E72C /* uk */,
+			);
+			name = ConfigurePasscode.storyboard;
+			sourceTree = "<group>";
+		};
+		FABA2770259CA14F00D1E72C /* PasscodeSuccessfully.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FABA276F259CA14F00D1E72C /* Base */,
+				FABA2773259CA15400D1E72C /* en */,
+				FABA2775259CA18600D1E72C /* ru */,
+				FABA27AF259CB93300D1E72C /* uk */,
+			);
+			name = PasscodeSuccessfully.storyboard;
+			sourceTree = "<group>";
+		};
+		FABA2779259CA1C400D1E72C /* SelectingTypeOfTransactionViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FABA2778259CA1C400D1E72C /* Base */,
+				FABA277B259CA1C700D1E72C /* en */,
+				FABA277D259CA1CA00D1E72C /* ru */,
+				FABA27A3259CB93200D1E72C /* uk */,
+			);
+			name = SelectingTypeOfTransactionViewController.storyboard;
+			sourceTree = "<group>";
+		};
+		FABA2781259CA21800D1E72C /* FillingAmountAndDescriptionViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FABA2780259CA21800D1E72C /* Base */,
+				FABA2784259CA21D00D1E72C /* en */,
+				FABA2786259CA24C00D1E72C /* ru */,
+				FABA27A4259CB93200D1E72C /* uk */,
+			);
+			name = FillingAmountAndDescriptionViewController.storyboard;
+			sourceTree = "<group>";
+		};
+		FABA2789259CA2A600D1E72C /* ChooseCategoryViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FABA2788259CA2A600D1E72C /* Base */,
+				FABA278C259CA2B400D1E72C /* en */,
+				FABA278E259CA2E500D1E72C /* ru */,
+				FABA27A5259CB93200D1E72C /* uk */,
+			);
+			name = ChooseCategoryViewController.storyboard;
+			sourceTree = "<group>";
+		};
+		FABA2791259CA31900D1E72C /* ChooseDateViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FABA2790259CA31900D1E72C /* Base */,
+				FABA2794259CA31C00D1E72C /* en */,
+				FABA2796259CA34C00D1E72C /* ru */,
+				FABA27A6259CB93200D1E72C /* uk */,
+			);
+			name = ChooseDateViewController.storyboard;
+			sourceTree = "<group>";
+		};
+		FABA279A259CA39900D1E72C /* Passcode.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FABA2799259CA39900D1E72C /* Base */,
+				FABA279C259CA39E00D1E72C /* en */,
+				FABA279E259CA3CC00D1E72C /* ru */,
+				FABA27A2259CB93200D1E72C /* uk */,
+			);
+			name = Passcode.storyboard;
+			sourceTree = "<group>";
+		};
+		FACEEB32259C9D23009F3844 /* CreateCategory.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FACEEB31259C9D23009F3844 /* Base */,
+				FACEEB35259C9D2E009F3844 /* en */,
+				FAEC3AC3259C9D7500236F74 /* ru */,
+				FABA27A8259CB93300D1E72C /* uk */,
+			);
+			name = CreateCategory.storyboard;
+			sourceTree = "<group>";
+		};
+		FAD13120259C726600C38141 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAD1311F259C726600C38141 /* en */,
+				FAD13121259C727C00C38141 /* ru */,
+				FABA27B0259CB93300D1E72C /* uk */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		FAEC3AC7259C9DF600236F74 /* Chart.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAEC3AC6259C9DF600236F74 /* Base */,
+				FAEC3ACA259C9E1600236F74 /* en */,
+				FABA2749259C9E3C00D1E72C /* ru */,
+				FABA27A0259CB93200D1E72C /* uk */,
+			);
+			name = Chart.storyboard;
+			sourceTree = "<group>";
+		};
 		FAFB4E342575457E002B9E23 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FAFB4E352575457E002B9E23 /* Base */,
+				FAD1311A259C719B00C38141 /* ru */,
+				FA38CE59259C78A0006EC8C2 /* en */,
+				FABA27AA259CB93300D1E72C /* uk */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -814,6 +1036,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				FAFB4E3A25754580002B9E23 /* Base */,
+				FAD13119259C719B00C38141 /* ru */,
+				FABA27A9259CB93300D1E72C /* uk */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -825,6 +1049,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -886,6 +1111,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

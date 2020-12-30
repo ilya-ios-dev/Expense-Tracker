@@ -1,0 +1,6 @@
+
+/* Class = "UILabel"; text = "Enter your PIN code"; ObjectID = "Ooy-uj-ZHY"; */
+"Ooy-uj-ZHY.text" = "Введите ваш пин код";
+
+/* Class = "UILabel"; text = "A password is required to enter the application."; ObjectID = "gvm-yz-FVN"; */
+"gvm-yz-FVN.text" = "Требуется пин код для входа в приложение.";

@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = ">|"; ObjectID = "BZs-dM-UMs"; */
+"BZs-dM-UMs.text" = ">|";
+
+/* Class = "UILabel"; text = "Transaction name"; ObjectID = "LYN-cx-LVf"; */
+"LYN-cx-LVf.text" = "Transaction name";
+
+/* Class = "UILabel"; text = "Transaction type"; ObjectID = "ffb-N4-ZKH"; */
+"ffb-N4-ZKH.text" = "Transaction type";
+
+/* Class = "UILabel"; text = "$200"; ObjectID = "jF9-Ma-lt6"; */
+"jF9-Ma-lt6.text" = "$200";
+
+/* Class = "UIButton"; normalTitle = "Finish"; ObjectID = "ktQ-YT-ZXK"; */
+"ktQ-YT-ZXK.normalTitle" = "Finish";
+
+/* Class = "UILabel"; text = "Expense"; ObjectID = "pP5-Ow-inZ"; */
+"pP5-Ow-inZ.text" = "Expense";

@@ -1,0 +1,21 @@
+
+/* Class = "UITextField"; placeholder = "Enter Title"; ObjectID = "0Ew-hP-cET"; */
+"0Ew-hP-cET.placeholder" = "Введите Название";
+
+/* Class = "UIBarButtonItem"; title = "Save"; ObjectID = "Q5l-qd-cTW"; */
+"Q5l-qd-cTW.title" = "Сохранить";
+
+/* Class = "UILabel"; text = "Color"; ObjectID = "cMf-Uq-hEg"; */
+"cMf-Uq-hEg.text" = "Цвет";
+
+/* Class = "UINavigationItem"; title = "Create Category"; ObjectID = "d22-jH-FGo"; */
+"d22-jH-FGo.title" = "";
+
+/* Class = "UILabel"; text = "Image"; ObjectID = "g20-ty-l62"; */
+"g20-ty-l62.text" = "Изображение";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "qXs-Q9-atS"; */
+"qXs-Q9-atS.text" = "Название";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "zXk-gd-cfg"; */
+"zXk-gd-cfg.title" = "Отменить";

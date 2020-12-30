@@ -1,0 +1,17 @@
+/* Class = "UILabel"; text = "Transaction type"; ObjectID = "9PB-Cj-jeA"; */
+"9PB-Cj-jeA.text" = "Вид транзакції";
+
+/* Class = "UILabel"; text = "Transaction name"; ObjectID = "KZw-L4-5CE"; */
+"KZw-L4-5CE.text" = "Назва транзакції";
+
+/* Class = "UILabel"; text = "Expense"; ObjectID = "Mbq-Yh-n0B"; */
+"Mbq-Yh-n0B.text" = "Expense";
+
+/* Class = "UILabel"; text = ">|"; ObjectID = "Odc-QE-0Z0"; */
+"Odc-QE-0Z0.text" = ">|";
+
+/* Class = "UILabel"; text = "Choose category."; ObjectID = "oM8-xn-aya"; */
+"oM8-xn-aya.text" = "Оберіть категорію.";
+
+/* Class = "UILabel"; text = "$200"; ObjectID = "wQO-dY-ARU"; */
+"wQO-dY-ARU.text" = "$200";

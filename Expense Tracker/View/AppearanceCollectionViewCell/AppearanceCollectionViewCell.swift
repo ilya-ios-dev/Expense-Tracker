@@ -73,11 +73,11 @@ extension AppearanceCollectionViewCell {
         
         switch appearance {
         case .automatic:
-            "Automatic".draw(in: labelRect, withAttributes: labelFontAttributes)
+            "Automatic".localized.draw(in: labelRect, withAttributes: labelFontAttributes)
         case .dark:
-            "Dark".draw(in: labelRect, withAttributes: labelFontAttributes)
+            "Dark".localized.draw(in: labelRect, withAttributes: labelFontAttributes)
         case .light:
-            "Light".draw(in: labelRect, withAttributes: labelFontAttributes)
+            "Light".localized.draw(in: labelRect, withAttributes: labelFontAttributes)
         }
     }
     

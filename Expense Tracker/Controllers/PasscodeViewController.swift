@@ -62,7 +62,7 @@ extension PasscodeViewController {
 
     /// Clears the `passcodeTextField` and tells the user that an invalid password was entered.
     private func incorrectPasscode() {
-        self.descriptionLabel.text = "You entered an incorrect password. Please try to fill in again."
+        self.descriptionLabel.text = "You entered an incorrect password. Please try to fill in again.".localized
         UIView.animate(withDuration: 0.5) {
             self.passcodeTextField.clear()
             self.passcodeTextField.shake()

@@ -28,9 +28,9 @@ final class PasscodeSuccessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         switch editingMode {
-        case .create: titleLabel.text = "Passcode successfully created"
-        case .disable: titleLabel.text = "Passcode successfully disabled"
-        case .edit: titleLabel.text = "Passcode successfully edited"
+        case .create: titleLabel.text = "Passcode successfully created".localized
+        case .disable: titleLabel.text = "Passcode successfully disabled".localized
+        case .edit: titleLabel.text = "Passcode successfully edited".localized
         case .none: break
         }
     }
