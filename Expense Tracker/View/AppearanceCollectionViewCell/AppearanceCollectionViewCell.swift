@@ -46,7 +46,7 @@ final class AppearanceCollectionViewCell: UICollectionViewCell {
         context.scaleBy(x: resizedFrame.width / 120, y: resizedFrame.height / 85)
         let resizedShadowScale: CGFloat = min(resizedFrame.width / 120, resizedFrame.height / 85)
         // Drawing
-        drawTitleLabel(appearance)
+        drawTitleLabel(appearance, rect: resizedFrame)
         drawAppearanceImage(context, resizedShadowScale, appearance)
         if isSelected {
             addSelectedOutline()
@@ -60,11 +60,11 @@ final class AppearanceCollectionViewCell: UICollectionViewCell {
 extension AppearanceCollectionViewCell {
     //MARK: - Bottom Label Drawing
     /// Bottom Title Label Drawing
-    private func drawTitleLabel(_ appearance: AppearanceCollectionViewCell.Appearance) {
+    private func drawTitleLabel(_ appearance: AppearanceCollectionViewCell.Appearance, rect: CGRect) {
         let appearanceTitleColor = UIColor.label
-        let labelRect = CGRect(x: 20.5, y: 62, width: 70.7, height: 23)
+        let labelRect = CGRect(x: 0, y: 62, width: rect.width, height: 23)
         let labelStyle = NSMutableParagraphStyle()
-        labelStyle.alignment = .left
+        labelStyle.alignment = .center
         let labelFontAttributes = [
             .font: UIFont.systemFont(ofSize: 15, weight: .light),
             .foregroundColor: appearanceTitleColor,
