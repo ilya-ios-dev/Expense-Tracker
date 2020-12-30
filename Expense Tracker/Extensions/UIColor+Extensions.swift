@@ -72,15 +72,15 @@ extension UIColor {
     /// Lightens the color by the specified percentage.
     /// - Parameter percentage: How much to lighter the color (from 0 to 100).
     /// - Returns: Returns the color if it can be created.
-    func lighter(by percentage: CGFloat = 30.0) -> UIColor? {
-        return self.adjust(by: abs(percentage) )
+    func lighter(by percentage: CGFloat = 30.0) -> UIColor {
+        return self.adjust(by: abs(percentage)) ?? .white
     }
     
     /// Darkens the color by the specified percentage.
     /// - Parameter percentage: How much to darker the color (from 0 to 100).
     /// - Returns: Returns the color if it can be created.
-    func darker(by percentage: CGFloat = 30.0) -> UIColor? {
-        return self.adjust(by: -1 * abs(percentage) )
+    func darker(by percentage: CGFloat = 30.0) -> UIColor {
+        return self.adjust(by: -1 * abs(percentage)) ?? .black
     }
     
     /// Changes color, makes it lighter or darker.

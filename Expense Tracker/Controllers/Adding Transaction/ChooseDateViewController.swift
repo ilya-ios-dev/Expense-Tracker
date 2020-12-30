@@ -64,6 +64,7 @@ final class ChooseDateViewController: UIViewController {
             dismiss(animated: true, completion: nil)
         } catch {
             print(error)
+            showAlert(alertText: error.localizedDescription)
         }
     }
 }
@@ -77,7 +78,7 @@ extension ChooseDateViewController {
                 try mainContext.save()
             } catch {
                 print(error)
-                fatalError(error.localizedDescription)
+                showAlert(alertText: error.localizedDescription)
             }
         }
     }

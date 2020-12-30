@@ -7,14 +7,10 @@
 
 import UIKit
 
-class ExpenseView: TransactionView {
+final class ExpenseView: TransactionView {
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureViews()
-    }
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         configureViews()
     }
     

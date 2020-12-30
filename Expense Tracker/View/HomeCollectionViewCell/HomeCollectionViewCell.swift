@@ -19,11 +19,11 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     var isExpense: Bool = false {
         didSet {
             if isExpense {
-                sumLabel.textColor = UIColor(named: "DecreasingColor")
+                sumLabel.textColor = Colors.decreasingColor
                 guard let text = sumLabel.text else { return }
                 sumLabel.text =  "-" + text
             } else {
-                sumLabel.textColor = UIColor(named: "IncreasingColor")
+                sumLabel.textColor = Colors.increasingColor
             }
         }
     }
@@ -31,11 +31,12 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         imageBackground.layer.cornerRadius = imageBackground.frame.height / 2
-        
+    }
+    
+    override func draw(_ rect: CGRect) {
         backgroundCellView.layer.cornerRadius = 10
         backgroundCellView.layer.borderWidth = 1
-        backgroundCellView.layer.borderColor = UIColor(named: "shadowColor")?.cgColor
-
+        backgroundCellView.layer.borderColor = Colors.borderColor.cgColor
     }
-
+    
 }

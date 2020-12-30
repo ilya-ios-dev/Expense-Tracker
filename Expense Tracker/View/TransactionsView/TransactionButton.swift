@@ -27,7 +27,7 @@ open class TransactionButton: UIButton {
         borderLayer.path = maskLayer.path // Reuse the Bezier path
         borderLayer.fillColor = UIColor.clear.cgColor
 
-        borderLayer.strokeColor = UIColor(named: "shadowColor")?.cgColor
+        borderLayer.strokeColor = Colors.shadowColor.cgColor
         borderLayer.lineWidth = 1
         borderLayer.frame = rect
         layer.addSublayer(borderLayer)

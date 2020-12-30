@@ -17,6 +17,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        // If user hasn't accent color (first load)
+        // Sets default value
+        if !UserDefaults.standard.bool(forKey: "hasAccentColor") {
+            UserDefaults.standard.setValue("8C4CD4", forKey: "startColor")
+            UserDefaults.standard.setValue("5836BB", forKey: "endColor")
+            UserDefaults.standard.setValue(true, forKey: "hasAccentColor")
+        }
+        
+        // Check's, if passcode enabled, sets passcode as main screen.
         if UserDefaults.standard.bool(forKey: "isPasscodeEnabled") {
             let storyboard = UIStoryboard(name: "Passcode", bundle: nil)
             if let vc = storyboard.instantiateInitialViewController(){

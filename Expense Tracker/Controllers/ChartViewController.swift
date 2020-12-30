@@ -30,6 +30,13 @@ final class ChartViewController: UIViewController {
         return (appDelegate?.container.viewContext)!
     }()
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        chartView.setNeedsDisplay()
+        expenseView.setNeedsDisplay()
+        incomeView.setNeedsDisplay()
+        collectionView.visibleCells.forEach{$0.setNeedsDisplay()}
+    }
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {

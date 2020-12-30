@@ -6,6 +6,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -83,13 +84,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Create Category" id="d22-jH-FGo">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="zXk-gd-cfg">
-                            <color key="tintColor" name="TabBarColor"/>
+                            <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <action selector="cancelTapped:" destination="M5e-Pw-m5d" id="dJ7-gE-CYa"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="Q5l-qd-cTW">
-                            <color key="tintColor" name="TabBarColor"/>
+                            <color key="tintColor" systemColor="labelColor"/>
                             <connections>
                                 <action selector="saveTapped:" destination="M5e-Pw-m5d" id="yWh-fK-5I8"/>
                             </connections>
@@ -126,11 +127,11 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="TabBarColor">
-            <color red="0.28200000524520874" green="0.37299999594688416" blue="0.86299997568130493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="backgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

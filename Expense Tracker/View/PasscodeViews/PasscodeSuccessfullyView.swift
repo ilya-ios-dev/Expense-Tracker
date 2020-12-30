@@ -33,8 +33,8 @@ public class PasscodeSuccessfullyDrawing : NSObject {
         //// Color Declarations
         let fillColor = startColor
         let fillColor3 = #colorLiteral(red: 0.522, green: 0.584, blue: 0.675, alpha: 1.000)
-        let fillColor4 = fillColor.darker(by: 15)!
-        let fillColor5 = fillColor.lighter(by: 15)!
+        let fillColor4 = fillColor.darker(by: 15)
+        let fillColor5 = fillColor.lighter(by: 15)
         let fillColor6 = #colorLiteral(red: 1.000, green: 1.000, blue: 0.996, alpha: 1.000)
         let fillColor7 = #colorLiteral(red: 0.231, green: 0.388, blue: 0.592, alpha: 1.000)
         let fillColor8 = #colorLiteral(red: 0.831, green: 0.918, blue: 0.949, alpha: 1.000)

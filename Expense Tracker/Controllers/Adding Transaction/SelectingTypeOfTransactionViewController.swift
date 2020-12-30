@@ -25,12 +25,15 @@ final class SelectingTypeOfTransactionViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let interfaceStyle = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "UIUserInterfaceStyle")) else { return }
+        navigationController?.overrideUserInterfaceStyle = interfaceStyle
+
         if transaction == nil {
             transaction = Transaction(context: context)
         } else {
+            transaction = try? context.existingObject(with: transaction.objectID) as? Transaction
             fetchBalance()
             balance.totalBalance += transaction.isExpense ? transaction.amount : -transaction.amount
-            print(balance.totalBalance)
         }
     }
     

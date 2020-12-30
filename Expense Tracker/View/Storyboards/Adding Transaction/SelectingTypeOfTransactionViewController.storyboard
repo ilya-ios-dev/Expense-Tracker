@@ -60,14 +60,14 @@
                                         <subviews>
                                             <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ieu-Fd-csb" customClass="ExpenseButton" customModule="Expense_Tracker" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="179.5" height="195"/>
-                                                <color key="backgroundColor" name="tabBarColor-1"/>
+                                                <color key="backgroundColor" name="tabBarColor"/>
                                                 <connections>
                                                     <action selector="categorySelected:" destination="Sf3-Rj-Rcv" eventType="touchUpInside" id="QjU-yc-oxu"/>
                                                 </connections>
                                             </button>
                                             <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pq4-gT-giM" customClass="IncomeButton" customModule="Expense_Tracker" customModuleProvider="target">
                                                 <rect key="frame" x="194.5" y="0.0" width="179.5" height="195"/>
-                                                <color key="backgroundColor" name="tabBarColor-1"/>
+                                                <color key="backgroundColor" name="tabBarColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="195" id="gyV-gv-nKb"/>
                                                 </constraints>
@@ -138,7 +138,7 @@
         <namedColor name="backgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="tabBarColor-1">
+        <namedColor name="tabBarColor">
             <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">

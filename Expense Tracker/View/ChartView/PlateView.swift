@@ -95,7 +95,7 @@ extension PlateView {
     
     /// Adds a circle indicating the location of the element.
     private func configureCircle(at point: CGPoint) {
-        #colorLiteral(red: 0.3529411765, green: 0.2196078431, blue: 0.737254902, alpha: 1).setFill()
+        UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "")?.setFill()
         configureCircleOn(point, with: cirecleDiameter)?.fill()
         UIColor.white.setFill()
         configureCircleOn(point, with: cirecleDiameter / 2)?.fill()

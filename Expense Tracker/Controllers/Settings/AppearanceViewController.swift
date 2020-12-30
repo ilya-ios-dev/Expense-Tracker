@@ -22,8 +22,10 @@ final class AppearanceViewController: UIViewController {
         return appDelegate.container.viewContext
     }()
     
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        preloadDBData()
         loadGradientsCoreData()
 
         configureColorAccentCollectionView()
@@ -38,13 +40,12 @@ extension AppearanceViewController {
     private func loadGradientsCoreData(){
         let fetchRequest: NSFetchRequest = GradientAccent.fetchRequest()
         gradients = try! context.fetch(fetchRequest)
-        print(gradients.count)
     }
     
     /// Checks if data is loaded into CoreData.
     /// If the data is not loaded, then it loads it.
     private func preloadDBData() {
-        if UserDefaults.standard.bool(forKey: "gradients.preload") == false {
+        if !UserDefaults.standard.bool(forKey: "gradients.preload"){
             loadGradients()
             UserDefaults.standard.set(true, forKey: "gradients.preload")
         }
@@ -89,11 +90,20 @@ extension AppearanceViewController {
         colorAccentCollectionView.register(nib, forCellWithReuseIdentifier: "colorCell")
         colorAccentCollectionView.delegate = self
         colorAccentCollectionView.dataSource = self
+        guard let startColor = UserDefaults.standard.string(forKey: "startColor"),
+              let endColor = UserDefaults.standard.string(forKey: "endColor") else { return }
+        if let index = gradients.firstIndex(where: { $0.startColor == startColor && $0.endColor == endColor }) {
+            let indexPath = IndexPath(item: index, section: 0)
+            colorAccentCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
+        }
     }
     private func configureAppearanceCollectionView(){
         appearanceCollectionView.register(AppearanceCollectionViewCell.self, forCellWithReuseIdentifier: "appear")
         appearanceCollectionView.delegate = self
         appearanceCollectionView.dataSource = self
+        let appearanceRaw = UserDefaults.standard.integer(forKey: "UIUserInterfaceStyle")
+        let indexPath = IndexPath(item: appearanceRaw, section: 0)
+        appearanceCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
     }
 }
 
@@ -143,6 +153,19 @@ extension AppearanceViewController : UICollectionViewDelegate, UICollectionViewD
             topView.startColor = startColor
             topView.endColor = endColor
             topView.setNeedsDisplay()
+        } else {
+            switch indexPath.item {
+            case 0:
+                tabBarController?.overrideUserInterfaceStyle = .unspecified
+                navigationController?.overrideUserInterfaceStyle = .unspecified
+            case 1:
+                tabBarController?.overrideUserInterfaceStyle = .light
+                navigationController?.overrideUserInterfaceStyle = .light
+            default:
+                tabBarController?.overrideUserInterfaceStyle = .dark
+                navigationController?.overrideUserInterfaceStyle = .dark
+            }
+            UserDefaults.standard.setValue(navigationController?.overrideUserInterfaceStyle.rawValue, forKey: "UIUserInterfaceStyle")
         }
     }
     

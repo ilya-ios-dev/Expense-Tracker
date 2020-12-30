@@ -40,7 +40,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="tabBarColor-1"/>
+                        <color key="backgroundColor" name="tabBarColor"/>
                         <constraints>
                             <constraint firstItem="ODu-mQ-It5" firstAttribute="height" secondItem="Fcl-Bc-7cc" secondAttribute="height" multiplier="0.6" id="Glf-9e-9v2"/>
                             <constraint firstItem="ODu-mQ-It5" firstAttribute="centerX" secondItem="Fcl-Bc-7cc" secondAttribute="centerX" id="L9m-WA-vwU"/>
@@ -67,7 +67,7 @@
     </objects>
     <resources>
         <image name="airplane" catalog="system" width="128" height="115"/>
-        <namedColor name="tabBarColor-1">
+        <namedColor name="tabBarColor">
             <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

@@ -35,8 +35,13 @@ final class ChartView: UIView {
         
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath(roundedRect: rect, cornerRadius: 25)
-        UIColor(named: "tabBarColor-1")?.setFill()
+        Colors.tabBarColor.setFill()
         path.fill()
+    }
+    
+    override func setNeedsDisplay() {
+        super.setNeedsDisplay()
+        reloadData()
     }
 }
 
@@ -71,7 +76,7 @@ extension ChartView {
             label.text = formatter.string(from: model.date)
             label.font = UIFont.systemFont(ofSize: 16, weight: .light)
             label.textAlignment = .center
-            label.textColor = UIColor(named: "dectiptionColor")
+            label.textColor = Colors.descriptionColor
             bottomStackView.addArrangedSubview(label)
         }
         stackView.addArrangedSubview(bottomStackView)
@@ -81,7 +86,7 @@ extension ChartView {
     /// Configure a separator between graph and labels.
     private func configureSeparator() {
         let separator = UIView()
-        separator.backgroundColor = UIColor(named: "dectiptionColor")
+        separator.backgroundColor = Colors.descriptionColor
         stackView.addArrangedSubview(separator)
         separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
@@ -91,7 +96,7 @@ extension ChartView {
         netLabel = UILabel()
         netLabel.text = "Net balance"
         netLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        netLabel.textColor = UIColor(named: "dectiptionColor")
+        netLabel.textColor = Colors.descriptionColor
         netLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(netLabel)
         NSLayoutConstraint.activate([
@@ -144,7 +149,7 @@ extension ChartView {
     /// Recreate subviews.
     public func reloadData(){
         guard let chartModel = chartModel, !chartModel.isEmpty else { return }
-        subviews.forEach { $0.removeFromSuperview() }
+        subviews.filter{ $0 != netLabel && $0 != balanceLabel }.forEach { $0.removeFromSuperview() }
         configureScrollView()
         configureStackView()
         configureGraphView()

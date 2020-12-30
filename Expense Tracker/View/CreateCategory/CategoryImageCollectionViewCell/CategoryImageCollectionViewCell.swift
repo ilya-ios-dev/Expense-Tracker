@@ -20,7 +20,10 @@ final class CategoryImageCollectionViewCell: UICollectionViewCell {
         didSet{
             shadowLayer?.removeFromSuperlayer()
             if isSelected {
+                categoryBackgroundView.backgroundColor = Colors.selectedColor
                 configureShadowLayer()
+            } else {
+                categoryBackgroundView.backgroundColor = Colors.tabBarColor
             }
         }
     }
@@ -30,10 +33,9 @@ final class CategoryImageCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         categoryBackgroundView.layer.cornerRadius = 17
         categoryBackgroundView.layer.borderWidth = 1
-        categoryBackgroundView.layer.borderColor = UIColor(named: "shadowColor")?.cgColor
+        categoryBackgroundView.layer.borderColor = Colors.shadowColor.cgColor
         circleBackground.layer.cornerRadius = circleBackground.frame.height / 2
     }
-
 }
 
 //MARK: - Supporting Methods

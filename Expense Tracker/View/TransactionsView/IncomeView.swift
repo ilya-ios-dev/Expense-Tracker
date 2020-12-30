@@ -7,17 +7,14 @@
 
 import UIKit
 
-class IncomeView: TransactionView {
+final class IncomeView: TransactionView {
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         configureViews()
     }
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        configureViews()
-    }
-    
+
+
     private func configureViews(){
         transactionKindLabel.text = "Income"
         transactionIconLabel.text = ">|"

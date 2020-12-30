@@ -23,28 +23,30 @@ final class CreateCategoryViewController: UIViewController {
     
     //MARK: - Computed Properties
     private lazy var context: NSManagedObjectContext = {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        return (appDelegate?.container.viewContext)!
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.privateContext
     }()
-    private lazy var alert: UIAlertController = {
-        let alert = UIAlertController(title: "", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        return alert
+    
+    private lazy var mainContext: NSManagedObjectContext = {
+        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.container.viewContext
     }()
 
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //Setup Data
         preloadDBData()
         loadGradientsAndImages()
         //Configure Layouts
+        configureAppearance()
         configureColorCollectionView()
         configureImageCollectionView()
         titleTextField.addTarget(self, action: #selector(textFieldValidate(_:)), for: .editingChanged)
         //if editing category
         if category != nil {
+            category = try! context.existingObject(with: category!.objectID) as? Category
             titleTextField.text = category?.name
         } else {
             saveBarButtonItem.isEnabled = false
@@ -75,19 +77,28 @@ final class CreateCategoryViewController: UIViewController {
         
         do {
             try context.save()
+            saveOnMainContext()
             dismiss(animated: true, completion: nil)
         } catch {
-            print("\(error.localizedDescription)\n\(error)")
-            print("name: \(name),\ncategoryImage: \(image.name), gradient: \(gradient.startColor) : \(gradient.endColor)")
-            alert.title = "\(error.localizedDescription)"
-            present(alert, animated: true)
+            showAlert(alertText: "\(error.localizedDescription)")
         }
     }
 }
 
 //MARK: - Supporting Methods
 extension CreateCategoryViewController {
-    
+    /// Saving all changes on main context
+    private func saveOnMainContext() {
+        context.performAndWait {
+            do {
+                try mainContext.save()
+            } catch {
+                print(error)
+                showAlert(alertText: error.localizedDescription)
+            }
+        }
+    }
+
     ///Activates the save button if  `UITextField` are not empty.
     @objc private func textFieldValidate(_ textField: UITextField) {
         guard let text = textField.text else { return }
@@ -152,12 +163,26 @@ extension CreateCategoryViewController {
         return layout
     }
     
+    private func configureAppearance(){
+        guard let interfaceStyle = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "UIUserInterfaceStyle")) else { return }
+        navigationController?.overrideUserInterfaceStyle = interfaceStyle
+    }
+    
     /// Loads data for `gradients` and `images`
     private func loadGradientsAndImages() {
         let gradientRequest: NSFetchRequest = Gradient.fetchRequest()
-        gradients = try! context.fetch(gradientRequest)
+//        let kondCompare = NSSortDescriptor(key: "startColor", ascending: false)
+//        gradientRequest.sortDescriptors = [kondCompare]
+        gradients = try! mainContext.fetch(gradientRequest)
+        gradients.sort { (gradient1, gradient2) -> Bool in
+            guard let number1Start = UInt8(gradient1.startColor, radix: 16)  else { return false }
+            guard let number1End = UInt8(gradient1.endColor, radix: 16)  else { return false }
+            guard let number2Start = UInt8(gradient2.startColor, radix: 16)  else { return false }
+            guard let number2End = UInt8(gradient2.endColor, radix: 16)  else { return false }
+            return (number1Start + number1End) < (number2Start + number2End)
+        }
         let imageRequest: NSFetchRequest = CategoryImage.fetchRequest()
-        images = try! context.fetch(imageRequest)
+        images = try! mainContext.fetch(imageRequest)
     }
     
     /// Checks if data is loaded into CoreData.
@@ -177,9 +202,9 @@ extension CreateCategoryViewController {
         let images = parseImages(csvString: str)
         
         for item in images {
-            let image = CategoryImage(context: context)
+            let image = CategoryImage(context: mainContext)
             image.name = item
-            try? context.save()
+            try? mainContext.save()
         }
         
     }
@@ -198,10 +223,10 @@ extension CreateCategoryViewController {
         let gradients = parseGradients(csvString: str)
         
         for item in gradients {
-            let gradient = Gradient(context: context)
+            let gradient = Gradient(context: mainContext)
             gradient.startColor = item.startColor
             gradient.endColor = item.endColor
-            try? context.save()
+            try? mainContext.save()
         }
     }
     
@@ -237,7 +262,7 @@ extension CreateCategoryViewController: UICollectionViewDataSource, UICollection
         if collectionView == gradientCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as! GradientCategoryCollectionViewCell
             cell.gradientLayer?.removeFromSuperlayer()
-            cell.gradientLayer = cell.circleGradient?.applyGradient(colours: getGradientColors(for: indexPath))
+            cell.gradientLayer = cell.circleGradient?.applyGradient(colours: getGradientColors(for: indexPath), startPoint: .bottomLeft, endPoint: .topRight)
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! CategoryImageCollectionViewCell
@@ -249,7 +274,7 @@ extension CreateCategoryViewController: UICollectionViewDataSource, UICollection
             guard let selectedIndexPath = gradientCollectionView.indexPathsForSelectedItems?.first else { return cell }
 
             cell.gradientLayer?.removeFromSuperlayer()
-            cell.gradientLayer = cell.circleBackground?.applyGradient(colours: getGradientColors(for: selectedIndexPath))
+            cell.gradientLayer = cell.circleBackground?.applyGradient(colours: getGradientColors(for: selectedIndexPath), startPoint: .bottomLeft, endPoint: .topRight)
             return cell
         }
     }

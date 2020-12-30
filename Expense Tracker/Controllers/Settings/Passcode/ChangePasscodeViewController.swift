@@ -61,7 +61,7 @@ final class ChangePasscodeViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.tintColor = .black
+        navigationController?.navigationBar.tintColor = .label
         navigationController?.navigationBar.barStyle = .default
     }
     

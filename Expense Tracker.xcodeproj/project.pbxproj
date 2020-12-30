@@ -90,6 +90,7 @@
 		FAE542872593C8C4008C7DF8 /* ConfigurePasscode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE542862593C8C3008C7DF8 /* ConfigurePasscode.storyboard */; };
 		FAE9855E25974F200065546A /* Appearance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE9855D25974F200065546A /* Appearance.storyboard */; };
 		FAE98562259753B00065546A /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE98561259753B00065546A /* AppearanceViewController.swift */; };
+		FAEE03EB259B53040072B79F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE03EA259B53040072B79F /* Constants.swift */; };
 		FAF1799725874D4E00113DF5 /* gradients.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAF1799625874D4E00113DF5 /* gradients.csv */; };
 		FAF1D4D9257A5CE400DE10B4 /* ChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */; };
 		FAFB4E2F2575457E002B9E23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB4E2E2575457E002B9E23 /* AppDelegate.swift */; };
@@ -192,6 +193,7 @@
 		FAE542862593C8C3008C7DF8 /* ConfigurePasscode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigurePasscode.storyboard; sourceTree = "<group>"; };
 		FAE9855D25974F200065546A /* Appearance.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Appearance.storyboard; sourceTree = "<group>"; };
 		FAE98561259753B00065546A /* AppearanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceViewController.swift; sourceTree = "<group>"; };
+		FAEE03EA259B53040072B79F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FAF1799625874D4E00113DF5 /* gradients.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gradients.csv; sourceTree = "<group>"; };
 		FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModel.swift; sourceTree = "<group>"; };
 		FAFB4E2B2575457E002B9E23 /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -599,11 +601,12 @@
 		FAFB4E49257545AD002B9E23 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FAFED4702598BFE500584A8A /* GradientAccents.csv */,
 				FAF1799625874D4E00113DF5 /* gradients.csv */,
 				FA698AED25876306008D2168 /* images.csv */,
-				FAFED4702598BFE500584A8A /* GradientAccents.csv */,
-				FAFB4E3725754580002B9E23 /* Assets.xcassets */,
 				FAFB4E3C25754580002B9E23 /* Info.plist */,
+				FAEE03EA259B53040072B79F /* Constants.swift */,
+				FAFB4E3725754580002B9E23 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -726,6 +729,7 @@
 				FAA83D192593898300F3B0A7 /* SettingsTableViewCell.swift in Sources */,
 				FAE98562259753B00065546A /* AppearanceViewController.swift in Sources */,
 				FA49FFDD258DE041006BB779 /* IncomeButton.swift in Sources */,
+				FAEE03EB259B53040072B79F /* Constants.swift in Sources */,
 				FA5295C2258A199D001B4D9D /* Balance+CoreDataClass.swift in Sources */,
 				FA6E674C258D1C10000CBA2D /* FillingAmountAndDescriptionViewController.swift in Sources */,
 				FA59C76D25755B9300C80A5A /* HomeCollectionViewCell.swift in Sources */,

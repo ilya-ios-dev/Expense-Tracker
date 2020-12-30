@@ -35,8 +35,9 @@ final class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let startColor: UIColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-        let endColor: UIColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+        let startColor: UIColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.5490196078, green: 0.2980392157, blue: 0.831372549, alpha: 1)
+        let endColor: UIColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.3450980392, green: 0.2117647059, blue: 0.7333333333, alpha: 1)
+        navigationController?.navigationBar.setGradientBackground(colors: [startColor, endColor], startPoint: .bottomLeft, endPoint: .topRight)
         topView.startColor = startColor
         topView.endColor = endColor
         topView.setNeedsDisplay()
@@ -81,10 +82,6 @@ extension HomeViewController {
     
     /// Configure the display of `UINavigationController`.
     private func configureNavigationBar(){
-        let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-        let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
-
-        navigationController?.navigationBar.setGradientBackground(colors: [startColor, endColor], startPoint: .bottomLeft, endPoint: .topRight)
         let navLabel = UILabel()
         let navTitle = NSMutableAttributedString(string: "$ ", attributes:[
                                                     NSAttributedString.Key.foregroundColor: UIColor.white,

@@ -17,7 +17,6 @@ final class GraphView: UIView {
 
     override func draw(_ rect: CGRect) {
         guard !graphPoints.isEmpty else { return }
-
         if graphPoints.count == 1 {
             drawSingleLine()
         } else {
