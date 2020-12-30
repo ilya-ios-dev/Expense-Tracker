@@ -19,7 +19,9 @@ final class SelectingTypeOfTransactionViewController: UIViewController {
     private var balance: Balance!
     private lazy var context: NSManagedObjectContext = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-        return appDelegate.privateContext
+        let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        privateContext.parent = appDelegate.container.viewContext
+        return privateContext
     }()
     
     //MARK: - View Life Cycle

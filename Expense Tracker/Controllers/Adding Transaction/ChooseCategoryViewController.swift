@@ -26,8 +26,7 @@ final class ChooseCategoryViewController: UIViewController {
     
     //MARK: - Computed Properties
     private lazy var context: NSManagedObjectContext = {
-        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.privateContext
+        return transaction.managedObjectContext!
     }()
     
     //MARK: - View Life Cycle

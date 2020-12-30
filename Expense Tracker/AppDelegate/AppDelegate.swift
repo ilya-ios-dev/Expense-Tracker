@@ -40,12 +40,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
         return container
-    }()
-    
-    lazy var privateContext: NSManagedObjectContext = {
-        let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        privateContext.parent = container.viewContext
-        return privateContext
-    }()
+    }()    
 }
 

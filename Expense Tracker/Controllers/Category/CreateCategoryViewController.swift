@@ -23,8 +23,10 @@ final class CreateCategoryViewController: UIViewController {
     
     //MARK: - Computed Properties
     private lazy var context: NSManagedObjectContext = {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.privateContext
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
+        let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        privateContext.parent = appDelegate.container.viewContext
+        return privateContext
     }()
     
     private lazy var mainContext: NSManagedObjectContext = {
