@@ -21,6 +21,7 @@
 		FA301324257914D6004D2421 /* MonthCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA301322257914D6004D2421 /* MonthCollectionViewCell.xib */; };
 		FA33752D2588D67C00139495 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33752B2588D67C00139495 /* Category+CoreDataClass.swift */; };
 		FA33752E2588D67C00139495 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA33752C2588D67C00139495 /* Category+CoreDataProperties.swift */; };
+		FA354873259CEA5E00D864CD /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA354872259CEA5E00D864CD /* String+Extensions.swift */; };
 		FA38CE5B259C7A64006EC8C2 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA38CE5D259C7A64006EC8C2 /* Home.storyboard */; };
 		FA38CE64259C9C00006EC8C2 /* Category.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA38CE66259C9C00006EC8C2 /* Category.storyboard */; };
 		FA49FFDA258DE029006BB779 /* ExpenseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA49FFD9258DE029006BB779 /* ExpenseButton.swift */; };
@@ -125,6 +126,7 @@
 		FA301322257914D6004D2421 /* MonthCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA33752B2588D67C00139495 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FA33752C2588D67C00139495 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FA354872259CEA5E00D864CD /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		FA38CE59259C78A0006EC8C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		FA38CE5C259C7A64006EC8C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		FA38CE60259C7A69006EC8C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Home.strings; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				FA0E5886258BA545002F5D88 /* Sequense+Extensions.swift */,
 				FA6CDCB22599D4CB00DDECB3 /* Array+UIColor.swift */,
 				FA2018DD2595E26F00E17FAA /* UIViewController+Extensions.swift */,
+				FA354872259CEA5E00D864CD /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -790,6 +793,7 @@
 				FA59C76D25755B9300C80A5A /* HomeCollectionViewCell.swift in Sources */,
 				FA49FFDA258DE029006BB779 /* ExpenseButton.swift in Sources */,
 				FA8D899125826DB900ED1770 /* ExpenseTracker.xcdatamodeld in Sources */,
+				FA354873259CEA5E00D864CD /* String+Extensions.swift in Sources */,
 				FA718DA02588C41500A9FF12 /* CustomButton.swift in Sources */,
 				FA718DA52588CC6800A9FF12 /* Transaction+CoreDataProperties.swift in Sources */,
 				FA2018DE2595E26F00E17FAA /* UIViewController+Extensions.swift in Sources */,

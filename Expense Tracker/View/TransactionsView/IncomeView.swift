@@ -22,9 +22,3 @@ final class IncomeView: TransactionView {
         transactionKindView.backgroundColor = endColor
     }
 }
-
-extension String {
-    var localized: String {
-        return NSLocalizedString(self, comment: "")
-    }
-}

@@ -45,7 +45,6 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        UserDefaults.standard.synchronize()
         //Setup Data
         fetchBalance()
         setupFetchedResultsController()
@@ -54,16 +53,7 @@ final class HomeViewController: UIViewController {
         configureCollectionView()
         configureNavigationBar()
         configureTopView()
-    }
-    
-    func restartApplication () {
-        UserDefaults.standard.set(["ru"], forKey: "AppleLanguages")
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let tabBarController = storyboard.instantiateInitialViewController() as? TabBarViewController {
-            guard let window = UIApplication.shared.windows.first else { fatalError() }
-            window.rootViewController = tabBarController
-        }
-    }
+    }    
 }
 
 //MARK: - Configure Layouts
