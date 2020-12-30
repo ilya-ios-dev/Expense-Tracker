@@ -42,6 +42,7 @@ final class CreateCategoryViewController: UIViewController {
         preloadDBData()
         loadGradientsAndImages()
         //Configure Layouts
+        addKeyboardCancelGesture()
         configureAppearance()
         configureColorCollectionView()
         configureImageCollectionView()
@@ -89,6 +90,13 @@ final class CreateCategoryViewController: UIViewController {
 
 //MARK: - Supporting Methods
 extension CreateCategoryViewController {
+    ///Add `UITapGestureRecognizer` to tapping anywhere on the view controller to dismiss the keyboard.
+    private func addKeyboardCancelGesture() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
     /// Saving all changes on main context
     private func saveOnMainContext() {
         context.performAndWait {
