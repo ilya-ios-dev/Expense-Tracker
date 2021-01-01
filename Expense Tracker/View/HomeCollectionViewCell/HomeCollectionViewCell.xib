@@ -20,46 +20,25 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="02h-1S-ivC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="83"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UzM-2q-yPU">
-                                <rect key="frame" x="8" y="9" width="247.5" height="65"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U70-4A-aTc">
+                                <rect key="frame" x="12" y="12" width="59" height="59"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U70-4A-aTc">
-                                        <rect key="frame" x="0.0" y="3.5" width="58" height="58"/>
-                                        <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="airplane" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gjh-RB-fgj">
-                                                <rect key="frame" x="11.5" y="12" width="35" height="34"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="gjh-RB-fgj" secondAttribute="height" id="yjT-nY-E82"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="airplane" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gjh-RB-fgj">
+                                        <rect key="frame" x="12" y="12.5" width="35" height="34"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="U70-4A-aTc" secondAttribute="height" id="2wV-6o-tCg"/>
-                                            <constraint firstItem="gjh-RB-fgj" firstAttribute="centerX" secondItem="U70-4A-aTc" secondAttribute="centerX" id="5JD-Mf-og8"/>
-                                            <constraint firstItem="gjh-RB-fgj" firstAttribute="centerY" secondItem="U70-4A-aTc" secondAttribute="centerY" id="80r-oa-nrY"/>
-                                            <constraint firstItem="gjh-RB-fgj" firstAttribute="height" secondItem="U70-4A-aTc" secondAttribute="height" multiplier="0.6" id="KPx-iE-6MN"/>
+                                            <constraint firstAttribute="width" secondItem="gjh-RB-fgj" secondAttribute="height" id="yjT-nY-E82"/>
                                         </constraints>
-                                    </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="f2d-AL-VLu">
-                                        <rect key="frame" x="78" y="11" width="169.5" height="43.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="Fly to Paris" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaz-Y1-zsM">
-                                                <rect key="frame" x="0.0" y="0.0" width="169.5" height="25.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="30 дек. 2020 г., 1:20 PM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2X-C2-pjB">
-                                                <rect key="frame" x="0.0" y="25.5" width="169.5" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" name="desctiptionColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
+                                    </imageView>
                                 </subviews>
-                            </stackView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="U70-4A-aTc" secondAttribute="height" id="2wV-6o-tCg"/>
+                                    <constraint firstItem="gjh-RB-fgj" firstAttribute="centerX" secondItem="U70-4A-aTc" secondAttribute="centerX" id="5JD-Mf-og8"/>
+                                    <constraint firstItem="gjh-RB-fgj" firstAttribute="centerY" secondItem="U70-4A-aTc" secondAttribute="centerY" id="80r-oa-nrY"/>
+                                    <constraint firstItem="gjh-RB-fgj" firstAttribute="height" secondItem="U70-4A-aTc" secondAttribute="height" multiplier="0.6" id="KPx-iE-6MN"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-52323.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOo-3d-ged">
                                 <rect key="frame" x="279.5" y="28.5" width="90.5" height="26.5"/>
                                 <constraints>
@@ -69,16 +48,35 @@
                                 <color key="textColor" name="decreasingColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="f2d-AL-VLu">
+                                <rect key="frame" x="83" y="20" width="169.5" height="43.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="Fly to Paris" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaz-Y1-zsM">
+                                        <rect key="frame" x="0.0" y="0.0" width="169.5" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="30 дек. 2020 г., 1:20 PM" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2X-C2-pjB">
+                                        <rect key="frame" x="0.0" y="25.5" width="169.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" name="desctiptionColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" name="tabBarColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="FOo-3d-ged" secondAttribute="trailing" constant="20" symbolic="YES" id="5Lx-i4-mIy"/>
-                            <constraint firstAttribute="bottom" secondItem="UzM-2q-yPU" secondAttribute="bottom" constant="9" id="Fdb-QQ-ChB"/>
-                            <constraint firstItem="FOo-3d-ged" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UzM-2q-yPU" secondAttribute="trailing" constant="8" id="cF5-aY-GWA"/>
-                            <constraint firstItem="UzM-2q-yPU" firstAttribute="leading" secondItem="02h-1S-ivC" secondAttribute="leading" constant="8" id="exc-EL-VYQ"/>
-                            <constraint firstItem="U70-4A-aTc" firstAttribute="height" secondItem="02h-1S-ivC" secondAttribute="height" multiplier="0.7" id="iV2-aC-Amg"/>
+                            <constraint firstItem="f2d-AL-VLu" firstAttribute="leading" secondItem="U70-4A-aTc" secondAttribute="trailing" constant="12" id="7po-78-geR"/>
+                            <constraint firstItem="f2d-AL-VLu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="02h-1S-ivC" secondAttribute="top" constant="12" id="A8l-U7-DTC"/>
+                            <constraint firstItem="f2d-AL-VLu" firstAttribute="centerY" secondItem="02h-1S-ivC" secondAttribute="centerY" id="Cdb-0t-1pF"/>
+                            <constraint firstItem="U70-4A-aTc" firstAttribute="top" secondItem="02h-1S-ivC" secondAttribute="top" constant="12" id="P39-Ib-fE3"/>
+                            <constraint firstItem="FOo-3d-ged" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="f2d-AL-VLu" secondAttribute="trailing" constant="8" symbolic="YES" id="RoK-ZU-TeB"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="f2d-AL-VLu" secondAttribute="bottom" constant="12" id="dco-xj-NQj"/>
+                            <constraint firstAttribute="bottom" secondItem="U70-4A-aTc" secondAttribute="bottom" constant="12" id="dfR-tp-CwY"/>
                             <constraint firstItem="FOo-3d-ged" firstAttribute="centerY" secondItem="02h-1S-ivC" secondAttribute="centerY" id="rcR-u2-zTO"/>
-                            <constraint firstItem="UzM-2q-yPU" firstAttribute="top" secondItem="02h-1S-ivC" secondAttribute="top" constant="9" id="u7X-33-CrT"/>
+                            <constraint firstItem="U70-4A-aTc" firstAttribute="leading" secondItem="02h-1S-ivC" secondAttribute="leading" constant="12" id="u6e-n4-br5"/>
                         </constraints>
                     </view>
                 </subviews>
