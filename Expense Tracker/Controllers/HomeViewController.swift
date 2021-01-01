@@ -32,7 +32,6 @@ final class HomeViewController: UIViewController {
     }()
     
     //MARK: - View Life Cycle
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let startColor: UIColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.5490196078, green: 0.2980392157, blue: 0.831372549, alpha: 1)

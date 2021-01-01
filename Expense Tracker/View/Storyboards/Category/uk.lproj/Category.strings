@@ -1,9 +1,9 @@
 
-/* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "HmW-Z3-j5j"; */
-"HmW-Z3-j5j.title" = "Добавити";
+/* Class = "UIBarButtonItem"; title = "Add"; ObjectID = "HYG-V8-eZb"; */
+"HYG-V8-eZb.title" = "Добавити";
 
-/* Class = "UITabBarItem"; title = "Category"; ObjectID = "few-FX-W76"; */
-"few-FX-W76.title" = "Категорії";
+/* Class = "UITabBarItem"; title = "Category"; ObjectID = "rT9-IE-oik"; */
+"rT9-IE-oik.title" = "Категорії";
 
-/* Class = "UINavigationItem"; title = "Categories"; ObjectID = "lw7-ps-LDN"; */
-"lw7-ps-LDN.title" = "Категорії";
+/* Class = "UINavigationItem"; title = "Categories"; ObjectID = "teD-hx-lpu"; */
+"teD-hx-lpu.title" = "Категорії";

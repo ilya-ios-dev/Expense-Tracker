@@ -51,6 +51,14 @@ final class CreateCategoryViewController: UIViewController {
         if category != nil {
             category = try! context.existingObject(with: category!.objectID) as? Category
             titleTextField.text = category?.name
+            
+            guard let gradientIndex = gradients.firstIndex(of: category!.gradient) else { return }
+            let gradientIndexPath = IndexPath(item: gradientIndex, section: 0)
+            gradientCollectionView.selectItem(at: gradientIndexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+
+            guard let imageIndex = images.firstIndex(of: category!.categoryImage) else { return }
+            let imageIndexPath = IndexPath(item: imageIndex, section: 0)
+            imagesCollectionView.selectItem(at: imageIndexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
         } else {
             saveBarButtonItem.isEnabled = false
         }
@@ -58,10 +66,6 @@ final class CreateCategoryViewController: UIViewController {
     
     
     //MARK: - Actions
-    @IBAction private func cancelTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-        
     @IBAction private func saveTapped(_ sender: Any) {
         guard let name = titleTextField.text else { return }
         guard let selectedImageIndexPath = imagesCollectionView.indexPathsForSelectedItems?.first else { return }
@@ -81,7 +85,7 @@ final class CreateCategoryViewController: UIViewController {
         do {
             try context.save()
             saveOnMainContext()
-            dismiss(animated: true, completion: nil)
+            navigationController?.popToRootViewController(animated: true)
         } catch {
             showAlert(alertText: "\(error.localizedDescription)")
         }
@@ -127,14 +131,8 @@ extension CreateCategoryViewController {
         gradientCollectionView.register(nib, forCellWithReuseIdentifier: "colorCell")
         gradientCollectionView.delegate = self
         gradientCollectionView.dataSource = self
-        if let category = category {
-            guard let gradientIndex = gradients.firstIndex(of: category.gradient) else { return }
-            let gradientIndexPath = IndexPath(item: gradientIndex, section: 0)
-            gradientCollectionView.selectItem(at: gradientIndexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
-        } else {
-            let indexPath = IndexPath(item: 0, section: 0)
-            gradientCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
-        }
+        let indexPath = IndexPath(item: 0, section: 0)
+        gradientCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
     }
     
     /// Register cell for `imagesCollectionView`.
@@ -146,14 +144,8 @@ extension CreateCategoryViewController {
         imagesCollectionView.collectionViewLayout = configureLayout()
         imagesCollectionView.delegate = self
         imagesCollectionView.dataSource = self
-        if let category = category {
-            guard let imageIndex = images.firstIndex(of: category.categoryImage) else { return }
-            let imageIndexPath = IndexPath(item: imageIndex, section: 0)
-            imagesCollectionView.selectItem(at: imageIndexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
-        } else {
-            let indexPath = IndexPath(item: 0, section: 0)
-            imagesCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
-        }
+        let indexPath = IndexPath(item: 0, section: 0)
+        imagesCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
     }
     
     /// creates a UICollectionViewCompositionalLayout, which is responsible for placing cells.

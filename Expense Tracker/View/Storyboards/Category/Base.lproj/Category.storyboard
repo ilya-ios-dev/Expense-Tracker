@@ -1,82 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="95Q-el-tjp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xhP-DF-k8j">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Categories-->
-        <scene sceneID="5xh-Sb-sM9">
+        <!--Navigation Controller-->
+        <scene sceneID="jui-Mf-DXD">
             <objects>
-                <viewController id="kc4-11-bD6" customClass="CategoryViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="R4E-p1-otE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iot-P7-RmL">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <sections/>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="47j-h3-8Ie"/>
-                        <color key="backgroundColor" name="backgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="47j-h3-8Ie" firstAttribute="trailing" secondItem="iot-P7-RmL" secondAttribute="trailing" id="Dgh-Ih-Lgs"/>
-                            <constraint firstItem="iot-P7-RmL" firstAttribute="leading" secondItem="47j-h3-8Ie" secondAttribute="leading" id="kZd-hG-PEl"/>
-                            <constraint firstItem="47j-h3-8Ie" firstAttribute="bottom" secondItem="iot-P7-RmL" secondAttribute="bottom" id="v1n-Ow-9Jm"/>
-                            <constraint firstItem="iot-P7-RmL" firstAttribute="top" secondItem="47j-h3-8Ie" secondAttribute="top" id="zDj-2G-OQX"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Categories" largeTitleDisplayMode="always" id="lw7-ps-LDN">
-                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="HmW-Z3-j5j">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="addCategory:" destination="kc4-11-bD6" id="iFQ-lI-yvi"/>
-                                <segue destination="IwC-eh-ZQn" kind="presentation" id="7kP-6U-xyJ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="tableView" destination="iot-P7-RmL" id="ZJn-b7-Jjw"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bDb-Td-XKk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1831.8840579710147" y="75.669642857142847"/>
-        </scene>
-        <!--CreateCategory-->
-        <scene sceneID="18F-Ec-507">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CreateCategory" id="IwC-eh-ZQn" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yuT-JF-Ofb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2634" y="79"/>
-        </scene>
-        <!--Category-->
-        <scene sceneID="wid-F6-kkE">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="95Q-el-tjp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Category" image="square.grid.2x2" catalog="system" id="few-FX-W76"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xhP-DF-k8j" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" largeTitles="YES" id="2mQ-bt-9Gt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="9oo-Gv-9bd">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" systemColor="labelColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="kc4-11-bD6" kind="relationship" relationship="rootViewController" id="oEU-KO-HF8"/>
+                        <segue destination="TvK-Mb-cDW" kind="relationship" relationship="rootViewController" id="Aai-s1-7A8"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k1p-5P-icI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z3P-H0-qhj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="921.73913043478262" y="75.669642857142847"/>
+            <point key="canvasLocation" x="884" y="76"/>
+        </scene>
+        <!--Categories-->
+        <scene sceneID="Cdj-E5-gdT">
+            <objects>
+                <tableViewController id="TvK-Mb-cDW" customClass="CategoryViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="eLq-YP-rVF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="backgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="FsJ-cy-CQf">
+                                <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FsJ-cy-CQf" id="WaV-Ke-vPo">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="TvK-Mb-cDW" id="HRz-y5-GoK"/>
+                            <outlet property="delegate" destination="TvK-Mb-cDW" id="AM1-Cb-Dvo"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Category" image="square.grid.2x2" catalog="system" id="rT9-IE-oik"/>
+                    <navigationItem key="navigationItem" title="Categories" id="teD-hx-lpu">
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="HYG-V8-eZb">
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <connections>
+                                <action selector="addCategory:" destination="TvK-Mb-cDW" id="RBo-kz-IIl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5F7-7q-Ve5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1683" y="81"/>
         </scene>
     </scenes>
     <resources>
