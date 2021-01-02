@@ -10,7 +10,7 @@
         <!--Transactions-->
         <scene sceneID="cWI-Dc-XYp">
             <objects>
-                <tableViewController id="wsd-XP-Nds" customClass="CategoryElementsViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController hidesBottomBarWhenPushed="YES" id="wsd-XP-Nds" customClass="CategoryElementsViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" id="zPE-4E-Y7Q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

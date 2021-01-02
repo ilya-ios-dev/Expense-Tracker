@@ -20,12 +20,13 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    
     //MARK: - Properties
+    private let appSettings = AppSettings.shared
     private var balance: Balance!
     private var dataSource: UICollectionViewDiffableDataSource<Int, Transaction>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, Transaction>()
     private var fetchedResultsController: NSFetchedResultsController<Transaction>!
+    private var observation: NSKeyValueObservation?
     private lazy var context: NSManagedObjectContext = {
         let appDelegate  = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.container.viewContext
@@ -34,11 +35,13 @@ final class HomeViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let startColor: UIColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.5490196078, green: 0.2980392157, blue: 0.831372549, alpha: 1)
-        let endColor: UIColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.3450980392, green: 0.2117647059, blue: 0.7333333333, alpha: 1)
+        let startColor: UIColor = UIColor(hex: appSettings.startColor) ?? #colorLiteral(red: 0.5490196078, green: 0.2980392157, blue: 0.831372549, alpha: 1)
+        let endColor: UIColor = UIColor(hex: appSettings.endColor) ?? #colorLiteral(red: 0.3450980392, green: 0.2117647059, blue: 0.7333333333, alpha: 1)
         navigationController?.navigationBar.setGradientBackground(colors: [startColor, endColor], startPoint: .bottomLeft, endPoint: .topRight)
         topView.startColor = startColor
         topView.endColor = endColor
+        configureTopView()
+        configureNavigationBar()
         topView.setNeedsDisplay()
     }
     
@@ -48,11 +51,10 @@ final class HomeViewController: UIViewController {
         fetchBalance()
         setupFetchedResultsController()
         setupDataSource()
+        
         //Configure UI
         configureCollectionView()
-        configureNavigationBar()
-        configureTopView()
-    }    
+    }
 }
 
 //MARK: - Configure Layouts
@@ -61,10 +63,10 @@ extension HomeViewController {
     /// Configure the `topView` display.
     /// Fills all field from `CoreData`.
     private func configureTopView() {
-        currencyLabel.text = "$"
-        amountLabel.text = "\(balance.totalBalance)"
-        incomeAmountLabel.text = "\(balance.income ?? 0)"
-        expenseAmountLabel.text = "\(balance.expense ?? 0)"
+        currencyLabel.text = appSettings.currency.description
+        amountLabel.text = String(format: appSettings.roundedFormat, balance.totalBalance)
+        incomeAmountLabel.text = String(format: appSettings.roundedFormat, balance.income ?? 0)
+        expenseAmountLabel.text = String(format: appSettings.roundedFormat, balance.expense ?? 0)
         let monthInt = Calendar.current.dateComponents([.month, .year], from: Date())
         let monthStr = Calendar.current.standaloneMonthSymbols[monthInt.month! - 1]
         dateLabel.text = "\(monthStr) \(monthInt.year!)"
@@ -81,7 +83,7 @@ extension HomeViewController {
     /// Configure the display of `UINavigationController`.
     private func configureNavigationBar(){
         let navLabel = UILabel()
-        let navTitle = NSMutableAttributedString(string: "$ ", attributes:[
+        let navTitle = NSMutableAttributedString(string: "\(appSettings.currency) ", attributes:[
                                                     NSAttributedString.Key.foregroundColor: UIColor.white,
                                                     NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16.0),
                                                     NSAttributedString.Key.baselineOffset: 2])
@@ -131,6 +133,16 @@ extension HomeViewController {
         
         let sort = NSSortDescriptor(key: "date", ascending: false)
         request.sortDescriptors = [sort]
+        print(Date().startOfMonthOfYear)
+        switch appSettings.displaying {
+        case .week:
+            request.predicate = NSPredicate(format: "date > %@ AND date < %@", Date().startOfWeek as NSDate, Date().endOfWeek as NSDate)
+        case .month:
+            request.predicate = NSPredicate(format: "date > %@ AND date < %@", Date().startOfMonth as NSDate, Date().endOfMonth as NSDate)
+        case .year:
+            request.predicate = NSPredicate(format: "date > %@ AND date < %@", Date().startOfYear as NSDate, Date().endOfYear as NSDate)
+        case .allTime: break
+        }
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
@@ -179,7 +191,7 @@ extension HomeViewController {
             cell.dateLabel.text = "\(dateFormatter.string(from: transaction.date))"
             
             //Sum
-            cell.sumLabel.text = String(transaction.amount)
+            cell.sumLabel.text = String(format: self.appSettings.roundedFormat, transaction.amount)
             
             cell.isExpense = transaction.isExpense
             return cell

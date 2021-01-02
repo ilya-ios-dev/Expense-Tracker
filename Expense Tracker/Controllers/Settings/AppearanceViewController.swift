@@ -16,6 +16,7 @@ final class AppearanceViewController: UIViewController {
     @IBOutlet private weak var colorAccentCollectionView: UICollectionView!
     
     //MARK: - Properties
+    private var appSettings = AppSettings.shared
     private var gradients = [GradientAccent]()
     private lazy var context: NSManagedObjectContext = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -142,8 +143,8 @@ extension AppearanceViewController : UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == colorAccentCollectionView {
             let gradient = gradients[indexPath.item]
-            UserDefaults.standard.setValue(gradient.startColor, forKey: "startColor")
-            UserDefaults.standard.setValue(gradient.endColor, forKey: "endColor")
+            appSettings.startColor = gradient.startColor
+            appSettings.endColor = gradient.endColor
             appearanceCollectionView.reloadData()
             guard let startColor = UIColor(hex: gradient.startColor) else { return }
             guard let endColor = UIColor(hex: gradient.endColor) else { return }

@@ -18,6 +18,7 @@ final class ChartViewController: UIViewController {
     
     
     //MARK: - Properties
+    private let appSettings = AppSettings.shared
     private var dataSource: UICollectionViewDiffableDataSource<Int, Date>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, Date>()
     private var balance: Balance!
@@ -66,7 +67,8 @@ extension ChartViewController {
     ///Refresh the data in the `ChartView`.
     private func configureChartView(){
         chartView.chartModel = balance.getTransactionsForMonth(searchDate)
-        chartView.currentBalance = "$\(balance.totalBalance)"
+        let currency = appSettings.currency.description
+        chartView.currentBalance = currency + String(format: appSettings.roundedFormat, balance.totalBalance)
     }
     
     ///Gets `balance` from CoreData. If not already created, creates.
@@ -108,8 +110,8 @@ extension ChartViewController {
     
     /// Refresh the data in the expense and income labels.
     private func configureLabels() {
-        expenseView.transactionAmountLabel.text = "$\(balance.getExpenseForMonth(searchDate) ?? 0)"
-        incomeView.transactionAmountLabel.text = "$\(balance.getIncomeForMonth(searchDate) ?? 0)"
+        expenseView.transactionAmountLabel.text = appSettings.currency + String(format: appSettings.roundedFormat, balance.getExpenseForMonth(searchDate) ?? 0)
+        incomeView.transactionAmountLabel.text = appSettings.currency + String(format: appSettings.roundedFormat, balance.getIncomeForMonth(searchDate) ?? 0)
     }
     
     /// Register `collectionView` cell. Assigning a delegate. Select current month.

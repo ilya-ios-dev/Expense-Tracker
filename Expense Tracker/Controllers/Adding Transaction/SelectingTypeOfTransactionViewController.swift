@@ -15,6 +15,7 @@ final class SelectingTypeOfTransactionViewController: UIViewController {
     @IBOutlet private weak var expenseButton: ExpenseButton!
     
     //MARK: - Properties
+    private let appSettings = AppSettings.shared
     public var transaction: Transaction!
     private var balance: Balance!
     private lazy var context: NSManagedObjectContext = {
@@ -27,8 +28,7 @@ final class SelectingTypeOfTransactionViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let interfaceStyle = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "UIUserInterfaceStyle")) else { return }
-        navigationController?.overrideUserInterfaceStyle = interfaceStyle
+        navigationController?.overrideUserInterfaceStyle = appSettings.userInterfaceStyle
 
         if transaction == nil {
             transaction = Transaction(context: context)

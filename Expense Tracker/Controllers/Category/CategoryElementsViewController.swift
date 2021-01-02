@@ -17,6 +17,7 @@ final class CategoryElementsViewController: UITableViewController {
     public var category: Category!
     private var balance: Balance!
     private var currentSearchText = ""
+    private let appSettings = AppSettings.shared
     private lazy var context: NSManagedObjectContext = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError()
@@ -108,7 +109,7 @@ extension CategoryElementsViewController {
             cell.dateLabel.text = "\(dateFormatter.string(from: transaction.date))"
             
             //Sum
-            cell.sumLabel.text = String(transaction.amount)
+            cell.sumLabel.text = String(format: self.appSettings.roundedFormat, transaction.amount)
             
             cell.isExpense = transaction.isExpense
             return cell

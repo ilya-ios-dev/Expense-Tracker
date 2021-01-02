@@ -8,6 +8,17 @@
 import UIKit
 
 final class SettingsViewController: UITableViewController {
+    
+    private let settings = [
+        SettingElement(name: "App Settings", storyboardName: "AppSettings"),
+        SettingElement(name: "Passcode", storyboardName: "ConfigurePasscode"),
+        SettingElement(name: "Appearance", storyboardName: "Appearance")
+    ]
+    private struct SettingElement {
+        let name: String
+        let storyboardName: String
+    }
+    
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,31 +30,21 @@ final class SettingsViewController: UITableViewController {
 // MARK: - Table view data source
 extension SettingsViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return settings.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         cell.backgroundColor = UIColor(named: "backgroundColor")
         cell.accessoryType = .disclosureIndicator
-        if indexPath.row == 0 {
-            cell.textLabel?.text = "Passcode".localized
-        } else {
-            cell.textLabel?.text = "Appearance".localized
-        }
+        cell.textLabel?.text = settings[indexPath.row].name.localized
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            let storyboard = UIStoryboard(name: "ConfigurePasscode", bundle: nil)
-            guard let controller = storyboard.instantiateInitialViewController() else { return }
-            navigationController?.pushViewController(controller, animated: true)
-        } else {
-            let storyboard = UIStoryboard(name: "Appearance", bundle: nil)
-            guard let controller = storyboard.instantiateInitialViewController() else { return }
-            navigationController?.pushViewController(controller, animated: true)
-        }
-        
+        let storyboardName = settings[indexPath.row].storyboardName
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        guard let controller = storyboard.instantiateInitialViewController() else { return }
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

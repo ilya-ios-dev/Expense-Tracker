@@ -13,7 +13,7 @@
         <!--Create Category-->
         <scene sceneID="Y2z-x2-JMo">
             <objects>
-                <viewController id="M5e-Pw-m5d" customClass="CreateCategoryViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="M5e-Pw-m5d" customClass="CreateCategoryViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="atZ-Ot-tff">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

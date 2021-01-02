@@ -17,17 +17,13 @@ final class ChangePasscodeViewController: UIViewController {
     
     
     //MARK: - Properties
+    private var appSettings = AppSettings.shared
     private var passcode = ""
     private var gradientLayer: CAGradientLayer?
     public var editingMode: EditingMode!
     private lazy var _editingMode: EditingMode = {
         return editingMode
     }()
-    private var oldPasscode: String {
-        let genericPwdQueryable = GenericPasswordQueryable(service: "LaunchingPasscode")
-        let store = SecureStore(secureStoreQueryable: genericPwdQueryable)
-        return try! store.getValue(for: "passcode") ?? ""
-    }
     
     internal enum EditingMode {
         case create
@@ -46,8 +42,8 @@ final class ChangePasscodeViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-        let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+        let startColor = UIColor(hex: appSettings.startColor) ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+        let endColor = UIColor(hex: appSettings.endColor) ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
         gradientLayer = view.applyGradient(colours: [endColor, startColor], startPoint: .bottomLeft, endPoint: .topRight)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
 
@@ -68,8 +64,8 @@ final class ChangePasscodeViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         gradientLayer?.removeFromSuperlayer()
         DispatchQueue.main.async {
-            let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-            let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+            let startColor = UIColor(hex: self.appSettings.startColor) ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+            let endColor = UIColor(hex: self.appSettings.endColor) ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
             self.gradientLayer = self.view.applyGradient(colours: [endColor, startColor], startPoint: .topRight, endPoint: .bottomLeft)
         }
     }
@@ -95,7 +91,7 @@ extension ChangePasscodeViewController {
     
     /// Checks the old passcode. If the user enters it, it gives the opportunity to create a new one.
     private func changeOldPasscode(){
-        if passcodeTextField.text != oldPasscode {
+        if passcodeTextField.text != passcode {
             incorrectPasscode()
         } else {
             _editingMode = .create
@@ -163,19 +159,16 @@ extension ChangePasscodeViewController {
     /// Called when the password has been successfully created.
     /// Sets `isPasscodeEnabled` true and save passcode to store.
     private func savePasscode() {
-        UserDefaults.standard.setValue(true, forKey: "isPasscodeEnabled")
-        let genericPwdQueryable = GenericPasswordQueryable(service: "LaunchingPasscode")
-        let store = SecureStore(secureStoreQueryable: genericPwdQueryable)
-        try? store.setValue(passcode, for: "passcode")
+        appSettings.passcode = passcode
         showSuccess()
     }
     
     /// Does password validation. If everything is correct sets `isPasscodeEnabled` false.
     private func disablePasscode() {
-        if passcodeTextField.text != oldPasscode {
+        if passcodeTextField.text != appSettings.passcode {
             incorrectPasscode()
         } else {
-            UserDefaults.standard.setValue(false, forKey: "isPasscodeEnabled")
+            appSettings.isPasscodeEnabled = false
             showSuccess()
         }
     }

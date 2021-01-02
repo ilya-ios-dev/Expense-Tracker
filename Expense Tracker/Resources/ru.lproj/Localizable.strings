@@ -26,3 +26,12 @@
 "Passcode successfully created" = "Пин код успешно создан";
 "Passcode successfully disabled" = "Пин код успешно отключен";
 "Passcode successfully edited" = "Пин код успешно изменен";
+"App Settings" = "Настройки приложения";
+"Currency" = "Валюта";
+"Rounding" = "Округление";
+"Displaying on Home Screen" = "Отображение на домашнем экране";
+"Change the currency used in the application." = "Изменить валюту, используемую в приложении.";
+"Change the rounding of numbers." = "Изменить округление чисел.";
+"Change the items displayed on the home screen." = "Изменить элементы, отображаемые на главном экране";
+"Change Balance" = "Изменить баланс";
+"Edit current balance." = "Изменить текущий баланс";

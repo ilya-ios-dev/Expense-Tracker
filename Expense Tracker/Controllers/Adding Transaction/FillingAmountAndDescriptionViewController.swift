@@ -19,6 +19,7 @@ final class FillingAmountAndDescriptionViewController: UIViewController {
     @IBOutlet private weak var bottomTextFieldConstraint: NSLayoutConstraint!
     
     //MARK: - Properties
+    private let appSettings = AppSettings.shared
     public var transaction: Transaction!
     
     //MARK: - View Life Cycle
@@ -84,7 +85,7 @@ extension FillingAmountAndDescriptionViewController {
         amountTextField.layer.addSublayer(bottomLine)
         amountTextField.delegate = self
         amountTextField.becomeFirstResponder()
-        amountTextField.text = transaction.amount.isZero ? "" : "\(transaction.amount)"
+        amountTextField.text = transaction.amount.isZero ? "" : String(format: appSettings.roundedFormat, transaction.amount)
         amountTextField.addTarget(self, action: #selector(textFieldValidate(_:)), for: .editingChanged)
     }
     
@@ -116,12 +117,12 @@ extension FillingAmountAndDescriptionViewController {
     private func configureTransactionType() {
         if transaction.isExpense {
             transactionIconLabel.text = "|<"
-            let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+            let startColor = UIColor(hex: appSettings.startColor) ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
             transactionIconBackground.backgroundColor = startColor
             transactionTypeLabel.text = "Expense".localized
         } else {
             transactionIconLabel.text = ">|"
-            let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+            let endColor = UIColor(hex: appSettings.endColor) ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
             transactionIconBackground.backgroundColor = endColor
             transactionTypeLabel.text = "Income".localized
         }

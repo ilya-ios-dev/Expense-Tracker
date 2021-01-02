@@ -15,7 +15,7 @@ final class PasscodeViewController: UIViewController {
     @IBOutlet private weak var bottomPasscodeConstraint: NSLayoutConstraint!
     
     //MARK: - Properties
-    private var userPasscode: String!
+    private let appSettings = AppSettings.shared
     private var gradientLayer : CAGradientLayer?
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -24,26 +24,25 @@ final class PasscodeViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-        let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+        let startColor = UIColor(hex: appSettings.startColor) ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+        let endColor = UIColor(hex: appSettings.endColor) ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
 
         gradientLayer = view.applyGradient(colours: [endColor, startColor], startPoint: .topRight, endPoint: .bottomLeft)
-        getPasscode()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         gradientLayer?.removeFromSuperlayer()
         DispatchQueue.main.async {
-            let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-            let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+            let startColor = UIColor(hex: self.appSettings.startColor) ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+            let endColor = UIColor(hex: self.appSettings.endColor) ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
             self.gradientLayer = self.view.applyGradient(colours: [endColor, startColor], startPoint: .topRight, endPoint: .bottomLeft)
         }
     }
     
     //MARK: - Actions
     @IBAction func pinEndEditing(_ sender: Any) {
-        if userPasscode == passcodeTextField.text {
+        if appSettings.passcode == passcodeTextField.text {
             correctPasscode()
         } else {
             incorrectPasscode()
@@ -88,16 +87,5 @@ extension PasscodeViewController {
         transition.type = CATransitionType.reveal
         transition.subtype = CATransitionSubtype.fromTop
         return transition
-    }
-    
-    /// Get password from secureStore.
-    private func getPasscode(){
-        let genericPwdQueryable = GenericPasswordQueryable(service: "LaunchingPasscode")
-        let store = SecureStore(secureStoreQueryable: genericPwdQueryable)
-        do {
-            userPasscode = try store.getValue(for: "passcode")
-        } catch {
-            showAlert(alertText: error.localizedDescription)
-        }
     }
 }

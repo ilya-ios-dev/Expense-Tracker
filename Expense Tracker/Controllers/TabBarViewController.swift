@@ -9,15 +9,16 @@ import UIKit
 
 final class TabBarViewController: UITabBarController {
     
-    //MARK: - View Life Cycle
+    //MARK: - Properties
+    private let appSettings = AppSettings.shared
     
+    //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let startColor: UIColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.5490196078, green: 0.2980392157, blue: 0.831372549, alpha: 1)
-        let endColor: UIColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.3450980392, green: 0.2117647059, blue: 0.7333333333, alpha: 1)
+        let startColor: UIColor = UIColor(hex: appSettings.startColor) ?? #colorLiteral(red: 0.5490196078, green: 0.2980392157, blue: 0.831372549, alpha: 1)
+        let endColor: UIColor = UIColor(hex: appSettings.endColor) ?? #colorLiteral(red: 0.3450980392, green: 0.2117647059, blue: 0.7333333333, alpha: 1)
         tabBar.tintColor = [startColor, endColor].averageColor()
-        guard let interfaceStyle = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "UIUserInterfaceStyle")) else { return }
-        overrideUserInterfaceStyle = interfaceStyle
+        overrideUserInterfaceStyle = appSettings.userInterfaceStyle
     }
     
     override func viewDidLoad() {
