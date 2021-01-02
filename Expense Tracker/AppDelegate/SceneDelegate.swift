@@ -7,27 +7,23 @@
 
 import UIKit
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         
         // If user hasn't accent color (first load)
         // Sets default value
-        if !UserDefaults.standard.bool(forKey: "hasAccentColor") {
-            UserDefaults.standard.setValue("8C4CD4", forKey: "startColor")
-            UserDefaults.standard.setValue("5836BB", forKey: "endColor")
-            UserDefaults.standard.setValue(true, forKey: "hasAccentColor")
+        var appSettings = AppSettings.shared
+        
+        if appSettings.isFirstLoading {
+            appSettings.configureFirstLoading()
         }
         
         // Check's, if passcode enabled, sets passcode as main screen.
-        if UserDefaults.standard.bool(forKey: "isPasscodeEnabled") {
+        if appSettings.isPasscodeEnabled {
             let storyboard = UIStoryboard(name: "Passcode", bundle: nil)
             if let vc = storyboard.instantiateInitialViewController(){
                 window?.rootViewController = vc

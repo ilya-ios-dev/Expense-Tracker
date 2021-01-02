@@ -13,20 +13,27 @@ struct AppSettings {
     private struct Keys {
         static let startColor = "startColor"
         static let endColor = "endColor"
-        static let userInterfaceStyle = "UIUserInterfaceStyle"
+        static let userInterfaceStyle = "userInterfaceStyle"
         static let isPasscodeEnabled = "isPasscodeEnabled"
-        static let passcodeService = "LaunchingPasscode"
+        static let passcodeService = "launchingPasscode"
         static let passcode = "passcode"
-        static let currency = "Currency"
-        static let roundedFormat = "RoundedFormat"
-        static let displaying = ""
+        static let currency = "currency"
+        static let roundedFormat = "roundedFormat"
+        static let displaying = "displaying"
+        static let isFirstLoading = "isFirstLoading"
     }
 
     //MARK: - Static Properties
     public static let shared = AppSettings()
     
-    
     // MARK: - Instance Properties
+    public var isFirstLoading: Bool {
+        get {
+            return userDefaults.bool(forKey: Keys.isFirstLoading)
+        } set {
+            userDefaults.setValue(newValue, forKey: Keys.isFirstLoading)
+        }
+    }
     public var startColor: String {
         get {
             return userDefaults.string(forKey: Keys.startColor) ?? ""
@@ -89,6 +96,18 @@ struct AppSettings {
         }
     }
     private let userDefaults = UserDefaults.standard
+    
+    //MARK: - Instance Methods
+    public mutating func configureFirstLoading() {
+        // Appearance Configuration
+        startColor = "8C4CD4"
+        endColor = "5836BB"
+        userInterfaceStyle = .unspecified
+        // Internal App Configuration
+        currency = "$"
+        roundedFormat = "%.1f"
+        displaying = .allTime
+    }
     
     // MARK: - Object Lifecycle
     private init() {}

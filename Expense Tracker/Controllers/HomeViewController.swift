@@ -133,7 +133,6 @@ extension HomeViewController {
         
         let sort = NSSortDescriptor(key: "date", ascending: false)
         request.sortDescriptors = [sort]
-        print(Date().startOfMonthOfYear)
         switch appSettings.displaying {
         case .week:
             request.predicate = NSPredicate(format: "date > %@ AND date < %@", Date().startOfWeek as NSDate, Date().endOfWeek as NSDate)
