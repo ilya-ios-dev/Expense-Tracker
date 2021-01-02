@@ -178,7 +178,11 @@ extension HomeViewController {
             
             //Image
             let imageName = transaction.category.categoryImage.name
-            cell.categoryImageView.image = UIImage(systemName: imageName)
+            if let systemImage = UIImage(systemName: imageName){
+                cell.categoryImageView.image = systemImage
+            } else if let image = UIImage(named: imageName) {
+                cell.categoryImageView.image = image.withRenderingMode(.alwaysTemplate)
+            }
             
             //Title
             cell.titleLabel.text = transaction.name

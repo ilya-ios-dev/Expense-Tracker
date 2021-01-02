@@ -269,7 +269,11 @@ extension CreateCategoryViewController: UICollectionViewDataSource, UICollection
 
             let imageName = images[indexPath.item].name
             cell.imageView.image = nil
-            cell.imageView.image = UIImage(systemName: imageName)
+            if let systemImage = UIImage(systemName: imageName){
+                cell.imageView.image = systemImage
+            } else if let image = UIImage(named: imageName) {
+                cell.imageView.image = image.withRenderingMode(.alwaysTemplate)
+            }
             
             guard let selectedIndexPath = gradientCollectionView.indexPathsForSelectedItems?.first else { return cell }
 
