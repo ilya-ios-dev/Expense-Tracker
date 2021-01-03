@@ -21,6 +21,7 @@ final class ChooseCategoryViewController: UIViewController {
     
     //MARK: - Properties
     public var transaction: Transaction!
+    private let appSettings = AppSettings.shared
     private var fetchedResultsController: NSFetchedResultsController<Category>!
     private var dataSource: UICollectionViewDiffableDataSource<String, NSManagedObjectID>!
     
@@ -59,8 +60,12 @@ extension ChooseCategoryViewController {
             cell.gradientLayer = cell.backgroundCategory.applyGradient(colours: [startColor, endColor])
             
             let imageName = category.categoryImage.name
-            cell.categoryImageView.image = UIImage(systemName: imageName)
-            
+            if let systemImage = UIImage(systemName: imageName){
+                cell.categoryImageView.image = systemImage
+            } else if let image = UIImage(named: imageName) {
+                cell.categoryImageView.image = image.withRenderingMode(.alwaysTemplate)
+            }
+
             cell.textLabel.text = category.name
             
             return cell
@@ -80,7 +85,7 @@ extension ChooseCategoryViewController {
         do {
             try fetchedResultsController.performFetch()
         } catch {
-            print("\(error)")
+            showAlert(alertText: error.localizedDescription)
         }
     }
 }
@@ -98,12 +103,12 @@ extension ChooseCategoryViewController {
     private func configureTransactionType() {
         if transaction.isExpense {
             transactionIconLabel.text = "|<"
-            let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+            let startColor = appSettings.startColor
             transactionIconBackground.backgroundColor = startColor
             transactionTypeLabel.text = "Expense".localized
         } else {
             transactionIconLabel.text = ">|"
-            let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+            let endColor = appSettings.endColor
             transactionIconBackground.backgroundColor = endColor
             transactionTypeLabel.text = "Income".localized
         }

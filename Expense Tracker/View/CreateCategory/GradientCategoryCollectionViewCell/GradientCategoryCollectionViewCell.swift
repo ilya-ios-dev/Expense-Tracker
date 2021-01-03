@@ -9,11 +9,11 @@ import UIKit
 
 final class GradientCategoryCollectionViewCell: UICollectionViewCell {
 
+    //MARK: - Properties & Outlets
     @IBOutlet weak var circleGradient: UIView!
-    
-    //MARK: - Properties
     var gradientLayer: CAGradientLayer?
     private var shadowLayer: CALayer?
+    
     override var isSelected: Bool {
         didSet{
             shadowLayer?.removeFromSuperlayer()

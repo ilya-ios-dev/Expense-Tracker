@@ -14,11 +14,8 @@ final class PasscodeWelcomeView: UIView {
     }
 }
 
-public class PasscodeWelcomeDraw : NSObject {
-
-    //// Drawing Methods
-
-    @objc dynamic public class func drawCanvas1(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 356, height: 264), resizing: ResizingBehavior = .aspectFit) {
+private final class PasscodeWelcomeDraw : NSObject {
+    public class func drawCanvas1(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 356, height: 264), resizing: ResizingBehavior = .aspectFit) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
@@ -27,10 +24,10 @@ public class PasscodeWelcomeDraw : NSObject {
         let resizedFrame: CGRect = resizing.apply(rect: CGRect(x: 0, y: 0, width: 356, height: 264), target: targetFrame)
         context.translateBy(x: resizedFrame.minX, y: resizedFrame.minY)
         context.scaleBy(x: resizedFrame.width / 356, y: resizedFrame.height / 264)
-
-        let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-        let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
-
+        
+        let startColor = AppSettings.shared.startColor
+        let endColor = AppSettings.shared.endColor
+        
         //// Color Declarations
         let gradientColor =  startColor
         let gradientColor2 = endColor
@@ -49,17 +46,17 @@ public class PasscodeWelcomeDraw : NSObject {
         let fillColor8 =     #colorLiteral(red: 0.294, green: 0.106, blue: 0.075, alpha: 1.000)
         let fillColor9 =     #colorLiteral(red: 0.737, green: 0.259, blue: 0.294, alpha: 1.000)
         let fillColor10 =    #colorLiteral(red: 0.910, green: 0.863, blue: 0.918, alpha: 1.000)
-
+        
         //// Gradient Declarations
         let linearGradient2 = CGGradient(colorsSpace: nil, colors: [gradientColor.cgColor, gradientColor2.cgColor] as CFArray, locations: [0, 1])!
         let linearGradient1 = CGGradient(colorsSpace: nil, colors: [gradientColor3.cgColor, gradientColor4.cgColor] as CFArray, locations: [0, 1])!
         let linearGradient5 = CGGradient(colorsSpace: nil, colors: [gradientColor5.cgColor, gradientColor6.cgColor] as CFArray, locations: [0.01, 1])!
-
+        
         //// passcode
         context.saveGState()
         context.beginTransparencyLayer(auxiliaryInfo: nil)
-
-
+        
+        
         //// Path-2 Drawing
         let path2Path = UIBezierPath()
         path2Path.move(to: CGPoint(x: 33, y: 65.29))
@@ -74,12 +71,12 @@ public class PasscodeWelcomeDraw : NSObject {
         context.saveGState()
         path2Path.addClip()
         context.drawLinearGradient(linearGradient1,
-            start: CGPoint(x: 336.73, y: 59.41),
-            end: CGPoint(x: -167.35, y: 286.56),
-            options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
+                                   start: CGPoint(x: 336.73, y: 59.41),
+                                   end: CGPoint(x: -167.35, y: 286.56),
+                                   options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
         context.restoreGState()
-
-
+        
+        
         //// ipad
         //// Path Drawing
         let pathPath = UIBezierPath()
@@ -99,16 +96,16 @@ public class PasscodeWelcomeDraw : NSObject {
         context.saveGState()
         pathPath.addClip()
         context.drawLinearGradient(linearGradient2,
-            start: CGPoint(x: 316.1, y: 75.05),
-            end: CGPoint(x: -84.8, y: 326.56),
-            options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
+                                   start: CGPoint(x: 316.1, y: 75.05),
+                                   end: CGPoint(x: -84.8, y: 326.56),
+                                   options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
         context.restoreGState()
-
-
+        
+        
         //// Path 3 Drawing
         context.saveGState()
         context.setAlpha(0.39)
-
+        
         let path3Path = UIBezierPath()
         path3Path.move(to: CGPoint(x: 11.8, y: 164.9))
         path3Path.addLine(to: CGPoint(x: 16.08, y: 167.45))
@@ -125,10 +122,10 @@ public class PasscodeWelcomeDraw : NSObject {
         path3Path.close()
         fillColor.setFill()
         path3Path.fill()
-
+        
         context.restoreGState()
-
-
+        
+        
         //// Path 4 Drawing
         let path4Path = UIBezierPath()
         path4Path.move(to: CGPoint(x: 341.73, y: 146.41))
@@ -145,12 +142,12 @@ public class PasscodeWelcomeDraw : NSObject {
         context.saveGState()
         path4Path.addClip()
         context.drawLinearGradient(linearGradient2,
-            start: CGPoint(x: 310.75, y: 87.7),
-            end: CGPoint(x: -76.17, y: 304),
-            options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
+                                   start: CGPoint(x: 310.75, y: 87.7),
+                                   end: CGPoint(x: -76.17, y: 304),
+                                   options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
         context.restoreGState()
-
-
+        
+        
         //// Path 5 Drawing
         let path5Path = UIBezierPath()
         path5Path.move(to: CGPoint(x: 320.99, y: 142.23))
@@ -161,21 +158,21 @@ public class PasscodeWelcomeDraw : NSObject {
         path5Path.close()
         fillColor2.setFill()
         path5Path.fill()
-
-
+        
+        
         //// Oval 2 Drawing
         context.saveGState()
         context.setAlpha(0.39)
-
+        
         let oval2Path = UIBezierPath(ovalIn: CGRect(x: 80.92, y: 191.62, width: 13.3, height: 7.26))
         fillColor3.setFill()
         oval2Path.fill()
-
+        
         context.restoreGState()
-
-
-
-
+        
+        
+        
+        
         //// checkmark
         //// Path 6 Drawing
         let path6Path = UIBezierPath()
@@ -195,12 +192,12 @@ public class PasscodeWelcomeDraw : NSObject {
         context.saveGState()
         path6Path.addClip()
         context.drawLinearGradient(linearGradient2,
-            start: CGPoint(x: 124.23, y: 12.07),
-            end: CGPoint(x: 41.47, y: 146.77),
-            options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
+                                   start: CGPoint(x: 124.23, y: 12.07),
+                                   end: CGPoint(x: 41.47, y: 146.77),
+                                   options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
         context.restoreGState()
-
-
+        
+        
         //// Path 7 Drawing
         let path7Path = UIBezierPath()
         path7Path.move(to: CGPoint(x: 93.37, y: 70.79))
@@ -214,8 +211,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path7Path.close()
         fillColor2.setFill()
         path7Path.fill()
-
-
+        
+        
         //// Path 8 Drawing
         let path8Path = UIBezierPath()
         path8Path.move(to: CGPoint(x: 86.78, y: 70.89))
@@ -226,22 +223,22 @@ public class PasscodeWelcomeDraw : NSObject {
         path8Path.close()
         fillColor2.setFill()
         path8Path.fill()
-
-
-
-
+        
+        
+        
+        
         //// Oval 4 Drawing
         let oval4Path = UIBezierPath(ovalIn: CGRect(x: 147.71, y: 101.17, width: 125.4, height: 57.38))
         strokeColor.setStroke()
         oval4Path.lineWidth = 1
         oval4Path.stroke()
-
-
+        
+        
         //// shadow Drawing
         context.saveGState()
         context.setAlpha(0.46)
         context.setBlendMode(.multiply)
-
+        
         let shadowPath = UIBezierPath()
         shadowPath.move(to: CGPoint(x: 176.73, y: 128.54))
         shadowPath.addLine(to: CGPoint(x: 126.64, y: 155.96))
@@ -250,14 +247,14 @@ public class PasscodeWelcomeDraw : NSObject {
         context.saveGState()
         shadowPath.addClip()
         context.drawLinearGradient(linearGradient5,
-            start: CGPoint(x: 172.8, y: 171.71),
-            end: CGPoint(x: 192.62, y: 146.75),
-            options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
+                                   start: CGPoint(x: 172.8, y: 171.71),
+                                   end: CGPoint(x: 192.62, y: 146.75),
+                                   options: [.drawsBeforeStartLocation, .drawsAfterEndLocation])
         context.restoreGState()
-
+        
         context.restoreGState()
-
-
+        
+        
         //// woman
         //// Path 9 Drawing
         let path9Path = UIBezierPath()
@@ -270,8 +267,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path9Path.close()
         fillColor4.setFill()
         path9Path.fill()
-
-
+        
+        
         //// Path 10 Drawing
         let path10Path = UIBezierPath()
         path10Path.move(to: CGPoint(x: 222.69, y: 95.22))
@@ -283,8 +280,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path10Path.close()
         fillColor5.setFill()
         path10Path.fill()
-
-
+        
+        
         //// Path 11 Drawing
         let path11Path = UIBezierPath()
         path11Path.move(to: CGPoint(x: 198.31, y: 54.1))
@@ -298,8 +295,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path11Path.close()
         fillColor6.setFill()
         path11Path.fill()
-
-
+        
+        
         //// Path 12 Drawing
         let path12Path = UIBezierPath()
         path12Path.move(to: CGPoint(x: 222.19, y: 87.08))
@@ -312,8 +309,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path12Path.close()
         fillColor6.setFill()
         path12Path.fill()
-
-
+        
+        
         //// Path 13 Drawing
         let path13Path = UIBezierPath()
         path13Path.move(to: CGPoint(x: 208.81, y: 90.62))
@@ -325,8 +322,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path13Path.close()
         fillColor7.setFill()
         path13Path.fill()
-
-
+        
+        
         //// Path 14 Drawing
         let path14Path = UIBezierPath()
         path14Path.move(to: CGPoint(x: 198.34, y: 60.64))
@@ -341,8 +338,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path14Path.close()
         fillColor8.setFill()
         path14Path.fill()
-
-
+        
+        
         //// Path 15 Drawing
         let path15Path = UIBezierPath()
         path15Path.move(to: CGPoint(x: 228.74, y: 147.85))
@@ -355,8 +352,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path15Path.close()
         fillColor9.setFill()
         path15Path.fill()
-
-
+        
+        
         //// Path 16 Drawing
         let path16Path = UIBezierPath()
         path16Path.move(to: CGPoint(x: 188.66, y: 138.58))
@@ -373,10 +370,10 @@ public class PasscodeWelcomeDraw : NSObject {
         path16Path.close()
         fillColor9.setFill()
         path16Path.fill()
-
-
-
-
+        
+        
+        
+        
         //// face-id
         //// Path 17 Drawing
         let path17Path = UIBezierPath()
@@ -388,8 +385,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path17Path.lineWidth = 4
         path17Path.miterLimit = 4
         path17Path.stroke()
-
-
+        
+        
         //// Path 18 Drawing
         let path18Path = UIBezierPath()
         path18Path.move(to: CGPoint(x: 247.67, y: 119.15))
@@ -401,8 +398,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path18Path.lineWidth = 4
         path18Path.miterLimit = 4
         path18Path.stroke()
-
-
+        
+        
         //// Path 19 Drawing
         let path19Path = UIBezierPath()
         path19Path.move(to: CGPoint(x: 198.59, y: 19.09))
@@ -414,8 +411,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path19Path.lineWidth = 4
         path19Path.miterLimit = 4
         path19Path.stroke()
-
-
+        
+        
         //// Path 20 Drawing
         let path20Path = UIBezierPath()
         path20Path.move(to: CGPoint(x: 191.65, y: 121))
@@ -426,10 +423,10 @@ public class PasscodeWelcomeDraw : NSObject {
         path20Path.lineWidth = 4
         path20Path.miterLimit = 4
         path20Path.stroke()
-
-
-
-
+        
+        
+        
+        
         //// password
         //// Path 21 Drawing
         let path21Path = UIBezierPath()
@@ -445,8 +442,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path21Path.close()
         fillColor10.setFill()
         path21Path.fill()
-
-
+        
+        
         //// Path 22 Drawing
         let path22Path = UIBezierPath()
         path22Path.move(to: CGPoint(x: 104.19, y: 156.92))
@@ -468,8 +465,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path22Path.close()
         fillColor3.setFill()
         path22Path.fill()
-
-
+        
+        
         //// Path 23 Drawing
         let path23Path = UIBezierPath()
         path23Path.move(to: CGPoint(x: 119, y: 165.84))
@@ -491,8 +488,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path23Path.close()
         fillColor3.setFill()
         path23Path.fill()
-
-
+        
+        
         //// Path 24 Drawing
         let path24Path = UIBezierPath()
         path24Path.move(to: CGPoint(x: 137.34, y: 176))
@@ -514,8 +511,8 @@ public class PasscodeWelcomeDraw : NSObject {
         path24Path.close()
         fillColor3.setFill()
         path24Path.fill()
-
-
+        
+        
         //// Path 25 Drawing
         let path25Path = UIBezierPath()
         path25Path.move(to: CGPoint(x: 154.43, y: 185.92))
@@ -537,57 +534,12 @@ public class PasscodeWelcomeDraw : NSObject {
         path25Path.close()
         fillColor3.setFill()
         path25Path.fill()
-
-
-
-
+        
         context.endTransparencyLayer()
         context.restoreGState()
         
         context.restoreGState()
-
-    }
-
-
-
-
-    @objc(PasscodeImageResizingBehavior)
-    public enum ResizingBehavior: Int {
-        case aspectFit /// The content is proportionally resized to fit into the target rectangle.
-        case aspectFill /// The content is proportionally resized to completely fill the target rectangle.
-        case stretch /// The content is stretched to match the entire target rectangle.
-        case center /// The content is centered in the target rectangle, but it is NOT resized.
-
-        public func apply(rect: CGRect, target: CGRect) -> CGRect {
-            if rect == target || target == CGRect.zero {
-                return rect
-            }
-
-            var scales = CGSize.zero
-            scales.width = abs(target.width / rect.width)
-            scales.height = abs(target.height / rect.height)
-
-            switch self {
-                case .aspectFit:
-                    scales.width = min(scales.width, scales.height)
-                    scales.height = scales.width
-                case .aspectFill:
-                    scales.width = max(scales.width, scales.height)
-                    scales.height = scales.width
-                case .stretch:
-                    break
-                case .center:
-                    scales.width = 1
-                    scales.height = 1
-            }
-
-            var result = rect.standardized
-            result.size.width *= scales.width
-            result.size.height *= scales.height
-            result.origin.x = target.minX + (target.width - result.width) / 2
-            result.origin.y = target.minY + (target.height - result.height) / 2
-            return result
-        }
+        
     }
 }
 

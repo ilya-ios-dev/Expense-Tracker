@@ -24,6 +24,7 @@ final class ChooseDateViewController: UIViewController {
     
     //MARK: - Properties
     public var transaction: Transaction!
+    private let appSettings = AppSettings.shared
     private var balance: Balance!
     
     //MARK: - Computed Properties
@@ -118,13 +119,11 @@ extension ChooseDateViewController {
     private func configureTransactionType() {
         if transaction.isExpense {
             transactionIconLabel.text = "|<"
-            let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-            transactionIconBackground.backgroundColor = startColor
+            transactionIconBackground.backgroundColor = appSettings.startColor
             transactionTypeLabel.text = "Expense".localized
         } else {
             transactionIconLabel.text = ">|"
-            let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
-            transactionIconBackground.backgroundColor = endColor
+            transactionIconBackground.backgroundColor = appSettings.endColor
             transactionTypeLabel.text = "Income".localized
         }
         transactionIconBackground.layer.cornerRadius = transactionIconBackground.frame.height / 2
@@ -133,10 +132,14 @@ extension ChooseDateViewController {
     /// Fills the category view with data.
     private func configureTransactionCategory() {
         categoryBackground.layer.cornerRadius = categoryBackground.frame.height / 2
-        guard let startColor = UIColor(hex: transaction.category.gradient.startColor) else { return }
-        guard let endColorColor = UIColor(hex: transaction.category.gradient.endColor) else { return }
-        categoryBackground.applyGradient(colours: [startColor, endColorColor])
-        categoryImage.image = UIImage(systemName: transaction.category.categoryImage.name)
+        categoryBackground.applyGradient(colours: [appSettings.startColor, appSettings.endColor])
+        
+        let imageName = transaction.category.categoryImage.name
+        if let systemImage = UIImage(systemName: imageName){
+            categoryImage.image = systemImage
+        } else if let image = UIImage(named: imageName) {
+            categoryImage.image = image.withRenderingMode(.alwaysTemplate)
+        }
     }
     
     /// Fills `transactionNameLabel` and `transactionAmountLabel` fields.

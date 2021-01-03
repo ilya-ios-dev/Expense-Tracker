@@ -37,28 +37,17 @@ final class CreateCategoryViewController: UIViewController {
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         //Setup Data
         preloadDBData()
         loadGradientsAndImages()
-        //Configure Layouts
+        //Configure UI
         addKeyboardCancelGesture()
-        configureAppearance()
         configureColorCollectionView()
         configureImageCollectionView()
         titleTextField.addTarget(self, action: #selector(textFieldValidate(_:)), for: .editingChanged)
         //if editing category
         if category != nil {
-            category = try! context.existingObject(with: category!.objectID) as? Category
-            titleTextField.text = category?.name
-            
-            guard let gradientIndex = gradients.firstIndex(of: category!.gradient) else { return }
-            let gradientIndexPath = IndexPath(item: gradientIndex, section: 0)
-            gradientCollectionView.selectItem(at: gradientIndexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
-
-            guard let imageIndex = images.firstIndex(of: category!.categoryImage) else { return }
-            let imageIndexPath = IndexPath(item: imageIndex, section: 0)
-            imagesCollectionView.selectItem(at: imageIndexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+            prepareForEditingCategory()
         } else {
             saveBarButtonItem.isEnabled = false
         }
@@ -94,6 +83,20 @@ final class CreateCategoryViewController: UIViewController {
 
 //MARK: - Supporting Methods
 extension CreateCategoryViewController {
+    /// Prepares views for editing a category.
+    private func prepareForEditingCategory() {
+        category = try! context.existingObject(with: category!.objectID) as? Category
+        titleTextField.text = category?.name
+        
+        guard let gradientIndex = gradients.firstIndex(of: category!.gradient) else { return }
+        let gradientIndexPath = IndexPath(item: gradientIndex, section: 0)
+        gradientCollectionView.selectItem(at: gradientIndexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+
+        guard let imageIndex = images.firstIndex(of: category!.categoryImage) else { return }
+        let imageIndexPath = IndexPath(item: imageIndex, section: 0)
+        imagesCollectionView.selectItem(at: imageIndexPath, animated: false, scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
+    }
+    
     ///Add `UITapGestureRecognizer` to tapping anywhere on the view controller to dismiss the keyboard.
     private func addKeyboardCancelGesture() {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
@@ -164,16 +167,13 @@ extension CreateCategoryViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
-    
-    private func configureAppearance(){
-        guard let interfaceStyle = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "UIUserInterfaceStyle")) else { return }
-        navigationController?.overrideUserInterfaceStyle = interfaceStyle
-    }
-    
+        
     /// Loads data for `gradients` and `images`
     private func loadGradientsAndImages() {
         let gradientRequest: NSFetchRequest = Gradient.fetchRequest()
         gradients = try! context.fetch(gradientRequest)
+        
+        // Sort by color 
         gradients.sort { (gradient1, gradient2) -> Bool in
             guard let number1Start = UInt8(gradient1.startColor, radix: 16)  else { return false }
             guard let number1End = UInt8(gradient1.endColor, radix: 16)  else { return false }
@@ -181,6 +181,7 @@ extension CreateCategoryViewController {
             guard let number2End = UInt8(gradient2.endColor, radix: 16)  else { return false }
             return (number1Start + number1End) < (number2Start + number2End)
         }
+        
         let imageRequest: NSFetchRequest = CategoryImage.fetchRequest()
         images = try! context.fetch(imageRequest)
     }
@@ -197,7 +198,7 @@ extension CreateCategoryViewController {
     
     /// Loads a list of gradients from `images.csv` to CoreData.
     private func loadImages() {
-        guard let filePath = Bundle.main.path(forResource: "images", ofType: "csv") else { return }
+        guard let filePath = Bundle.main.path(forResource: "Images", ofType: "csv") else { return }
         guard let str = try? String.init(contentsOfFile: filePath, encoding: .utf8) else { return }
         let images = parseImages(csvString: str)
         
@@ -218,7 +219,7 @@ extension CreateCategoryViewController {
     
     /// Loads a list of gradients from `gradients.csv` to CoreData.
     private func loadGradients() {
-        guard let filePath = Bundle.main.path(forResource: "gradients", ofType: "csv") else { return }
+        guard let filePath = Bundle.main.path(forResource: "GradientCategories", ofType: "csv") else { return }
         guard let str = try? String.init(contentsOfFile: filePath, encoding: .utf8) else { return }
         let gradients = parseGradients(csvString: str)
         

@@ -14,6 +14,9 @@ final class ConfigurePasscodeViewController: UIViewController {
     @IBOutlet private weak var turnOffButton: CustomButton!
     @IBOutlet private weak var passcodePictureView: PasscodeWelcomeView!
     
+    //MARK: - Properties
+    private let appSettings = AppSettings.shared
+    
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,7 +30,7 @@ final class ConfigurePasscodeViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction private func trurnOnTapped(_ sender: Any) {
-        UserDefaults.standard.bool(forKey: "isPasscodeEnabled") ?
+        appSettings.isPasscodeEnabled ?
             pushViewController(with: .edit) : pushViewController(with: .create)
     }
     
@@ -52,7 +55,7 @@ extension ConfigurePasscodeViewController {
     /// If passcode is not set, then it will only be possible to enable it.
     /// If the passcode is enabled, it will be possible to edit and disable it.
     private func configureButtons(){
-        if UserDefaults.standard.bool(forKey: "isPasscodeEnabled") {
+        if appSettings.isPasscodeEnabled {
             turnOnButton.setTitle("Change passcode".localized, for: .normal)
         } else {
             turnOffButton.isHidden = true

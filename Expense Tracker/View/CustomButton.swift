@@ -9,15 +9,18 @@ import UIKit
 
 @IBDesignable
 final class CustomButton: UIButton {
-        
+    //MARK: - Properties
+    private let appSettings = AppSettings.shared
+    
+    //MARK: - Drawing
     override func draw(_ rect: CGRect) {
         configureButton(rect)
     }
     
     private func configureButton(_ frame: CGRect) {
         layer.cornerRadius = frame.height / 2
-        let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-        let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+        let startColor = appSettings.startColor
+        let endColor = appSettings.endColor
         layer.shadowColor = [startColor, endColor].averageColor().cgColor
         layer.shadowOpacity = 0.7
         layer.shadowOffset = CGSize(width: 0, height: 2)

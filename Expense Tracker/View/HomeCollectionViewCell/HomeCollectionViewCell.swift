@@ -9,12 +9,15 @@ import UIKit
 
 final class HomeCollectionViewCell: UICollectionViewCell {
 
+    //MARK: - Outlets
     @IBOutlet private weak var backgroundCellView: UIView!
     @IBOutlet weak var imageBackground: UIView!
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var sumLabel: UILabel!
+    
+    //MARK: - Properties
     var gradientLayer: CAGradientLayer?
     var isExpense: Bool = false {
         didSet {
@@ -28,6 +31,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    //MARK: - Life Cycle & Drawing
     override func awakeFromNib() {
         super.awakeFromNib()
         imageBackground.layer.cornerRadius = imageBackground.frame.height / 2

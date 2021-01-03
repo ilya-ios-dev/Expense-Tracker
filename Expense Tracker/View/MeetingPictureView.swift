@@ -8,13 +8,13 @@
 import UIKit
 
 @IBDesignable
-public class MeetingPictureView: UIView {
+public final class MeetingPictureView: UIView {
     public override func draw(_ rect: CGRect) {
         MeetingPictureDraw.drawMeetingPicture(frame: rect, resizing: .aspectFit)
     }
 }
 
-public class MeetingPictureDraw : NSObject {
+private final class MeetingPictureDraw : NSObject {
     //// Drawing Methods
     
     public class func drawMeetingPicture(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 350, height: 310), resizing: ResizingBehavior = .aspectFit) {
@@ -27,7 +27,7 @@ public class MeetingPictureDraw : NSObject {
         context.scaleBy(x: resizedFrame.width / 389, y: resizedFrame.height / 355)
         
         //// Color Declarations
-        let accentColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+        let accentColor = AppSettings.shared.startColor
         drawBackPath(context, accentColor)
         drawDottedLine()
         drawTable(tableBackgroundColor: #colorLiteral(red: 0.7960784314, green: 0.7960784314, blue: 0.7960784314, alpha: 1), bottomElementColor: #colorLiteral(red: 0.1490196078, green: 0.1450980392, blue: 0.2039215686, alpha: 1), accentColor: accentColor, listElementsColor: UIColor.white)
@@ -869,42 +869,4 @@ extension MeetingPictureDraw {
         context.setAlpha(1)
     }
     
-}
-
-public enum ResizingBehavior: Int {
-    case aspectFit /// The content is proportionally resized to fit into the target rectangle.
-    case aspectFill /// The content is proportionally resized to completely fill the target rectangle.
-    case stretch /// The content is stretched to match the entire target rectangle.
-    case center /// The content is centered in the target rectangle, but it is NOT resized.
-    
-    public func apply(rect: CGRect, target: CGRect) -> CGRect {
-        if rect == target || target == CGRect.zero {
-            return rect
-        }
-        
-        var scales = CGSize.zero
-        scales.width = abs(target.width / rect.width)
-        scales.height = abs(target.height / rect.height)
-        
-        switch self {
-        case .aspectFit:
-            scales.width = min(scales.width, scales.height)
-            scales.height = scales.width
-        case .aspectFill:
-            scales.width = max(scales.width, scales.height)
-            scales.height = scales.width
-        case .stretch:
-            break
-        case .center:
-            scales.width = 1
-            scales.height = 1
-        }
-        
-        var result = rect.standardized
-        result.size.width *= scales.width
-        result.size.height *= scales.height
-        result.origin.x = target.minX + (target.width - result.width) / 2
-        result.origin.y = target.minY + (target.height - result.height) / 2
-        return result
-    }
 }

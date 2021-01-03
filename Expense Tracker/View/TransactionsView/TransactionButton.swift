@@ -9,12 +9,15 @@ import UIKit
 
 open class TransactionButton: UIButton {
 
+    //MARK: - Properties
     private var overalStackView: UIStackView!
+    private var transactionAmountStackView: UIStackView!
+
     public var transactionKindView: UIView!
     public var transactionIconLabel: UILabel!
-    private var transactionAmountStackView: UIStackView!
     public var transactionAmountLabel: UILabel!
 
+    //MARK: - Drawing
     open override func draw(_ rect: CGRect) {
         transactionKindView.layer.cornerRadius = transactionKindView.frame.height / 2
                 
@@ -33,6 +36,7 @@ open class TransactionButton: UIButton {
         layer.addSublayer(borderLayer)
     }
     
+    //MARK: - Initialization
     override public init(frame: CGRect) {
         super.init(frame: frame)
         configureViews()
@@ -40,18 +44,6 @@ open class TransactionButton: UIButton {
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
         configureViews()
-    }
-    
-    @objc private func buttonStartTapper(sender: UIButton) {
-        UIView.animate(withDuration: 0.2) {
-            self.alpha = 0.5
-        }
-    }
-    
-    @objc private func buttonEndTapped(sender: UIButton) {
-        UIView.animate(withDuration: 0.2) {
-            self.alpha = 1
-        }
     }
 }
 
@@ -122,5 +114,20 @@ extension TransactionButton {
         transactionAmountLabel.minimumScaleFactor = 0.5
         
         transactionAmountStackView.addArrangedSubview(transactionAmountLabel)
+    }
+}
+
+//MARK: - Supporting Methods
+extension TransactionButton {
+    @objc private func buttonStartTapper(sender: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            self.alpha = 0.5
+        }
+    }
+    
+    @objc private func buttonEndTapped(sender: UIButton) {
+        UIView.animate(withDuration: 0.2) {
+            self.alpha = 1
+        }
     }
 }

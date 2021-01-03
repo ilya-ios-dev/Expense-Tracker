@@ -15,9 +15,10 @@ final class SelectingTypeOfTransactionViewController: UIViewController {
     @IBOutlet private weak var expenseButton: ExpenseButton!
     
     //MARK: - Properties
-    private let appSettings = AppSettings.shared
     public var transaction: Transaction!
+    private let appSettings = AppSettings.shared
     private var balance: Balance!
+    
     private lazy var context: NSManagedObjectContext = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
         let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
@@ -29,7 +30,7 @@ final class SelectingTypeOfTransactionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.overrideUserInterfaceStyle = appSettings.userInterfaceStyle
-
+        
         if transaction == nil {
             transaction = Transaction(context: context)
         } else {
@@ -50,7 +51,9 @@ final class SelectingTypeOfTransactionViewController: UIViewController {
     /// - Parameter sender: Subclass `TransactionButton`.
     @IBAction func categorySelected(_ sender: TransactionButton) {
         let storyboard = UIStoryboard(name: "FillingAmountAndDescriptionViewController", bundle: nil)
-        guard let controller = storyboard.instantiateInitialViewController() as? FillingAmountAndDescriptionViewController else { return }
+        guard let controller = storyboard.instantiateInitialViewController()
+                as? FillingAmountAndDescriptionViewController else { return }
+        
         if sender is IncomeButton {
             transaction?.isExpense = false
             controller.transaction = transaction
@@ -60,10 +63,8 @@ final class SelectingTypeOfTransactionViewController: UIViewController {
         }
         navigationController?.pushViewController(controller, animated: true)
     }
-    
-}
-//MARK: - Supporting Methods
-extension SelectingTypeOfTransactionViewController {
+
+    //MARK: - Supporting Methods
     private func fetchBalance() {
         let fetchRequest: NSFetchRequest = Balance.fetchRequest()
         do {

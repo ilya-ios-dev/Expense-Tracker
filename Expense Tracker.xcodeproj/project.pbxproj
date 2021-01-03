@@ -13,6 +13,7 @@
 		FA168DA32583740100393814 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA168DA22583740100393814 /* UIColor+Extensions.swift */; };
 		FA2018D92595D37700E17FAA /* PasscodeSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2018D82595D37700E17FAA /* PasscodeSuccessViewController.swift */; };
 		FA2018DE2595E26F00E17FAA /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2018DD2595E26F00E17FAA /* UIViewController+Extensions.swift */; };
+		FA242A8925A1B8D300B0BBFC /* ResizingBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA242A8825A1B8D300B0BBFC /* ResizingBehavior.swift */; };
 		FA2544FD2578CED600D065CB /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2544FB2578CED600D065CB /* CategoryCollectionViewCell.swift */; };
 		FA2544FE2578CED600D065CB /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2544FC2578CED600D065CB /* CategoryCollectionViewCell.xib */; };
 		FA2CCE9F25A05E0E00137247 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CCE9E25A05E0E00137247 /* AppSettings.swift */; };
@@ -49,7 +50,7 @@
 		FA67CEB92590B53F00DC9A61 /* CategoryImage+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA67CEB52590B53F00DC9A61 /* CategoryImage+CoreDataProperties.swift */; };
 		FA67CEBA2590B53F00DC9A61 /* Gradient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA67CEB62590B53F00DC9A61 /* Gradient+CoreDataClass.swift */; };
 		FA67CEBB2590B53F00DC9A61 /* Gradient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA67CEB72590B53F00DC9A61 /* Gradient+CoreDataProperties.swift */; };
-		FA698AEE25876306008D2168 /* images.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA698AED25876306008D2168 /* images.csv */; };
+		FA698AEE25876306008D2168 /* Images.csv in Resources */ = {isa = PBXBuildFile; fileRef = FA698AED25876306008D2168 /* Images.csv */; };
 		FA6CDCB32599D4CB00DDECB3 /* Array+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6CDCB22599D4CB00DDECB3 /* Array+UIColor.swift */; };
 		FA6E673E258CF2F9000CBA2D /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E673D258CF2F9000CBA2D /* TabBar.swift */; };
 		FA6E6749258D1BC6000CBA2D /* SelectingTypeOfTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E6748258D1BC6000CBA2D /* SelectingTypeOfTransactionViewController.swift */; };
@@ -78,8 +79,6 @@
 		FA96F7DE259501B200080051 /* TopLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA96F7DD259501B200080051 /* TopLeftView.swift */; };
 		FAA126D5259371B900131A4F /* PasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA126D4259371B900131A4F /* PasscodeViewController.swift */; };
 		FAA83D152593866C00F3B0A7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA83D142593866C00F3B0A7 /* SettingsViewController.swift */; };
-		FAA83D192593898300F3B0A7 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA83D172593898300F3B0A7 /* SettingsTableViewCell.swift */; };
-		FAA83D1A2593898300F3B0A7 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA83D182593898300F3B0A7 /* SettingsTableViewCell.xib */; };
 		FAAC9A5125938D0100BDF53E /* ChangePasscodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAC9A5025938D0100BDF53E /* ChangePasscodeViewController.swift */; };
 		FAAFCD82257A36E100EBA6FC /* PlateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAFCD81257A36E100EBA6FC /* PlateView.swift */; };
 		FAB9D7AD25794288003320A6 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB9D7AC25794288003320A6 /* GraphView.swift */; };
@@ -106,8 +105,7 @@
 		FAE98562259753B00065546A /* AppearanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE98561259753B00065546A /* AppearanceViewController.swift */; };
 		FAEC3AC5259C9DF600236F74 /* Chart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEC3AC7259C9DF600236F74 /* Chart.storyboard */; };
 		FAEE03EB259B53040072B79F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE03EA259B53040072B79F /* Constants.swift */; };
-		FAF1799725874D4E00113DF5 /* gradients.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAF1799625874D4E00113DF5 /* gradients.csv */; };
-		FAF1D4D9257A5CE400DE10B4 /* ChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */; };
+		FAF1799725874D4E00113DF5 /* GradientCategories.csv in Resources */ = {isa = PBXBuildFile; fileRef = FAF1799625874D4E00113DF5 /* GradientCategories.csv */; };
 		FAFB4E2F2575457E002B9E23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB4E2E2575457E002B9E23 /* AppDelegate.swift */; };
 		FAFB4E312575457E002B9E23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB4E302575457E002B9E23 /* SceneDelegate.swift */; };
 		FAFB4E332575457E002B9E23 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFB4E322575457E002B9E23 /* HomeViewController.swift */; };
@@ -128,6 +126,8 @@
 		FA168DA22583740100393814 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		FA2018D82595D37700E17FAA /* PasscodeSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeSuccessViewController.swift; sourceTree = "<group>"; };
 		FA2018DD2595E26F00E17FAA /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		FA242A8825A1B8D300B0BBFC /* ResizingBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizingBehavior.swift; sourceTree = "<group>"; };
+		FA242A8F25A1D75400B0BBFC /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/ConfigurePasscode.strings; sourceTree = "<group>"; };
 		FA2544FB2578CED600D065CB /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA2544FC2578CED600D065CB /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA2CCE9E25A05E0E00137247 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 		FA67CEB52590B53F00DC9A61 /* CategoryImage+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CategoryImage+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		FA67CEB62590B53F00DC9A61 /* Gradient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient+CoreDataClass.swift"; sourceTree = "<group>"; };
 		FA67CEB72590B53F00DC9A61 /* Gradient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		FA698AED25876306008D2168 /* images.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = images.csv; sourceTree = "<group>"; };
+		FA698AED25876306008D2168 /* Images.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Images.csv; sourceTree = "<group>"; };
 		FA6CDCB22599D4CB00DDECB3 /* Array+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+UIColor.swift"; sourceTree = "<group>"; };
 		FA6E673D258CF2F9000CBA2D /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		FA6E6748258D1BC6000CBA2D /* SelectingTypeOfTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectingTypeOfTransactionViewController.swift; sourceTree = "<group>"; };
@@ -202,8 +202,6 @@
 		FA96F7DD259501B200080051 /* TopLeftView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLeftView.swift; sourceTree = "<group>"; };
 		FAA126D4259371B900131A4F /* PasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasscodeViewController.swift; sourceTree = "<group>"; };
 		FAA83D142593866C00F3B0A7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		FAA83D172593898300F3B0A7 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
-		FAA83D182593898300F3B0A7 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		FAAC9A5025938D0100BDF53E /* ChangePasscodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasscodeViewController.swift; sourceTree = "<group>"; };
 		FAAFCD81257A36E100EBA6FC /* PlateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlateView.swift; sourceTree = "<group>"; };
 		FAB9D7AC25794288003320A6 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
@@ -251,7 +249,6 @@
 		FABA27AB259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Appearance.strings; sourceTree = "<group>"; };
 		FABA27AC259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Settings.strings; sourceTree = "<group>"; };
 		FABA27AD259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/CreatePasscode.strings; sourceTree = "<group>"; };
-		FABA27AE259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/ConfigurePasscode.strings; sourceTree = "<group>"; };
 		FABA27AF259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/PasscodeSuccessfully.strings; sourceTree = "<group>"; };
 		FABA27B0259CB93300D1E72C /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FAC08EFE258353C400C3FD05 /* CreateCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryViewController.swift; sourceTree = "<group>"; };
@@ -273,8 +270,7 @@
 		FAEC3AC6259C9DF600236F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chart.storyboard; sourceTree = "<group>"; };
 		FAEC3ACA259C9E1600236F74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Chart.strings; sourceTree = "<group>"; };
 		FAEE03EA259B53040072B79F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		FAF1799625874D4E00113DF5 /* gradients.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gradients.csv; sourceTree = "<group>"; };
-		FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModel.swift; sourceTree = "<group>"; };
+		FAF1799625874D4E00113DF5 /* GradientCategories.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GradientCategories.csv; sourceTree = "<group>"; };
 		FAFB4E2B2575457E002B9E23 /* Expense Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Expense Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFB4E2E2575457E002B9E23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAFB4E302575457E002B9E23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -349,15 +345,15 @@
 		FA4BBF302578FD6D00F2ABD7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FA6CDCB22599D4CB00DDECB3 /* Array+UIColor.swift */,
+				FA0E5883258BA4B3002F5D88 /* Date+Extensions.swift */,
 				FA4BBF322578FDE100F2ABD7 /* NavigationBar+Extensions.swift */,
 				FA758853257666810016990D /* ScrollView+Extensions.swift */,
+				FA0E5886258BA545002F5D88 /* Sequense+Extensions.swift */,
+				FA354872259CEA5E00D864CD /* String+Extensions.swift */,
 				FA168DA22583740100393814 /* UIColor+Extensions.swift */,
 				FA4BBF362579029A00F2ABD7 /* UIView+Extensions.swift */,
-				FA0E5883258BA4B3002F5D88 /* Date+Extensions.swift */,
-				FA0E5886258BA545002F5D88 /* Sequense+Extensions.swift */,
-				FA6CDCB22599D4CB00DDECB3 /* Array+UIColor.swift */,
 				FA2018DD2595E26F00E17FAA /* UIViewController+Extensions.swift */,
-				FA354872259CEA5E00D864CD /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -405,7 +401,6 @@
 			isa = PBXGroup;
 			children = (
 				FA2CCE9E25A05E0E00137247 /* AppSettings.swift */,
-				FAF1D4D8257A5CE400DE10B4 /* ChartModel.swift */,
 				FA0E587F258B4B84002F5D88 /* GraphPoint.swift */,
 				FA54CF7C258A1C530057E3FC /* Balance */,
 				FA3375302588D68100139495 /* Category */,
@@ -419,7 +414,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		FA64E8E9259F4019007A96DE /* AppSettings */ = {
+		FA64E8E9259F4019007A96DE /* App Settings */ = {
 			isa = PBXGroup;
 			children = (
 				FA64E8E2259F25F6007A96DE /* AppSettingsViewController.swift */,
@@ -427,7 +422,7 @@
 				FA64E8E6259F3FF6007A96DE /* CurrencyTableViewController.swift */,
 				FA64E8EB259F4038007A96DE /* RoundingTableViewController.swift */,
 			);
-			path = AppSettings;
+			path = "App Settings";
 			sourceTree = "<group>";
 		};
 		FA67CEBD2590B54400DC9A61 /* Gradient */ = {
@@ -538,19 +533,10 @@
 			children = (
 				FAE98561259753B00065546A /* AppearanceViewController.swift */,
 				FAA83D142593866C00F3B0A7 /* SettingsViewController.swift */,
-				FA64E8E9259F4019007A96DE /* AppSettings */,
+				FA64E8E9259F4019007A96DE /* App Settings */,
 				FAAE20052594CB2C005DA8ED /* Passcode */,
 			);
 			path = Settings;
-			sourceTree = "<group>";
-		};
-		FAA83D1C2593898800F3B0A7 /* SettingsTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				FAA83D172593898300F3B0A7 /* SettingsTableViewCell.swift */,
-				FAA83D182593898300F3B0A7 /* SettingsTableViewCell.xib */,
-			);
-			path = SettingsTableViewCell;
 			sourceTree = "<group>";
 		};
 		FAAC9A5625938D2900BDF53E /* Settings */ = {
@@ -595,14 +581,14 @@
 		FAC951F72575507A00931346 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				FAEC3AC7259C9DF600236F74 /* Chart.storyboard */,
-				FA38CE5D259C7A64006EC8C2 /* Home.storyboard */,
-				FABA279A259CA39900D1E72C /* Passcode.storyboard */,
 				FA6E6761258D1D1E000CBA2D /* Adding Transaction */,
 				FA6E6763258D1D45000CBA2D /* Category */,
+				FAAC9A5625938D2900BDF53E /* Settings */,
+				FAEC3AC7259C9DF600236F74 /* Chart.storyboard */,
+				FA38CE5D259C7A64006EC8C2 /* Home.storyboard */,
 				FAFB4E3925754580002B9E23 /* LaunchScreen.storyboard */,
 				FAFB4E342575457E002B9E23 /* Main.storyboard */,
-				FAAC9A5625938D2900BDF53E /* Settings */,
+				FABA279A259CA39900D1E72C /* Passcode.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -682,6 +668,7 @@
 			children = (
 				FA718D9F2588C41500A9FF12 /* CustomButton.swift */,
 				FA762D66258C95EE00702EEF /* MeetingPictureView.swift */,
+				FA242A8825A1B8D300B0BBFC /* ResizingBehavior.swift */,
 				FA6E673D258CF2F9000CBA2D /* TabBar.swift */,
 				FAC951F425754F4E00931346 /* TopView.swift */,
 				FAE9856A25976B2A0065546A /* AppearanceCollectionViewCell */,
@@ -693,7 +680,6 @@
 				FA301326257914D9004D2421 /* MonthCollectionViewCell */,
 				FA96EAF125936E39007DE177 /* PasscodeTextField */,
 				FA96F7D22594FA4600080051 /* PasscodeViews */,
-				FAA83D1C2593898800F3B0A7 /* SettingsTableViewCell */,
 				FAC951F72575507A00931346 /* Storyboards */,
 				FA35487D259CF01500D864CD /* TransactionsTableViewCell */,
 				FA856FCC258CAEAA0020A6AA /* TransactionsView */,
@@ -705,8 +691,8 @@
 			isa = PBXGroup;
 			children = (
 				FAFED4702598BFE500584A8A /* GradientAccents.csv */,
-				FAF1799625874D4E00113DF5 /* gradients.csv */,
-				FA698AED25876306008D2168 /* images.csv */,
+				FAF1799625874D4E00113DF5 /* GradientCategories.csv */,
+				FA698AED25876306008D2168 /* Images.csv */,
 				FAFB4E3C25754580002B9E23 /* Info.plist */,
 				FAEE03EA259B53040072B79F /* Constants.swift */,
 				FAFB4E3725754580002B9E23 /* Assets.xcassets */,
@@ -801,19 +787,18 @@
 				FACEEB30259C9D23009F3844 /* CreateCategory.storyboard in Resources */,
 				FA35487B259CF00800D864CD /* TransactionsTableViewCell.xib in Resources */,
 				FABA274B259C9E8800D1E72C /* Settings.storyboard in Resources */,
-				FAA83D1A2593898300F3B0A7 /* SettingsTableViewCell.xib in Resources */,
 				FABA2765259CA06E00D1E72C /* ConfigurePasscode.storyboard in Resources */,
 				FA38CE5B259C7A64006EC8C2 /* Home.storyboard in Resources */,
 				FA38CE64259C9C00006EC8C2 /* Category.storyboard in Resources */,
 				FAFB4E3B25754580002B9E23 /* LaunchScreen.storyboard in Resources */,
 				FAFF7F56257679BB00581889 /* CategoryTableViewCell.xib in Resources */,
 				FAFED4712598BFE500584A8A /* GradientAccents.csv in Resources */,
-				FA698AEE25876306008D2168 /* images.csv in Resources */,
+				FA698AEE25876306008D2168 /* Images.csv in Resources */,
 				FA59C76E25755B9300C80A5A /* HomeCollectionViewCell.xib in Resources */,
 				FAC08F042583561900C3FD05 /* GradientCategoryCollectionViewCell.xib in Resources */,
 				FAD1311E259C726600C38141 /* Localizable.strings in Resources */,
 				FA2544FE2578CED600D065CB /* CategoryCollectionViewCell.xib in Resources */,
-				FAF1799725874D4E00113DF5 /* gradients.csv in Resources */,
+				FAF1799725874D4E00113DF5 /* GradientCategories.csv in Resources */,
 				FABA2787259CA2A600D1E72C /* ChooseCategoryViewController.storyboard in Resources */,
 				FABA2798259CA39900D1E72C /* Passcode.storyboard in Resources */,
 				FA917444259F2287001D96FF /* CategoryElements.storyboard in Resources */,
@@ -836,7 +821,6 @@
 				FA0E5887258BA545002F5D88 /* Sequense+Extensions.swift in Sources */,
 				FAAC9A5125938D0100BDF53E /* ChangePasscodeViewController.swift in Sources */,
 				FA30131C2579124D004D2421 /* ChartViewController.swift in Sources */,
-				FAA83D192593898300F3B0A7 /* SettingsTableViewCell.swift in Sources */,
 				FAE98562259753B00065546A /* AppearanceViewController.swift in Sources */,
 				FA49FFDD258DE041006BB779 /* IncomeButton.swift in Sources */,
 				FAEE03EB259B53040072B79F /* Constants.swift in Sources */,
@@ -873,7 +857,6 @@
 				FA6E673E258CF2F9000CBA2D /* TabBar.swift in Sources */,
 				FAA126D5259371B900131A4F /* PasscodeViewController.swift in Sources */,
 				FA4BBF372579029A00F2ABD7 /* UIView+Extensions.swift in Sources */,
-				FAF1D4D9257A5CE400DE10B4 /* ChartModel.swift in Sources */,
 				FA762D67258C95EE00702EEF /* MeetingPictureView.swift in Sources */,
 				FA4BBF332578FDE100F2ABD7 /* NavigationBar+Extensions.swift in Sources */,
 				FA6E674F258D1C29000CBA2D /* ChooseCategoryViewController.swift in Sources */,
@@ -886,6 +869,7 @@
 				FA67CEBB2590B53F00DC9A61 /* Gradient+CoreDataProperties.swift in Sources */,
 				FAC08EFF258353C400C3FD05 /* CreateCategoryViewController.swift in Sources */,
 				FA96EAEC25936E02007DE177 /* PasscodeTextField.swift in Sources */,
+				FA242A8925A1B8D300B0BBFC /* ResizingBehavior.swift in Sources */,
 				FA354888259CF37E00D864CD /* CategoryElementsViewController.swift in Sources */,
 				FA4DE2122594C5BE0069205F /* SecureStore.swift in Sources */,
 				FAFED4772598C21E00584A8A /* GradientAccent+CoreDataProperties.swift in Sources */,
@@ -992,7 +976,7 @@
 				FABA2766259CA06E00D1E72C /* Base */,
 				FABA276A259CA07200D1E72C /* en */,
 				FABA276C259CA0A200D1E72C /* ru */,
-				FABA27AE259CB93300D1E72C /* uk */,
+				FA242A8F25A1D75400B0BBFC /* uk */,
 			);
 			name = ConfigurePasscode.storyboard;
 			sourceTree = "<group>";

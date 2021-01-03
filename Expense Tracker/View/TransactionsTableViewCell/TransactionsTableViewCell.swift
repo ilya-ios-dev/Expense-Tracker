@@ -9,6 +9,7 @@ import UIKit
 
 final class TransactionsTableViewCell: UITableViewCell {
     
+    //MARK: - Outlets & Properties
     @IBOutlet weak var imageBackground: UIView!
     @IBOutlet weak var categoryImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,6 +28,7 @@ final class TransactionsTableViewCell: UITableViewCell {
         }
     }
     
+    //MARK: - Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         imageBackground.layer.cornerRadius = imageBackground.frame.height / 2

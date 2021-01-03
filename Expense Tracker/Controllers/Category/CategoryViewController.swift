@@ -15,7 +15,8 @@ final class CategoryViewController: UITableViewController {
     private var diffableDataSource: UITableViewDiffableDataSource<Int, Category>!
     private var diffableDataSourceSnapshot = NSDiffableDataSourceSnapshot<Int, Category>()
     private var currentSearchText = ""
-    
+    private let appSettings = AppSettings.shared
+
     //MARK: - Computed Properties
     private lazy var context: NSManagedObjectContext = {
         let appDelegate  = UIApplication.shared.delegate as! AppDelegate
@@ -25,8 +26,7 @@ final class CategoryViewController: UITableViewController {
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let interfaceStyle = UIUserInterfaceStyle(rawValue: UserDefaults.standard.integer(forKey: "UIUserInterfaceStyle")) else { return }
-        navigationController?.overrideUserInterfaceStyle = interfaceStyle
+        navigationController?.overrideUserInterfaceStyle = appSettings.userInterfaceStyle
     }
     
     override func viewDidLoad() {
@@ -92,8 +92,13 @@ extension CategoryViewController {
             cell.categoryImage?.image = nil
             
             cell.titleLabel.text = category.name
-            cell.categoryImage?.image = UIImage(systemName: category.categoryImage.name)
-            
+            let imageName = category.categoryImage.name
+            if let systemImage = UIImage(systemName: imageName){
+                cell.categoryImage?.image = systemImage
+            } else if let image = UIImage(named: imageName) {
+                cell.categoryImage?.image = image.withRenderingMode(.alwaysTemplate)
+            }
+
             guard let startColor = UIColor(hex: category.gradient.startColor),
                   let endColor = UIColor(hex: category.gradient.endColor) else { return cell }
             cell.gradientLayer = cell.imageBackgroundView.applyGradient(colours: [startColor, endColor])

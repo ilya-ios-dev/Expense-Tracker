@@ -1,8 +1,8 @@
 /* Class = "UIViewController"; title = "Add Pin Code"; ObjectID = "o7D-UJ-a1Z"; */
-"O7D-UJ-a1Z.title" = "";
+"o7D-UJ-a1Z.title" = "";
 
 /* Class = "UILabel"; text = "Enter your PIN code"; ObjectID = "svO-Zx-ocT"; */
-"SvO-Zx-ocT.text" = "Введіть ваш пін код";
+"svO-Zx-ocT.text" = "Введіть ваш пін код";
 
 /* Class = "UILabel"; text = "You will now be required to enter a password to enter the application."; ObjectID = "xR6-fJ-0RN"; */
-"XR6-fJ-0RN.text" = "Тепер вам потрібно буде вводити пароль для входу в додаток.";
+"xR6-fJ-0RN.text" = "Тепер вам потрібно буде вводити пароль для входу в додаток.";

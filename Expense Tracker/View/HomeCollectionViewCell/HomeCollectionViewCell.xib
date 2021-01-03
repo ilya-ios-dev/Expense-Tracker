@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,15 +24,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U70-4A-aTc">
                                 <rect key="frame" x="12" y="12" width="59" height="59"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="airplane" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gjh-RB-fgj">
-                                        <rect key="frame" x="12" y="12.5" width="35" height="34"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shopping_fill" translatesAutoresizingMaskIntoConstraints="NO" id="gjh-RB-fgj">
+                                        <rect key="frame" x="12" y="12" width="35" height="35"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="gjh-RB-fgj" secondAttribute="height" id="yjT-nY-E82"/>
                                         </constraints>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="U70-4A-aTc" secondAttribute="height" id="2wV-6o-tCg"/>
                                     <constraint firstItem="gjh-RB-fgj" firstAttribute="centerX" secondItem="U70-4A-aTc" secondAttribute="centerX" id="5JD-Mf-og8"/>
@@ -100,7 +102,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="airplane" catalog="system" width="128" height="115"/>
+        <image name="shopping_fill" width="100" height="88"/>
         <namedColor name="decreasingColor">
             <color red="0.97600001096725464" green="0.12200000137090683" blue="0.32899999618530273" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -110,5 +112,8 @@
         <namedColor name="tabBarColor">
             <color red="0.97600001096725464" green="0.97600001096725464" blue="0.97600001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

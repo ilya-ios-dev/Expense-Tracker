@@ -9,6 +9,7 @@ import UIKit
 
 final class SettingsViewController: UITableViewController {
     
+    //MARK: - Properties
     private let settings = [
         SettingElement(name: "App Settings", storyboardName: "AppSettings"),
         SettingElement(name: "Passcode", storyboardName: "ConfigurePasscode"),
@@ -35,7 +36,7 @@ extension SettingsViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.backgroundColor = UIColor(named: "backgroundColor")
+        cell.backgroundColor = Colors.backgroundColor
         cell.accessoryType = .disclosureIndicator
         cell.textLabel?.text = settings[indexPath.row].name.localized
         return cell

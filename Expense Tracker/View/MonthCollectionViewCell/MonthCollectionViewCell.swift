@@ -9,6 +9,7 @@ import UIKit
 
 final class MonthCollectionViewCell: UICollectionViewCell {
 
+    //MARK: - Outlets & Properties
     @IBOutlet public weak var yearLabel: UILabel!
     @IBOutlet public weak var monthLabel: UILabel!
     @IBOutlet public weak var monthBackground: UIView!
@@ -20,6 +21,7 @@ final class MonthCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    //MARK: - Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         monthBackground.layer.cornerRadius = 8
@@ -30,11 +32,12 @@ final class MonthCollectionViewCell: UICollectionViewCell {
         configureGradient()
     }
     
+    //MARK: - Supporting Methods
     private func configureGradient() {
         gradientLayer?.removeFromSuperlayer()
         if isSelected {
-            let startColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1)
-            let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+            let startColor = AppSettings.shared.startColor
+            let endColor = AppSettings.shared.endColor
             gradientLayer = monthBackground?.applyGradient(colours: [startColor, endColor], startPoint: .bottomLeft, endPoint: .topRight)
             monthLabel?.textColor = .white
         } else {

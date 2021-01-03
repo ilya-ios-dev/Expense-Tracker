@@ -13,6 +13,7 @@ final class CategoryImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var categoryBackgroundView: UIView!
     @IBOutlet weak var circleBackground: UIView!
     @IBOutlet weak var imageView: UIImageView!
+    
     //MARK: - Properties
     var gradientLayer: CAGradientLayer?
     private var shadowLayer: CALayer?

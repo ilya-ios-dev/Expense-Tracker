@@ -19,8 +19,8 @@ final class FillingAmountAndDescriptionViewController: UIViewController {
     @IBOutlet private weak var bottomTextFieldConstraint: NSLayoutConstraint!
     
     //MARK: - Properties
-    private let appSettings = AppSettings.shared
     public var transaction: Transaction!
+    private let appSettings = AppSettings.shared
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -117,13 +117,11 @@ extension FillingAmountAndDescriptionViewController {
     private func configureTransactionType() {
         if transaction.isExpense {
             transactionIconLabel.text = "|<"
-            let startColor = UIColor(hex: appSettings.startColor) ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-            transactionIconBackground.backgroundColor = startColor
+            transactionIconBackground.backgroundColor = appSettings.startColor
             transactionTypeLabel.text = "Expense".localized
         } else {
             transactionIconLabel.text = ">|"
-            let endColor = UIColor(hex: appSettings.endColor) ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
-            transactionIconBackground.backgroundColor = endColor
+            transactionIconBackground.backgroundColor = appSettings.endColor
             transactionTypeLabel.text = "Income".localized
         }
         transactionIconBackground.layer.cornerRadius = transactionIconBackground.frame.height / 2

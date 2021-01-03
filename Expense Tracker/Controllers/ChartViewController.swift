@@ -16,7 +16,6 @@ final class ChartViewController: UIViewController {
     @IBOutlet private weak var expenseView: ExpenseView!
     @IBOutlet private weak var incomeView: IncomeView!
     
-    
     //MARK: - Properties
     private let appSettings = AppSettings.shared
     private var dataSource: UICollectionViewDiffableDataSource<Int, Date>!
@@ -30,19 +29,15 @@ final class ChartViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         return (appDelegate?.container.viewContext)!
     }()
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        chartView.setNeedsDisplay()
-        expenseView.setNeedsDisplay()
-        incomeView.setNeedsDisplay()
-        collectionView.visibleCells.forEach{$0.setNeedsDisplay()}
-    }
     
     //MARK: - View Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureViews()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Setup Data
         setupBalance()
         setupDataSource()
@@ -62,13 +57,6 @@ extension ChartViewController {
             self.setupSnapshot()
             self.configureChartView()
         }
-    }
-    
-    ///Refresh the data in the `ChartView`.
-    private func configureChartView(){
-        chartView.chartModel = balance.getTransactionsForMonth(searchDate)
-        let currency = appSettings.currency.description
-        chartView.currentBalance = currency + String(format: appSettings.roundedFormat, balance.totalBalance)
     }
     
     ///Gets `balance` from CoreData. If not already created, creates.
@@ -108,6 +96,22 @@ extension ChartViewController {
 //MARK: - Configure Layouts
 extension ChartViewController {
     
+    /// Reloads dusplaying all visible views.
+    private func configureViews() {
+        configureChartView()
+        chartView.setNeedsDisplay()
+        expenseView.setNeedsDisplay()
+        incomeView.setNeedsDisplay()
+        collectionView.visibleCells.forEach{$0.setNeedsDisplay()}
+    }
+    
+    ///Refresh the data in the `ChartView`.
+    private func configureChartView(){
+        chartView.chartModel = balance.getTransactionsForMonth(searchDate)
+        let currency = appSettings.currency.description
+        chartView.currentBalance = currency + String(format: appSettings.roundedFormat, balance.totalBalance)
+    }
+    
     /// Refresh the data in the expense and income labels.
     private func configureLabels() {
         expenseView.transactionAmountLabel.text = appSettings.currency + String(format: appSettings.roundedFormat, balance.getExpenseForMonth(searchDate) ?? 0)
@@ -129,6 +133,7 @@ extension ChartViewController {
 
 //MARK: - UICollectionViewDelegate
 extension ChartViewController: UICollectionViewDelegate {
+    
     ///Updates `chartView` and `expenseLabel` with `incomeLabel` depending on the selected `month`.
     ///Update `searchDate`.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

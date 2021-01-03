@@ -18,6 +18,8 @@ final class AppearanceViewController: UIViewController {
     //MARK: - Properties
     private var appSettings = AppSettings.shared
     private var gradients = [GradientAccent]()
+    
+    //MARK: - Computed Properties
     private lazy var context: NSManagedObjectContext = {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.container.viewContext
@@ -26,22 +28,17 @@ final class AppearanceViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Setup Data
         preloadDBData()
         loadGradientsCoreData()
-
+        //Configure UI
         configureColorAccentCollectionView()
         configureAppearanceCollectionView()
-        
     }
 }
 
 //MARK: - Suppoting Methods
 extension AppearanceViewController {
-    
-    private func loadGradientsCoreData(){
-        let fetchRequest: NSFetchRequest = GradientAccent.fetchRequest()
-        gradients = try! context.fetch(fetchRequest)
-    }
     
     /// Checks if data is loaded into CoreData.
     /// If the data is not loaded, then it loads it.
@@ -51,7 +48,13 @@ extension AppearanceViewController {
             UserDefaults.standard.set(true, forKey: "gradients.preload")
         }
     }
-    
+
+    /// Load a list of gradients from Core Data
+    private func loadGradientsCoreData(){
+        let fetchRequest: NSFetchRequest = GradientAccent.fetchRequest()
+        gradients = try! context.fetch(fetchRequest)
+    }
+        
     /// Loads a list of gradients from `gradients.csv` to CoreData.
     private func loadGradients() {
         guard let filePath = Bundle.main.path(forResource: "GradientAccents", ofType: "csv") else { return }
@@ -91,18 +94,17 @@ extension AppearanceViewController {
         colorAccentCollectionView.register(nib, forCellWithReuseIdentifier: "colorCell")
         colorAccentCollectionView.delegate = self
         colorAccentCollectionView.dataSource = self
-        guard let startColor = UserDefaults.standard.string(forKey: "startColor"),
-              let endColor = UserDefaults.standard.string(forKey: "endColor") else { return }
-        if let index = gradients.firstIndex(where: { $0.startColor == startColor && $0.endColor == endColor }) {
+        if let index = gradients.firstIndex(where: { $0.startColor == appSettings.startColor.toHex && $0.endColor == appSettings.endColor.toHex }) {
             let indexPath = IndexPath(item: index, section: 0)
             colorAccentCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
         }
     }
+    
     private func configureAppearanceCollectionView(){
         appearanceCollectionView.register(AppearanceCollectionViewCell.self, forCellWithReuseIdentifier: "appear")
         appearanceCollectionView.delegate = self
         appearanceCollectionView.dataSource = self
-        let appearanceRaw = UserDefaults.standard.integer(forKey: "UIUserInterfaceStyle")
+        let appearanceRaw = appSettings.userInterfaceStyle.rawValue
         let indexPath = IndexPath(item: appearanceRaw, section: 0)
         appearanceCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredVertically)
     }
@@ -142,32 +144,42 @@ extension AppearanceViewController : UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == colorAccentCollectionView {
-            let gradient = gradients[indexPath.item]
-            appSettings.startColor = gradient.startColor
-            appSettings.endColor = gradient.endColor
-            appearanceCollectionView.reloadData()
-            guard let startColor = UIColor(hex: gradient.startColor) else { return }
-            guard let endColor = UIColor(hex: gradient.endColor) else { return }
-            
-            tabBarController?.tabBar.tintColor = startColor
-            tabBarController?.tabBar.setNeedsDisplay()
-            topView.startColor = startColor
-            topView.endColor = endColor
-            topView.setNeedsDisplay()
+            configureColorAccent(at: indexPath)
         } else {
-            switch indexPath.item {
-            case 0:
-                tabBarController?.overrideUserInterfaceStyle = .unspecified
-                navigationController?.overrideUserInterfaceStyle = .unspecified
-            case 1:
-                tabBarController?.overrideUserInterfaceStyle = .light
-                navigationController?.overrideUserInterfaceStyle = .light
-            default:
-                tabBarController?.overrideUserInterfaceStyle = .dark
-                navigationController?.overrideUserInterfaceStyle = .dark
-            }
-            UserDefaults.standard.setValue(navigationController?.overrideUserInterfaceStyle.rawValue, forKey: "UIUserInterfaceStyle")
+            configureAppearance(at: indexPath)
         }
     }
     
+    /// Checks which appearance is clicked, takes it and saves it.
+    private func configureAppearance(at indexPath: IndexPath) {
+        switch indexPath.item {
+        case 0:
+            tabBarController?.overrideUserInterfaceStyle = .unspecified
+            navigationController?.overrideUserInterfaceStyle = .unspecified
+        case 1:
+            tabBarController?.overrideUserInterfaceStyle = .light
+            navigationController?.overrideUserInterfaceStyle = .light
+        default:
+            tabBarController?.overrideUserInterfaceStyle = .dark
+            navigationController?.overrideUserInterfaceStyle = .dark
+        }
+        appSettings.userInterfaceStyle = navigationController?.overrideUserInterfaceStyle ?? .unspecified
+    }
+    
+    /// Checks which gradient is clicked, takes it and saves it.
+    private func configureColorAccent(at indexPath: IndexPath) {
+        let gradient = gradients[indexPath.item]
+        guard let startColor = UIColor(hex: gradient.startColor) else { return }
+        guard let endColor = UIColor(hex: gradient.endColor) else { return }
+
+        appSettings.startColor = startColor
+        appSettings.endColor = endColor
+        appearanceCollectionView.reloadData()
+        
+        tabBarController?.tabBar.tintColor = startColor
+        tabBarController?.tabBar.setNeedsDisplay()
+        topView.startColor = startColor
+        topView.endColor = endColor
+        topView.setNeedsDisplay()
+    }
 }

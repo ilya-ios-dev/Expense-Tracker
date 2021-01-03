@@ -9,18 +9,18 @@ import UIKit
 
 @IBDesignable
 final class TopRightView: UIView {
-
+    
     override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
-
+        
         //// Color Declarations
-        let fillColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-
-
+        let fillColor = AppSettings.shared.startColor
+        
+        
         context.saveGState()
         context.setAlpha(0.2)
         context.beginTransparencyLayer(auxiliaryInfo: nil)
-
+        
         let path = UIBezierPath()
         let width = rect.maxX - rect.minX
         let height = rect.maxY - rect.minY
@@ -34,7 +34,7 @@ final class TopRightView: UIView {
         path.usesEvenOddFillRule = true
         fillColor.setFill()
         path.fill()
-
+        
         context.endTransparencyLayer()
         context.restoreGState()
     }

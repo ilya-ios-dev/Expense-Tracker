@@ -85,13 +85,7 @@ extension AppearanceCollectionViewCell {
     
     /// Draw outline around Appear Image
     private func addSelectedOutline() {
-        
-        let selectedStrokeColor: UIColor!
-        if let startColor = UserDefaults.standard.string(forKey: "endColor") {
-            selectedStrokeColor = UIColor(hex: startColor)!
-        } else {
-            selectedStrokeColor = #colorLiteral(red: 0.3176470588, green: 0.2, blue: 0.7176470588, alpha: 1)
-        }
+        let selectedStrokeColor = AppSettings.shared.endColor
         let strokePathPath = UIBezierPath(roundedRect: CGRect(x: 5, y: 3, width: 109, height: 56), cornerRadius: 8)
         selectedStrokeColor.setStroke()
         strokePathPath.lineWidth = 2
@@ -147,8 +141,8 @@ extension AppearanceCollectionViewCell {
     
     /// Draws Background Gradient
     private func drawBackgoundGradient(_ context: CGContext) {
-        let backgroundGradientStart = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-        let backgroundGradientEnd = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+        let backgroundGradientStart = AppSettings.shared.startColor
+        let backgroundGradientEnd = AppSettings.shared.endColor
         
         let linearGradient1 = CGGradient(colorsSpace: nil, colors: [backgroundGradientStart.cgColor, backgroundGradientEnd.cgColor] as CFArray, locations: [0, 1])!
         
@@ -349,41 +343,3 @@ extension AppearanceCollectionViewCell {
         context.restoreGState()
     }
 }
-
-//private enum ResizingBehavior: Int {
-//    case aspectFit /// The content is proportionally resized to fit into the target rectangle.
-//    case aspectFill /// The content is proportionally resized to completely fill the target rectangle.
-//    case stretch /// The content is stretched to match the entire target rectangle.
-//    case center /// The content is centered in the target rectangle, but it is NOT resized.
-//    
-//    public func apply(rect: CGRect, target: CGRect) -> CGRect {
-//        if rect == target || target == CGRect.zero {
-//            return rect
-//        }
-//        
-//        var scales = CGSize.zero
-//        scales.width = abs(target.width / rect.width)
-//        scales.height = abs(target.height / rect.height)
-//        
-//        switch self {
-//        case .aspectFit:
-//            scales.width = min(scales.width, scales.height)
-//            scales.height = scales.width
-//        case .aspectFill:
-//            scales.width = max(scales.width, scales.height)
-//            scales.height = scales.width
-//        case .stretch:
-//            break
-//        case .center:
-//            scales.width = 1
-//            scales.height = 1
-//        }
-//        
-//        var result = rect.standardized
-//        result.size.width *= scales.width
-//        result.size.height *= scales.height
-//        result.origin.x = target.minX + (target.width - result.width) / 2
-//        result.origin.y = target.minY + (target.height - result.height) / 2
-//        return result
-//    }
-//}

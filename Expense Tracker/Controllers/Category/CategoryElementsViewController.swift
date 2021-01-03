@@ -11,13 +11,15 @@ import CoreData
 final class CategoryElementsViewController: UITableViewController {
 
     //MARK: - Properties
-    private var fetchedResultsController: NSFetchedResultsController<Transaction>!
-    private var diffableDataSource: UITableViewDiffableDataSource<Int, Transaction>!
-    private var diffableDataSourceSnapshot = NSDiffableDataSourceSnapshot<Int, Transaction>()
     public var category: Category!
     private var balance: Balance!
     private var currentSearchText = ""
+    private var fetchedResultsController: NSFetchedResultsController<Transaction>!
+    private var diffableDataSource: UITableViewDiffableDataSource<Int, Transaction>!
+    private var diffableDataSourceSnapshot = NSDiffableDataSourceSnapshot<Int, Transaction>()
     private let appSettings = AppSettings.shared
+    
+    //MARK: - Computed Properties
     private lazy var context: NSManagedObjectContext = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError()
@@ -97,8 +99,13 @@ extension CategoryElementsViewController {
             
             //Image
             let imageName = transaction.category.categoryImage.name
-            cell.categoryImageView.image = UIImage(systemName: imageName)
-            
+            cell.categoryImageView.image = nil
+            if let systemImage = UIImage(systemName: imageName){
+                cell.categoryImageView.image = systemImage
+            } else if let image = UIImage(named: imageName) {
+                cell.categoryImageView.image = image.withRenderingMode(.alwaysTemplate)
+            }
+
             //Title
             cell.titleLabel.text = transaction.name
             
@@ -158,7 +165,6 @@ extension CategoryElementsViewController {
 extension CategoryElementsViewController: NSFetchedResultsControllerDelegate {
     ///Responsible for reacting to changes in `Category` in the CoreData
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        print(#function)
         switch type {
         case .insert:
             guard let transaction = anObject as? Transaction else { return }

@@ -13,20 +13,15 @@ final class TabBarViewController: UITabBarController {
     private let appSettings = AppSettings.shared
     
     //MARK: - View Life Cycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let startColor: UIColor = UIColor(hex: appSettings.startColor) ?? #colorLiteral(red: 0.5490196078, green: 0.2980392157, blue: 0.831372549, alpha: 1)
-        let endColor: UIColor = UIColor(hex: appSettings.endColor) ?? #colorLiteral(red: 0.3450980392, green: 0.2117647059, blue: 0.7333333333, alpha: 1)
-        tabBar.tintColor = [startColor, endColor].averageColor()
-        overrideUserInterfaceStyle = appSettings.userInterfaceStyle
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         
         let index = viewControllers!.count / 2
         viewControllers?.insert(UIViewController(), at: index)
+        
+        tabBar.tintColor = [appSettings.startColor, appSettings.endColor].averageColor()
+        overrideUserInterfaceStyle = appSettings.userInterfaceStyle
     }
         
     /// Present the add screen by pressing the center button.

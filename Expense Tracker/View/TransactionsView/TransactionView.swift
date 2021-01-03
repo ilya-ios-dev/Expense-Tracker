@@ -9,13 +9,16 @@ import UIKit
 
 open class TransactionView: UIView {
 
+    //MARK: - Properties
     private var overalStackView: UIStackView!
+    private var transactionAmountStackView: UIStackView!
+    
     public var transactionKindView: UIView!
     public var transactionIconLabel: UILabel!
-    private var transactionAmountStackView: UIStackView!
     public var transactionKindLabel: UILabel!
     public var transactionAmountLabel: UILabel!
     
+    //MARK: - Drawing
     open override func draw(_ rect: CGRect) {
         transactionKindView.layer.cornerRadius = transactionKindView.frame.height / 2
         let path = UIBezierPath(roundedRect: rect, cornerRadius: 9)
@@ -33,6 +36,7 @@ open class TransactionView: UIView {
 
     }
     
+    //MARK: - Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureViews()

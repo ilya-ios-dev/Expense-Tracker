@@ -8,6 +8,8 @@
 import UIKit
 
 extension Array where Element: UIColor {
+    /// Takes in an array of UIColors.
+    /// - Returns: The average color between all elements in the array.
     func averageColor() -> UIColor {
         let rgba = self.map{ $0.rgba }
         let count = CGFloat(self.count)

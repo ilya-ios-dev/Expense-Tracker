@@ -8,8 +8,8 @@
 import UIKit
 
 final class CategoryTableViewCell: UITableViewCell {
-
     
+    //MARK: - Outlets & Properties
     @IBOutlet weak var imageBackgroundView: UIView!
     @IBOutlet weak var categoryImage: UIImageView!{
         didSet {
@@ -20,17 +20,9 @@ final class CategoryTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     var gradientLayer: CAGradientLayer?
 
+    //MARK: - Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         imageBackgroundView.layer.cornerRadius = imageBackgroundView.frame.height / 2
     }
-
-    
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }

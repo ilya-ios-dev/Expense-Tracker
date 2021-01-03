@@ -8,7 +8,11 @@
 import Foundation
 
 extension Sequence {
-    ///Returns a multidimensional array grouped by date.
+    /// Groups the elements of a sequence by date.
+    /// - Parameters:
+    ///   - ascending: Items will be grouped in ascending or descending order.
+    ///   - dateKey: The date element by which the items will be grouped.
+    /// - Returns: A multidimensional array grouped by date.
     func groupSort(ascending: Bool = true, byDate dateKey: (Iterator.Element) -> Date) -> [[Iterator.Element]] {
         var categories: [[Iterator.Element]] = []
         for element in self {
@@ -21,7 +25,7 @@ extension Sequence {
                 categories.insert([element], at: nextIndex)
                 continue
             }
-
+            
             guard let nextIndex = categories[dayIndex].firstIndex(where: { dateKey($0).compare(key) == (ascending ? .orderedDescending : .orderedAscending) }) else {
                 categories[dayIndex].append(element)
                 continue

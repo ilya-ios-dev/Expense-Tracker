@@ -99,6 +99,7 @@ extension UIColor {
         }
     }
     
+    /// Returns a tuple with rgba UIColor components.
     var rgba: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var red: CGFloat = 0
         var green: CGFloat = 0

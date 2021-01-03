@@ -8,10 +8,12 @@
 import UIKit
 
 extension UIScrollView {
+    /// Returns true if the scrollview bounces off the top.
     var isBouncingTop: Bool {
         return contentOffset.y < topInsetForBouncing - contentInset.top
     }
     
+    /// Returns true if the scrollview bounces off the bottom.
     var isBouncingBottom: Bool {
         let threshold: CGFloat
         if contentSize.height > frame.size.height {

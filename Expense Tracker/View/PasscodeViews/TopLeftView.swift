@@ -12,7 +12,7 @@ final class TopLeftView: UIView {
     override func draw(_ rect: CGRect) {
         //// Color Declarations
 
-        let fillColor2 = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+        let fillColor2 = AppSettings.shared.endColor
 
         let path = UIBezierPath()
         /// 124 | 125

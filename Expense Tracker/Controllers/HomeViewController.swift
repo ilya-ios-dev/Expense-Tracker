@@ -11,22 +11,24 @@ import CoreData
 final class HomeViewController: UIViewController {
     
     //MARK: - Outlets
-    @IBOutlet private weak var incomeAmountLabel: UILabel!
-    @IBOutlet private weak var expenseAmountLabel: UILabel!
-    @IBOutlet private weak var topViewConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var topView: TopView!
     @IBOutlet private weak var currencyLabel: UILabel!
     @IBOutlet private weak var amountLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var incomeAmountLabel: UILabel!
+    @IBOutlet private weak var expenseAmountLabel: UILabel!
+    @IBOutlet private weak var topView: TopView!
+    @IBOutlet private weak var topViewConstraint: NSLayoutConstraint!
     @IBOutlet private weak var collectionView: UICollectionView!
     
     //MARK: - Properties
     private let appSettings = AppSettings.shared
     private var balance: Balance!
+    private var observation: NSKeyValueObservation?
     private var dataSource: UICollectionViewDiffableDataSource<Int, Transaction>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, Transaction>()
     private var fetchedResultsController: NSFetchedResultsController<Transaction>!
-    private var observation: NSKeyValueObservation?
+    
+    //MARK: - Computed Properties
     private lazy var context: NSManagedObjectContext = {
         let appDelegate  = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.container.viewContext
@@ -35,14 +37,7 @@ final class HomeViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let startColor: UIColor = UIColor(hex: appSettings.startColor) ?? #colorLiteral(red: 0.5490196078, green: 0.2980392157, blue: 0.831372549, alpha: 1)
-        let endColor: UIColor = UIColor(hex: appSettings.endColor) ?? #colorLiteral(red: 0.3450980392, green: 0.2117647059, blue: 0.7333333333, alpha: 1)
-        navigationController?.navigationBar.setGradientBackground(colors: [startColor, endColor], startPoint: .bottomLeft, endPoint: .topRight)
-        topView.startColor = startColor
-        topView.endColor = endColor
-        configureTopView()
-        configureNavigationBar()
-        topView.setNeedsDisplay()
+        configureViews()
     }
     
     override func viewDidLoad() {
@@ -60,13 +55,23 @@ final class HomeViewController: UIViewController {
 //MARK: - Configure Layouts
 extension HomeViewController {
     
+    /// Reloads dusplaying all visible views.
+    private func configureViews() {
+        navigationController?.navigationBar.setGradientBackground(colors: [appSettings.startColor, appSettings.endColor], startPoint: .bottomLeft, endPoint: .topRight)
+        (topView.startColor, topView.endColor) = (appSettings.startColor, appSettings.endColor)
+        configureTopViewLabels()
+        configureNavigationBar()
+        topView.setNeedsDisplay()
+    }
+    
     /// Configure the `topView` display.
     /// Fills all field from `CoreData`.
-    private func configureTopView() {
+    private func configureTopViewLabels() {
         currencyLabel.text = appSettings.currency.description
         amountLabel.text = String(format: appSettings.roundedFormat, balance.totalBalance)
         incomeAmountLabel.text = String(format: appSettings.roundedFormat, balance.income ?? 0)
         expenseAmountLabel.text = String(format: appSettings.roundedFormat, balance.expense ?? 0)
+        
         let monthInt = Calendar.current.dateComponents([.month, .year], from: Date())
         let monthStr = Calendar.current.standaloneMonthSymbols[monthInt.month! - 1]
         dateLabel.text = "\(monthStr) \(monthInt.year!)"
@@ -215,7 +220,7 @@ extension HomeViewController: NSFetchedResultsControllerDelegate {
             collectionView.reloadData()
         }
         setupSnapshot()
-        configureTopView()
+        configureTopViewLabels()
         configureNavigationBar()
     }
 }
@@ -236,10 +241,10 @@ extension HomeViewController: UICollectionViewDelegate {
         } else {
             return nil
         }
-
     }
+    
     ///Adds the ability to edit `transactions`.
-    func editAction(_ indexPath: IndexPath) -> UIAction {
+    private func editAction(_ indexPath: IndexPath) -> UIAction {
         return UIAction(title: "Edit".localized,
                         image: UIImage(systemName: "square.and.pencil")) { action in
             let storyboard = UIStoryboard(name: "SelectingTypeOfTransactionViewController", bundle: nil)
@@ -250,7 +255,7 @@ extension HomeViewController: UICollectionViewDelegate {
         }
     }
     ///Adds the ability to delete `transactions`.
-    func deleteAction(_ indexPath: IndexPath) -> UIAction {
+    private func deleteAction(_ indexPath: IndexPath) -> UIAction {
         return UIAction(title: "Delete".localized,
                         image: UIImage(systemName: "trash"),
                         attributes: .destructive) { action in

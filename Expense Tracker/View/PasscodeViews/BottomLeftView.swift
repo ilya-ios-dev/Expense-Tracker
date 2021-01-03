@@ -9,19 +9,19 @@ import UIKit
 
 @IBDesignable
 final class BottomLeftView: UIView {
-
+    
     override func draw(_ rect: CGRect) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         //// Color Declarations
-        let fillColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-
+        let fillColor = AppSettings.shared.startColor
+        
         context.saveGState()
         context.setAlpha(0.2)
         context.beginTransparencyLayer(auxiliaryInfo: nil)
         let width = rect.maxX - rect.minX
         let height = rect.maxY - rect.minY
-
+        
         let path = UIBezierPath()
         path.move(to: CGPoint(x: width * 0.6, y: height))
         path.addCurve(to: CGPoint(x: width * 0.986, y: height * 0.564), controlPoint1: CGPoint(x: width * 0.82, y: height * 0.895), controlPoint2: CGPoint(x: width * 0.986, y: height * 0.738))
@@ -31,7 +31,7 @@ final class BottomLeftView: UIView {
         path.usesEvenOddFillRule = true
         fillColor.setFill()
         path.fill()
-
+        
         context.endTransparencyLayer()
         context.restoreGState()
     }

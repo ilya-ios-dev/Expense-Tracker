@@ -29,7 +29,6 @@ final class AppSettingsViewController: UITableViewController {
     }
     
     //MARK: - View Life Cycle
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -50,6 +49,7 @@ extension AppSettingsViewController {
         balance = try? context.fetch(request).first ?? Balance(context: context)
     }
     
+    /// Configures the header for the tableView.
     private func configureHeaderStackView(_ view: UIView) {
         let stackView = UIStackView(frame: .zero)
         stackView.axis = .vertical
@@ -61,7 +61,7 @@ extension AppSettingsViewController {
         stackView.addArrangedSubview(label)
         
         let currencyLabel = UILabel()
-        currencyLabel.text = "\(appSettings.currency)"
+        currencyLabel.text = appSettings.currency
         currencyLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
         
         let textField = UITextField()
@@ -85,6 +85,7 @@ extension AppSettingsViewController {
     }
 }
 
+//MARK: - UITextFieldDelegate
 extension AppSettingsViewController : UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let sum = Double(textField.text ?? "") else { return }
@@ -95,7 +96,6 @@ extension AppSettingsViewController : UITextFieldDelegate {
 
 //MARK: - TableViewDataSource & Delegate
 extension AppSettingsViewController {
-    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }

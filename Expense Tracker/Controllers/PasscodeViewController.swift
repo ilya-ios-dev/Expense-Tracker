@@ -24,19 +24,15 @@ final class PasscodeViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let startColor = UIColor(hex: appSettings.startColor) ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-        let endColor = UIColor(hex: appSettings.endColor) ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
-
-        gradientLayer = view.applyGradient(colours: [endColor, startColor], startPoint: .topRight, endPoint: .bottomLeft)
+        gradientLayer = view.applyGradient(colours: [appSettings.endColor, appSettings.startColor], startPoint: .topRight, endPoint: .bottomLeft)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         gradientLayer?.removeFromSuperlayer()
         DispatchQueue.main.async {
-            let startColor = UIColor(hex: self.appSettings.startColor) ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-            let endColor = UIColor(hex: self.appSettings.endColor) ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
-            self.gradientLayer = self.view.applyGradient(colours: [endColor, startColor], startPoint: .topRight, endPoint: .bottomLeft)
+            self.gradientLayer = self.view.applyGradient(colours: [self.appSettings.endColor, self.appSettings.startColor], startPoint: .topRight, endPoint: .bottomLeft)
         }
     }
     

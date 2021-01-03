@@ -50,7 +50,7 @@ extension GraphView {
         graphPath.move(to: firstPoint)
         graphPath.addLine(to: lastPoint)
         graphPath.lineWidth = 5
-        (UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1)).setStroke()
+        AppSettings.shared.startColor.setStroke()
         graphPath.stroke()
         
         configureLineShadow(graphPath)
@@ -77,7 +77,7 @@ extension GraphView {
             graphPath.addCurve(to: nextPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
         }
         graphPath.lineWidth = 5
-        (UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1)).setStroke()
+        AppSettings.shared.startColor.setStroke()
         graphPath.stroke()
         
         configureLineShadow(graphPath)
@@ -91,7 +91,7 @@ extension GraphView {
     private func configureLineShadow(_ graphPath: UIBezierPath) {
         let shadowLayer = CALayer()
         shadowLayer.shadowPath = graphPath.cgPath.copy(strokingWithWidth: 5, lineCap: .round, lineJoin: .round, miterLimit: 0)
-        shadowLayer.shadowColor = (UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.5607843137, green: 0.3058823529, blue: 0.8392156863, alpha: 1)).withAlphaComponent(0.66).cgColor
+        shadowLayer.shadowColor = AppSettings.shared.startColor.withAlphaComponent(0.66).cgColor
         shadowLayer.shadowOpacity = 1
         shadowLayer.shadowOffset = .zero
         shadowLayer.shadowRadius = 6
@@ -106,7 +106,7 @@ extension GraphView {
         let yPoint = graphPoints.count == 1 ?
             (graphHeight / 2 + GraphConstants.topBorder) : (columnYPoint(indexOfMaxValue) - graphHeight)
         closeShadowPath(clippingPath)
-        let endColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
+        let endColor = AppSettings.shared.endColor
         let colors = [endColor.withAlphaComponent(0.15).cgColor, endColor.withAlphaComponent(0).cgColor]
         guard let newGradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: colors as CFArray, locations: [0, 1]) else {
             return

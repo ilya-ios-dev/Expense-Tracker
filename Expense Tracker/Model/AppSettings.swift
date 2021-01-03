@@ -34,25 +34,27 @@ struct AppSettings {
             userDefaults.setValue(newValue, forKey: Keys.isFirstLoading)
         }
     }
-    public var startColor: String {
+    public var startColor: UIColor {
         get {
-            return userDefaults.string(forKey: Keys.startColor) ?? ""
+            let hex = userDefaults.string(forKey: Keys.startColor) ?? ""
+            return UIColor(hex: hex) ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
         } set {
-            userDefaults.setValue(newValue, forKey: Keys.startColor)
+            userDefaults.setValue(newValue.toHex, forKey: Keys.startColor)
         }
     }
-    public var endColor: String {
+    public var endColor: UIColor {
         get {
-            return userDefaults.string(forKey: Keys.endColor) ?? ""
+            let hex = userDefaults.string(forKey: Keys.endColor) ?? ""
+            return UIColor(hex: hex) ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
         } set {
-            userDefaults.setValue(newValue, forKey: Keys.endColor)
+            userDefaults.setValue(newValue.toHex, forKey: Keys.endColor)
         }
     }
     public var userInterfaceStyle: UIUserInterfaceStyle {
         get {
             return UIUserInterfaceStyle(rawValue: userDefaults.integer(forKey: Keys.userInterfaceStyle)) ?? .unspecified
         } set {
-            userDefaults.setValue(newValue, forKey: Keys.userInterfaceStyle)
+            userDefaults.setValue(newValue.rawValue, forKey: Keys.userInterfaceStyle)
         }
     }
     public var isPasscodeEnabled: Bool{
@@ -100,8 +102,8 @@ struct AppSettings {
     //MARK: - Instance Methods
     public mutating func configureFirstLoading() {
         // Appearance Configuration
-        startColor = "8C4CD4"
-        endColor = "5836BB"
+        startColor = #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
+        endColor = #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
         userInterfaceStyle = .unspecified
         // Internal App Configuration
         currency = "$"

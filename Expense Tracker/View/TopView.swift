@@ -8,12 +8,14 @@
 import UIKit
 
 @IBDesignable
-final class TopView: UIView {
+public final class TopView: UIView {
+    
+    //MARK: - Properties
+    @IBInspectable var startColor: UIColor = AppSettings.shared.startColor
+    @IBInspectable var endColor: UIColor = AppSettings.shared.endColor
 
-    @IBInspectable var startColor: UIColor = UIColor(hex: UserDefaults.standard.string(forKey: "startColor") ?? "") ?? #colorLiteral(red: 0.549, green: 0.298, blue: 0.831, alpha: 1.000)
-    @IBInspectable var endColor: UIColor = UIColor(hex: UserDefaults.standard.string(forKey: "endColor") ?? "") ?? #colorLiteral(red: 0.345, green: 0.212, blue: 0.733, alpha: 1.000)
-
-    override func draw(_ rect: CGRect) {
+    //MARK: - Drawing
+    public override func draw(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
         let colors = [startColor.cgColor, endColor.cgColor]
         
