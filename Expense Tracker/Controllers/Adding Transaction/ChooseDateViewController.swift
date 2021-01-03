@@ -132,7 +132,9 @@ extension ChooseDateViewController {
     /// Fills the category view with data.
     private func configureTransactionCategory() {
         categoryBackground.layer.cornerRadius = categoryBackground.frame.height / 2
-        categoryBackground.applyGradient(colours: [appSettings.startColor, appSettings.endColor])
+        guard let startColor = UIColor(hex: transaction.category.gradient.startColor),
+              let endColor = UIColor(hex: transaction.category.gradient.endColor) else { return }
+        categoryBackground.applyGradient(colours: [startColor, endColor])
         
         let imageName = transaction.category.categoryImage.name
         if let systemImage = UIImage(systemName: imageName){
