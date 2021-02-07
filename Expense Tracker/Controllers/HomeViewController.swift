@@ -218,7 +218,7 @@ extension HomeViewController: UICollectionViewDelegate {
         })
     }
     
-    /// Добавляет возможность пересоздать транзакцию
+    /// Adds the ability to recreate a transaction
     private func recreateAction(_ indexPath: IndexPath) -> UIAction {
         return UIAction(title: "Recreate".localized,
                         image: UIImage(systemName: "square.and.pencil")) { action in
@@ -231,7 +231,7 @@ extension HomeViewController: UICollectionViewDelegate {
         }
     }
     
-    /// Добавляет возможность изменить тип транзакции
+    /// Adds the ability to change the type of transaction
     private func changeTypeAction(_ indexPath: IndexPath) -> UIAction {
         return UIAction(title: "Change Type".localized,
                         image: UIImage(systemName: "arrow.up.arrow.down")) { action in
@@ -245,7 +245,7 @@ extension HomeViewController: UICollectionViewDelegate {
     }
     
     
-    /// Добавляет возможность изменить Amount и Description
+    /// Adds the ability to change Amount and Description
     private func changeAmountAction(_ indexPath: IndexPath) -> UIAction {
         return UIAction(title: "Change Amount or Descrtiption".localized,
                         image: UIImage(systemName: "dollarsign.square")) { action in
@@ -258,7 +258,7 @@ extension HomeViewController: UICollectionViewDelegate {
     }
     
     
-    /// Добавляет возможность изменить категорию
+    /// Adds the ability to change the category
     private func changeCategoryAction(_ indexPath: IndexPath) -> UIAction {
         return UIAction(title: "Change Category".localized,
                         image: UIImage(systemName: "eye")) { action in
@@ -270,7 +270,7 @@ extension HomeViewController: UICollectionViewDelegate {
         }
     }
     
-    /// Добавляет возможность изменить дату
+    /// Adds the ability to change the date
     private func changeDateAction(_ indexPath: IndexPath) -> UIAction {
         return UIAction(title: "Change Date".localized,
                         image: UIImage(systemName: "calendar")) { action in

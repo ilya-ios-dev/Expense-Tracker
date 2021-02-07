@@ -7,7 +7,7 @@
 
 import UIKit
 
-///A view that специализируется на отображении макета для income and expense.
+///A view that specializes in displaying the layout for income and expense.
 open class TransactionView: UIView {
 
     //MARK: - Properties

@@ -87,7 +87,7 @@ extension TransactionAmountViewController {
         }
     }
     
-    // Передает объект другому контроллеру вместе с типом редактирования
+    // Passes the object to another controller along with the edit type
     private func createTapped() {
         let storyboard = UIStoryboard(name: Storyboards.transactionCategory, bundle: nil)
         guard let controller = storyboard.instantiateInitialViewController() as? TransactionCategoryViewController else { return }
@@ -96,7 +96,7 @@ extension TransactionAmountViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    // Сохраняет текущий объект и закрывает контроллер
+    // Saves the current object and closes the controller
     private func editTapped() {
         do {
             try context.save()

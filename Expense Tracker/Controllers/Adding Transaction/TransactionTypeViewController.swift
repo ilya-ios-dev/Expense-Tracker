@@ -75,7 +75,7 @@ extension TransactionTypeViewController {
         }
     }
     
-    // Настраивает объект танзакции в соответствии с видом редактирования
+    // Adjusts the transaction object according to the type of editing
     private func configureTransaction() {
         switch creatingType {
         case .recreate:
@@ -89,7 +89,7 @@ extension TransactionTypeViewController {
         }
     }
     
-    // Сохраняет поле isExpense и передает транзакцию другому контроллеру
+    // Saves the isExpense field and transfers the transaction to another controller
     private func createTapped(_ isExpense: Bool) {
         let storyboard = UIStoryboard(name: Storyboards.transactionAmount, bundle: nil)
         guard let controller = storyboard.instantiateInitialViewController()
@@ -100,7 +100,7 @@ extension TransactionTypeViewController {
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    // Сохраняет транзакцию с одним измененым полем
+    // Saves a transaction with one changed part
     private func editTapped(_ isExpense: Bool) {
         transaction.isExpense = isExpense
         

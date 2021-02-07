@@ -7,7 +7,7 @@
 
 import UIKit
 
-///A button that специализируется на отображении макета для income and expense buttons.
+///A button that specializes in displaying the layout for income and expense buttons.
 open class TransactionButton: UIButton {
 
     //MARK: - Properties
