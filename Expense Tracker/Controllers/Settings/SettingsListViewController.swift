@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.swift
+//  SettingsListViewController.swift
 //  Expense Tracker
 //
 //  Created by isEmpty on 23.12.2020.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SettingsViewController: UITableViewController {
+final class SettingsListViewController: UITableViewController {
     
     //MARK: - Properties
     private let settings = [
@@ -29,7 +29,7 @@ final class SettingsViewController: UITableViewController {
 }
 
 // MARK: - Table view data source
-extension SettingsViewController {
+extension SettingsListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return settings.count
     }

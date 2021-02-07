@@ -1,5 +1,5 @@
 //
-//  ChooseCategoryViewController.swift
+//  TransactionCategoryViewController.swift
 //  Expense Tracker
 //
 //  Created by isEmpty on 18.12.2020.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-final class ChooseCategoryViewController: UIViewController {
+final class TransactionCategoryViewController: UIViewController {
     
     //MARK: - Outlets
     @IBOutlet private weak var transactionTypeLabel: UILabel!
@@ -21,6 +21,8 @@ final class ChooseCategoryViewController: UIViewController {
     
     //MARK: - Properties
     public var transaction: Transaction!
+    public var creatingType = CreatingType.none
+
     private let appSettings = AppSettings.shared
     private var fetchedResultsController: NSFetchedResultsController<Category>!
     private var dataSource: UICollectionViewDiffableDataSource<String, NSManagedObjectID>!
@@ -30,6 +32,11 @@ final class ChooseCategoryViewController: UIViewController {
         return transaction.managedObjectContext!
     }()
     
+    private lazy var mainContext: NSManagedObjectContext = {
+        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.container.viewContext
+    }()
+
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,26 +55,16 @@ final class ChooseCategoryViewController: UIViewController {
 }
 
 //MARK: - Supporting Methods
-extension ChooseCategoryViewController {
+extension TransactionCategoryViewController {
     ///Setup the `UICollectionViewDiffableDataSource` which displays the list of `Category`
     private func setupDataSource() {
         dataSource = UICollectionViewDiffableDataSource<String, NSManagedObjectID>(collectionView: collectionView) { (collectionView, indexPath, objectId) -> UICollectionViewCell? in
             guard let category = try? self.context.existingObject(with: objectId) as? Category else { return nil }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
-            cell.gradientLayer?.removeFromSuperlayer()
-            guard let startColor = UIColor(hex: category.gradient.startColor) else { return cell }
-            guard let endColor = UIColor(hex: category.gradient.endColor) else { return cell }
-            cell.gradientLayer = cell.backgroundCategory.applyGradient(colours: [startColor, endColor])
             
-            let imageName = category.categoryImage.name
-            if let systemImage = UIImage(systemName: imageName){
-                cell.categoryImageView.image = systemImage
-            } else if let image = UIImage(named: imageName) {
-                cell.categoryImageView.image = image.withRenderingMode(.alwaysTemplate)
-            }
-
-            cell.textLabel.text = category.name
-            
+            guard let startColor = UIColor(hex: category.gradient.startColor),
+                  let endColor = UIColor(hex: category.gradient.endColor) else { return cell }
+            cell.configure(title: category.name, imageName: category.categoryImage.name, colors: [startColor, endColor])
             return cell
         }
         collectionView.dataSource = dataSource
@@ -88,10 +85,37 @@ extension ChooseCategoryViewController {
             showAlert(alertText: error.localizedDescription)
         }
     }
+    
+    // Передает объект другому контроллеру вместе с типом редактирования
+    private func createTapped() {
+        let storyboard = UIStoryboard(name: Storyboards.transactionDate, bundle: nil)
+        guard let controller = storyboard.instantiateInitialViewController() as? TransactionDateViewController else { return }
+        controller.transaction = transaction
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    // Сохраняет текущий объект и закрывает контроллер
+    private func editTapped() {
+        do {
+            try context.save()
+            context.performAndWait {
+                do {
+                    try mainContext.save()
+                } catch {
+                    print(error)
+                    showAlert(alertText: error.localizedDescription)
+                }
+            }
+            dismiss(animated: true, completion: nil)
+        } catch {
+            print(error)
+            showAlert(alertText: error.localizedDescription)
+        }
+    }
 }
 
 //MARK: - Configure Layouts
-extension ChooseCategoryViewController {
+extension TransactionCategoryViewController {
     /// Register `collectionViewCell` and sets a delegate.
     private func configureCollectionView() {
         let nib = UINib(nibName: "CategoryCollectionViewCell", bundle: nil)
@@ -123,7 +147,7 @@ extension ChooseCategoryViewController {
 }
 
 //MARK: - NSFetchedResultsControllerDelegate
-extension ChooseCategoryViewController: NSFetchedResultsControllerDelegate {
+extension TransactionCategoryViewController: NSFetchedResultsControllerDelegate {
     /// Receives data change notifications. Passes them to `dataSource`.
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
         let categorySnapshot = snapshot as NSDiffableDataSourceSnapshot<String, NSManagedObjectID>
@@ -132,15 +156,19 @@ extension ChooseCategoryViewController: NSFetchedResultsControllerDelegate {
 }
 
 //MARK: - UICollectionViewDelegate
-extension ChooseCategoryViewController: UICollectionViewDelegate {
+extension TransactionCategoryViewController: UICollectionViewDelegate {
     /// Adds data to `transaction` and passes it to the next `UIViewController`.
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let objectId = dataSource.itemIdentifier(for: indexPath) else { return }
         guard let category = try? self.context.existingObject(with: objectId) as? Category else { return }
-        let storyboard = UIStoryboard(name: "ChooseDateViewController", bundle: nil)
-        guard let controller = storyboard.instantiateInitialViewController() as? ChooseDateViewController else { return }
         transaction.category = category
-        controller.transaction = transaction
-        navigationController?.pushViewController(controller, animated: true)
+
+        switch creatingType {
+        case .recreate, .none:
+            createTapped()
+        case .editing:
+            editTapped()
+        }
+        
     }
 }

@@ -1,5 +1,5 @@
 //
-//  CustomButton.swift
+//  RoundedGradientButton.swift
 //  Expense Tracker
 //
 //  Created by isEmpty on 15.12.2020.
@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-final class CustomButton: UIButton {
+final class RoundedGradientButton: UIButton {
     //MARK: - Properties
     private let appSettings = AppSettings.shared
     
@@ -27,6 +27,5 @@ final class CustomButton: UIButton {
         layer.shadowRadius = 6
         layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: layer.cornerRadius).cgPath
         applyGradient(colours: [startColor, endColor], startPoint: .topRight, endPoint: .bottomLeft)
-
     }
 }

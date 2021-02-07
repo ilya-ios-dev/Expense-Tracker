@@ -1,5 +1,5 @@
 //
-//  TabBar.swift
+//  BentTabBar.swift
 //  Expense Tracker
 //
 //  Created by isEmpty on 18.12.2020.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TabBar: UITabBar {
+final class BentTabBar: UITabBar {
     
     //MARK: - Properties
     private var shapeLayer: CALayer?
@@ -36,7 +36,7 @@ final class TabBar: UITabBar {
 
 
 //MARK: - Configure Displaying
-extension TabBar {
+extension BentTabBar {
     
     /// Adds a button in the center of the tab bar.
     /// - Parameter frame: Rectangle tab bar.
@@ -103,7 +103,7 @@ extension TabBar {
 }
 
 //MARK: - Supporting Methods
-extension TabBar {
+extension BentTabBar {
     @objc private func centerButtonTapped(_ sender: UIButton){
         guard let count = items?.count else { return }
         guard let item = items?[count / 2] else { return }

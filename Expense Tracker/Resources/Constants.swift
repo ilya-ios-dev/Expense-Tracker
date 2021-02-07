@@ -17,3 +17,23 @@ struct Colors {
     static let tabBarColor = UIColor(named: "tabBarColor")!
     static let selectedColor = UIColor(named: "selectedColor")!
 }
+
+struct Storyboards {
+    static let main = "Main"
+    static let entryPasscode = "EntryPasscode"
+    static let home = "Home"
+    static let chart = "Chart"
+    static let settingsList = "SettingsList"
+    static let appSettings = "AppSettings"
+    static let appearance = "Appearance"
+    static let editPasscode = "EditPasscode"
+    static let configurePasscode = "ConfigurePasscode"
+    static let passcodeSuccessfully = "PasscodeSuccessfully"
+    static let categoryList = "CategoryList"
+    static let createCategory = "CreateCategory"
+    static let categoryTransactions = "CategoryTransactions"
+    static let transactionType = "TransactionType"
+    static let transactionAmount = "TransactionAmount"
+    static let transactionCategory = "TransactionCategory"
+    static let transactionDate = "TransactionDate"
+}

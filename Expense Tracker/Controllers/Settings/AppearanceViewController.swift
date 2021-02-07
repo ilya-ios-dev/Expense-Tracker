@@ -11,7 +11,7 @@ import CoreData
 final class AppearanceViewController: UIViewController {
     
     //MARK: - Outlets
-    @IBOutlet private weak var topView: TopView!
+    @IBOutlet private weak var topView: GradientView!
     @IBOutlet private weak var appearanceCollectionView: UICollectionView!
     @IBOutlet private weak var colorAccentCollectionView: UICollectionView!
     
@@ -123,11 +123,10 @@ extension AppearanceViewController : UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == colorAccentCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as! GradientCategoryCollectionViewCell
-            cell.gradientLayer?.removeFromSuperlayer()
             let gradient = gradients[indexPath.item]
             guard let startColor = UIColor(hex: gradient.startColor) else { return cell }
             guard let endColor = UIColor(hex: gradient.endColor) else { return cell }
-            cell.gradientLayer = cell.circleGradient?.applyGradient(colours: [startColor, endColor])
+            cell.configure(colors: [startColor, endColor])
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "appear", for: indexPath) as! AppearanceCollectionViewCell

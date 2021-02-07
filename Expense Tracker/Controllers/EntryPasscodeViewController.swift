@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class PasscodeViewController: UIViewController {
+final class EntryPasscodeViewController: UIViewController {
     
     //MARK: - Outlets
     @IBOutlet private weak var passcodeTextField: PasscodeTextField!
@@ -37,7 +37,7 @@ final class PasscodeViewController: UIViewController {
     }
     
     //MARK: - Actions
-    @IBAction func pinEndEditing(_ sender: Any) {
+    @IBAction private func pinEndEditing(_ sender: Any) {
         if appSettings.passcode == passcodeTextField.text {
             correctPasscode()
         } else {
@@ -47,7 +47,7 @@ final class PasscodeViewController: UIViewController {
 }
 
 //MARK: - Supporting Methods
-extension PasscodeViewController {
+extension EntryPasscodeViewController {
     
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -66,7 +66,7 @@ extension PasscodeViewController {
 
     /// Closes the `PasscodeViewController`. Makes the `TabBarViewController` as a rootViewController.
     private func correctPasscode() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.main, bundle: nil)
         if let tabBarController = storyboard.instantiateInitialViewController() as? TabBarViewController {
             guard let window = UIApplication.shared.windows.first else { fatalError() }
             

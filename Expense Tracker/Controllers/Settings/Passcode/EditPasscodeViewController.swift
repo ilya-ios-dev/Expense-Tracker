@@ -1,5 +1,5 @@
 //
-//  AddPinViewController.swift
+//  EditPasscodeViewController.swift
 //  Expense Tracker
 //
 //  Created by isEmpty on 23.12.2020.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ChangePasscodeViewController: UIViewController {
+final class EditPasscodeViewController: UIViewController {
 
     //MARK: - Outlets
     @IBOutlet private weak var titleLabel: UILabel!
@@ -76,7 +76,7 @@ final class ChangePasscodeViewController: UIViewController {
 }
 
 //MARK: - Supporting Methods
-extension ChangePasscodeViewController {
+extension EditPasscodeViewController {
     
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -170,7 +170,7 @@ extension ChangePasscodeViewController {
     
     /// Shows `PasscodeSuccessViewController` and gives it `editingMode`.
     private func showSuccess() {
-        let storyboard = UIStoryboard(name: "PasscodeSuccessfully", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.passcodeSuccessfully, bundle: nil)
         guard let controller = storyboard.instantiateInitialViewController() as? PasscodeSuccessViewController else { return }
         controller.editingMode = editingMode
         navigationController?.pushViewController(controller, animated: true)

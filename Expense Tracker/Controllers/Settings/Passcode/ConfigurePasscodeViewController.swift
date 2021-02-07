@@ -10,8 +10,8 @@ import UIKit
 final class ConfigurePasscodeViewController: UIViewController {
 
     //MARK: - Outlet
-    @IBOutlet private weak var turnOnButton: CustomButton!
-    @IBOutlet private weak var turnOffButton: CustomButton!
+    @IBOutlet private weak var turnOnButton: RoundedGradientButton!
+    @IBOutlet private weak var turnOffButton: RoundedGradientButton!
     @IBOutlet private weak var passcodePictureView: PasscodeWelcomeView!
     
     //MARK: - Properties
@@ -42,11 +42,11 @@ final class ConfigurePasscodeViewController: UIViewController {
 //MARK: - Supporting Methods
 extension ConfigurePasscodeViewController {
     
-    /// Shows the `ChangePasscodeViewController` with the selected edit mode.
+    /// Shows the `EditPasscodeViewController` with the selected edit mode.
     /// - Parameter editingMode: The edit mode with which the viewController will open.
-    private func pushViewController(with editingMode: ChangePasscodeViewController.EditingMode) {
-        let storyboard = UIStoryboard(name: "CreatePasscode", bundle: nil)
-        guard let controller = storyboard.instantiateInitialViewController() as? ChangePasscodeViewController else { return }
+    private func pushViewController(with editingMode: EditPasscodeViewController.EditingMode) {
+        let storyboard = UIStoryboard(name: Storyboards.editPasscode, bundle: nil)
+        guard let controller = storyboard.instantiateInitialViewController() as? EditPasscodeViewController else { return }
         controller.editingMode = editingMode
         navigationController?.pushViewController(controller, animated: true)
     }

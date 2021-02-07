@@ -1,5 +1,5 @@
 //
-//  CategoryElementsViewController.swift
+//  CategoryTransactionsViewController.swift
 //  Expense Tracker
 //
 //  Created by isEmpty on 30.12.2020.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-final class CategoryElementsViewController: UITableViewController {
+final class CategoryTransactionsViewController: UITableViewController {
 
     //MARK: - Properties
     public var category: Category!
@@ -42,7 +42,7 @@ final class CategoryElementsViewController: UITableViewController {
 }
 
 //MARK: - Supptorting Methods
-extension CategoryElementsViewController {
+extension CategoryTransactionsViewController {
     ///Gets `balance` from CoreData. If not already created, creates.
     private func fetchBalance() {
         let request: NSFetchRequest = Balance.fetchRequest()
@@ -82,43 +82,27 @@ extension CategoryElementsViewController {
         diffableDataSourceSnapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
         
         DispatchQueue.main.async {
-            self.diffableDataSource?.apply(self.diffableDataSourceSnapshot, animatingDifferences: true)
+            self.diffableDataSource?.apply(self.diffableDataSourceSnapshot, animatingDifferences: true) {
+                self.diffableDataSource?.apply(self.diffableDataSourceSnapshot, animatingDifferences: false)
+            }
         }
     }
-    
+
     /// Setup the `UITableViewDiffableDataSource` with a cell provider that sets up the default table view cell
     private func setupDiffableDataSource() {
         diffableDataSource = DataSource(tableView: tableView) { (tableView, indexPath, transaction) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! TransactionsTableViewCell
     
-            //Gradient
-            cell.gradientLayer?.removeFromSuperlayer()
-            guard let startColor = UIColor(hex: transaction.category.gradient.startColor) else { return cell }
-            guard let endColor = UIColor(hex: transaction.category.gradient.endColor) else { return cell }
-            cell.gradientLayer = cell.imageBackground.applyGradient(colours: [startColor, endColor])
+            let startColor = UIColor(hex: transaction.category.gradient.startColor)
+            let endColor = UIColor(hex: transaction.category.gradient.endColor)
             
-            //Image
-            let imageName = transaction.category.categoryImage.name
-            cell.categoryImageView.image = nil
-            if let systemImage = UIImage(systemName: imageName){
-                cell.categoryImageView.image = systemImage
-            } else if let image = UIImage(named: imageName) {
-                cell.categoryImageView.image = image.withRenderingMode(.alwaysTemplate)
-            }
-
-            //Title
-            cell.titleLabel.text = transaction.name
-            
-            //Date
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.timeStyle = .short
-            cell.dateLabel.text = "\(dateFormatter.string(from: transaction.date))"
-            
-            //Sum
-            cell.sumLabel.text = String(format: self.appSettings.roundedFormat, transaction.amount)
-            
-            cell.isExpense = transaction.isExpense
+            cell.configure(title: transaction.name,
+                           date: transaction.date,
+                           sum: String(format: self.appSettings.roundedFormat, transaction.amount),
+                           isExpense: transaction.isExpense,
+                           startColor: startColor,
+                           endColor: endColor,
+                           imageName: transaction.category.categoryImage.name)
             return cell
         }
         setupSnapshot()
@@ -162,27 +146,14 @@ extension CategoryElementsViewController {
 }
 
 //MARK: - NSFetchedResultsControllerDelegate
-extension CategoryElementsViewController: NSFetchedResultsControllerDelegate {
-    ///Responsible for reacting to changes in `Category` in the CoreData
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            guard let transaction = anObject as? Transaction else { return }
-            diffableDataSourceSnapshot.appendItems([transaction])
-            setupSnapshot()
-        case .update:
-            setupSnapshot()
-            tableView.reloadData()
-        case .move:
-            setupSnapshot()
-        case .delete:break
-        default: break
-        }
+extension CategoryTransactionsViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        setupSnapshot()
     }
 }
 
 //MARK: - UITableViewDelegate
-extension CategoryElementsViewController {
+extension CategoryTransactionsViewController {
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
@@ -191,9 +162,9 @@ extension CategoryElementsViewController {
         let editAction = UIContextualAction(style: .normal, title: "Edit".localized) { (_, _, completionHandler) in
 
             guard let transaction = self.diffableDataSource?.itemIdentifier(for: indexPath) else { return }
-            let storyboard = UIStoryboard(name: "SelectingTypeOfTransactionViewController", bundle: nil)
+            let storyboard = UIStoryboard(name: Storyboards.transactionType, bundle: nil)
             guard let navController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
-            guard let addingViewController = navController.topViewController as? SelectingTypeOfTransactionViewController else { return }
+            guard let addingViewController = navController.topViewController as? TransactionTypeViewController else { return }
             addingViewController.transaction = transaction
             self.navigationController?.present(navController, animated: true, completion: nil)
             completionHandler(true)
@@ -224,7 +195,7 @@ extension CategoryElementsViewController {
 }
 
 //MARK: - UISearchResultsUpdating
-extension CategoryElementsViewController : UISearchResultsUpdating {
+extension CategoryTransactionsViewController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
         currentSearchText = text

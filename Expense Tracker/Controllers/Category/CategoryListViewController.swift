@@ -1,5 +1,5 @@
 //
-//  CategoryViewController.swift
+//  CategoryListViewController.swift
 //  Expense Tracker
 //
 //  Created by isEmpty on 01.12.2020.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-final class CategoryViewController: UITableViewController {
+final class CategoryListViewController: UITableViewController {
     
     //MARK: - Properties
     private var fetchedResultsController: NSFetchedResultsController<Category>!
@@ -42,15 +42,15 @@ final class CategoryViewController: UITableViewController {
     }
     
     //MARK: - Actions
-    @IBAction func addCategory(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "CreateCategory", bundle: nil)
+    @IBAction private func addCategory(_ sender: Any) {
+        let storyboard = UIStoryboard(name: Storyboards.createCategory, bundle: nil)
         guard let controller = storyboard.instantiateInitialViewController() else { return }
         navigationController?.pushViewController(controller, animated: true)
     }
 }
 
 //MARK: - Supptorting Methods
-extension CategoryViewController {
+extension CategoryListViewController {
     
     /// Setup the `NSFetchedResultsController` which gets the data from `Category`
     private func setupFetchedResultsController() {
@@ -80,7 +80,9 @@ extension CategoryViewController {
         diffableDataSourceSnapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
         
         DispatchQueue.main.async {
-            self.diffableDataSource?.apply(self.diffableDataSourceSnapshot, animatingDifferences: true)
+            self.diffableDataSource?.apply(self.diffableDataSourceSnapshot, animatingDifferences: true) {
+                self.diffableDataSource?.apply(self.diffableDataSourceSnapshot, animatingDifferences: false)
+            }
         }
     }
     
@@ -88,20 +90,10 @@ extension CategoryViewController {
     private func setupDiffableDataSource() {
         diffableDataSource = DataSource(tableView: tableView) { (tableView, indexPath, category) -> UITableViewCell? in
             let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CategoryTableViewCell
-            cell.gradientLayer?.removeFromSuperlayer()
-            cell.categoryImage?.image = nil
             
-            cell.titleLabel.text = category.name
-            let imageName = category.categoryImage.name
-            if let systemImage = UIImage(systemName: imageName){
-                cell.categoryImage?.image = systemImage
-            } else if let image = UIImage(named: imageName) {
-                cell.categoryImage?.image = image.withRenderingMode(.alwaysTemplate)
-            }
-
             guard let startColor = UIColor(hex: category.gradient.startColor),
                   let endColor = UIColor(hex: category.gradient.endColor) else { return cell }
-            cell.gradientLayer = cell.imageBackgroundView.applyGradient(colours: [startColor, endColor])
+            cell.configure(title: category.name, imageName: category.categoryImage.name, colors: [startColor, endColor])
             return cell
         }
         setupSnapshot()
@@ -144,27 +136,14 @@ extension CategoryViewController {
 }
 
 //MARK: - NSFetchedResultsControllerDelegate
-extension CategoryViewController: NSFetchedResultsControllerDelegate {
-    ///Responsible for reacting to changes in `Category` in the CoreData
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            guard let category = anObject as? Category else { return }
-            diffableDataSourceSnapshot.appendItems([category])
-            setupSnapshot()
-        case .update:
-            setupSnapshot()
-            tableView.reloadData()
-        case .move:
-            setupSnapshot()
-        case .delete:break
-        default: break
-        }
+extension CategoryListViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        setupSnapshot()
     }
 }
 
 //MARK: - UITableViewDelegate
-extension CategoryViewController {
+extension CategoryListViewController {
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
@@ -174,7 +153,7 @@ extension CategoryViewController {
         let editAction = UIContextualAction(style: .normal, title: "Edit".localized) { (_, _, completionHandler) in
             
             guard let category = self.diffableDataSource?.itemIdentifier(for: indexPath) else { return }
-            let storyboard = UIStoryboard(name: "CreateCategory", bundle: nil)
+            let storyboard = UIStoryboard(name: Storyboards.createCategory, bundle: nil)
             guard let controller = storyboard.instantiateInitialViewController() as? CreateCategoryViewController else { return }
             controller.category = category
             self.navigationController?.pushViewController(controller, animated: true)
@@ -188,8 +167,8 @@ extension CategoryViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let category = self.diffableDataSource?.itemIdentifier(for: indexPath) else { return }
-        let storyboard = UIStoryboard(name: "CategoryElements", bundle: nil)
-        guard let controller = storyboard.instantiateInitialViewController() as? CategoryElementsViewController else { return }
+        let storyboard = UIStoryboard(name: Storyboards.categoryTransactions, bundle: nil)
+        guard let controller = storyboard.instantiateInitialViewController() as? CategoryTransactionsViewController else { return }
         controller.category = category
         navigationController?.pushViewController(controller, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -210,7 +189,7 @@ extension CategoryViewController {
 }
 
 //MARK: - UISearchResultsUpdating
-extension CategoryViewController: UISearchResultsUpdating {
+extension CategoryListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
         currentSearchText = text

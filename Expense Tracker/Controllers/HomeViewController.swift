@@ -16,14 +16,13 @@ final class HomeViewController: UIViewController {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var incomeAmountLabel: UILabel!
     @IBOutlet private weak var expenseAmountLabel: UILabel!
-    @IBOutlet private weak var topView: TopView!
+    @IBOutlet private weak var topView: GradientView!
     @IBOutlet private weak var topViewConstraint: NSLayoutConstraint!
     @IBOutlet private weak var collectionView: UICollectionView!
     
     //MARK: - Properties
     private let appSettings = AppSettings.shared
     private var balance: Balance!
-    private var observation: NSKeyValueObservation?
     private var dataSource: UICollectionViewDiffableDataSource<Int, Transaction>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, Transaction>()
     private var fetchedResultsController: NSFetchedResultsController<Transaction>!
@@ -163,9 +162,12 @@ extension HomeViewController {
         snapshot = NSDiffableDataSourceSnapshot<Int, Transaction>()
         snapshot.appendSections([0])
         snapshot.appendItems(fetchedResultsController.fetchedObjects ?? [])
-        
+        configureTopViewLabels()
+        configureNavigationBar()
         DispatchQueue.main.async {
-            self.dataSource?.apply(self.snapshot, animatingDifferences: true)
+            self.dataSource.apply(self.snapshot, animatingDifferences: true) {
+                self.dataSource.apply(self.snapshot, animatingDifferences: false)
+            }
         }
     }
     
@@ -175,33 +177,16 @@ extension HomeViewController {
             (collectionView, indexPath, transaction) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCell", for: indexPath) as! HomeCollectionViewCell
             
-            //Gradient
-            cell.gradientLayer?.removeFromSuperlayer()
-            guard let startColor = UIColor(hex: transaction.category.gradient.startColor) else { return cell }
-            guard let endColor = UIColor(hex: transaction.category.gradient.endColor) else { return cell }
-            cell.gradientLayer = cell.imageBackground.applyGradient(colours: [startColor, endColor])
+            let startColor = UIColor(hex: transaction.category.gradient.startColor)
+            let endColor = UIColor(hex: transaction.category.gradient.endColor)
             
-            //Image
-            let imageName = transaction.category.categoryImage.name
-            if let systemImage = UIImage(systemName: imageName){
-                cell.categoryImageView.image = systemImage
-            } else if let image = UIImage(named: imageName) {
-                cell.categoryImageView.image = image.withRenderingMode(.alwaysTemplate)
-            }
-            
-            //Title
-            cell.titleLabel.text = transaction.name
-            
-            //Date
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.timeStyle = .short
-            cell.dateLabel.text = "\(dateFormatter.string(from: transaction.date))"
-            
-            //Sum
-            cell.sumLabel.text = String(format: self.appSettings.roundedFormat, transaction.amount)
-            
-            cell.isExpense = transaction.isExpense
+            cell.configure(title: transaction.name,
+                           date: transaction.date,
+                           sum: String(format: self.appSettings.roundedFormat, transaction.amount),
+                           isExpense: transaction.isExpense,
+                           startColor: startColor,
+                           endColor: endColor,
+                           imageName: transaction.category.categoryImage.name)
             return cell
         }
         setupSnapshot()
@@ -210,18 +195,8 @@ extension HomeViewController {
 
 //MARK: - NSFetchedResultsControllerDelegate
 extension HomeViewController: NSFetchedResultsControllerDelegate {
-    ///Responsible for reacting to changes in `Transaction` in the CoreData
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-        if type == .insert {
-            guard let transaction = anObject as? Transaction else { return }
-            snapshot.appendItems([transaction])
-        } else if type == .update || type == .move {
-            collectionView.reloadData()
-        }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         setupSnapshot()
-        configureTopViewLabels()
-        configureNavigationBar()
     }
 }
 
@@ -230,31 +205,83 @@ extension HomeViewController: UICollectionViewDelegate {
     
     ///Creates a context menu for `collectionView`.
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        if let cellItemIdentifier = dataSource.itemIdentifier(for: indexPath) {
-            let identifier = NSString(string: "\(cellItemIdentifier.name)") // Use the image name for the identifier.
-            return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { suggestedActions in
-                let editAction = self.editAction(indexPath)
-                let deleteAction = self.deleteAction(indexPath)
-                return UIMenu(title: "", children: [editAction, deleteAction])
-            })
-            
-        } else {
-            return nil
-        }
+        guard let cellItemIdentifier = dataSource.itemIdentifier(for: indexPath) else { return nil }
+        let identifier = NSString(string: "\(cellItemIdentifier.name)") // Use the image name for the identifier.
+        return UIContextMenuConfiguration(identifier: identifier, previewProvider: nil, actionProvider: { suggestedActions in
+            return UIMenu(title: "", children: [
+                            self.recreateAction(indexPath),
+                            self.changeTypeAction(indexPath),
+                            self.changeAmountAction(indexPath),
+                            self.changeCategoryAction(indexPath),
+                            self.changeDateAction(indexPath),
+                            self.deleteAction(indexPath)])
+        })
     }
     
-    ///Adds the ability to edit `transactions`.
-    private func editAction(_ indexPath: IndexPath) -> UIAction {
-        return UIAction(title: "Edit".localized,
+    /// Добавляет возможность пересоздать транзакцию
+    private func recreateAction(_ indexPath: IndexPath) -> UIAction {
+        return UIAction(title: "Recreate".localized,
                         image: UIImage(systemName: "square.and.pencil")) { action in
-            let storyboard = UIStoryboard(name: "SelectingTypeOfTransactionViewController", bundle: nil)
+            let storyboard = UIStoryboard(name: Storyboards.transactionType, bundle: nil)
             guard let navController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
-            guard let addingViewController = navController.topViewController as? SelectingTypeOfTransactionViewController else { return }
+            guard let addingViewController = navController.topViewController as? TransactionTypeViewController else { return }
             addingViewController.transaction = self.dataSource.itemIdentifier(for: indexPath)
+            addingViewController.creatingType = .recreate
             self.navigationController?.present(navController, animated: true, completion: nil)
         }
     }
-    ///Adds the ability to delete `transactions`.
+    
+    /// Добавляет возможность изменить тип транзакции
+    private func changeTypeAction(_ indexPath: IndexPath) -> UIAction {
+        return UIAction(title: "Change Type".localized,
+                        image: UIImage(systemName: "arrow.up.arrow.down")) { action in
+            let storyboard = UIStoryboard(name: Storyboards.transactionType, bundle: nil)
+            guard let navController = storyboard.instantiateInitialViewController() as? UINavigationController else { return }
+            guard let addingViewController = navController.topViewController as? TransactionTypeViewController else { return }
+            addingViewController.transaction = self.dataSource.itemIdentifier(for: indexPath)
+            addingViewController.creatingType = .editing
+            self.navigationController?.present(navController, animated: true, completion: nil)
+        }
+    }
+    
+    
+    /// Добавляет возможность изменить Amount и Description
+    private func changeAmountAction(_ indexPath: IndexPath) -> UIAction {
+        return UIAction(title: "Change Amount or Descrtiption".localized,
+                        image: UIImage(systemName: "dollarsign.square")) { action in
+            let storyboard = UIStoryboard(name: Storyboards.transactionAmount, bundle: nil)
+            guard let controller = storyboard.instantiateInitialViewController() as? TransactionAmountViewController else { return }
+            controller.transaction = self.dataSource.itemIdentifier(for: indexPath)
+            controller.creatingType = .editing
+            self.navigationController?.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    
+    /// Добавляет возможность изменить категорию
+    private func changeCategoryAction(_ indexPath: IndexPath) -> UIAction {
+        return UIAction(title: "Change Category".localized,
+                        image: UIImage(systemName: "eye")) { action in
+            let storyboard = UIStoryboard(name: Storyboards.transactionCategory, bundle: nil)
+            guard let addingViewController = storyboard.instantiateInitialViewController() as? TransactionCategoryViewController else { return }
+            addingViewController.transaction = self.dataSource.itemIdentifier(for: indexPath)
+            addingViewController.creatingType = .editing
+            self.navigationController?.present(addingViewController, animated: true, completion: nil)
+        }
+    }
+    
+    /// Добавляет возможность изменить дату
+    private func changeDateAction(_ indexPath: IndexPath) -> UIAction {
+        return UIAction(title: "Change Date".localized,
+                        image: UIImage(systemName: "calendar")) { action in
+            let storyboard = UIStoryboard(name: Storyboards.transactionDate, bundle: nil)
+            guard let addingViewController = storyboard.instantiateInitialViewController() as? TransactionDateViewController else { return }
+            addingViewController.transaction = self.dataSource.itemIdentifier(for: indexPath)
+            self.navigationController?.present(addingViewController, animated: true, completion: nil)
+        }
+    }
+    
+    /// Adds the ability to delete `transactions`.
     private func deleteAction(_ indexPath: IndexPath) -> UIAction {
         return UIAction(title: "Delete".localized,
                         image: UIImage(systemName: "trash"),
@@ -266,8 +293,8 @@ extension HomeViewController: UICollectionViewDelegate {
         }
     }
     
-    ///Raises the `TopView` depending on the scroll.
-    ///When the `TopView` is not fully visible, shows the `UINavigationController`.
+    ///Raises the `GradientView` depending on the scroll.
+    ///When the `GradientView` is not fully visible, shows the `UINavigationController`.
     func scrollViewDidScroll(_ scrollView: UIScrollView){
         
         // if scrollView bounces off the bottom

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QcE-VL-Qpc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QcE-VL-Qpc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Choose Date View Controller-->
+        <!--Transaction Date View Controller-->
         <scene sceneID="ZNm-kP-gRn">
             <objects>
-                <viewController id="QcE-VL-Qpc" customClass="ChooseDateViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="QcE-VL-Qpc" customClass="TransactionDateViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tbT-fD-ZM0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,9 +25,10 @@
                                         <color key="tintColor" name="TopGradientStart"/>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktQ-YT-ZXK">
-                                        <rect key="frame" x="65" y="401" width="284" height="50"/>
+                                        <rect key="frame" x="77" y="401" width="260" height="50"/>
                                         <color key="backgroundColor" name="TopGradientStart"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" priority="748" constant="260" id="pLP-4d-Cij"/>
                                             <constraint firstAttribute="height" constant="50" id="tco-RZ-KMA"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
@@ -41,11 +42,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="ktQ-YT-ZXK" firstAttribute="leading" secondItem="dxV-34-Tcm" secondAttribute="leading" constant="65" id="8V1-0Y-RTb"/>
                                     <constraint firstItem="M5V-25-Hq6" firstAttribute="top" secondItem="dxV-34-Tcm" secondAttribute="top" id="FAn-LO-wUk"/>
                                     <constraint firstAttribute="bottom" secondItem="ktQ-YT-ZXK" secondAttribute="bottom" id="Ijh-BA-il2"/>
-                                    <constraint firstAttribute="trailing" secondItem="ktQ-YT-ZXK" secondAttribute="trailing" constant="65" id="ToS-mY-6YZ"/>
                                     <constraint firstItem="M5V-25-Hq6" firstAttribute="bottom" secondItem="ktQ-YT-ZXK" secondAttribute="top" constant="-10" id="ZH8-0C-hMX"/>
+                                    <constraint firstItem="ktQ-YT-ZXK" firstAttribute="centerX" secondItem="dxV-34-Tcm" secondAttribute="centerX" id="hGI-n5-D1t"/>
                                     <constraint firstAttribute="trailing" secondItem="M5V-25-Hq6" secondAttribute="trailing" constant="8" id="nVA-en-ktf"/>
                                     <constraint firstItem="M5V-25-Hq6" firstAttribute="leading" secondItem="dxV-34-Tcm" secondAttribute="leading" constant="8" id="suk-n8-xJj"/>
                                 </constraints>

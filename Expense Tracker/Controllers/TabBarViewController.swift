@@ -26,11 +26,10 @@ final class TabBarViewController: UITabBarController {
         
     /// Present the add screen by pressing the center button.
     private func centerButtonTapped() {
-        let storyboard = UIStoryboard(name: "SelectingTypeOfTransactionViewController", bundle: nil)
+        let storyboard = UIStoryboard(name: Storyboards.transactionType, bundle: nil)
         guard let controller = storyboard.instantiateInitialViewController() else { return }
         present(controller, animated: true, completion: nil)
     }
-    
 }
 
 //MARK: - UITabBarControllerDelegate

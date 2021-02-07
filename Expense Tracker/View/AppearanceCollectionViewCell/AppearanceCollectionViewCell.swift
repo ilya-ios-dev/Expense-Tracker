@@ -14,11 +14,13 @@ final class AppearanceCollectionViewCell: UICollectionViewCell {
             setNeedsDisplay()
         }
     }
+    
     override var isSelected: Bool {
         didSet {
             setNeedsDisplay()
         }
     }
+    
     internal enum Appearance {
         case automatic
         case dark

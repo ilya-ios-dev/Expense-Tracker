@@ -11,11 +11,11 @@ final class PasscodeSuccessViewController: UIViewController {
     
     //MARK: - Outlets
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var doneButton: CustomButton!
+    @IBOutlet private weak var doneButton: RoundedGradientButton!
     @IBOutlet private weak var passcodeSuccessfullyView: PasscodeSuccessfullyView!
     
     //MARK: - Properties
-    public var editingMode: ChangePasscodeViewController.EditingMode!
+    public var editingMode: EditPasscodeViewController.EditingMode!
     
     //MARK: - View Life Cycle
     override func viewWillAppear(_ animated: Bool) {

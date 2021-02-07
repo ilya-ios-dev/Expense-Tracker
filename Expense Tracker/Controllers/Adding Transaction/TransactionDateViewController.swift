@@ -1,5 +1,5 @@
 //
-//  ChooseDateViewController.swift
+//  TransactionDateViewController.swift
 //  Expense Tracker
 //
 //  Created by isEmpty on 18.12.2020.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-final class ChooseDateViewController: UIViewController {
+final class TransactionDateViewController: UIViewController {
 
     //MARK: - Outlets
     @IBOutlet private weak var transactionIconBackground: UIView!
@@ -71,7 +71,7 @@ final class ChooseDateViewController: UIViewController {
 }
 
 //MARK: - Supporting Methods
-extension ChooseDateViewController {
+extension TransactionDateViewController {
     /// Saving all changes on main context
     private func saveOnMainContext() {
         context.performAndWait {
@@ -114,7 +114,7 @@ extension ChooseDateViewController {
 }
 
 //MARK: - Configure Layouts
-extension ChooseDateViewController {
+extension TransactionDateViewController {
     /// Changes the appearance of items depending on the type of `transaction`.
     private func configureTransactionType() {
         if transaction.isExpense {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WT3-8I-bQS">
-    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WT3-8I-bQS">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -34,12 +34,12 @@
         <!--Add Transaction-->
         <scene sceneID="3e3-qm-5Yb">
             <objects>
-                <viewController id="Sf3-Rj-Rcv" customClass="SelectingTypeOfTransactionViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Sf3-Rj-Rcv" customClass="TransactionTypeViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZKD-JK-cWZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Py-xk-ev9" customClass="MeetingPictureView" customModule="Expense_Tracker" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Py-xk-ev9" customClass="CategoryMeetingView" customModule="Expense_Tracker" customModuleProvider="target">
                                 <rect key="frame" x="50" y="66" width="314" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -111,20 +111,20 @@
             </objects>
             <point key="canvasLocation" x="1162" y="65"/>
         </scene>
-        <!--ChooseCategoryViewController-->
+        <!--TransactionCategory-->
         <scene sceneID="6Ji-aQ-24q">
             <objects>
-                <viewControllerPlaceholder storyboardName="ChooseCategoryViewController" id="tjj-2G-6jd" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="TransactionCategory" id="tjj-2G-6jd" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="F4u-Nr-rFd"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0x-V6-FGa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="217" y="548"/>
         </scene>
-        <!--FillingAmountAndDescriptionViewController-->
+        <!--TransactionAmount-->
         <scene sceneID="N6r-X4-LUZ">
             <objects>
-                <viewControllerPlaceholder storyboardName="FillingAmountAndDescriptionViewController" id="GZG-5p-ArM" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="TransactionAmount" id="GZG-5p-ArM" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="64h-Cd-sak"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2i-Yy-wxT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

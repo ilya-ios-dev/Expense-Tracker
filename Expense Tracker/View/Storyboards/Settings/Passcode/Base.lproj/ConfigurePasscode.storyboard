@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AW3-nh-i0X">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AW3-nh-i0X">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,27 +13,27 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="AW3-nh-i0X" customClass="ConfigurePasscodeViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vx4-0A-GR0">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cZf-Fg-W8x">
-                                <rect key="frame" x="20" y="64" width="350" height="726"/>
+                                <rect key="frame" x="20" y="64" width="374" height="778"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="ePh-Cs-zaQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="566"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="618"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Gb-VB-kxJ" customClass="PasscodeWelcomeView" customModule="Expense_Tracker" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="350" height="446.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="498.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Passcode Lock" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Fq-jR-Opo">
-                                                <rect key="frame" x="0.0" y="455.33333333333337" width="350" height="37"/>
+                                                <rect key="frame" x="0.0" y="507.5" width="374" height="37"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="31"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="When you enable the passcode, a passcode screen will appear when launching the application." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxT-pU-ugI">
-                                                <rect key="frame" x="0.0" y="501.33333333333343" width="350" height="64.666666666666686"/>
+                                                <rect key="frame" x="0.0" y="553.5" width="374" height="64.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -41,13 +41,13 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="aIt-CT-FDG">
-                                        <rect key="frame" x="0.0" y="586" width="350" height="140"/>
+                                        <rect key="frame" x="0.0" y="638" width="374" height="140"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="q9c-v9-Nr0">
-                                                <rect key="frame" x="0.0" y="0.0" width="350" height="140"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="140"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgP-9e-KOT" customClass="CustomButton" customModule="Expense_Tracker" customModuleProvider="target">
-                                                        <rect key="frame" x="35" y="0.0" width="280" height="60"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgP-9e-KOT" customClass="RoundedGradientButton" customModule="Expense_Tracker" customModuleProvider="target">
+                                                        <rect key="frame" x="47" y="0.0" width="280" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="c6K-Lr-GZ4"/>
                                                             <constraint firstAttribute="width" priority="750" constant="280" id="jZz-kd-rhA"/>
@@ -60,8 +60,8 @@
                                                             <action selector="trurnOnTapped:" destination="AW3-nh-i0X" eventType="touchUpInside" id="LcT-TQ-XeR"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEz-pR-Gsf" customClass="CustomButton" customModule="Expense_Tracker" customModuleProvider="target">
-                                                        <rect key="frame" x="35" y="80" width="280" height="60"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEz-pR-Gsf" customClass="RoundedGradientButton" customModule="Expense_Tracker" customModuleProvider="target">
+                                                        <rect key="frame" x="47" y="80" width="280" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="mQD-fh-eBQ"/>
                                                             <constraint firstAttribute="width" priority="750" constant="280" id="y3k-2D-Lcd"/>

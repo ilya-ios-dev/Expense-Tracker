@@ -20,9 +20,11 @@ final class ChartViewController: UIViewController {
     private let appSettings = AppSettings.shared
     private var dataSource: UICollectionViewDiffableDataSource<Int, Date>!
     private var snapshot = NSDiffableDataSourceSnapshot<Int, Date>()
-    private var balance: Balance!
+    private var fetchedResultsController: NSFetchedResultsController<Balance>!
     private var searchDate = Date().startOfMonth
-    private var observation: NSKeyValueObservation?
+    private var balance: Balance! {
+        return fetchedResultsController.fetchedObjects?.first
+    }
     
     //MARK: - Computed Properties
     private lazy var context: NSManagedObjectContext = {
@@ -31,17 +33,11 @@ final class ChartViewController: UIViewController {
     }()
     
     //MARK: - View Life Cycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureViews()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Setup Data
-        setupBalance()
+        setupFetchedResultsController()
         setupDataSource()
-        setupTransactionsObserver()
         //Configure UI
         configureCollectionView()
     }
@@ -49,30 +45,18 @@ final class ChartViewController: UIViewController {
 
 //MARK: - Setup Data
 extension ChartViewController {
-    ///Adds an `observation` that monitors changes in `transactions`.
-    ///Updates `UI` if `transactions` has changes.
-    private func setupTransactionsObserver() {
-        observation = balance.observe(\Balance.transactions, options: [.initial, .new ]) { (balance, value) in
-            self.configureLabels()
-            self.setupSnapshot()
-            self.configureChartView()
-        }
-    }
-    
-    ///Gets `balance` from CoreData. If not already created, creates.
-    private func setupBalance() {
-        let request: NSFetchRequest = Balance.fetchRequest()
-        balance = try? context.fetch(request).first ?? Balance(context: context)
-    }
-    
     /// Setup the `NSDiffableDataSourceSnapshot` which displays the current state of the UI.
     private func setupSnapshot() {
         snapshot = NSDiffableDataSourceSnapshot<Int, Date>()
         snapshot.appendSections([0])
         snapshot.appendItems(balance.getMonthList() ?? [])
-        
+        configureViews()
+        configureLabels()
+        configureChartView()
         DispatchQueue.main.async {
-            self.dataSource?.apply(self.snapshot, animatingDifferences: true)
+            self.dataSource?.apply(self.snapshot, animatingDifferences: true) {
+                self.dataSource?.apply(self.snapshot, animatingDifferences: false)
+            }
         }
     }
     
@@ -82,13 +66,30 @@ extension ChartViewController {
         dataSource = UICollectionViewDiffableDataSource<Int, Date>(collectionView: collectionView) {
             (collectionView, indexPath, date) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "monthCell", for: indexPath) as! MonthCollectionViewCell
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMM"
-            cell.monthLabel.text = formatter.string(from: date)
-            formatter.dateFormat = "YYYY"
-            cell.yearLabel.text = formatter.string(from: date)
+            cell.configure(date)
             return cell
         }
+        setupSnapshot()
+    }
+    
+    private func setupFetchedResultsController() {
+        let request: NSFetchRequest = Balance.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "totalBalance", ascending: false)]
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+            setupSnapshot()
+        } catch {
+            showAlert(alertText: error.localizedDescription)
+        }
+    }
+}
+
+//MARK: - NSFetchedResultsControllerDelegate
+extension ChartViewController: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         setupSnapshot()
     }
 }
@@ -114,8 +115,10 @@ extension ChartViewController {
     
     /// Refresh the data in the expense and income labels.
     private func configureLabels() {
-        expenseView.transactionAmountLabel.text = appSettings.currency + String(format: appSettings.roundedFormat, balance.getExpenseForMonth(searchDate) ?? 0)
-        incomeView.transactionAmountLabel.text = appSettings.currency + String(format: appSettings.roundedFormat, balance.getIncomeForMonth(searchDate) ?? 0)
+        expenseView.transactionAmountLabel.text =
+            appSettings.currency + String(format: appSettings.roundedFormat, balance.getExpenseForMonth(searchDate) ?? 0)
+        incomeView.transactionAmountLabel.text =
+            appSettings.currency + String(format: appSettings.roundedFormat, balance.getIncomeForMonth(searchDate) ?? 0)
     }
     
     /// Register `collectionView` cell. Assigning a delegate. Select current month.

@@ -24,7 +24,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         // Check's, if passcode enabled, sets passcode as main screen.
         if appSettings.isPasscodeEnabled {
-            let storyboard = UIStoryboard(name: "Passcode", bundle: nil)
+            let storyboard = UIStoryboard(name: Storyboards.entryPasscode, bundle: nil)
             if let vc = storyboard.instantiateInitialViewController(){
                 window?.rootViewController = vc
                 window?.makeKeyAndVisible()

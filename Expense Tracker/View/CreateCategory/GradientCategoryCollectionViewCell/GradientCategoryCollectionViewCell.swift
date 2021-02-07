@@ -8,10 +8,10 @@
 import UIKit
 
 final class GradientCategoryCollectionViewCell: UICollectionViewCell {
-
+    
     //MARK: - Properties & Outlets
-    @IBOutlet weak var circleGradient: UIView!
-    var gradientLayer: CAGradientLayer?
+    @IBOutlet private weak var circleGradient: UIView!
+    private var gradientLayer: CAGradientLayer?
     private var shadowLayer: CALayer?
     
     override var isSelected: Bool {
@@ -38,13 +38,17 @@ final class GradientCategoryCollectionViewCell: UICollectionViewCell {
 extension GradientCategoryCollectionViewCell {
     /// Creates and configure `shadowLayer`
     private func configureShadow() {
-       shadowLayer = CALayer()
-       shadowLayer?.shadowColor = UIColor.black.cgColor
-       shadowLayer?.shadowOpacity = 0.25
-       shadowLayer?.shadowOffset = CGSize(width: 0, height: 2)
-       shadowLayer?.shadowRadius = 3
-       shadowLayer?.shadowPath = CGPath(ellipseIn: circleGradient.frame, transform: nil)
-       layer.insertSublayer(shadowLayer!, at: 0)
-   }
-
+        shadowLayer = CALayer()
+        shadowLayer?.shadowColor = UIColor.black.cgColor
+        shadowLayer?.shadowOpacity = 0.25
+        shadowLayer?.shadowOffset = CGSize(width: 0, height: 2)
+        shadowLayer?.shadowRadius = 3
+        shadowLayer?.shadowPath = CGPath(ellipseIn: circleGradient.frame, transform: nil)
+        layer.insertSublayer(shadowLayer!, at: 0)
+    }
+    
+    public func configure(colors: [UIColor]) {
+        gradientLayer?.removeFromSuperlayer()
+        gradientLayer = circleGradient?.applyGradient(colours: colors, startPoint: .bottomLeft, endPoint: .topRight)
+    }
 }

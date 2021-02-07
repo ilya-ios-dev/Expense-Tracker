@@ -1,13 +1,14 @@
 //
-//  FillingAmountAndDescriptionViewController.swift
+//  TransactionAmountViewController.swift
 //  Expense Tracker
 //
 //  Created by isEmpty on 18.12.2020.
 //
 
 import UIKit
+import CoreData
 
-final class FillingAmountAndDescriptionViewController: UIViewController {
+final class TransactionAmountViewController: UIViewController {
 
     //MARK: - Outlets
     @IBOutlet private weak var transactionIconLabel: UILabel!
@@ -20,7 +21,19 @@ final class FillingAmountAndDescriptionViewController: UIViewController {
     
     //MARK: - Properties
     public var transaction: Transaction!
+    public var creatingType = CreatingType.none
+
     private let appSettings = AppSettings.shared
+    
+    //MARK: - Computed Properties
+    private lazy var context: NSManagedObjectContext = {
+        return transaction.managedObjectContext!
+    }()
+    
+    private lazy var mainContext: NSManagedObjectContext = {
+        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.container.viewContext
+    }()
     
     //MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -42,15 +55,18 @@ final class FillingAmountAndDescriptionViewController: UIViewController {
         guard let name = descriptionTextField.text else { return }
         transaction.amount = amount
         transaction.name = name
-        let storyboard = UIStoryboard(name: "ChooseCategoryViewController", bundle: nil)
-        guard let controller = storyboard.instantiateInitialViewController() as? ChooseCategoryViewController else { return }
-        controller.transaction = transaction
-        navigationController?.pushViewController(controller, animated: true)
+
+        switch creatingType {
+        case .recreate, .none:
+            createTapped()
+        case .editing:
+            editTapped()
+        }
     }
 }
 
 //MARK: - Supptoring Methods
-extension FillingAmountAndDescriptionViewController {
+extension TransactionAmountViewController {
     ///Brings up the `textFields` along with the keyboard.
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
@@ -70,10 +86,38 @@ extension FillingAmountAndDescriptionViewController {
             nextButton.isEnabled = false
         }
     }
+    
+    // Передает объект другому контроллеру вместе с типом редактирования
+    private func createTapped() {
+        let storyboard = UIStoryboard(name: Storyboards.transactionCategory, bundle: nil)
+        guard let controller = storyboard.instantiateInitialViewController() as? TransactionCategoryViewController else { return }
+        controller.transaction = transaction
+        controller.creatingType = creatingType
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    // Сохраняет текущий объект и закрывает контроллер
+    private func editTapped() {
+        do {
+            try context.save()
+            context.performAndWait {
+                do {
+                    try mainContext.save()
+                } catch {
+                    print(error)
+                    showAlert(alertText: error.localizedDescription)
+                }
+            }
+            dismiss(animated: true, completion: nil)
+        } catch {
+            print(error)
+            showAlert(alertText: error.localizedDescription)
+        }
+    }
 }
 
 //MARK: - Configure Layouts
-extension FillingAmountAndDescriptionViewController {
+extension TransactionAmountViewController {
     /// Customization of appearance `amountTextField`.
     /// Adding bottomLine to `UITextField`.
     private func configureAmountTextField() {
@@ -130,7 +174,7 @@ extension FillingAmountAndDescriptionViewController {
 }
 
 //MARK: - UITextFieldDelegate
-extension FillingAmountAndDescriptionViewController: UITextFieldDelegate {
+extension TransactionAmountViewController: UITextFieldDelegate {
     /// Hears both `textFields`.
     /// Pressing `return` on `amountTextField` places the focus on `descriptionTextField`.
     /// When you press `return` on `descriptionTextField`,

@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-public final class MeetingPictureView: UIView {
+public final class CategoryMeetingView: UIView {
     public override func draw(_ rect: CGRect) {
         MeetingPictureDraw.drawMeetingPicture(frame: rect, resizing: .aspectFit)
     }

@@ -1,5 +1,5 @@
 //
-//  TopView.swift
+//  GradientView.swift
 //  Expense Tracker
 //
 //  Created by isEmpty on 30.11.2020.
@@ -8,7 +8,7 @@
 import UIKit
 
 @IBDesignable
-public final class TopView: UIView {
+public final class GradientView: UIView {
     
     //MARK: - Properties
     @IBInspectable var startColor: UIColor = AppSettings.shared.startColor

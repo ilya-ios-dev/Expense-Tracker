@@ -1,5 +1,5 @@
 //
-//  CurrencyTableViewController.swift
+//  CurrencyViewController.swift
 //  Expense Tracker
 //
 //  Created by isEmpty on 01.01.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CurrencyTableViewController: UITableViewController {
+final class CurrencyViewController: UITableViewController {
     
     //MARK: - Properties
     private var appSettings = AppSettings.shared
@@ -44,7 +44,7 @@ final class CurrencyTableViewController: UITableViewController {
 }
 
 //MARK: - TableView DataSource & Delegate
-extension CurrencyTableViewController {
+extension CurrencyViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currencyList.count
     }

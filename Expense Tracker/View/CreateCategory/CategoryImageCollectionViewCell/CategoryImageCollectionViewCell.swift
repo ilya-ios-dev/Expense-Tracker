@@ -8,14 +8,14 @@
 import UIKit
 
 final class CategoryImageCollectionViewCell: UICollectionViewCell {
-
+    
     //MARK: - Outlets
     @IBOutlet private weak var categoryBackgroundView: UIView!
-    @IBOutlet weak var circleBackground: UIView!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet private weak var circleBackground: UIView!
+    @IBOutlet private weak var imageView: UIImageView!
     
     //MARK: - Properties
-    var gradientLayer: CAGradientLayer?
+    private var gradientLayer: CAGradientLayer?
     private var shadowLayer: CALayer?
     override var isSelected: Bool {
         didSet{
@@ -28,7 +28,7 @@ final class CategoryImageCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-
+    
     //MARK: - View Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,17 +43,27 @@ final class CategoryImageCollectionViewCell: UICollectionViewCell {
 extension CategoryImageCollectionViewCell {
     /// Creates and configure `shadowLayer`
     private func configureShadowLayer() {
-       shadowLayer = CALayer()
-       let shadowOrigin = CGPoint(x: categoryBackgroundView.frame.minX / 2, y: categoryBackgroundView.frame.minY / 2)
-       let shadowFrame = CGRect(origin: shadowOrigin, size: categoryBackgroundView.frame.size)
-       
-       shadowLayer?.frame = shadowFrame
-       shadowLayer?.shadowColor = UIColor.black.withAlphaComponent(0.15).cgColor
-       shadowLayer?.shadowOffset = CGSize(width: 0, height: 2)
-       shadowLayer?.shadowRadius = 4
-       shadowLayer?.shadowOpacity = 1
+        shadowLayer = CALayer()
+        let shadowOrigin = CGPoint(x: categoryBackgroundView.frame.minX / 2, y: categoryBackgroundView.frame.minY / 2)
+        let shadowFrame = CGRect(origin: shadowOrigin, size: categoryBackgroundView.frame.size)
+        
+        shadowLayer?.frame = shadowFrame
+        shadowLayer?.shadowColor = UIColor.black.withAlphaComponent(0.15).cgColor
+        shadowLayer?.shadowOffset = CGSize(width: 0, height: 2)
+        shadowLayer?.shadowRadius = 4
+        shadowLayer?.shadowOpacity = 1
         shadowLayer?.shadowPath = CGPath(roundedRect: shadowFrame, cornerWidth: categoryBackgroundView.layer.cornerRadius, cornerHeight: categoryBackgroundView.layer.cornerRadius, transform: nil)
-       layer.insertSublayer(shadowLayer!, at: 0)
-   }
-   
+        layer.insertSublayer(shadowLayer!, at: 0)
+    }
+    
+    public func configure(imageName: String, colors: [UIColor]) {
+        if let systemImage = UIImage(systemName: imageName){
+            imageView.image = systemImage
+        } else if let image = UIImage(named: imageName) {
+            imageView.image = image.withRenderingMode(.alwaysTemplate)
+        }
+
+       gradientLayer?.removeFromSuperlayer()
+       gradientLayer = circleBackground?.applyGradient(colours: colors, startPoint: .bottomLeft, endPoint: .topRight)
+    }
 }

@@ -18,9 +18,9 @@ final class AppSettingsViewController: UITableViewController {
         return appDelegate.container.viewContext
     }()
     private let settingsList = [
-        SettingsElement(name: "Currency", description: "Change the currency used in the application.", controller: CurrencyTableViewController()),
-        SettingsElement(name: "Rounding", description: "Change the rounding of numbers.", controller: RoundingTableViewController()),
-        SettingsElement(name: "Displaying on Home Screen", description: "Change the items displayed on the home screen.", controller: DisplayingOnHomeScreenTableViewController()),
+        SettingsElement(name: "Currency", description: "Change the currency used in the application.", controller: CurrencyViewController()),
+        SettingsElement(name: "Rounding", description: "Change the rounding of numbers.", controller: RoundViewController()),
+        SettingsElement(name: "Displaying on Home Screen", description: "Change the items displayed on the home screen.", controller: DisplayingViewController()),
     ]
     private struct SettingsElement {
         let name: String

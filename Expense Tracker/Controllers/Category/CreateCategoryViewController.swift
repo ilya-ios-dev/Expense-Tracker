@@ -18,6 +18,7 @@ final class CreateCategoryViewController: UIViewController {
     
     //MARK: - Properties
     public var category: Category?
+    
     private var gradients = [Gradient]()
     private var images = [CategoryImage]()
     
@@ -175,10 +176,10 @@ extension CreateCategoryViewController {
         
         // Sort by color 
         gradients.sort { (gradient1, gradient2) -> Bool in
-            guard let number1Start = UInt8(gradient1.startColor, radix: 16)  else { return false }
-            guard let number1End = UInt8(gradient1.endColor, radix: 16)  else { return false }
-            guard let number2Start = UInt8(gradient2.startColor, radix: 16)  else { return false }
-            guard let number2End = UInt8(gradient2.endColor, radix: 16)  else { return false }
+            guard let number1Start = UInt8(gradient1.startColor, radix: 16),
+                  let number1End = UInt8(gradient1.endColor, radix: 16),
+                  let number2Start = UInt8(gradient2.startColor, radix: 16),
+                  let number2End = UInt8(gradient2.endColor, radix: 16)  else { return false }
             return (number1Start + number1End) < (number2Start + number2End)
         }
         
@@ -262,24 +263,14 @@ extension CreateCategoryViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == gradientCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as! GradientCategoryCollectionViewCell
-            cell.gradientLayer?.removeFromSuperlayer()
-            cell.gradientLayer = cell.circleGradient?.applyGradient(colours: getGradientColors(for: indexPath), startPoint: .bottomLeft, endPoint: .topRight)
+            cell.configure(colors: getGradientColors(for: indexPath))
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! CategoryImageCollectionViewCell
-
-            let imageName = images[indexPath.item].name
-            cell.imageView.image = nil
-            if let systemImage = UIImage(systemName: imageName){
-                cell.imageView.image = systemImage
-            } else if let image = UIImage(named: imageName) {
-                cell.imageView.image = image.withRenderingMode(.alwaysTemplate)
-            }
             
+            let imageName = images[indexPath.item].name
             guard let selectedIndexPath = gradientCollectionView.indexPathsForSelectedItems?.first else { return cell }
-
-            cell.gradientLayer?.removeFromSuperlayer()
-            cell.gradientLayer = cell.circleBackground?.applyGradient(colours: getGradientColors(for: selectedIndexPath), startPoint: .bottomLeft, endPoint: .topRight)
+            cell.configure(imageName: imageName, colors: getGradientColors(for: selectedIndexPath))
             return cell
         }
     }

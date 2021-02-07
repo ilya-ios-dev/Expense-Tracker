@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ndw-nC-f2X">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ndw-nC-f2X">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +12,7 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Ndw-nC-f2X" customClass="TabBarViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kFB-dr-o23" customClass="TabBar" customModule="Expense_Tracker" customModuleProvider="target">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kFB-dr-o23" customClass="BentTabBar" customModule="Expense_Tracker" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,20 +49,20 @@
             </objects>
             <point key="canvasLocation" x="-936" y="502"/>
         </scene>
-        <!--Category-->
+        <!--CategoryList-->
         <scene sceneID="fGh-9u-kwX">
             <objects>
-                <viewControllerPlaceholder storyboardName="Category" id="wDe-XT-Spf" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="CategoryList" id="wDe-XT-Spf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Category" image="square.grid.2x2" catalog="system" id="Gdq-Wd-4sD"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9c-2C-Vaa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-545" y="510"/>
         </scene>
-        <!--Settings-->
+        <!--SettingsList-->
         <scene sceneID="ffe-Ts-yvM">
             <objects>
-                <viewControllerPlaceholder storyboardName="Settings" id="1ID-pv-gCp" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="SettingsList" id="1ID-pv-gCp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="person" catalog="system" id="Aim-d1-4Sr"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Elf-dJ-EDj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

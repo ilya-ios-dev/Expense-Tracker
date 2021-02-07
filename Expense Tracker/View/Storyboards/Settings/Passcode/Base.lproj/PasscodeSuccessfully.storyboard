@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gOh-py-TMe">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gOh-py-TMe">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,49 +13,49 @@
             <objects>
                 <viewController id="gOh-py-TMe" customClass="PasscodeSuccessViewController" customModule="Expense_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Qg-cw-fbP">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6d-Ll-P0P" customClass="BottomLeftView" customModule="Expense_Tracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="727.66666666666663" width="65.333333333333329" height="116.33333333333337"/>
+                                <rect key="frame" x="0.0" y="772.5" width="69" height="123.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="r6d-Ll-P0P" secondAttribute="height" multiplier="65:116" id="41c-mL-V3V"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mgy-Ik-weA" customClass="TopRightView" customModule="Expense_Tracker" customModuleProvider="target">
-                                <rect key="frame" x="289.66666666666669" y="0.0" width="100.33333333333331" height="97.333333333333329"/>
+                                <rect key="frame" x="307.5" y="0.0" width="106.5" height="103.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Mgy-Ik-weA" secondAttribute="height" multiplier="100:97" id="lhz-6b-DQg"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UfZ-j1-snf" customClass="TopLeftView" customModule="Expense_Tracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="103.33333333333333" height="104.33333333333333"/>
+                                <rect key="frame" x="0.0" y="0.0" width="109.5" height="111"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UfZ-j1-snf" secondAttribute="height" multiplier="103:104" id="9qP-pX-DfY"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="zU6-hI-dVd">
-                                <rect key="frame" x="20" y="169" width="350" height="506"/>
+                                <rect key="frame" x="20" y="169" width="374" height="558"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passcode successfully created" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odo-2u-Mh6">
-                                        <rect key="frame" x="0.0" y="0.0" width="350" height="71.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="72"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0S-6m-ODO" customClass="PasscodeSuccessfullyView" customModule="Expense_Tracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="101.66666666666671" width="350" height="404.33333333333326"/>
+                                        <rect key="frame" x="0.0" y="102" width="374" height="456"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVu-Yo-n9o" customClass="CustomButton" customModule="Expense_Tracker" customModuleProvider="target">
-                                <rect key="frame" x="65" y="695" width="260" height="55"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVu-Yo-n9o" customClass="RoundedGradientButton" customModule="Expense_Tracker" customModuleProvider="target">
+                                <rect key="frame" x="77" y="747" width="260" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="dBR-X2-yWR"/>
-                                    <constraint firstAttribute="width" constant="260" id="pgK-a8-6cW"/>
+                                    <constraint firstAttribute="width" priority="749" constant="260" id="pgK-a8-6cW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="34"/>
                                 <state key="normal" title="Done">
